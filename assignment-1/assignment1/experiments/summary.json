@@ -1,0 +1,1573 @@
+{
+  "generated_at": "2026-09-28T16:40:20.668185+00:00",
+  "master_seed": 20260928,
+  "environment": {
+    "platform": "Windows-11-10.0.26200-SP0",
+    "python": "3.14.6 | packaged by Anaconda, Inc. | (main, Jul  9 2026, 14:29:05) [MSC v.1942 64 bit (AMD64)]",
+    "processor": "Intel64 Family 6 Model 170 Stepping 4, GenuineIntel"
+  },
+  "total_games": 1200,
+  "unique_keys": 1200,
+  "groups": [
+    {
+      "group_id": "selfplay|Enhanced Alpha-Beta|Enhanced Alpha-Beta|N15|K5|T0.5",
+      "kind": "selfplay",
+      "strategy": "Enhanced Alpha-Beta",
+      "opponent": "Enhanced Alpha-Beta",
+      "board_size": 15,
+      "win_length": 5,
+      "time_limit": 0.5,
+      "games": 50,
+      "color_results": {
+        "black": 0,
+        "white": 50,
+        "draw": 0
+      },
+      "average_game_moves": 12.0,
+      "median_game_moves": 12.0,
+      "agent_results": {
+        "Enhanced Alpha-Beta A": {
+          "games": 50,
+          "black_games": 25,
+          "white_games": 25,
+          "wins": 25,
+          "losses": 25,
+          "draws": 0,
+          "win_rate": 0.5,
+          "score_rate": 0.5,
+          "timing": {
+            "count": 300,
+            "mean_seconds": 0.3194407483333877,
+            "median_seconds": 0.42559144999540877,
+            "p95_seconds": 0.4259956999885617,
+            "max_seconds": 0.42729449999751523
+          }
+        },
+        "Enhanced Alpha-Beta B": {
+          "games": 50,
+          "black_games": 25,
+          "white_games": 25,
+          "wins": 25,
+          "losses": 25,
+          "draws": 0,
+          "win_rate": 0.5,
+          "score_rate": 0.5,
+          "timing": {
+            "count": 300,
+            "mean_seconds": 0.3194391913333675,
+            "median_seconds": 0.4255868999971426,
+            "p95_seconds": 0.4259479000029387,
+            "max_seconds": 0.4292128999950364
+          }
+        }
+      },
+      "nonrandom_timing": {
+        "count": 600,
+        "mean_seconds": 0.3194399698333776,
+        "median_seconds": 0.4255901000069571,
+        "p95_seconds": 0.4259953000000678,
+        "max_seconds": 0.4292128999950364
+      },
+      "protocol_failures": {
+        "timeout": 0,
+        "exception": 0,
+        "illegal_move": 0
+      }
+    },
+    {
+      "group_id": "selfplay|Enhanced Alpha-Beta|Enhanced Alpha-Beta|N15|K5|T1",
+      "kind": "selfplay",
+      "strategy": "Enhanced Alpha-Beta",
+      "opponent": "Enhanced Alpha-Beta",
+      "board_size": 15,
+      "win_length": 5,
+      "time_limit": 1.0,
+      "games": 50,
+      "color_results": {
+        "black": 50,
+        "white": 0,
+        "draw": 0
+      },
+      "average_game_moves": 9.0,
+      "median_game_moves": 9.0,
+      "agent_results": {
+        "Enhanced Alpha-Beta A": {
+          "games": 50,
+          "black_games": 25,
+          "white_games": 25,
+          "wins": 25,
+          "losses": 25,
+          "draws": 0,
+          "win_rate": 0.5,
+          "score_rate": 0.5,
+          "timing": {
+            "count": 225,
+            "mean_seconds": 0.6617204235556872,
+            "median_seconds": 0.8505469000083394,
+            "p95_seconds": 0.8509206000017002,
+            "max_seconds": 0.8518692000070587
+          }
+        },
+        "Enhanced Alpha-Beta B": {
+          "games": 50,
+          "black_games": 25,
+          "white_games": 25,
+          "wins": 25,
+          "losses": 25,
+          "draws": 0,
+          "win_rate": 0.5,
+          "score_rate": 0.5,
+          "timing": {
+            "count": 225,
+            "mean_seconds": 0.6617259751112822,
+            "median_seconds": 0.850538200000301,
+            "p95_seconds": 0.8509907000116073,
+            "max_seconds": 0.8536802000016905
+          }
+        }
+      },
+      "nonrandom_timing": {
+        "count": 450,
+        "mean_seconds": 0.6617231993334847,
+        "median_seconds": 0.8505436499981442,
+        "p95_seconds": 0.8509498000057647,
+        "max_seconds": 0.8536802000016905
+      },
+      "protocol_failures": {
+        "timeout": 0,
+        "exception": 0,
+        "illegal_move": 0
+      }
+    },
+    {
+      "group_id": "selfplay|Enhanced Alpha-Beta|Enhanced Alpha-Beta|N15|K5|T5",
+      "kind": "selfplay",
+      "strategy": "Enhanced Alpha-Beta",
+      "opponent": "Enhanced Alpha-Beta",
+      "board_size": 15,
+      "win_length": 5,
+      "time_limit": 5.0,
+      "games": 50,
+      "color_results": {
+        "black": 48,
+        "white": 2,
+        "draw": 0
+      },
+      "average_game_moves": 14.16,
+      "median_game_moves": 15.0,
+      "agent_results": {
+        "Enhanced Alpha-Beta A": {
+          "games": 50,
+          "black_games": 25,
+          "white_games": 25,
+          "wins": 27,
+          "losses": 23,
+          "draws": 0,
+          "win_rate": 0.54,
+          "score_rate": 0.54,
+          "timing": {
+            "count": 355,
+            "mean_seconds": 3.642595840562963,
+            "median_seconds": 4.750549799995497,
+            "p95_seconds": 4.751009600004181,
+            "max_seconds": 4.7539749999996275
+          }
+        },
+        "Enhanced Alpha-Beta B": {
+          "games": 50,
+          "black_games": 25,
+          "white_games": 25,
+          "wins": 23,
+          "losses": 27,
+          "draws": 0,
+          "win_rate": 0.46,
+          "score_rate": 0.46,
+          "timing": {
+            "count": 353,
+            "mean_seconds": 3.7008166456091396,
+            "median_seconds": 4.750547999996343,
+            "p95_seconds": 4.7509788000024855,
+            "max_seconds": 4.751950499994564
+          }
+        }
+      },
+      "nonrandom_timing": {
+        "count": 708,
+        "mean_seconds": 3.671624010310562,
+        "median_seconds": 4.75054889999592,
+        "p95_seconds": 4.750992600005702,
+        "max_seconds": 4.7539749999996275
+      },
+      "protocol_failures": {
+        "timeout": 0,
+        "exception": 0,
+        "illegal_move": 0
+      }
+    },
+    {
+      "group_id": "selfplay|Enhanced Alpha-Beta|Enhanced Alpha-Beta|N9|K4|T0.5",
+      "kind": "selfplay",
+      "strategy": "Enhanced Alpha-Beta",
+      "opponent": "Enhanced Alpha-Beta",
+      "board_size": 9,
+      "win_length": 4,
+      "time_limit": 0.5,
+      "games": 50,
+      "color_results": {
+        "black": 50,
+        "white": 0,
+        "draw": 0
+      },
+      "average_game_moves": 7.12,
+      "median_game_moves": 7.0,
+      "agent_results": {
+        "Enhanced Alpha-Beta A": {
+          "games": 50,
+          "black_games": 25,
+          "white_games": 25,
+          "wins": 25,
+          "losses": 25,
+          "draws": 0,
+          "win_rate": 0.5,
+          "score_rate": 0.5,
+          "timing": {
+            "count": 178,
+            "mean_seconds": 0.3061614101126416,
+            "median_seconds": 0.42555990000255406,
+            "p95_seconds": 0.4258918000123231,
+            "max_seconds": 0.42687919999298174
+          }
+        },
+        "Enhanced Alpha-Beta B": {
+          "games": 50,
+          "black_games": 25,
+          "white_games": 25,
+          "wins": 25,
+          "losses": 25,
+          "draws": 0,
+          "win_rate": 0.5,
+          "score_rate": 0.5,
+          "timing": {
+            "count": 178,
+            "mean_seconds": 0.3014249365169848,
+            "median_seconds": 0.42553700000280514,
+            "p95_seconds": 0.42600799999490846,
+            "max_seconds": 0.4261954999965383
+          }
+        }
+      },
+      "nonrandom_timing": {
+        "count": 356,
+        "mean_seconds": 0.3037931733148132,
+        "median_seconds": 0.425547649996588,
+        "p95_seconds": 0.425915999992867,
+        "max_seconds": 0.42687919999298174
+      },
+      "protocol_failures": {
+        "timeout": 0,
+        "exception": 0,
+        "illegal_move": 0
+      }
+    },
+    {
+      "group_id": "selfplay|Enhanced Alpha-Beta|Enhanced Alpha-Beta|N9|K4|T1",
+      "kind": "selfplay",
+      "strategy": "Enhanced Alpha-Beta",
+      "opponent": "Enhanced Alpha-Beta",
+      "board_size": 9,
+      "win_length": 4,
+      "time_limit": 1.0,
+      "games": 50,
+      "color_results": {
+        "black": 50,
+        "white": 0,
+        "draw": 0
+      },
+      "average_game_moves": 7.0,
+      "median_game_moves": 7.0,
+      "agent_results": {
+        "Enhanced Alpha-Beta A": {
+          "games": 50,
+          "black_games": 25,
+          "white_games": 25,
+          "wins": 25,
+          "losses": 25,
+          "draws": 0,
+          "win_rate": 0.5,
+          "score_rate": 0.5,
+          "timing": {
+            "count": 175,
+            "mean_seconds": 0.6077674874285834,
+            "median_seconds": 0.850532700002077,
+            "p95_seconds": 0.851010899990797,
+            "max_seconds": 0.8516103000001749
+          }
+        },
+        "Enhanced Alpha-Beta B": {
+          "games": 50,
+          "black_games": 25,
+          "white_games": 25,
+          "wins": 25,
+          "losses": 25,
+          "draws": 0,
+          "win_rate": 0.5,
+          "score_rate": 0.5,
+          "timing": {
+            "count": 175,
+            "mean_seconds": 0.607759842285637,
+            "median_seconds": 0.8505635000037728,
+            "p95_seconds": 0.8509171000041533,
+            "max_seconds": 0.8517066000058549
+          }
+        }
+      },
+      "nonrandom_timing": {
+        "count": 350,
+        "mean_seconds": 0.6077636648571102,
+        "median_seconds": 0.8505512499978067,
+        "p95_seconds": 0.8509483999951044,
+        "max_seconds": 0.8517066000058549
+      },
+      "protocol_failures": {
+        "timeout": 0,
+        "exception": 0,
+        "illegal_move": 0
+      }
+    },
+    {
+      "group_id": "selfplay|Enhanced Alpha-Beta|Enhanced Alpha-Beta|N9|K4|T5",
+      "kind": "selfplay",
+      "strategy": "Enhanced Alpha-Beta",
+      "opponent": "Enhanced Alpha-Beta",
+      "board_size": 9,
+      "win_length": 4,
+      "time_limit": 5.0,
+      "games": 50,
+      "color_results": {
+        "black": 50,
+        "white": 0,
+        "draw": 0
+      },
+      "average_game_moves": 7.0,
+      "median_game_moves": 7.0,
+      "agent_results": {
+        "Enhanced Alpha-Beta A": {
+          "games": 50,
+          "black_games": 25,
+          "white_games": 25,
+          "wins": 25,
+          "losses": 25,
+          "draws": 0,
+          "win_rate": 0.5,
+          "score_rate": 0.5,
+          "timing": {
+            "count": 175,
+            "mean_seconds": 3.348202852,
+            "median_seconds": 4.750468800004455,
+            "p95_seconds": 4.75100069999462,
+            "max_seconds": 4.752138600000762
+          }
+        },
+        "Enhanced Alpha-Beta B": {
+          "games": 50,
+          "black_games": 25,
+          "white_games": 25,
+          "wins": 25,
+          "losses": 25,
+          "draws": 0,
+          "win_rate": 0.5,
+          "score_rate": 0.5,
+          "timing": {
+            "count": 175,
+            "mean_seconds": 3.354267298857282,
+            "median_seconds": 4.7504735000111395,
+            "p95_seconds": 4.750839200001792,
+            "max_seconds": 4.7518905000033556
+          }
+        }
+      },
+      "nonrandom_timing": {
+        "count": 350,
+        "mean_seconds": 3.351235075428641,
+        "median_seconds": 4.750472299994726,
+        "p95_seconds": 4.75094870000612,
+        "max_seconds": 4.752138600000762
+      },
+      "protocol_failures": {
+        "timeout": 0,
+        "exception": 0,
+        "illegal_move": 0
+      }
+    },
+    {
+      "group_id": "vs_random|Baseline Alpha-Beta|Random AI|N15|K5|T0.5",
+      "kind": "vs_random",
+      "strategy": "Baseline Alpha-Beta",
+      "opponent": "Random AI",
+      "board_size": 15,
+      "win_length": 5,
+      "time_limit": 0.5,
+      "games": 50,
+      "color_results": {
+        "black": 25,
+        "white": 25,
+        "draw": 0
+      },
+      "average_game_moves": 16.5,
+      "median_game_moves": 17.0,
+      "agent_results": {
+        "Baseline Alpha-Beta": {
+          "games": 50,
+          "black_games": 25,
+          "white_games": 25,
+          "wins": 50,
+          "losses": 0,
+          "draws": 0,
+          "win_rate": 1.0,
+          "score_rate": 1.0,
+          "timing": {
+            "count": 425,
+            "mean_seconds": 0.004768625176135067,
+            "median_seconds": 0.00436769999214448,
+            "p95_seconds": 0.010451599999214523,
+            "max_seconds": 0.016957400002866052
+          }
+        },
+        "Random AI": {
+          "games": 50,
+          "black_games": 25,
+          "white_games": 25,
+          "wins": 0,
+          "losses": 50,
+          "draws": 0,
+          "win_rate": 0.0,
+          "score_rate": 0.0,
+          "timing": {
+            "count": 400,
+            "mean_seconds": 0.0003952989999015699,
+            "median_seconds": 0.0003606000027502887,
+            "p95_seconds": 0.0007020999910309911,
+            "max_seconds": 0.0049005999899236485
+          }
+        }
+      },
+      "nonrandom_timing": {
+        "count": 425,
+        "mean_seconds": 0.004768625176135067,
+        "median_seconds": 0.00436769999214448,
+        "p95_seconds": 0.010451599999214523,
+        "max_seconds": 0.016957400002866052
+      },
+      "protocol_failures": {
+        "timeout": 0,
+        "exception": 0,
+        "illegal_move": 0
+      }
+    },
+    {
+      "group_id": "vs_random|Baseline Alpha-Beta|Random AI|N15|K5|T1",
+      "kind": "vs_random",
+      "strategy": "Baseline Alpha-Beta",
+      "opponent": "Random AI",
+      "board_size": 15,
+      "win_length": 5,
+      "time_limit": 1.0,
+      "games": 50,
+      "color_results": {
+        "black": 25,
+        "white": 25,
+        "draw": 0
+      },
+      "average_game_moves": 15.86,
+      "median_game_moves": 16.0,
+      "agent_results": {
+        "Baseline Alpha-Beta": {
+          "games": 50,
+          "black_games": 25,
+          "white_games": 25,
+          "wins": 50,
+          "losses": 0,
+          "draws": 0,
+          "win_rate": 1.0,
+          "score_rate": 1.0,
+          "timing": {
+            "count": 409,
+            "mean_seconds": 0.004316862347159503,
+            "median_seconds": 0.00366770000255201,
+            "p95_seconds": 0.0104385999875376,
+            "max_seconds": 0.023712099995464087
+          }
+        },
+        "Random AI": {
+          "games": 50,
+          "black_games": 25,
+          "white_games": 25,
+          "wins": 0,
+          "losses": 50,
+          "draws": 0,
+          "win_rate": 0.0,
+          "score_rate": 0.0,
+          "timing": {
+            "count": 384,
+            "mean_seconds": 0.00029527838523790706,
+            "median_seconds": 0.00026995000371243805,
+            "p95_seconds": 0.0005416000058175996,
+            "max_seconds": 0.0013035000010859221
+          }
+        }
+      },
+      "nonrandom_timing": {
+        "count": 409,
+        "mean_seconds": 0.004316862347159503,
+        "median_seconds": 0.00366770000255201,
+        "p95_seconds": 0.0104385999875376,
+        "max_seconds": 0.023712099995464087
+      },
+      "protocol_failures": {
+        "timeout": 0,
+        "exception": 0,
+        "illegal_move": 0
+      }
+    },
+    {
+      "group_id": "vs_random|Baseline Alpha-Beta|Random AI|N15|K5|T5",
+      "kind": "vs_random",
+      "strategy": "Baseline Alpha-Beta",
+      "opponent": "Random AI",
+      "board_size": 15,
+      "win_length": 5,
+      "time_limit": 5.0,
+      "games": 50,
+      "color_results": {
+        "black": 25,
+        "white": 25,
+        "draw": 0
+      },
+      "average_game_moves": 16.3,
+      "median_game_moves": 17.0,
+      "agent_results": {
+        "Baseline Alpha-Beta": {
+          "games": 50,
+          "black_games": 25,
+          "white_games": 25,
+          "wins": 50,
+          "losses": 0,
+          "draws": 0,
+          "win_rate": 1.0,
+          "score_rate": 1.0,
+          "timing": {
+            "count": 420,
+            "mean_seconds": 0.00444128142830561,
+            "median_seconds": 0.00418589999753749,
+            "p95_seconds": 0.009701699993456714,
+            "max_seconds": 0.019499400004860945
+          }
+        },
+        "Random AI": {
+          "games": 50,
+          "black_games": 25,
+          "white_games": 25,
+          "wins": 0,
+          "losses": 50,
+          "draws": 0,
+          "win_rate": 0.0,
+          "score_rate": 0.0,
+          "timing": {
+            "count": 395,
+            "mean_seconds": 0.0003272296198425649,
+            "median_seconds": 0.00028670000028796494,
+            "p95_seconds": 0.0006354000070132315,
+            "max_seconds": 0.0012563999916892499
+          }
+        }
+      },
+      "nonrandom_timing": {
+        "count": 420,
+        "mean_seconds": 0.00444128142830561,
+        "median_seconds": 0.00418589999753749,
+        "p95_seconds": 0.009701699993456714,
+        "max_seconds": 0.019499400004860945
+      },
+      "protocol_failures": {
+        "timeout": 0,
+        "exception": 0,
+        "illegal_move": 0
+      }
+    },
+    {
+      "group_id": "vs_random|Baseline Alpha-Beta|Random AI|N9|K4|T0.5",
+      "kind": "vs_random",
+      "strategy": "Baseline Alpha-Beta",
+      "opponent": "Random AI",
+      "board_size": 9,
+      "win_length": 4,
+      "time_limit": 0.5,
+      "games": 50,
+      "color_results": {
+        "black": 25,
+        "white": 25,
+        "draw": 0
+      },
+      "average_game_moves": 8.42,
+      "median_game_moves": 8.0,
+      "agent_results": {
+        "Baseline Alpha-Beta": {
+          "games": 50,
+          "black_games": 25,
+          "white_games": 25,
+          "wins": 50,
+          "losses": 0,
+          "draws": 0,
+          "win_rate": 1.0,
+          "score_rate": 1.0,
+          "timing": {
+            "count": 223,
+            "mean_seconds": 0.0013593609868694982,
+            "median_seconds": 0.001443700006348081,
+            "p95_seconds": 0.0029423000087263063,
+            "max_seconds": 0.00455820000206586
+          }
+        },
+        "Random AI": {
+          "games": 50,
+          "black_games": 25,
+          "white_games": 25,
+          "wins": 0,
+          "losses": 50,
+          "draws": 0,
+          "win_rate": 0.0,
+          "score_rate": 0.0,
+          "timing": {
+            "count": 198,
+            "mean_seconds": 0.00020306161604821682,
+            "median_seconds": 0.0001823499915190041,
+            "p95_seconds": 0.0003188999980920926,
+            "max_seconds": 0.0005411000020103529
+          }
+        }
+      },
+      "nonrandom_timing": {
+        "count": 223,
+        "mean_seconds": 0.0013593609868694982,
+        "median_seconds": 0.001443700006348081,
+        "p95_seconds": 0.0029423000087263063,
+        "max_seconds": 0.00455820000206586
+      },
+      "protocol_failures": {
+        "timeout": 0,
+        "exception": 0,
+        "illegal_move": 0
+      }
+    },
+    {
+      "group_id": "vs_random|Baseline Alpha-Beta|Random AI|N9|K4|T1",
+      "kind": "vs_random",
+      "strategy": "Baseline Alpha-Beta",
+      "opponent": "Random AI",
+      "board_size": 9,
+      "win_length": 4,
+      "time_limit": 1.0,
+      "games": 50,
+      "color_results": {
+        "black": 25,
+        "white": 25,
+        "draw": 0
+      },
+      "average_game_moves": 8.5,
+      "median_game_moves": 8.0,
+      "agent_results": {
+        "Baseline Alpha-Beta": {
+          "games": 50,
+          "black_games": 25,
+          "white_games": 25,
+          "wins": 50,
+          "losses": 0,
+          "draws": 0,
+          "win_rate": 1.0,
+          "score_rate": 1.0,
+          "timing": {
+            "count": 225,
+            "mean_seconds": 0.0018854524448720946,
+            "median_seconds": 0.0018517999997129664,
+            "p95_seconds": 0.004598400002578273,
+            "max_seconds": 0.006107500012149103
+          }
+        },
+        "Random AI": {
+          "games": 50,
+          "black_games": 25,
+          "white_games": 25,
+          "wins": 0,
+          "losses": 50,
+          "draws": 0,
+          "win_rate": 0.0,
+          "score_rate": 0.0,
+          "timing": {
+            "count": 200,
+            "mean_seconds": 0.00028158150023955387,
+            "median_seconds": 0.00024034999660216272,
+            "p95_seconds": 0.0004919999919366091,
+            "max_seconds": 0.0012702999956673011
+          }
+        }
+      },
+      "nonrandom_timing": {
+        "count": 225,
+        "mean_seconds": 0.0018854524448720946,
+        "median_seconds": 0.0018517999997129664,
+        "p95_seconds": 0.004598400002578273,
+        "max_seconds": 0.006107500012149103
+      },
+      "protocol_failures": {
+        "timeout": 0,
+        "exception": 0,
+        "illegal_move": 0
+      }
+    },
+    {
+      "group_id": "vs_random|Baseline Alpha-Beta|Random AI|N9|K4|T5",
+      "kind": "vs_random",
+      "strategy": "Baseline Alpha-Beta",
+      "opponent": "Random AI",
+      "board_size": 9,
+      "win_length": 4,
+      "time_limit": 5.0,
+      "games": 50,
+      "color_results": {
+        "black": 25,
+        "white": 25,
+        "draw": 0
+      },
+      "average_game_moves": 8.62,
+      "median_game_moves": 8.0,
+      "agent_results": {
+        "Baseline Alpha-Beta": {
+          "games": 50,
+          "black_games": 25,
+          "white_games": 25,
+          "wins": 50,
+          "losses": 0,
+          "draws": 0,
+          "win_rate": 1.0,
+          "score_rate": 1.0,
+          "timing": {
+            "count": 228,
+            "mean_seconds": 0.001619871929793398,
+            "median_seconds": 0.0015986000071279705,
+            "p95_seconds": 0.004062899999553338,
+            "max_seconds": 0.005994299994199537
+          }
+        },
+        "Random AI": {
+          "games": 50,
+          "black_games": 25,
+          "white_games": 25,
+          "wins": 0,
+          "losses": 50,
+          "draws": 0,
+          "win_rate": 0.0,
+          "score_rate": 0.0,
+          "timing": {
+            "count": 203,
+            "mean_seconds": 0.00021200886714786035,
+            "median_seconds": 0.0001740000006975606,
+            "p95_seconds": 0.00035599998955149204,
+            "max_seconds": 0.0013330000074347481
+          }
+        }
+      },
+      "nonrandom_timing": {
+        "count": 228,
+        "mean_seconds": 0.001619871929793398,
+        "median_seconds": 0.0015986000071279705,
+        "p95_seconds": 0.004062899999553338,
+        "max_seconds": 0.005994299994199537
+      },
+      "protocol_failures": {
+        "timeout": 0,
+        "exception": 0,
+        "illegal_move": 0
+      }
+    },
+    {
+      "group_id": "vs_random|Enhanced Alpha-Beta|Random AI|N15|K5|T0.5",
+      "kind": "vs_random",
+      "strategy": "Enhanced Alpha-Beta",
+      "opponent": "Random AI",
+      "board_size": 15,
+      "win_length": 5,
+      "time_limit": 0.5,
+      "games": 50,
+      "color_results": {
+        "black": 25,
+        "white": 25,
+        "draw": 0
+      },
+      "average_game_moves": 9.82,
+      "median_game_moves": 9.5,
+      "agent_results": {
+        "Enhanced Alpha-Beta": {
+          "games": 50,
+          "black_games": 25,
+          "white_games": 25,
+          "wins": 50,
+          "losses": 0,
+          "draws": 0,
+          "win_rate": 1.0,
+          "score_rate": 1.0,
+          "timing": {
+            "count": 258,
+            "mean_seconds": 0.3431786790699066,
+            "median_seconds": 0.42550774999835994,
+            "p95_seconds": 0.42592819999845233,
+            "max_seconds": 0.4272611000051256
+          }
+        },
+        "Random AI": {
+          "games": 50,
+          "black_games": 25,
+          "white_games": 25,
+          "wins": 0,
+          "losses": 50,
+          "draws": 0,
+          "win_rate": 0.0,
+          "score_rate": 0.0,
+          "timing": {
+            "count": 233,
+            "mean_seconds": 0.0005417407726141517,
+            "median_seconds": 0.000522699992870912,
+            "p95_seconds": 0.0007856000011088327,
+            "max_seconds": 0.0030802999972365797
+          }
+        }
+      },
+      "nonrandom_timing": {
+        "count": 258,
+        "mean_seconds": 0.3431786790699066,
+        "median_seconds": 0.42550774999835994,
+        "p95_seconds": 0.42592819999845233,
+        "max_seconds": 0.4272611000051256
+      },
+      "protocol_failures": {
+        "timeout": 0,
+        "exception": 0,
+        "illegal_move": 0
+      }
+    },
+    {
+      "group_id": "vs_random|Enhanced Alpha-Beta|Random AI|N15|K5|T1",
+      "kind": "vs_random",
+      "strategy": "Enhanced Alpha-Beta",
+      "opponent": "Random AI",
+      "board_size": 15,
+      "win_length": 5,
+      "time_limit": 1.0,
+      "games": 50,
+      "color_results": {
+        "black": 25,
+        "white": 25,
+        "draw": 0
+      },
+      "average_game_moves": 9.5,
+      "median_game_moves": 9.5,
+      "agent_results": {
+        "Enhanced Alpha-Beta": {
+          "games": 50,
+          "black_games": 25,
+          "white_games": 25,
+          "wins": 50,
+          "losses": 0,
+          "draws": 0,
+          "win_rate": 1.0,
+          "score_rate": 1.0,
+          "timing": {
+            "count": 250,
+            "mean_seconds": 0.6805275640002219,
+            "median_seconds": 0.8504680000041844,
+            "p95_seconds": 0.8509629000036512,
+            "max_seconds": 0.852791299999808
+          }
+        },
+        "Random AI": {
+          "games": 50,
+          "black_games": 25,
+          "white_games": 25,
+          "wins": 0,
+          "losses": 50,
+          "draws": 0,
+          "win_rate": 0.0,
+          "score_rate": 0.0,
+          "timing": {
+            "count": 225,
+            "mean_seconds": 0.0005062711104336712,
+            "median_seconds": 0.0004592000041157007,
+            "p95_seconds": 0.0008096999954432249,
+            "max_seconds": 0.003860800003167242
+          }
+        }
+      },
+      "nonrandom_timing": {
+        "count": 250,
+        "mean_seconds": 0.6805275640002219,
+        "median_seconds": 0.8504680000041844,
+        "p95_seconds": 0.8509629000036512,
+        "max_seconds": 0.852791299999808
+      },
+      "protocol_failures": {
+        "timeout": 0,
+        "exception": 0,
+        "illegal_move": 0
+      }
+    },
+    {
+      "group_id": "vs_random|Enhanced Alpha-Beta|Random AI|N15|K5|T5",
+      "kind": "vs_random",
+      "strategy": "Enhanced Alpha-Beta",
+      "opponent": "Random AI",
+      "board_size": 15,
+      "win_length": 5,
+      "time_limit": 5.0,
+      "games": 50,
+      "color_results": {
+        "black": 25,
+        "white": 25,
+        "draw": 0
+      },
+      "average_game_moves": 9.58,
+      "median_game_moves": 9.5,
+      "agent_results": {
+        "Enhanced Alpha-Beta": {
+          "games": 50,
+          "black_games": 25,
+          "white_games": 25,
+          "wins": 50,
+          "losses": 0,
+          "draws": 0,
+          "win_rate": 1.0,
+          "score_rate": 1.0,
+          "timing": {
+            "count": 252,
+            "mean_seconds": 3.8080886111107133,
+            "median_seconds": 4.750451899999462,
+            "p95_seconds": 4.751050499995472,
+            "max_seconds": 4.752566299997852
+          }
+        },
+        "Random AI": {
+          "games": 50,
+          "black_games": 25,
+          "white_games": 25,
+          "wins": 0,
+          "losses": 50,
+          "draws": 0,
+          "win_rate": 0.0,
+          "score_rate": 0.0,
+          "timing": {
+            "count": 227,
+            "mean_seconds": 0.0004757414093073909,
+            "median_seconds": 0.00044770000386051834,
+            "p95_seconds": 0.0007580999954370782,
+            "max_seconds": 0.0016081999929156154
+          }
+        }
+      },
+      "nonrandom_timing": {
+        "count": 252,
+        "mean_seconds": 3.8080886111107133,
+        "median_seconds": 4.750451899999462,
+        "p95_seconds": 4.751050499995472,
+        "max_seconds": 4.752566299997852
+      },
+      "protocol_failures": {
+        "timeout": 0,
+        "exception": 0,
+        "illegal_move": 0
+      }
+    },
+    {
+      "group_id": "vs_random|Enhanced Alpha-Beta|Random AI|N9|K4|T0.5",
+      "kind": "vs_random",
+      "strategy": "Enhanced Alpha-Beta",
+      "opponent": "Random AI",
+      "board_size": 9,
+      "win_length": 4,
+      "time_limit": 0.5,
+      "games": 50,
+      "color_results": {
+        "black": 25,
+        "white": 25,
+        "draw": 0
+      },
+      "average_game_moves": 7.54,
+      "median_game_moves": 7.5,
+      "agent_results": {
+        "Enhanced Alpha-Beta": {
+          "games": 50,
+          "black_games": 25,
+          "white_games": 25,
+          "wins": 50,
+          "losses": 0,
+          "draws": 0,
+          "win_rate": 1.0,
+          "score_rate": 1.0,
+          "timing": {
+            "count": 201,
+            "mean_seconds": 0.31979854577102246,
+            "median_seconds": 0.425511399997049,
+            "p95_seconds": 0.42588619999878574,
+            "max_seconds": 0.4264438000100199
+          }
+        },
+        "Random AI": {
+          "games": 50,
+          "black_games": 25,
+          "white_games": 25,
+          "wins": 0,
+          "losses": 50,
+          "draws": 0,
+          "win_rate": 0.0,
+          "score_rate": 0.0,
+          "timing": {
+            "count": 176,
+            "mean_seconds": 0.0005173585229633979,
+            "median_seconds": 0.0004972499955329113,
+            "p95_seconds": 0.0007334999972954392,
+            "max_seconds": 0.0017275999998673797
+          }
+        }
+      },
+      "nonrandom_timing": {
+        "count": 201,
+        "mean_seconds": 0.31979854577102246,
+        "median_seconds": 0.425511399997049,
+        "p95_seconds": 0.42588619999878574,
+        "max_seconds": 0.4264438000100199
+      },
+      "protocol_failures": {
+        "timeout": 0,
+        "exception": 0,
+        "illegal_move": 0
+      }
+    },
+    {
+      "group_id": "vs_random|Enhanced Alpha-Beta|Random AI|N9|K4|T1",
+      "kind": "vs_random",
+      "strategy": "Enhanced Alpha-Beta",
+      "opponent": "Random AI",
+      "board_size": 9,
+      "win_length": 4,
+      "time_limit": 1.0,
+      "games": 50,
+      "color_results": {
+        "black": 25,
+        "white": 25,
+        "draw": 0
+      },
+      "average_game_moves": 7.5,
+      "median_game_moves": 7.5,
+      "agent_results": {
+        "Enhanced Alpha-Beta": {
+          "games": 50,
+          "black_games": 25,
+          "white_games": 25,
+          "wins": 50,
+          "losses": 0,
+          "draws": 0,
+          "win_rate": 1.0,
+          "score_rate": 1.0,
+          "timing": {
+            "count": 200,
+            "mean_seconds": 0.6380519154996,
+            "median_seconds": 0.8505133999933605,
+            "p95_seconds": 0.8508241999952588,
+            "max_seconds": 0.8514563999924576
+          }
+        },
+        "Random AI": {
+          "games": 50,
+          "black_games": 25,
+          "white_games": 25,
+          "wins": 0,
+          "losses": 50,
+          "draws": 0,
+          "win_rate": 0.0,
+          "score_rate": 0.0,
+          "timing": {
+            "count": 175,
+            "mean_seconds": 0.0005236405718772273,
+            "median_seconds": 0.0005132999940542504,
+            "p95_seconds": 0.0007691999926464632,
+            "max_seconds": 0.0013655000075232238
+          }
+        }
+      },
+      "nonrandom_timing": {
+        "count": 200,
+        "mean_seconds": 0.6380519154996,
+        "median_seconds": 0.8505133999933605,
+        "p95_seconds": 0.8508241999952588,
+        "max_seconds": 0.8514563999924576
+      },
+      "protocol_failures": {
+        "timeout": 0,
+        "exception": 0,
+        "illegal_move": 0
+      }
+    },
+    {
+      "group_id": "vs_random|Enhanced Alpha-Beta|Random AI|N9|K4|T5",
+      "kind": "vs_random",
+      "strategy": "Enhanced Alpha-Beta",
+      "opponent": "Random AI",
+      "board_size": 9,
+      "win_length": 4,
+      "time_limit": 5.0,
+      "games": 50,
+      "color_results": {
+        "black": 25,
+        "white": 25,
+        "draw": 0
+      },
+      "average_game_moves": 7.86,
+      "median_game_moves": 7.5,
+      "agent_results": {
+        "Enhanced Alpha-Beta": {
+          "games": 50,
+          "black_games": 25,
+          "white_games": 25,
+          "wins": 50,
+          "losses": 0,
+          "draws": 0,
+          "win_rate": 1.0,
+          "score_rate": 1.0,
+          "timing": {
+            "count": 209,
+            "mean_seconds": 3.568535607176695,
+            "median_seconds": 4.750428599989391,
+            "p95_seconds": 4.750787700002547,
+            "max_seconds": 4.808634999993956
+          }
+        },
+        "Random AI": {
+          "games": 50,
+          "black_games": 25,
+          "white_games": 25,
+          "wins": 0,
+          "losses": 50,
+          "draws": 0,
+          "win_rate": 0.0,
+          "score_rate": 0.0,
+          "timing": {
+            "count": 184,
+            "mean_seconds": 0.00045128804365800613,
+            "median_seconds": 0.0003937500005122274,
+            "p95_seconds": 0.0007360000017797574,
+            "max_seconds": 0.002904499997384846
+          }
+        }
+      },
+      "nonrandom_timing": {
+        "count": 209,
+        "mean_seconds": 3.568535607176695,
+        "median_seconds": 4.750428599989391,
+        "p95_seconds": 4.750787700002547,
+        "max_seconds": 4.808634999993956
+      },
+      "protocol_failures": {
+        "timeout": 0,
+        "exception": 0,
+        "illegal_move": 0
+      }
+    },
+    {
+      "group_id": "vs_random|MCTS + UCT|Random AI|N15|K5|T0.5",
+      "kind": "vs_random",
+      "strategy": "MCTS + UCT",
+      "opponent": "Random AI",
+      "board_size": 15,
+      "win_length": 5,
+      "time_limit": 0.5,
+      "games": 50,
+      "color_results": {
+        "black": 25,
+        "white": 25,
+        "draw": 0
+      },
+      "average_game_moves": 11.98,
+      "median_game_moves": 12.0,
+      "agent_results": {
+        "MCTS + UCT": {
+          "games": 50,
+          "black_games": 25,
+          "white_games": 25,
+          "wins": 50,
+          "losses": 0,
+          "draws": 0,
+          "win_rate": 1.0,
+          "score_rate": 1.0,
+          "timing": {
+            "count": 312,
+            "mean_seconds": 0.35729687147436495,
+            "median_seconds": 0.4254148999971221,
+            "p95_seconds": 0.42577109999547247,
+            "max_seconds": 0.42638720000104513
+          }
+        },
+        "Random AI": {
+          "games": 50,
+          "black_games": 25,
+          "white_games": 25,
+          "wins": 0,
+          "losses": 50,
+          "draws": 0,
+          "win_rate": 0.0,
+          "score_rate": 0.0,
+          "timing": {
+            "count": 287,
+            "mean_seconds": 0.0005278564458802173,
+            "median_seconds": 0.0005061999981990084,
+            "p95_seconds": 0.0007820999890100211,
+            "max_seconds": 0.0020891000021947548
+          }
+        }
+      },
+      "nonrandom_timing": {
+        "count": 312,
+        "mean_seconds": 0.35729687147436495,
+        "median_seconds": 0.4254148999971221,
+        "p95_seconds": 0.42577109999547247,
+        "max_seconds": 0.42638720000104513
+      },
+      "protocol_failures": {
+        "timeout": 0,
+        "exception": 0,
+        "illegal_move": 0
+      }
+    },
+    {
+      "group_id": "vs_random|MCTS + UCT|Random AI|N15|K5|T1",
+      "kind": "vs_random",
+      "strategy": "MCTS + UCT",
+      "opponent": "Random AI",
+      "board_size": 15,
+      "win_length": 5,
+      "time_limit": 1.0,
+      "games": 50,
+      "color_results": {
+        "black": 25,
+        "white": 25,
+        "draw": 0
+      },
+      "average_game_moves": 11.78,
+      "median_game_moves": 11.0,
+      "agent_results": {
+        "MCTS + UCT": {
+          "games": 50,
+          "black_games": 25,
+          "white_games": 25,
+          "wins": 50,
+          "losses": 0,
+          "draws": 0,
+          "win_rate": 1.0,
+          "score_rate": 1.0,
+          "timing": {
+            "count": 307,
+            "mean_seconds": 0.7119676876224081,
+            "median_seconds": 0.8503920000075595,
+            "p95_seconds": 0.8507584000035422,
+            "max_seconds": 0.8542052999982843
+          }
+        },
+        "Random AI": {
+          "games": 50,
+          "black_games": 25,
+          "white_games": 25,
+          "wins": 0,
+          "losses": 50,
+          "draws": 0,
+          "win_rate": 0.0,
+          "score_rate": 0.0,
+          "timing": {
+            "count": 282,
+            "mean_seconds": 0.0005288432625325475,
+            "median_seconds": 0.00047400000039488077,
+            "p95_seconds": 0.0007839999889256433,
+            "max_seconds": 0.008873999991919845
+          }
+        }
+      },
+      "nonrandom_timing": {
+        "count": 307,
+        "mean_seconds": 0.7119676876224081,
+        "median_seconds": 0.8503920000075595,
+        "p95_seconds": 0.8507584000035422,
+        "max_seconds": 0.8542052999982843
+      },
+      "protocol_failures": {
+        "timeout": 0,
+        "exception": 0,
+        "illegal_move": 0
+      }
+    },
+    {
+      "group_id": "vs_random|MCTS + UCT|Random AI|N15|K5|T5",
+      "kind": "vs_random",
+      "strategy": "MCTS + UCT",
+      "opponent": "Random AI",
+      "board_size": 15,
+      "win_length": 5,
+      "time_limit": 5.0,
+      "games": 50,
+      "color_results": {
+        "black": 25,
+        "white": 25,
+        "draw": 0
+      },
+      "average_game_moves": 11.3,
+      "median_game_moves": 11.0,
+      "agent_results": {
+        "MCTS + UCT": {
+          "games": 50,
+          "black_games": 25,
+          "white_games": 25,
+          "wins": 50,
+          "losses": 0,
+          "draws": 0,
+          "win_rate": 1.0,
+          "score_rate": 1.0,
+          "timing": {
+            "count": 295,
+            "mean_seconds": 3.9452457701699055,
+            "median_seconds": 4.750342100000125,
+            "p95_seconds": 4.750811300007626,
+            "max_seconds": 4.753498199992464
+          }
+        },
+        "Random AI": {
+          "games": 50,
+          "black_games": 25,
+          "white_games": 25,
+          "wins": 0,
+          "losses": 50,
+          "draws": 0,
+          "win_rate": 0.0,
+          "score_rate": 0.0,
+          "timing": {
+            "count": 270,
+            "mean_seconds": 0.0005315414818512551,
+            "median_seconds": 0.0004494500026339665,
+            "p95_seconds": 0.0009424000018043444,
+            "max_seconds": 0.004466200000024401
+          }
+        }
+      },
+      "nonrandom_timing": {
+        "count": 295,
+        "mean_seconds": 3.9452457701699055,
+        "median_seconds": 4.750342100000125,
+        "p95_seconds": 4.750811300007626,
+        "max_seconds": 4.753498199992464
+      },
+      "protocol_failures": {
+        "timeout": 0,
+        "exception": 0,
+        "illegal_move": 0
+      }
+    },
+    {
+      "group_id": "vs_random|MCTS + UCT|Random AI|N9|K4|T0.5",
+      "kind": "vs_random",
+      "strategy": "MCTS + UCT",
+      "opponent": "Random AI",
+      "board_size": 9,
+      "win_length": 4,
+      "time_limit": 0.5,
+      "games": 50,
+      "color_results": {
+        "black": 25,
+        "white": 25,
+        "draw": 0
+      },
+      "average_game_moves": 9.34,
+      "median_game_moves": 9.0,
+      "agent_results": {
+        "MCTS + UCT": {
+          "games": 50,
+          "black_games": 25,
+          "white_games": 25,
+          "wins": 50,
+          "losses": 0,
+          "draws": 0,
+          "win_rate": 1.0,
+          "score_rate": 1.0,
+          "timing": {
+            "count": 246,
+            "mean_seconds": 0.33546464471572374,
+            "median_seconds": 0.4250975499962806,
+            "p95_seconds": 0.4257250000082422,
+            "max_seconds": 0.4291534999938449
+          }
+        },
+        "Random AI": {
+          "games": 50,
+          "black_games": 25,
+          "white_games": 25,
+          "wins": 0,
+          "losses": 50,
+          "draws": 0,
+          "win_rate": 0.0,
+          "score_rate": 0.0,
+          "timing": {
+            "count": 221,
+            "mean_seconds": 0.0005300294113244305,
+            "median_seconds": 0.0004853999998886138,
+            "p95_seconds": 0.0008403000101679936,
+            "max_seconds": 0.0026123000134248286
+          }
+        }
+      },
+      "nonrandom_timing": {
+        "count": 246,
+        "mean_seconds": 0.33546464471572374,
+        "median_seconds": 0.4250975499962806,
+        "p95_seconds": 0.4257250000082422,
+        "max_seconds": 0.4291534999938449
+      },
+      "protocol_failures": {
+        "timeout": 0,
+        "exception": 0,
+        "illegal_move": 0
+      }
+    },
+    {
+      "group_id": "vs_random|MCTS + UCT|Random AI|N9|K4|T1",
+      "kind": "vs_random",
+      "strategy": "MCTS + UCT",
+      "opponent": "Random AI",
+      "board_size": 9,
+      "win_length": 4,
+      "time_limit": 1.0,
+      "games": 50,
+      "color_results": {
+        "black": 25,
+        "white": 25,
+        "draw": 0
+      },
+      "average_game_moves": 8.58,
+      "median_game_moves": 8.0,
+      "agent_results": {
+        "MCTS + UCT": {
+          "games": 50,
+          "black_games": 25,
+          "white_games": 25,
+          "wins": 50,
+          "losses": 0,
+          "draws": 0,
+          "win_rate": 1.0,
+          "score_rate": 1.0,
+          "timing": {
+            "count": 227,
+            "mean_seconds": 0.6556629480179046,
+            "median_seconds": 0.8500204000010854,
+            "p95_seconds": 0.8506574000057299,
+            "max_seconds": 0.8825064999982715
+          }
+        },
+        "Random AI": {
+          "games": 50,
+          "black_games": 25,
+          "white_games": 25,
+          "wins": 0,
+          "losses": 50,
+          "draws": 0,
+          "win_rate": 0.0,
+          "score_rate": 0.0,
+          "timing": {
+            "count": 202,
+            "mean_seconds": 0.00047904455464904997,
+            "median_seconds": 0.0004419999968376942,
+            "p95_seconds": 0.0007626000005984679,
+            "max_seconds": 0.0012112999975215644
+          }
+        }
+      },
+      "nonrandom_timing": {
+        "count": 227,
+        "mean_seconds": 0.6556629480179046,
+        "median_seconds": 0.8500204000010854,
+        "p95_seconds": 0.8506574000057299,
+        "max_seconds": 0.8825064999982715
+      },
+      "protocol_failures": {
+        "timeout": 0,
+        "exception": 0,
+        "illegal_move": 0
+      }
+    },
+    {
+      "group_id": "vs_random|MCTS + UCT|Random AI|N9|K4|T5",
+      "kind": "vs_random",
+      "strategy": "MCTS + UCT",
+      "opponent": "Random AI",
+      "board_size": 9,
+      "win_length": 4,
+      "time_limit": 5.0,
+      "games": 50,
+      "color_results": {
+        "black": 25,
+        "white": 25,
+        "draw": 0
+      },
+      "average_game_moves": 7.86,
+      "median_game_moves": 8.0,
+      "agent_results": {
+        "MCTS + UCT": {
+          "games": 50,
+          "black_games": 25,
+          "white_games": 25,
+          "wins": 50,
+          "losses": 0,
+          "draws": 0,
+          "win_rate": 1.0,
+          "score_rate": 1.0,
+          "timing": {
+            "count": 209,
+            "mean_seconds": 3.5915403081344093,
+            "median_seconds": 4.749821699995664,
+            "p95_seconds": 4.75060929999745,
+            "max_seconds": 4.858455400011735
+          }
+        },
+        "Random AI": {
+          "games": 50,
+          "black_games": 25,
+          "white_games": 25,
+          "wins": 0,
+          "losses": 50,
+          "draws": 0,
+          "win_rate": 0.0,
+          "score_rate": 0.0,
+          "timing": {
+            "count": 184,
+            "mean_seconds": 0.0004221331525078985,
+            "median_seconds": 0.0003747999944607727,
+            "p95_seconds": 0.0007119999936548993,
+            "max_seconds": 0.0019108999986201525
+          }
+        }
+      },
+      "nonrandom_timing": {
+        "count": 209,
+        "mean_seconds": 3.5915403081344093,
+        "median_seconds": 4.749821699995664,
+        "p95_seconds": 4.75060929999745,
+        "max_seconds": 4.858455400011735
+      },
+      "protocol_failures": {
+        "timeout": 0,
+        "exception": 0,
+        "illegal_move": 0
+      }
+    }
+  ]
+}
