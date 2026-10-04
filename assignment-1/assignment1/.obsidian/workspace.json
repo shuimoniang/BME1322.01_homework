@@ -190,12 +190,20 @@
   },
   "active": "ae55b6f690de1775",
   "lastOpenFiles": [
-    "experiments/comprehensive_smoke/manifest.json",
-    "experiments/comprehensive_smoke/results.jsonl",
-    "experiments/comprehensive_smoke",
-    "__pycache__/comprehensive_evaluation.cpython-314.pyc",
-    "comprehensive_evaluation.py",
+    "report.pdf",
+    "report.md",
     "README.md",
-    "report.md"
+    "report_assets/aggregate_against_enhanced.png",
+    "report_assets/hybrid_vs_enhanced.png",
+    "report_assets/system_architecture.png",
+    "report_assets",
+    "__pycache__/gomoku_game.cpython-312.pyc",
+    "tests/__pycache__/test_game.cpython-312.pyc",
+    "__pycache__/comprehensive_evaluation.cpython-312.pyc",
+    "__pycache__/final_experiments.cpython-312.pyc",
+    "__pycache__/advanced_match_benchmark.cpython-312.pyc",
+    "__pycache__/run_experiments.cpython-312.pyc",
+    "tests/__pycache__/test_experiments.cpython-312.pyc",
+    "__pycache__/advanced_tactical_benchmark.cpython-312.pyc"
   ]
 }
