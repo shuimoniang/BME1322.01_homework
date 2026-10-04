@@ -1,0 +1,1225 @@
+{
+  "generated_at": "2026-10-01T05:13:14.123801+00:00",
+  "master_seed": 20260928,
+  "environment": {
+    "platform": "Windows-11-10.0.26300-SP0",
+    "python": "3.14.7 | packaged by Anaconda, Inc. | (main, Aug 14 2026, 10:12:46) [MSC v.1942 64 bit (AMD64)]",
+    "processor": "Intel64 Family 6 Model 151 Stepping 2, GenuineIntel"
+  },
+  "total_games": 600,
+  "unique_keys": 600,
+  "groups": [
+    {
+      "group_id": "hybrid_match|Hybrid Threat Search|Enhanced Alpha-Beta|N15|K5|T0.5",
+      "kind": "hybrid_match",
+      "strategy": "Hybrid Threat Search",
+      "opponent": "Enhanced Alpha-Beta",
+      "board_size": 15,
+      "win_length": 5,
+      "time_limit": 0.5,
+      "games": 50,
+      "color_results": {
+        "black": 25,
+        "white": 25,
+        "draw": 0
+      },
+      "average_game_moves": 12.5,
+      "median_game_moves": 12.5,
+      "agent_results": {
+        "Enhanced Alpha-Beta B": {
+          "games": 50,
+          "black_games": 25,
+          "white_games": 25,
+          "wins": 50,
+          "losses": 0,
+          "draws": 0,
+          "by_color": {
+            "black": {
+              "wins": 25,
+              "losses": 0,
+              "draws": 0
+            },
+            "white": {
+              "wins": 25,
+              "losses": 0,
+              "draws": 0
+            }
+          },
+          "win_rate": 1.0,
+          "score_rate": 1.0,
+          "timing": {
+            "count": 325,
+            "mean_seconds": 0.32755804830732255,
+            "median_seconds": 0.4254622000735253,
+            "p95_seconds": 0.42619590018875897,
+            "max_seconds": 0.4364984999410808
+          },
+          "threat_search": {
+            "triggered_moves": 0,
+            "proven_moves": 0,
+            "proof_rate": null,
+            "nodes": 0
+          }
+        },
+        "Hybrid Threat Search A": {
+          "games": 50,
+          "black_games": 25,
+          "white_games": 25,
+          "wins": 0,
+          "losses": 50,
+          "draws": 0,
+          "by_color": {
+            "black": {
+              "wins": 0,
+              "losses": 25,
+              "draws": 0
+            },
+            "white": {
+              "wins": 0,
+              "losses": 25,
+              "draws": 0
+            }
+          },
+          "win_rate": 0.0,
+          "score_rate": 0.0,
+          "timing": {
+            "count": 300,
+            "mean_seconds": 0.3211847923393361,
+            "median_seconds": 0.4254304999485612,
+            "p95_seconds": 0.426035099895671,
+            "max_seconds": 0.4300517998635769
+          },
+          "threat_search": {
+            "triggered_moves": 25,
+            "proven_moves": 25,
+            "proof_rate": 1.0,
+            "nodes": 25
+          }
+        }
+      },
+      "nonrandom_timing": {
+        "count": 625,
+        "mean_seconds": 0.32449888544268907,
+        "median_seconds": 0.42544729984365404,
+        "p95_seconds": 0.42604529997333884,
+        "max_seconds": 0.4364984999410808
+      },
+      "protocol_failures": {
+        "timeout": 0,
+        "exception": 0,
+        "illegal_move": 0
+      }
+    },
+    {
+      "group_id": "hybrid_match|Hybrid Threat Search|Enhanced Alpha-Beta|N15|K5|T1",
+      "kind": "hybrid_match",
+      "strategy": "Hybrid Threat Search",
+      "opponent": "Enhanced Alpha-Beta",
+      "board_size": 15,
+      "win_length": 5,
+      "time_limit": 1.0,
+      "games": 50,
+      "color_results": {
+        "black": 25,
+        "white": 25,
+        "draw": 0
+      },
+      "average_game_moves": 12.06,
+      "median_game_moves": 10.5,
+      "agent_results": {
+        "Enhanced Alpha-Beta B": {
+          "games": 50,
+          "black_games": 25,
+          "white_games": 25,
+          "wins": 50,
+          "losses": 0,
+          "draws": 0,
+          "by_color": {
+            "black": {
+              "wins": 25,
+              "losses": 0,
+              "draws": 0
+            },
+            "white": {
+              "wins": 25,
+              "losses": 0,
+              "draws": 0
+            }
+          },
+          "win_rate": 1.0,
+          "score_rate": 1.0,
+          "timing": {
+            "count": 314,
+            "mean_seconds": 0.6124242987197521,
+            "median_seconds": 0.8504719499032944,
+            "p95_seconds": 0.8513944998849183,
+            "max_seconds": 0.8559791999869049
+          },
+          "threat_search": {
+            "triggered_moves": 0,
+            "proven_moves": 0,
+            "proof_rate": null,
+            "nodes": 0
+          }
+        },
+        "Hybrid Threat Search A": {
+          "games": 50,
+          "black_games": 25,
+          "white_games": 25,
+          "wins": 0,
+          "losses": 50,
+          "draws": 0,
+          "by_color": {
+            "black": {
+              "wins": 0,
+              "losses": 25,
+              "draws": 0
+            },
+            "white": {
+              "wins": 0,
+              "losses": 25,
+              "draws": 0
+            }
+          },
+          "win_rate": 0.0,
+          "score_rate": 0.0,
+          "timing": {
+            "count": 289,
+            "mean_seconds": 0.5972513211093469,
+            "median_seconds": 0.8504200999159366,
+            "p95_seconds": 0.8511012999806553,
+            "max_seconds": 0.8529074999969453
+          },
+          "threat_search": {
+            "triggered_moves": 38,
+            "proven_moves": 38,
+            "proof_rate": 1.0,
+            "nodes": 38
+          }
+        }
+      },
+      "nonrandom_timing": {
+        "count": 603,
+        "mean_seconds": 0.6051523409595413,
+        "median_seconds": 0.8504536000546068,
+        "p95_seconds": 0.8512001999188215,
+        "max_seconds": 0.8559791999869049
+      },
+      "protocol_failures": {
+        "timeout": 0,
+        "exception": 0,
+        "illegal_move": 0
+      }
+    },
+    {
+      "group_id": "hybrid_match|Hybrid Threat Search|Enhanced Alpha-Beta|N15|K5|T5",
+      "kind": "hybrid_match",
+      "strategy": "Hybrid Threat Search",
+      "opponent": "Enhanced Alpha-Beta",
+      "board_size": 15,
+      "win_length": 5,
+      "time_limit": 5.0,
+      "games": 50,
+      "color_results": {
+        "black": 25,
+        "white": 25,
+        "draw": 0
+      },
+      "average_game_moves": 17.9,
+      "median_game_moves": 19.0,
+      "agent_results": {
+        "Enhanced Alpha-Beta B": {
+          "games": 50,
+          "black_games": 25,
+          "white_games": 25,
+          "wins": 0,
+          "losses": 50,
+          "draws": 0,
+          "by_color": {
+            "black": {
+              "wins": 0,
+              "losses": 25,
+              "draws": 0
+            },
+            "white": {
+              "wins": 0,
+              "losses": 25,
+              "draws": 0
+            }
+          },
+          "win_rate": 0.0,
+          "score_rate": 0.0,
+          "timing": {
+            "count": 435,
+            "mean_seconds": 3.46056327288221,
+            "median_seconds": 4.750426799990237,
+            "p95_seconds": 4.751173499971628,
+            "max_seconds": 4.75518020009622
+          },
+          "threat_search": {
+            "triggered_moves": 0,
+            "proven_moves": 0,
+            "proof_rate": null,
+            "nodes": 0
+          }
+        },
+        "Hybrid Threat Search A": {
+          "games": 50,
+          "black_games": 25,
+          "white_games": 25,
+          "wins": 50,
+          "losses": 0,
+          "draws": 0,
+          "by_color": {
+            "black": {
+              "wins": 25,
+              "losses": 0,
+              "draws": 0
+            },
+            "white": {
+              "wins": 25,
+              "losses": 0,
+              "draws": 0
+            }
+          },
+          "win_rate": 1.0,
+          "score_rate": 1.0,
+          "timing": {
+            "count": 460,
+            "mean_seconds": 2.7373472128311453,
+            "median_seconds": 4.750387749983929,
+            "p95_seconds": 4.751106200041249,
+            "max_seconds": 4.7549103000201285
+          },
+          "threat_search": {
+            "triggered_moves": 107,
+            "proven_moves": 107,
+            "proof_rate": 1.0,
+            "nodes": 107
+          }
+        }
+      },
+      "nonrandom_timing": {
+        "count": 895,
+        "mean_seconds": 3.088854459895071,
+        "median_seconds": 4.750405499944463,
+        "p95_seconds": 4.75113009987399,
+        "max_seconds": 4.75518020009622
+      },
+      "protocol_failures": {
+        "timeout": 0,
+        "exception": 0,
+        "illegal_move": 0
+      }
+    },
+    {
+      "group_id": "hybrid_match|Hybrid Threat Search|Enhanced Alpha-Beta|N9|K4|T0.5",
+      "kind": "hybrid_match",
+      "strategy": "Hybrid Threat Search",
+      "opponent": "Enhanced Alpha-Beta",
+      "board_size": 9,
+      "win_length": 4,
+      "time_limit": 0.5,
+      "games": 50,
+      "color_results": {
+        "black": 25,
+        "white": 25,
+        "draw": 0
+      },
+      "average_game_moves": 9.46,
+      "median_game_moves": 9.5,
+      "agent_results": {
+        "Enhanced Alpha-Beta B": {
+          "games": 50,
+          "black_games": 25,
+          "white_games": 25,
+          "wins": 50,
+          "losses": 0,
+          "draws": 0,
+          "by_color": {
+            "black": {
+              "wins": 25,
+              "losses": 0,
+              "draws": 0
+            },
+            "white": {
+              "wins": 25,
+              "losses": 0,
+              "draws": 0
+            }
+          },
+          "win_rate": 1.0,
+          "score_rate": 1.0,
+          "timing": {
+            "count": 249,
+            "mean_seconds": 0.2976298176797563,
+            "median_seconds": 0.4254517999943346,
+            "p95_seconds": 0.4265789999626577,
+            "max_seconds": 0.4283084999769926
+          },
+          "threat_search": {
+            "triggered_moves": 0,
+            "proven_moves": 0,
+            "proof_rate": null,
+            "nodes": 0
+          }
+        },
+        "Hybrid Threat Search A": {
+          "games": 50,
+          "black_games": 25,
+          "white_games": 25,
+          "wins": 0,
+          "losses": 50,
+          "draws": 0,
+          "by_color": {
+            "black": {
+              "wins": 0,
+              "losses": 25,
+              "draws": 0
+            },
+            "white": {
+              "wins": 0,
+              "losses": 25,
+              "draws": 0
+            }
+          },
+          "win_rate": 0.0,
+          "score_rate": 0.0,
+          "timing": {
+            "count": 224,
+            "mean_seconds": 0.2849633897307545,
+            "median_seconds": 0.4254008000716567,
+            "p95_seconds": 0.4260406999383122,
+            "max_seconds": 0.42798679997213185
+          },
+          "threat_search": {
+            "triggered_moves": 25,
+            "proven_moves": 25,
+            "proof_rate": 1.0,
+            "nodes": 25
+          }
+        }
+      },
+      "nonrandom_timing": {
+        "count": 473,
+        "mean_seconds": 0.29163134017325226,
+        "median_seconds": 0.4254224000032991,
+        "p95_seconds": 0.426460700109601,
+        "max_seconds": 0.4283084999769926
+      },
+      "protocol_failures": {
+        "timeout": 0,
+        "exception": 0,
+        "illegal_move": 0
+      }
+    },
+    {
+      "group_id": "hybrid_match|Hybrid Threat Search|Enhanced Alpha-Beta|N9|K4|T1",
+      "kind": "hybrid_match",
+      "strategy": "Hybrid Threat Search",
+      "opponent": "Enhanced Alpha-Beta",
+      "board_size": 9,
+      "win_length": 4,
+      "time_limit": 1.0,
+      "games": 50,
+      "color_results": {
+        "black": 25,
+        "white": 25,
+        "draw": 0
+      },
+      "average_game_moves": 8.5,
+      "median_game_moves": 8.5,
+      "agent_results": {
+        "Enhanced Alpha-Beta B": {
+          "games": 50,
+          "black_games": 25,
+          "white_games": 25,
+          "wins": 50,
+          "losses": 0,
+          "draws": 0,
+          "by_color": {
+            "black": {
+              "wins": 25,
+              "losses": 0,
+              "draws": 0
+            },
+            "white": {
+              "wins": 25,
+              "losses": 0,
+              "draws": 0
+            }
+          },
+          "win_rate": 1.0,
+          "score_rate": 1.0,
+          "timing": {
+            "count": 225,
+            "mean_seconds": 0.5673125351137586,
+            "median_seconds": 0.8504385999403894,
+            "p95_seconds": 0.85136210010387,
+            "max_seconds": 0.8542355999816209
+          },
+          "threat_search": {
+            "triggered_moves": 0,
+            "proven_moves": 0,
+            "proof_rate": null,
+            "nodes": 0
+          }
+        },
+        "Hybrid Threat Search A": {
+          "games": 50,
+          "black_games": 25,
+          "white_games": 25,
+          "wins": 0,
+          "losses": 50,
+          "draws": 0,
+          "by_color": {
+            "black": {
+              "wins": 0,
+              "losses": 25,
+              "draws": 0
+            },
+            "white": {
+              "wins": 0,
+              "losses": 25,
+              "draws": 0
+            }
+          },
+          "win_rate": 0.0,
+          "score_rate": 0.0,
+          "timing": {
+            "count": 200,
+            "mean_seconds": 0.5342042125016451,
+            "median_seconds": 0.8503855499438941,
+            "p95_seconds": 0.8511000999715179,
+            "max_seconds": 0.8521688999608159
+          },
+          "threat_search": {
+            "triggered_moves": 25,
+            "proven_moves": 25,
+            "proof_rate": 1.0,
+            "nodes": 25
+          }
+        }
+      },
+      "nonrandom_timing": {
+        "count": 425,
+        "mean_seconds": 0.5517321480021757,
+        "median_seconds": 0.8504068998154253,
+        "p95_seconds": 0.8512841002084315,
+        "max_seconds": 0.8542355999816209
+      },
+      "protocol_failures": {
+        "timeout": 0,
+        "exception": 0,
+        "illegal_move": 0
+      }
+    },
+    {
+      "group_id": "hybrid_match|Hybrid Threat Search|Enhanced Alpha-Beta|N9|K4|T5",
+      "kind": "hybrid_match",
+      "strategy": "Hybrid Threat Search",
+      "opponent": "Enhanced Alpha-Beta",
+      "board_size": 9,
+      "win_length": 4,
+      "time_limit": 5.0,
+      "games": 50,
+      "color_results": {
+        "black": 50,
+        "white": 0,
+        "draw": 0
+      },
+      "average_game_moves": 9.0,
+      "median_game_moves": 9.0,
+      "agent_results": {
+        "Enhanced Alpha-Beta B": {
+          "games": 50,
+          "black_games": 25,
+          "white_games": 25,
+          "wins": 25,
+          "losses": 25,
+          "draws": 0,
+          "by_color": {
+            "black": {
+              "wins": 25,
+              "losses": 0,
+              "draws": 0
+            },
+            "white": {
+              "wins": 0,
+              "losses": 25,
+              "draws": 0
+            }
+          },
+          "win_rate": 0.5,
+          "score_rate": 0.5,
+          "timing": {
+            "count": 225,
+            "mean_seconds": 3.692274036887619,
+            "median_seconds": 4.750451399944723,
+            "p95_seconds": 4.751759799895808,
+            "max_seconds": 4.754497099900618
+          },
+          "threat_search": {
+            "triggered_moves": 0,
+            "proven_moves": 0,
+            "proof_rate": null,
+            "nodes": 0
+          }
+        },
+        "Hybrid Threat Search A": {
+          "games": 50,
+          "black_games": 25,
+          "white_games": 25,
+          "wins": 25,
+          "losses": 25,
+          "draws": 0,
+          "by_color": {
+            "black": {
+              "wins": 25,
+              "losses": 0,
+              "draws": 0
+            },
+            "white": {
+              "wins": 0,
+              "losses": 25,
+              "draws": 0
+            }
+          },
+          "win_rate": 0.5,
+          "score_rate": 0.5,
+          "timing": {
+            "count": 225,
+            "mean_seconds": 2.6412883902196254,
+            "median_seconds": 4.750393100082874,
+            "p95_seconds": 4.751299799885601,
+            "max_seconds": 4.754979999968782
+          },
+          "threat_search": {
+            "triggered_moves": 25,
+            "proven_moves": 25,
+            "proof_rate": 1.0,
+            "nodes": 25
+          }
+        }
+      },
+      "nonrandom_timing": {
+        "count": 450,
+        "mean_seconds": 3.166781213553622,
+        "median_seconds": 4.750408899970353,
+        "p95_seconds": 4.751592899905518,
+        "max_seconds": 4.754979999968782
+      },
+      "protocol_failures": {
+        "timeout": 0,
+        "exception": 0,
+        "illegal_move": 0
+      }
+    },
+    {
+      "group_id": "vs_random|Hybrid Threat Search|Random AI|N15|K5|T0.5",
+      "kind": "vs_random",
+      "strategy": "Hybrid Threat Search",
+      "opponent": "Random AI",
+      "board_size": 15,
+      "win_length": 5,
+      "time_limit": 0.5,
+      "games": 50,
+      "color_results": {
+        "black": 25,
+        "white": 25,
+        "draw": 0
+      },
+      "average_game_moves": 42.06,
+      "median_game_moves": 36.5,
+      "agent_results": {
+        "Hybrid Threat Search": {
+          "games": 50,
+          "black_games": 25,
+          "white_games": 25,
+          "wins": 50,
+          "losses": 0,
+          "draws": 0,
+          "by_color": {
+            "black": {
+              "wins": 25,
+              "losses": 0,
+              "draws": 0
+            },
+            "white": {
+              "wins": 25,
+              "losses": 0,
+              "draws": 0
+            }
+          },
+          "win_rate": 1.0,
+          "score_rate": 1.0,
+          "timing": {
+            "count": 1064,
+            "mean_seconds": 0.39350679191091986,
+            "median_seconds": 0.42540914996061474,
+            "p95_seconds": 0.4259043999481946,
+            "max_seconds": 0.433566200081259
+          },
+          "threat_search": {
+            "triggered_moves": 9,
+            "proven_moves": 8,
+            "proof_rate": 0.8888888888888888,
+            "nodes": 9
+          }
+        },
+        "Random AI": {
+          "games": 50,
+          "black_games": 25,
+          "white_games": 25,
+          "wins": 0,
+          "losses": 50,
+          "draws": 0,
+          "by_color": {
+            "black": {
+              "wins": 0,
+              "losses": 25,
+              "draws": 0
+            },
+            "white": {
+              "wins": 0,
+              "losses": 25,
+              "draws": 0
+            }
+          },
+          "win_rate": 0.0,
+          "score_rate": 0.0,
+          "timing": {
+            "count": 1039,
+            "mean_seconds": 0.0004909768999985368,
+            "median_seconds": 0.0003752000629901886,
+            "p95_seconds": 0.0009125000797212124,
+            "max_seconds": 0.01722939987666905
+          },
+          "threat_search": {
+            "triggered_moves": 0,
+            "proven_moves": 0,
+            "proof_rate": null,
+            "nodes": 0
+          }
+        }
+      },
+      "nonrandom_timing": {
+        "count": 1064,
+        "mean_seconds": 0.39350679191091986,
+        "median_seconds": 0.42540914996061474,
+        "p95_seconds": 0.4259043999481946,
+        "max_seconds": 0.433566200081259
+      },
+      "protocol_failures": {
+        "timeout": 0,
+        "exception": 0,
+        "illegal_move": 0
+      }
+    },
+    {
+      "group_id": "vs_random|Hybrid Threat Search|Random AI|N15|K5|T1",
+      "kind": "vs_random",
+      "strategy": "Hybrid Threat Search",
+      "opponent": "Random AI",
+      "board_size": 15,
+      "win_length": 5,
+      "time_limit": 1.0,
+      "games": 50,
+      "color_results": {
+        "black": 25,
+        "white": 25,
+        "draw": 0
+      },
+      "average_game_moves": 9.5,
+      "median_game_moves": 9.5,
+      "agent_results": {
+        "Hybrid Threat Search": {
+          "games": 50,
+          "black_games": 25,
+          "white_games": 25,
+          "wins": 50,
+          "losses": 0,
+          "draws": 0,
+          "by_color": {
+            "black": {
+              "wins": 25,
+              "losses": 0,
+              "draws": 0
+            },
+            "white": {
+              "wins": 25,
+              "losses": 0,
+              "draws": 0
+            }
+          },
+          "win_rate": 1.0,
+          "score_rate": 1.0,
+          "timing": {
+            "count": 250,
+            "mean_seconds": 0.5226454792022706,
+            "median_seconds": 0.8503329999512061,
+            "p95_seconds": 0.8516487998422235,
+            "max_seconds": 0.8544764001853764
+          },
+          "threat_search": {
+            "triggered_moves": 50,
+            "proven_moves": 50,
+            "proof_rate": 1.0,
+            "nodes": 50
+          }
+        },
+        "Random AI": {
+          "games": 50,
+          "black_games": 25,
+          "white_games": 25,
+          "wins": 0,
+          "losses": 50,
+          "draws": 0,
+          "by_color": {
+            "black": {
+              "wins": 0,
+              "losses": 25,
+              "draws": 0
+            },
+            "white": {
+              "wins": 0,
+              "losses": 25,
+              "draws": 0
+            }
+          },
+          "win_rate": 0.0,
+          "score_rate": 0.0,
+          "timing": {
+            "count": 225,
+            "mean_seconds": 0.0005978511149684588,
+            "median_seconds": 0.00041179987601935863,
+            "p95_seconds": 0.00158250005915761,
+            "max_seconds": 0.004207300022244453
+          },
+          "threat_search": {
+            "triggered_moves": 0,
+            "proven_moves": 0,
+            "proof_rate": null,
+            "nodes": 0
+          }
+        }
+      },
+      "nonrandom_timing": {
+        "count": 250,
+        "mean_seconds": 0.5226454792022706,
+        "median_seconds": 0.8503329999512061,
+        "p95_seconds": 0.8516487998422235,
+        "max_seconds": 0.8544764001853764
+      },
+      "protocol_failures": {
+        "timeout": 0,
+        "exception": 0,
+        "illegal_move": 0
+      }
+    },
+    {
+      "group_id": "vs_random|Hybrid Threat Search|Random AI|N15|K5|T5",
+      "kind": "vs_random",
+      "strategy": "Hybrid Threat Search",
+      "opponent": "Random AI",
+      "board_size": 15,
+      "win_length": 5,
+      "time_limit": 5.0,
+      "games": 50,
+      "color_results": {
+        "black": 25,
+        "white": 25,
+        "draw": 0
+      },
+      "average_game_moves": 9.54,
+      "median_game_moves": 9.5,
+      "agent_results": {
+        "Hybrid Threat Search": {
+          "games": 50,
+          "black_games": 25,
+          "white_games": 25,
+          "wins": 50,
+          "losses": 0,
+          "draws": 0,
+          "by_color": {
+            "black": {
+              "wins": 25,
+              "losses": 0,
+              "draws": 0
+            },
+            "white": {
+              "wins": 25,
+              "losses": 0,
+              "draws": 0
+            }
+          },
+          "win_rate": 1.0,
+          "score_rate": 1.0,
+          "timing": {
+            "count": 251,
+            "mean_seconds": 2.870653721913918,
+            "median_seconds": 4.75034029991366,
+            "p95_seconds": 4.751581399934366,
+            "max_seconds": 4.753069199854508
+          },
+          "threat_search": {
+            "triggered_moves": 50,
+            "proven_moves": 50,
+            "proof_rate": 1.0,
+            "nodes": 50
+          }
+        },
+        "Random AI": {
+          "games": 50,
+          "black_games": 25,
+          "white_games": 25,
+          "wins": 0,
+          "losses": 50,
+          "draws": 0,
+          "by_color": {
+            "black": {
+              "wins": 0,
+              "losses": 25,
+              "draws": 0
+            },
+            "white": {
+              "wins": 0,
+              "losses": 25,
+              "draws": 0
+            }
+          },
+          "win_rate": 0.0,
+          "score_rate": 0.0,
+          "timing": {
+            "count": 226,
+            "mean_seconds": 0.0005480898317543015,
+            "median_seconds": 0.0003920000744983554,
+            "p95_seconds": 0.0012483999598771334,
+            "max_seconds": 0.004871200071647763
+          },
+          "threat_search": {
+            "triggered_moves": 0,
+            "proven_moves": 0,
+            "proof_rate": null,
+            "nodes": 0
+          }
+        }
+      },
+      "nonrandom_timing": {
+        "count": 251,
+        "mean_seconds": 2.870653721913918,
+        "median_seconds": 4.75034029991366,
+        "p95_seconds": 4.751581399934366,
+        "max_seconds": 4.753069199854508
+      },
+      "protocol_failures": {
+        "timeout": 0,
+        "exception": 0,
+        "illegal_move": 0
+      }
+    },
+    {
+      "group_id": "vs_random|Hybrid Threat Search|Random AI|N9|K4|T0.5",
+      "kind": "vs_random",
+      "strategy": "Hybrid Threat Search",
+      "opponent": "Random AI",
+      "board_size": 9,
+      "win_length": 4,
+      "time_limit": 0.5,
+      "games": 50,
+      "color_results": {
+        "black": 25,
+        "white": 25,
+        "draw": 0
+      },
+      "average_game_moves": 7.62,
+      "median_game_moves": 7.5,
+      "agent_results": {
+        "Hybrid Threat Search": {
+          "games": 50,
+          "black_games": 25,
+          "white_games": 25,
+          "wins": 50,
+          "losses": 0,
+          "draws": 0,
+          "by_color": {
+            "black": {
+              "wins": 25,
+              "losses": 0,
+              "draws": 0
+            },
+            "white": {
+              "wins": 25,
+              "losses": 0,
+              "draws": 0
+            }
+          },
+          "win_rate": 1.0,
+          "score_rate": 1.0,
+          "timing": {
+            "count": 203,
+            "mean_seconds": 0.216788002956209,
+            "median_seconds": 0.0332313000690192,
+            "p95_seconds": 0.4267581000458449,
+            "max_seconds": 0.42932739993557334
+          },
+          "threat_search": {
+            "triggered_moves": 50,
+            "proven_moves": 50,
+            "proof_rate": 1.0,
+            "nodes": 50
+          }
+        },
+        "Random AI": {
+          "games": 50,
+          "black_games": 25,
+          "white_games": 25,
+          "wins": 0,
+          "losses": 50,
+          "draws": 0,
+          "by_color": {
+            "black": {
+              "wins": 0,
+              "losses": 25,
+              "draws": 0
+            },
+            "white": {
+              "wins": 0,
+              "losses": 25,
+              "draws": 0
+            }
+          },
+          "win_rate": 0.0,
+          "score_rate": 0.0,
+          "timing": {
+            "count": 178,
+            "mean_seconds": 0.0005993893215683906,
+            "median_seconds": 0.00039009994361549616,
+            "p95_seconds": 0.00234219990670681,
+            "max_seconds": 0.0038823001086711884
+          },
+          "threat_search": {
+            "triggered_moves": 0,
+            "proven_moves": 0,
+            "proof_rate": null,
+            "nodes": 0
+          }
+        }
+      },
+      "nonrandom_timing": {
+        "count": 203,
+        "mean_seconds": 0.216788002956209,
+        "median_seconds": 0.0332313000690192,
+        "p95_seconds": 0.4267581000458449,
+        "max_seconds": 0.42932739993557334
+      },
+      "protocol_failures": {
+        "timeout": 0,
+        "exception": 0,
+        "illegal_move": 0
+      }
+    },
+    {
+      "group_id": "vs_random|Hybrid Threat Search|Random AI|N9|K4|T1",
+      "kind": "vs_random",
+      "strategy": "Hybrid Threat Search",
+      "opponent": "Random AI",
+      "board_size": 9,
+      "win_length": 4,
+      "time_limit": 1.0,
+      "games": 50,
+      "color_results": {
+        "black": 25,
+        "white": 25,
+        "draw": 0
+      },
+      "average_game_moves": 7.5,
+      "median_game_moves": 7.5,
+      "agent_results": {
+        "Hybrid Threat Search": {
+          "games": 50,
+          "black_games": 25,
+          "white_games": 25,
+          "wins": 50,
+          "losses": 0,
+          "draws": 0,
+          "by_color": {
+            "black": {
+              "wins": 25,
+              "losses": 0,
+              "draws": 0
+            },
+            "white": {
+              "wins": 25,
+              "losses": 0,
+              "draws": 0
+            }
+          },
+          "win_rate": 1.0,
+          "score_rate": 1.0,
+          "timing": {
+            "count": 200,
+            "mean_seconds": 0.43062624749145473,
+            "median_seconds": 0.44143945001997054,
+            "p95_seconds": 0.8515174000058323,
+            "max_seconds": 0.8527726999018341
+          },
+          "threat_search": {
+            "triggered_moves": 50,
+            "proven_moves": 50,
+            "proof_rate": 1.0,
+            "nodes": 50
+          }
+        },
+        "Random AI": {
+          "games": 50,
+          "black_games": 25,
+          "white_games": 25,
+          "wins": 0,
+          "losses": 50,
+          "draws": 0,
+          "by_color": {
+            "black": {
+              "wins": 0,
+              "losses": 25,
+              "draws": 0
+            },
+            "white": {
+              "wins": 0,
+              "losses": 25,
+              "draws": 0
+            }
+          },
+          "win_rate": 0.0,
+          "score_rate": 0.0,
+          "timing": {
+            "count": 175,
+            "mean_seconds": 0.000556971433439425,
+            "median_seconds": 0.00039549986831843853,
+            "p95_seconds": 0.001564200036227703,
+            "max_seconds": 0.004918000195175409
+          },
+          "threat_search": {
+            "triggered_moves": 0,
+            "proven_moves": 0,
+            "proof_rate": null,
+            "nodes": 0
+          }
+        }
+      },
+      "nonrandom_timing": {
+        "count": 200,
+        "mean_seconds": 0.43062624749145473,
+        "median_seconds": 0.44143945001997054,
+        "p95_seconds": 0.8515174000058323,
+        "max_seconds": 0.8527726999018341
+      },
+      "protocol_failures": {
+        "timeout": 0,
+        "exception": 0,
+        "illegal_move": 0
+      }
+    },
+    {
+      "group_id": "vs_random|Hybrid Threat Search|Random AI|N9|K4|T5",
+      "kind": "vs_random",
+      "strategy": "Hybrid Threat Search",
+      "opponent": "Random AI",
+      "board_size": 9,
+      "win_length": 4,
+      "time_limit": 5.0,
+      "games": 50,
+      "color_results": {
+        "black": 25,
+        "white": 25,
+        "draw": 0
+      },
+      "average_game_moves": 7.58,
+      "median_game_moves": 7.5,
+      "agent_results": {
+        "Hybrid Threat Search": {
+          "games": 50,
+          "black_games": 25,
+          "white_games": 25,
+          "wins": 50,
+          "losses": 0,
+          "draws": 0,
+          "by_color": {
+            "black": {
+              "wins": 25,
+              "losses": 0,
+              "draws": 0
+            },
+            "white": {
+              "wins": 25,
+              "losses": 0,
+              "draws": 0
+            }
+          },
+          "win_rate": 1.0,
+          "score_rate": 1.0,
+          "timing": {
+            "count": 202,
+            "mean_seconds": 2.4039635569235256,
+            "median_seconds": 4.750319099985063,
+            "p95_seconds": 4.751826100051403,
+            "max_seconds": 4.752818099921569
+          },
+          "threat_search": {
+            "triggered_moves": 50,
+            "proven_moves": 50,
+            "proof_rate": 1.0,
+            "nodes": 50
+          }
+        },
+        "Random AI": {
+          "games": 50,
+          "black_games": 25,
+          "white_games": 25,
+          "wins": 0,
+          "losses": 50,
+          "draws": 0,
+          "by_color": {
+            "black": {
+              "wins": 0,
+              "losses": 25,
+              "draws": 0
+            },
+            "white": {
+              "wins": 0,
+              "losses": 25,
+              "draws": 0
+            }
+          },
+          "win_rate": 0.0,
+          "score_rate": 0.0,
+          "timing": {
+            "count": 177,
+            "mean_seconds": 0.0006204163931878442,
+            "median_seconds": 0.00038330000825226307,
+            "p95_seconds": 0.0026359998155385256,
+            "max_seconds": 0.00405039987526834
+          },
+          "threat_search": {
+            "triggered_moves": 0,
+            "proven_moves": 0,
+            "proof_rate": null,
+            "nodes": 0
+          }
+        }
+      },
+      "nonrandom_timing": {
+        "count": 202,
+        "mean_seconds": 2.4039635569235256,
+        "median_seconds": 4.750319099985063,
+        "p95_seconds": 4.751826100051403,
+        "max_seconds": 4.752818099921569
+      },
+      "protocol_failures": {
+        "timeout": 0,
+        "exception": 0,
+        "illegal_move": 0
+      }
+    }
+  ]
+}

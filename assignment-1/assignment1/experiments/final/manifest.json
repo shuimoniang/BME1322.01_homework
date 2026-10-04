@@ -1,0 +1,32 @@
+{
+  "schema_version": 1,
+  "source_sha256": "fdd5be0d43fe1a34e10411821e8bd4c6cec9a67744fe0f97a3cec2133b618b82",
+  "master_seed": 20260928,
+  "configurations": [
+    [
+      9,
+      4
+    ],
+    [
+      15,
+      5
+    ]
+  ],
+  "time_limits": [
+    0.5,
+    1.0,
+    5.0
+  ],
+  "games_per_group": 50,
+  "opening_plies": 4,
+  "final_strategy": "Hybrid Threat Search",
+  "reference_strategy": "Enhanced Alpha-Beta",
+  "reference_opponents": [
+    "Baseline Alpha-Beta",
+    "MCTS + UCT",
+    "Hybrid Threat Search"
+  ],
+  "expected_games": 1500,
+  "expected_groups": 30,
+  "created_at": "2026-10-01T17:48:06.135580+00:00"
+}

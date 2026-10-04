@@ -23,9 +23,14 @@ from pathlib import Path
 from typing import Any
 
 try:
-    from .gomoku_ai import BaselineAlphaBetaAI, EnhancedAlphaBetaAI, MCTSAI
+    from .gomoku_ai import (
+        BaselineAlphaBetaAI,
+        EnhancedAlphaBetaAI,
+        HybridThreatSearchAI,
+        MCTSAI,
+    )
 except ImportError:
-    from gomoku_ai import BaselineAlphaBetaAI, EnhancedAlphaBetaAI, MCTSAI
+    from gomoku_ai import BaselineAlphaBetaAI, EnhancedAlphaBetaAI, HybridThreatSearchAI, MCTSAI
 
 
 EMPTY, BLACK, WHITE = 0, 1, 2
@@ -38,6 +43,7 @@ STRATEGIES = {
     "Baseline Alpha-Beta": BaselineAlphaBetaAI,
     "Enhanced Alpha-Beta": EnhancedAlphaBetaAI,
     "MCTS + UCT": MCTSAI,
+    "Hybrid Threat Search": HybridThreatSearchAI,
 }
 
 
@@ -93,7 +99,11 @@ def task_key(
     )
 
 
-def build_tasks(games_per_group: int = GAMES_PER_GROUP, only: str = "all") -> list[ExperimentTask]:
+def build_tasks(
+    games_per_group: int = GAMES_PER_GROUP,
+    only: str = "all",
+    include_hybrid: bool = False,
+) -> list[ExperimentTask]:
     if only == "smoke":
         games_per_group = 2
         include_random = include_selfplay = True
@@ -105,7 +115,12 @@ def build_tasks(games_per_group: int = GAMES_PER_GROUP, only: str = "all") -> li
     for time_limit in TIME_LIMITS:
         for board_size, win_length in CONFIGURATIONS:
             if include_random:
-                for strategy in STRATEGIES:
+                strategies = (
+                    ["Hybrid Threat Search"]
+                    if include_hybrid
+                    else [name for name in STRATEGIES if name != "Hybrid Threat Search"]
+                )
+                for strategy in strategies:
                     for game_index in range(games_per_group):
                         ai_is_black = game_index % 2 == 0
                         black = strategy if ai_is_black else "Random AI"
@@ -141,41 +156,62 @@ def build_tasks(games_per_group: int = GAMES_PER_GROUP, only: str = "all") -> li
                             )
                         )
             if include_selfplay:
-                strategy = "Enhanced Alpha-Beta"
-                opponent = "Enhanced Alpha-Beta"
-                for game_index in range(games_per_group):
-                    a_is_black = game_index % 2 == 0
-                    black = "Enhanced Alpha-Beta A" if a_is_black else "Enhanced Alpha-Beta B"
-                    white = "Enhanced Alpha-Beta B" if a_is_black else "Enhanced Alpha-Beta A"
-                    tasks.append(
-                        ExperimentTask(
-                            key=task_key(
-                                "selfplay",
-                                strategy,
-                                opponent,
-                                board_size,
-                                win_length,
-                                time_limit,
-                                game_index,
-                            ),
-                            kind="selfplay",
-                            strategy=strategy,
-                            opponent=opponent,
-                            board_size=board_size,
-                            win_length=win_length,
-                            time_limit=time_limit,
-                            game_index=game_index,
-                            seed=stable_seed(
-                                "selfplay",
-                                board_size,
-                                win_length,
-                                time_limit,
-                                game_index,
-                            ),
-                            black_agent=black,
-                            white_agent=white,
+                if not include_hybrid:
+                    strategy = "Enhanced Alpha-Beta"
+                    opponent = "Enhanced Alpha-Beta"
+                    for game_index in range(games_per_group):
+                        a_is_black = game_index % 2 == 0
+                        black = "Enhanced Alpha-Beta A" if a_is_black else "Enhanced Alpha-Beta B"
+                        white = "Enhanced Alpha-Beta B" if a_is_black else "Enhanced Alpha-Beta A"
+                        tasks.append(
+                            ExperimentTask(
+                                key=task_key(
+                                    "selfplay", strategy, opponent,
+                                    board_size, win_length, time_limit, game_index
+                                ),
+                                kind="selfplay",
+                                strategy=strategy,
+                                opponent=opponent,
+                                board_size=board_size,
+                                win_length=win_length,
+                                time_limit=time_limit,
+                                game_index=game_index,
+                                seed=stable_seed(
+                                    "selfplay", board_size, win_length,
+                                    time_limit, game_index
+                                ),
+                                black_agent=black,
+                                white_agent=white,
+                            )
                         )
-                    )
+                if include_hybrid:
+                    strategy = "Hybrid Threat Search"
+                    opponent = "Enhanced Alpha-Beta"
+                    for game_index in range(games_per_group):
+                        hybrid_is_black = game_index % 2 == 0
+                        black = "Hybrid Threat Search A" if hybrid_is_black else "Enhanced Alpha-Beta B"
+                        white = "Enhanced Alpha-Beta B" if hybrid_is_black else "Hybrid Threat Search A"
+                        tasks.append(
+                            ExperimentTask(
+                                key=task_key(
+                                    "hybrid_match", strategy, opponent,
+                                    board_size, win_length, time_limit, game_index
+                                ),
+                                kind="hybrid_match",
+                                strategy=strategy,
+                                opponent=opponent,
+                                board_size=board_size,
+                                win_length=win_length,
+                                time_limit=time_limit,
+                                game_index=game_index,
+                                seed=stable_seed(
+                                    "hybrid_match", board_size, win_length,
+                                    time_limit, game_index
+                                ),
+                                black_agent=black,
+                                white_agent=white,
+                            )
+                        )
     return tasks
 
 
@@ -299,6 +335,9 @@ def play_game(task: ExperimentTask) -> dict[str, Any]:
             "elapsed_seconds": elapsed,
             "error": error,
         }
+        diagnostics = getattr(agents[current], "last_search_stats", None)
+        if isinstance(diagnostics, dict):
+            record["search_stats"] = dict(diagnostics)
         move_records.append(record)
         if error == "timeout":
             winner = 3 - current
@@ -401,7 +440,12 @@ def summarize(records: list[dict[str, Any]]) -> dict[str, Any]:
         all_nonrandom_times: list[float] = []
         for agent_name in agent_names:
             wins = losses = draws = black_games = white_games = 0
+            by_color = {
+                "black": {"wins": 0, "losses": 0, "draws": 0},
+                "white": {"wins": 0, "losses": 0, "draws": 0},
+            }
             times: list[float] = []
+            threat_calls = threat_proofs = threat_nodes = 0
             for game in games:
                 if game["black_agent"] == agent_name:
                     color = BLACK
@@ -418,12 +462,27 @@ def summarize(records: list[dict[str, Any]]) -> dict[str, Any]:
                     for move in game["moves"]
                     if move["agent"] == agent_name
                 )
+                for move in game["moves"]:
+                    if move["agent"] != agent_name:
+                        continue
+                    search_stats = move.get("search_stats")
+                    if not isinstance(search_stats, dict):
+                        continue
+                    nodes = int(search_stats.get("threat_nodes", 0) or 0)
+                    if nodes > 0:
+                        threat_calls += 1
+                        threat_nodes += nodes
+                    if search_stats.get("threat_proven"):
+                        threat_proofs += 1
                 if game["winner_color"] == EMPTY:
                     draws += 1
+                    by_color["black" if color == BLACK else "white"]["draws"] += 1
                 elif game["winner_color"] == color:
                     wins += 1
+                    by_color["black" if color == BLACK else "white"]["wins"] += 1
                 else:
                     losses += 1
+                    by_color["black" if color == BLACK else "white"]["losses"] += 1
             if agent_name != "Random AI":
                 all_nonrandom_times.extend(times)
             total = wins + losses + draws
@@ -434,9 +493,16 @@ def summarize(records: list[dict[str, Any]]) -> dict[str, Any]:
                 "wins": wins,
                 "losses": losses,
                 "draws": draws,
+                "by_color": by_color,
                 "win_rate": wins / total if total else None,
                 "score_rate": (wins + 0.5 * draws) / total if total else None,
                 "timing": timing_stats(times),
+                "threat_search": {
+                    "triggered_moves": threat_calls,
+                    "proven_moves": threat_proofs,
+                    "proof_rate": threat_proofs / threat_calls if threat_calls else None,
+                    "nodes": threat_nodes,
+                },
             }
 
         failure_counts = {"timeout": 0, "exception": 0, "illegal_move": 0}
@@ -521,6 +587,10 @@ def parse_args() -> argparse.Namespace:
         type=Path,
         default=Path(__file__).resolve().parent / "experiments",
     )
+    parser.add_argument(
+        "--hybrid", action="store_true",
+        help="include the Hybrid Threat Search extension matrix",
+    )
     return parser.parse_args()
 
 
@@ -528,8 +598,9 @@ def main() -> None:
     args = parse_args()
     args.output_dir.mkdir(parents=True, exist_ok=True)
     smoke = args.only == "smoke"
-    result_path = args.output_dir / ("smoke_results.jsonl" if smoke else "results.jsonl")
-    summary_path = args.output_dir / ("smoke_summary.json" if smoke else "summary.json")
+    suffix = "_hybrid" if args.hybrid and not smoke else ""
+    result_path = args.output_dir / ("smoke_results.jsonl" if smoke else f"results{suffix}.jsonl")
+    summary_path = args.output_dir / ("smoke_summary.json" if smoke else f"summary{suffix}.json")
     existing, completed = load_results(result_path)
 
     if args.summarize:
@@ -539,7 +610,7 @@ def main() -> None:
     if existing and not args.resume:
         raise SystemExit(f"{result_path} already contains data; use --resume")
 
-    tasks = build_tasks(only=args.only)
+    tasks = build_tasks(only=args.only, include_hybrid=args.hybrid)
     pending = [task for task in tasks if task.key not in completed]
     print(
         f"Experiment set: {len(tasks)} games; completed: {len(tasks) - len(pending)}; "

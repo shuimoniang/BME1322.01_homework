@@ -1,0 +1,1112 @@
+{
+  "time_limit_seconds": 0.5,
+  "repetitions": 3,
+  "fixtures": [
+    "n9-k4-quiet-a",
+    "n9-k4-quiet-b",
+    "n15-k5-quiet-a",
+    "n15-k5-quiet-b",
+    "n15-k7-quiet-a",
+    "n15-k7-quiet-b"
+  ],
+  "strategies": {
+    "Enhanced Alpha-Beta": [
+      {
+        "fixture_id": "n9-k4-quiet-a",
+        "board_size": 9,
+        "win_length": 4,
+        "completed_depths": [
+          0,
+          0,
+          0
+        ],
+        "median_completed_depth": 0,
+        "elapsed_seconds": [
+          0.0009846999964793213,
+          0.000676800002111122,
+          0.0006686000051558949
+        ],
+        "median_elapsed_seconds": 0.000676800002111122,
+        "median_cold_evaluation_seconds": 0.0006438000054913573,
+        "moves": [
+          [
+            5,
+            5
+          ],
+          [
+            5,
+            5
+          ],
+          [
+            5,
+            5
+          ]
+        ],
+        "last_search_stats": [
+          {
+            "completed_depth": 0,
+            "nodes": 0,
+            "evaluations": 0,
+            "analysis_scans": 1,
+            "analysis_cache_hits": 0,
+            "tt_probes": 0,
+            "tt_hits": 0,
+            "tt_cutoffs": 0,
+            "quiescence_nodes": 0,
+            "threat_nodes": 0,
+            "threat_proven": false,
+            "threat_disproven": 0,
+            "threat_unknown": 0,
+            "mcts_iterations": 0,
+            "mcts_max_depth": 0
+          },
+          {
+            "completed_depth": 0,
+            "nodes": 0,
+            "evaluations": 0,
+            "analysis_scans": 1,
+            "analysis_cache_hits": 0,
+            "tt_probes": 0,
+            "tt_hits": 0,
+            "tt_cutoffs": 0,
+            "quiescence_nodes": 0,
+            "threat_nodes": 0,
+            "threat_proven": false,
+            "threat_disproven": 0,
+            "threat_unknown": 0,
+            "mcts_iterations": 0,
+            "mcts_max_depth": 0
+          },
+          {
+            "completed_depth": 0,
+            "nodes": 0,
+            "evaluations": 0,
+            "analysis_scans": 1,
+            "analysis_cache_hits": 0,
+            "tt_probes": 0,
+            "tt_hits": 0,
+            "tt_cutoffs": 0,
+            "quiescence_nodes": 0,
+            "threat_nodes": 0,
+            "threat_proven": false,
+            "threat_disproven": 0,
+            "threat_unknown": 0,
+            "mcts_iterations": 0,
+            "mcts_max_depth": 0
+          }
+        ]
+      },
+      {
+        "fixture_id": "n9-k4-quiet-b",
+        "board_size": 9,
+        "win_length": 4,
+        "completed_depths": [
+          0,
+          0,
+          0
+        ],
+        "median_completed_depth": 0,
+        "elapsed_seconds": [
+          0.0009315999996033497,
+          0.0008899999957066029,
+          0.0006539000023622066
+        ],
+        "median_elapsed_seconds": 0.0008899999957066029,
+        "median_cold_evaluation_seconds": 0.0006600499982596375,
+        "moves": [
+          [
+            3,
+            3
+          ],
+          [
+            3,
+            3
+          ],
+          [
+            3,
+            3
+          ]
+        ],
+        "last_search_stats": [
+          {
+            "completed_depth": 0,
+            "nodes": 0,
+            "evaluations": 0,
+            "analysis_scans": 1,
+            "analysis_cache_hits": 0,
+            "tt_probes": 0,
+            "tt_hits": 0,
+            "tt_cutoffs": 0,
+            "quiescence_nodes": 0,
+            "threat_nodes": 0,
+            "threat_proven": false,
+            "threat_disproven": 0,
+            "threat_unknown": 0,
+            "mcts_iterations": 0,
+            "mcts_max_depth": 0
+          },
+          {
+            "completed_depth": 0,
+            "nodes": 0,
+            "evaluations": 0,
+            "analysis_scans": 1,
+            "analysis_cache_hits": 0,
+            "tt_probes": 0,
+            "tt_hits": 0,
+            "tt_cutoffs": 0,
+            "quiescence_nodes": 0,
+            "threat_nodes": 0,
+            "threat_proven": false,
+            "threat_disproven": 0,
+            "threat_unknown": 0,
+            "mcts_iterations": 0,
+            "mcts_max_depth": 0
+          },
+          {
+            "completed_depth": 0,
+            "nodes": 0,
+            "evaluations": 0,
+            "analysis_scans": 1,
+            "analysis_cache_hits": 0,
+            "tt_probes": 0,
+            "tt_hits": 0,
+            "tt_cutoffs": 0,
+            "quiescence_nodes": 0,
+            "threat_nodes": 0,
+            "threat_proven": false,
+            "threat_disproven": 0,
+            "threat_unknown": 0,
+            "mcts_iterations": 0,
+            "mcts_max_depth": 0
+          }
+        ]
+      },
+      {
+        "fixture_id": "n15-k5-quiet-a",
+        "board_size": 15,
+        "win_length": 5,
+        "completed_depths": [
+          2,
+          2,
+          2
+        ],
+        "median_completed_depth": 2,
+        "elapsed_seconds": [
+          0.42502519999834476,
+          0.42510809999657795,
+          0.425030099999276
+        ],
+        "median_elapsed_seconds": 0.425030099999276,
+        "median_cold_evaluation_seconds": 0.0020470500021474436,
+        "moves": [
+          [
+            9,
+            7
+          ],
+          [
+            9,
+            7
+          ],
+          [
+            9,
+            7
+          ]
+        ],
+        "last_search_stats": [
+          {
+            "completed_depth": 2,
+            "nodes": 238,
+            "evaluations": 187,
+            "analysis_scans": 187,
+            "analysis_cache_hits": 55,
+            "tt_probes": 51,
+            "tt_hits": 8,
+            "tt_cutoffs": 0,
+            "quiescence_nodes": 0,
+            "threat_nodes": 0,
+            "threat_proven": false,
+            "threat_disproven": 0,
+            "threat_unknown": 0,
+            "mcts_iterations": 0,
+            "mcts_max_depth": 0
+          },
+          {
+            "completed_depth": 2,
+            "nodes": 251,
+            "evaluations": 200,
+            "analysis_scans": 200,
+            "analysis_cache_hits": 55,
+            "tt_probes": 51,
+            "tt_hits": 8,
+            "tt_cutoffs": 0,
+            "quiescence_nodes": 0,
+            "threat_nodes": 0,
+            "threat_proven": false,
+            "threat_disproven": 0,
+            "threat_unknown": 0,
+            "mcts_iterations": 0,
+            "mcts_max_depth": 0
+          },
+          {
+            "completed_depth": 2,
+            "nodes": 242,
+            "evaluations": 190,
+            "analysis_scans": 190,
+            "analysis_cache_hits": 56,
+            "tt_probes": 52,
+            "tt_hits": 9,
+            "tt_cutoffs": 0,
+            "quiescence_nodes": 0,
+            "threat_nodes": 0,
+            "threat_proven": false,
+            "threat_disproven": 0,
+            "threat_unknown": 0,
+            "mcts_iterations": 0,
+            "mcts_max_depth": 0
+          }
+        ]
+      },
+      {
+        "fixture_id": "n15-k5-quiet-b",
+        "board_size": 15,
+        "win_length": 5,
+        "completed_depths": [
+          2,
+          2,
+          2
+        ],
+        "median_completed_depth": 2,
+        "elapsed_seconds": [
+          0.425026800003252,
+          0.4250915000011446,
+          0.4250185999990208
+        ],
+        "median_elapsed_seconds": 0.425026800003252,
+        "median_cold_evaluation_seconds": 0.0019652000009955373,
+        "moves": [
+          [
+            8,
+            7
+          ],
+          [
+            8,
+            7
+          ],
+          [
+            8,
+            7
+          ]
+        ],
+        "last_search_stats": [
+          {
+            "completed_depth": 2,
+            "nodes": 267,
+            "evaluations": 212,
+            "analysis_scans": 198,
+            "analysis_cache_hits": 73,
+            "tt_probes": 55,
+            "tt_hits": 10,
+            "tt_cutoffs": 0,
+            "quiescence_nodes": 0,
+            "threat_nodes": 0,
+            "threat_proven": false,
+            "threat_disproven": 0,
+            "threat_unknown": 0,
+            "mcts_iterations": 0,
+            "mcts_max_depth": 0
+          },
+          {
+            "completed_depth": 2,
+            "nodes": 259,
+            "evaluations": 206,
+            "analysis_scans": 194,
+            "analysis_cache_hits": 69,
+            "tt_probes": 53,
+            "tt_hits": 9,
+            "tt_cutoffs": 0,
+            "quiescence_nodes": 0,
+            "threat_nodes": 0,
+            "threat_proven": false,
+            "threat_disproven": 0,
+            "threat_unknown": 0,
+            "mcts_iterations": 0,
+            "mcts_max_depth": 0
+          },
+          {
+            "completed_depth": 2,
+            "nodes": 270,
+            "evaluations": 214,
+            "analysis_scans": 199,
+            "analysis_cache_hits": 75,
+            "tt_probes": 56,
+            "tt_hits": 11,
+            "tt_cutoffs": 0,
+            "quiescence_nodes": 0,
+            "threat_nodes": 0,
+            "threat_proven": false,
+            "threat_disproven": 0,
+            "threat_unknown": 0,
+            "mcts_iterations": 0,
+            "mcts_max_depth": 0
+          }
+        ]
+      },
+      {
+        "fixture_id": "n15-k7-quiet-a",
+        "board_size": 15,
+        "win_length": 7,
+        "completed_depths": [
+          2,
+          2,
+          2
+        ],
+        "median_completed_depth": 2,
+        "elapsed_seconds": [
+          0.42511730000114767,
+          0.4252811999976984,
+          0.42509229999996023
+        ],
+        "median_elapsed_seconds": 0.42511730000114767,
+        "median_cold_evaluation_seconds": 0.0030234500009100884,
+        "moves": [
+          [
+            8,
+            8
+          ],
+          [
+            8,
+            8
+          ],
+          [
+            8,
+            8
+          ]
+        ],
+        "last_search_stats": [
+          {
+            "completed_depth": 2,
+            "nodes": 206,
+            "evaluations": 148,
+            "analysis_scans": 166,
+            "analysis_cache_hits": 44,
+            "tt_probes": 58,
+            "tt_hits": 3,
+            "tt_cutoffs": 0,
+            "quiescence_nodes": 0,
+            "threat_nodes": 0,
+            "threat_proven": false,
+            "threat_disproven": 0,
+            "threat_unknown": 0,
+            "mcts_iterations": 0,
+            "mcts_max_depth": 0
+          },
+          {
+            "completed_depth": 2,
+            "nodes": 175,
+            "evaluations": 131,
+            "analysis_scans": 137,
+            "analysis_cache_hits": 42,
+            "tt_probes": 44,
+            "tt_hits": 2,
+            "tt_cutoffs": 0,
+            "quiescence_nodes": 0,
+            "threat_nodes": 0,
+            "threat_proven": false,
+            "threat_disproven": 0,
+            "threat_unknown": 0,
+            "mcts_iterations": 0,
+            "mcts_max_depth": 0
+          },
+          {
+            "completed_depth": 2,
+            "nodes": 163,
+            "evaluations": 124,
+            "analysis_scans": 125,
+            "analysis_cache_hits": 42,
+            "tt_probes": 39,
+            "tt_hits": 2,
+            "tt_cutoffs": 0,
+            "quiescence_nodes": 0,
+            "threat_nodes": 0,
+            "threat_proven": false,
+            "threat_disproven": 0,
+            "threat_unknown": 0,
+            "mcts_iterations": 0,
+            "mcts_max_depth": 0
+          }
+        ]
+      },
+      {
+        "fixture_id": "n15-k7-quiet-b",
+        "board_size": 15,
+        "win_length": 7,
+        "completed_depths": [
+          2,
+          2,
+          2
+        ],
+        "median_completed_depth": 2,
+        "elapsed_seconds": [
+          0.4252256000036141,
+          0.42506390000198735,
+          0.4252221000060672
+        ],
+        "median_elapsed_seconds": 0.4252221000060672,
+        "median_cold_evaluation_seconds": 0.002513700004783459,
+        "moves": [
+          [
+            8,
+            7
+          ],
+          [
+            8,
+            7
+          ],
+          [
+            8,
+            7
+          ]
+        ],
+        "last_search_stats": [
+          {
+            "completed_depth": 2,
+            "nodes": 180,
+            "evaluations": 137,
+            "analysis_scans": 136,
+            "analysis_cache_hits": 48,
+            "tt_probes": 43,
+            "tt_hits": 4,
+            "tt_cutoffs": 0,
+            "quiescence_nodes": 0,
+            "threat_nodes": 0,
+            "threat_proven": false,
+            "threat_disproven": 0,
+            "threat_unknown": 0,
+            "mcts_iterations": 0,
+            "mcts_max_depth": 0
+          },
+          {
+            "completed_depth": 2,
+            "nodes": 185,
+            "evaluations": 142,
+            "analysis_scans": 141,
+            "analysis_cache_hits": 48,
+            "tt_probes": 43,
+            "tt_hits": 4,
+            "tt_cutoffs": 0,
+            "quiescence_nodes": 0,
+            "threat_nodes": 0,
+            "threat_proven": false,
+            "threat_disproven": 0,
+            "threat_unknown": 0,
+            "mcts_iterations": 0,
+            "mcts_max_depth": 0
+          },
+          {
+            "completed_depth": 2,
+            "nodes": 172,
+            "evaluations": 129,
+            "analysis_scans": 129,
+            "analysis_cache_hits": 47,
+            "tt_probes": 43,
+            "tt_hits": 4,
+            "tt_cutoffs": 0,
+            "quiescence_nodes": 0,
+            "threat_nodes": 0,
+            "threat_proven": false,
+            "threat_disproven": 0,
+            "threat_unknown": 0,
+            "mcts_iterations": 0,
+            "mcts_max_depth": 0
+          }
+        ]
+      }
+    ],
+    "Hybrid Threat Search": [
+      {
+        "fixture_id": "n9-k4-quiet-a",
+        "board_size": 9,
+        "win_length": 4,
+        "completed_depths": [
+          0,
+          0,
+          0
+        ],
+        "median_completed_depth": 0,
+        "elapsed_seconds": [
+          0.0010914000013144687,
+          0.0012713000032817945,
+          0.0014118000035523437
+        ],
+        "median_elapsed_seconds": 0.0012713000032817945,
+        "median_cold_evaluation_seconds": 0.0010670500014384743,
+        "moves": [
+          [
+            5,
+            5
+          ],
+          [
+            5,
+            5
+          ],
+          [
+            5,
+            5
+          ]
+        ],
+        "last_search_stats": [
+          {
+            "completed_depth": 0,
+            "nodes": 0,
+            "evaluations": 0,
+            "analysis_scans": 1,
+            "analysis_cache_hits": 0,
+            "tt_probes": 0,
+            "tt_hits": 0,
+            "tt_cutoffs": 0,
+            "quiescence_nodes": 0,
+            "threat_nodes": 0,
+            "threat_proven": false,
+            "threat_disproven": 0,
+            "threat_unknown": 0,
+            "mcts_iterations": 0,
+            "mcts_max_depth": 0
+          },
+          {
+            "completed_depth": 0,
+            "nodes": 0,
+            "evaluations": 0,
+            "analysis_scans": 1,
+            "analysis_cache_hits": 0,
+            "tt_probes": 0,
+            "tt_hits": 0,
+            "tt_cutoffs": 0,
+            "quiescence_nodes": 0,
+            "threat_nodes": 0,
+            "threat_proven": false,
+            "threat_disproven": 0,
+            "threat_unknown": 0,
+            "mcts_iterations": 0,
+            "mcts_max_depth": 0
+          },
+          {
+            "completed_depth": 0,
+            "nodes": 0,
+            "evaluations": 0,
+            "analysis_scans": 1,
+            "analysis_cache_hits": 0,
+            "tt_probes": 0,
+            "tt_hits": 0,
+            "tt_cutoffs": 0,
+            "quiescence_nodes": 0,
+            "threat_nodes": 0,
+            "threat_proven": false,
+            "threat_disproven": 0,
+            "threat_unknown": 0,
+            "mcts_iterations": 0,
+            "mcts_max_depth": 0
+          }
+        ]
+      },
+      {
+        "fixture_id": "n9-k4-quiet-b",
+        "board_size": 9,
+        "win_length": 4,
+        "completed_depths": [
+          0,
+          0,
+          0
+        ],
+        "median_completed_depth": 0,
+        "elapsed_seconds": [
+          0.0009944999983417802,
+          0.00114489999396028,
+          0.0010765000042738393
+        ],
+        "median_elapsed_seconds": 0.0010765000042738393,
+        "median_cold_evaluation_seconds": 0.0010054999984276947,
+        "moves": [
+          [
+            3,
+            3
+          ],
+          [
+            3,
+            3
+          ],
+          [
+            3,
+            3
+          ]
+        ],
+        "last_search_stats": [
+          {
+            "completed_depth": 0,
+            "nodes": 0,
+            "evaluations": 0,
+            "analysis_scans": 1,
+            "analysis_cache_hits": 0,
+            "tt_probes": 0,
+            "tt_hits": 0,
+            "tt_cutoffs": 0,
+            "quiescence_nodes": 0,
+            "threat_nodes": 0,
+            "threat_proven": false,
+            "threat_disproven": 0,
+            "threat_unknown": 0,
+            "mcts_iterations": 0,
+            "mcts_max_depth": 0
+          },
+          {
+            "completed_depth": 0,
+            "nodes": 0,
+            "evaluations": 0,
+            "analysis_scans": 1,
+            "analysis_cache_hits": 0,
+            "tt_probes": 0,
+            "tt_hits": 0,
+            "tt_cutoffs": 0,
+            "quiescence_nodes": 0,
+            "threat_nodes": 0,
+            "threat_proven": false,
+            "threat_disproven": 0,
+            "threat_unknown": 0,
+            "mcts_iterations": 0,
+            "mcts_max_depth": 0
+          },
+          {
+            "completed_depth": 0,
+            "nodes": 0,
+            "evaluations": 0,
+            "analysis_scans": 1,
+            "analysis_cache_hits": 0,
+            "tt_probes": 0,
+            "tt_hits": 0,
+            "tt_cutoffs": 0,
+            "quiescence_nodes": 0,
+            "threat_nodes": 0,
+            "threat_proven": false,
+            "threat_disproven": 0,
+            "threat_unknown": 0,
+            "mcts_iterations": 0,
+            "mcts_max_depth": 0
+          }
+        ]
+      },
+      {
+        "fixture_id": "n15-k5-quiet-a",
+        "board_size": 15,
+        "win_length": 5,
+        "completed_depths": [
+          2,
+          2,
+          2
+        ],
+        "median_completed_depth": 2,
+        "elapsed_seconds": [
+          0.4251659000001382,
+          0.42509559999598423,
+          0.42534729999897536
+        ],
+        "median_elapsed_seconds": 0.4251659000001382,
+        "median_cold_evaluation_seconds": 0.0032343499988201074,
+        "moves": [
+          [
+            9,
+            7
+          ],
+          [
+            9,
+            7
+          ],
+          [
+            9,
+            7
+          ]
+        ],
+        "last_search_stats": [
+          {
+            "completed_depth": 2,
+            "nodes": 78,
+            "evaluations": 149,
+            "analysis_scans": 105,
+            "analysis_cache_hits": 70,
+            "tt_probes": 20,
+            "tt_hits": 1,
+            "tt_cutoffs": 0,
+            "quiescence_nodes": 151,
+            "threat_nodes": 0,
+            "threat_proven": false,
+            "threat_disproven": 0,
+            "threat_unknown": 0,
+            "mcts_iterations": 0,
+            "mcts_max_depth": 0
+          },
+          {
+            "completed_depth": 2,
+            "nodes": 78,
+            "evaluations": 157,
+            "analysis_scans": 113,
+            "analysis_cache_hits": 70,
+            "tt_probes": 20,
+            "tt_hits": 1,
+            "tt_cutoffs": 0,
+            "quiescence_nodes": 159,
+            "threat_nodes": 0,
+            "threat_proven": false,
+            "threat_disproven": 0,
+            "threat_unknown": 0,
+            "mcts_iterations": 0,
+            "mcts_max_depth": 0
+          },
+          {
+            "completed_depth": 2,
+            "nodes": 78,
+            "evaluations": 161,
+            "analysis_scans": 117,
+            "analysis_cache_hits": 70,
+            "tt_probes": 20,
+            "tt_hits": 1,
+            "tt_cutoffs": 0,
+            "quiescence_nodes": 163,
+            "threat_nodes": 0,
+            "threat_proven": false,
+            "threat_disproven": 0,
+            "threat_unknown": 0,
+            "mcts_iterations": 0,
+            "mcts_max_depth": 0
+          }
+        ]
+      },
+      {
+        "fixture_id": "n15-k5-quiet-b",
+        "board_size": 15,
+        "win_length": 5,
+        "completed_depths": [
+          2,
+          2,
+          2
+        ],
+        "median_completed_depth": 2,
+        "elapsed_seconds": [
+          0.4254596000027959,
+          0.4250945000021602,
+          0.42542710000270745
+        ],
+        "median_elapsed_seconds": 0.42542710000270745,
+        "median_cold_evaluation_seconds": 0.003057750000152737,
+        "moves": [
+          [
+            8,
+            7
+          ],
+          [
+            8,
+            7
+          ],
+          [
+            8,
+            7
+          ]
+        ],
+        "last_search_stats": [
+          {
+            "completed_depth": 2,
+            "nodes": 82,
+            "evaluations": 159,
+            "analysis_scans": 118,
+            "analysis_cache_hits": 66,
+            "tt_probes": 20,
+            "tt_hits": 1,
+            "tt_cutoffs": 0,
+            "quiescence_nodes": 160,
+            "threat_nodes": 0,
+            "threat_proven": false,
+            "threat_disproven": 0,
+            "threat_unknown": 0,
+            "mcts_iterations": 0,
+            "mcts_max_depth": 0
+          },
+          {
+            "completed_depth": 2,
+            "nodes": 81,
+            "evaluations": 159,
+            "analysis_scans": 117,
+            "analysis_cache_hits": 66,
+            "tt_probes": 20,
+            "tt_hits": 1,
+            "tt_cutoffs": 0,
+            "quiescence_nodes": 159,
+            "threat_nodes": 0,
+            "threat_proven": false,
+            "threat_disproven": 0,
+            "threat_unknown": 0,
+            "mcts_iterations": 0,
+            "mcts_max_depth": 0
+          },
+          {
+            "completed_depth": 2,
+            "nodes": 77,
+            "evaluations": 142,
+            "analysis_scans": 104,
+            "analysis_cache_hits": 63,
+            "tt_probes": 20,
+            "tt_hits": 1,
+            "tt_cutoffs": 0,
+            "quiescence_nodes": 143,
+            "threat_nodes": 0,
+            "threat_proven": false,
+            "threat_disproven": 0,
+            "threat_unknown": 0,
+            "mcts_iterations": 0,
+            "mcts_max_depth": 0
+          }
+        ]
+      },
+      {
+        "fixture_id": "n15-k7-quiet-a",
+        "board_size": 15,
+        "win_length": 7,
+        "completed_depths": [
+          3,
+          3,
+          3
+        ],
+        "median_completed_depth": 3,
+        "elapsed_seconds": [
+          0.4251704999987851,
+          0.4250936000025831,
+          0.4252358000012464
+        ],
+        "median_elapsed_seconds": 0.4251704999987851,
+        "median_cold_evaluation_seconds": 0.003152799999952549,
+        "moves": [
+          [
+            8,
+            8
+          ],
+          [
+            8,
+            8
+          ],
+          [
+            8,
+            8
+          ]
+        ],
+        "last_search_stats": [
+          {
+            "completed_depth": 2,
+            "nodes": 197,
+            "evaluations": 129,
+            "analysis_scans": 131,
+            "analysis_cache_hits": 56,
+            "tt_probes": 67,
+            "tt_hits": 22,
+            "tt_cutoffs": 15,
+            "quiescence_nodes": 130,
+            "threat_nodes": 0,
+            "threat_proven": false,
+            "threat_disproven": 0,
+            "threat_unknown": 0,
+            "mcts_iterations": 0,
+            "mcts_max_depth": 0
+          },
+          {
+            "completed_depth": 2,
+            "nodes": 200,
+            "evaluations": 131,
+            "analysis_scans": 134,
+            "analysis_cache_hits": 56,
+            "tt_probes": 69,
+            "tt_hits": 22,
+            "tt_cutoffs": 15,
+            "quiescence_nodes": 131,
+            "threat_nodes": 0,
+            "threat_proven": false,
+            "threat_disproven": 0,
+            "threat_unknown": 0,
+            "mcts_iterations": 0,
+            "mcts_max_depth": 0
+          },
+          {
+            "completed_depth": 2,
+            "nodes": 191,
+            "evaluations": 126,
+            "analysis_scans": 125,
+            "analysis_cache_hits": 56,
+            "tt_probes": 64,
+            "tt_hits": 22,
+            "tt_cutoffs": 15,
+            "quiescence_nodes": 127,
+            "threat_nodes": 0,
+            "threat_proven": false,
+            "threat_disproven": 0,
+            "threat_unknown": 0,
+            "mcts_iterations": 0,
+            "mcts_max_depth": 0
+          }
+        ]
+      },
+      {
+        "fixture_id": "n15-k7-quiet-b",
+        "board_size": 15,
+        "win_length": 7,
+        "completed_depths": [
+          3,
+          3,
+          3
+        ],
+        "median_completed_depth": 3,
+        "elapsed_seconds": [
+          0.42517929999303306,
+          0.4251334999935352,
+          0.4251196999975946
+        ],
+        "median_elapsed_seconds": 0.4251334999935352,
+        "median_cold_evaluation_seconds": 0.0038495000007969793,
+        "moves": [
+          [
+            8,
+            7
+          ],
+          [
+            8,
+            7
+          ],
+          [
+            8,
+            7
+          ]
+        ],
+        "last_search_stats": [
+          {
+            "completed_depth": 2,
+            "nodes": 186,
+            "evaluations": 140,
+            "analysis_scans": 139,
+            "analysis_cache_hits": 52,
+            "tt_probes": 45,
+            "tt_hits": 6,
+            "tt_cutoffs": 0,
+            "quiescence_nodes": 141,
+            "threat_nodes": 0,
+            "threat_proven": false,
+            "threat_disproven": 0,
+            "threat_unknown": 0,
+            "mcts_iterations": 0,
+            "mcts_max_depth": 0
+          },
+          {
+            "completed_depth": 2,
+            "nodes": 183,
+            "evaluations": 137,
+            "analysis_scans": 136,
+            "analysis_cache_hits": 52,
+            "tt_probes": 45,
+            "tt_hits": 6,
+            "tt_cutoffs": 0,
+            "quiescence_nodes": 138,
+            "threat_nodes": 0,
+            "threat_proven": false,
+            "threat_disproven": 0,
+            "threat_unknown": 0,
+            "mcts_iterations": 0,
+            "mcts_max_depth": 0
+          },
+          {
+            "completed_depth": 2,
+            "nodes": 176,
+            "evaluations": 130,
+            "analysis_scans": 129,
+            "analysis_cache_hits": 52,
+            "tt_probes": 45,
+            "tt_hits": 6,
+            "tt_cutoffs": 0,
+            "quiescence_nodes": 131,
+            "threat_nodes": 0,
+            "threat_proven": false,
+            "threat_disproven": 0,
+            "threat_unknown": 0,
+            "mcts_iterations": 0,
+            "mcts_max_depth": 0
+          }
+        ]
+      }
+    ]
+  },
+  "comparison": {
+    "Enhanced Alpha-Beta": {
+      "before_completed_depths": [
+        0,
+        0,
+        1,
+        1,
+        0,
+        0
+      ],
+      "after_completed_depths": [
+        0,
+        0,
+        2,
+        2,
+        2,
+        2
+      ],
+      "depth_gains": [
+        0,
+        0,
+        1,
+        1,
+        2,
+        2
+      ],
+      "improved_fixture_count": 4,
+      "regressed_fixture_count": 0,
+      "before_median_cold_evaluation_seconds": 0.012948449999385048,
+      "after_median_cold_evaluation_seconds": 0.0020061250015714904,
+      "evaluation_speedup": 6.454458216333443,
+      "acceptance": {
+        "evaluation_at_least_2x_faster": true,
+        "at_least_4_of_6_depths_improved": true,
+        "no_depth_regression": true
+      }
+    },
+    "Hybrid Threat Search": {
+      "before_completed_depths": [
+        0,
+        0,
+        0,
+        0,
+        0,
+        0
+      ],
+      "after_completed_depths": [
+        0,
+        0,
+        2,
+        2,
+        3,
+        3
+      ],
+      "depth_gains": [
+        0,
+        0,
+        2,
+        2,
+        3,
+        3
+      ],
+      "improved_fixture_count": 4,
+      "regressed_fixture_count": 0,
+      "before_median_cold_evaluation_seconds": 0.018884675000663265,
+      "after_median_cold_evaluation_seconds": 0.003105275000052643,
+      "evaluation_speedup": 6.081482316491492,
+      "acceptance": {
+        "evaluation_at_least_2x_faster": true,
+        "at_least_4_of_6_depths_improved": true,
+        "no_depth_regression": true
+      }
+    }
+  }
+}

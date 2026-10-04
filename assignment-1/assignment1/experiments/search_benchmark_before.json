@@ -1,0 +1,516 @@
+{
+  "time_limit_seconds": 0.5,
+  "repetitions": 3,
+  "fixtures": [
+    "n9-k4-quiet-a",
+    "n9-k4-quiet-b",
+    "n15-k5-quiet-a",
+    "n15-k5-quiet-b",
+    "n15-k7-quiet-a",
+    "n15-k7-quiet-b"
+  ],
+  "strategies": {
+    "Enhanced Alpha-Beta": [
+      {
+        "fixture_id": "n9-k4-quiet-a",
+        "board_size": 9,
+        "win_length": 4,
+        "completed_depths": [
+          0,
+          0,
+          0
+        ],
+        "median_completed_depth": 0,
+        "elapsed_seconds": [
+          0.0046425999971688725,
+          0.004402699996717274,
+          0.00480740000057267
+        ],
+        "median_elapsed_seconds": 0.0046425999971688725,
+        "median_cold_evaluation_seconds": 0.0040422000020043924,
+        "moves": [
+          [
+            5,
+            5
+          ],
+          [
+            5,
+            5
+          ],
+          [
+            5,
+            5
+          ]
+        ],
+        "last_search_stats": [
+          {},
+          {},
+          {}
+        ]
+      },
+      {
+        "fixture_id": "n9-k4-quiet-b",
+        "board_size": 9,
+        "win_length": 4,
+        "completed_depths": [
+          0,
+          0,
+          0
+        ],
+        "median_completed_depth": 0,
+        "elapsed_seconds": [
+          0.004838400003791321,
+          0.0055155000009108335,
+          0.00893299999734154
+        ],
+        "median_elapsed_seconds": 0.0055155000009108335,
+        "median_cold_evaluation_seconds": 0.004250449997925898,
+        "moves": [
+          [
+            3,
+            3
+          ],
+          [
+            3,
+            3
+          ],
+          [
+            3,
+            3
+          ]
+        ],
+        "last_search_stats": [
+          {},
+          {},
+          {}
+        ]
+      },
+      {
+        "fixture_id": "n15-k5-quiet-a",
+        "board_size": 15,
+        "win_length": 5,
+        "completed_depths": [
+          1,
+          1,
+          1
+        ],
+        "median_completed_depth": 1,
+        "elapsed_seconds": [
+          0.42502970000350615,
+          0.42503250000299886,
+          0.4250176999994437
+        ],
+        "median_elapsed_seconds": 0.42502970000350615,
+        "median_cold_evaluation_seconds": 0.008749550001084572,
+        "moves": [
+          [
+            9,
+            7
+          ],
+          [
+            9,
+            7
+          ],
+          [
+            9,
+            7
+          ]
+        ],
+        "last_search_stats": [
+          {},
+          {},
+          {}
+        ]
+      },
+      {
+        "fixture_id": "n15-k5-quiet-b",
+        "board_size": 15,
+        "win_length": 5,
+        "completed_depths": [
+          1,
+          1,
+          1
+        ],
+        "median_completed_depth": 1,
+        "elapsed_seconds": [
+          0.4250328999987687,
+          0.4250130000000354,
+          0.4250663999991957
+        ],
+        "median_elapsed_seconds": 0.4250328999987687,
+        "median_cold_evaluation_seconds": 0.017147349997685524,
+        "moves": [
+          [
+            8,
+            7
+          ],
+          [
+            8,
+            7
+          ],
+          [
+            8,
+            7
+          ]
+        ],
+        "last_search_stats": [
+          {},
+          {},
+          {}
+        ]
+      },
+      {
+        "fixture_id": "n15-k7-quiet-a",
+        "board_size": 15,
+        "win_length": 7,
+        "completed_depths": [
+          0,
+          0,
+          0
+        ],
+        "median_completed_depth": 0,
+        "elapsed_seconds": [
+          0.42505059999530204,
+          0.42502849999436876,
+          0.4250188000005437
+        ],
+        "median_elapsed_seconds": 0.42502849999436876,
+        "median_cold_evaluation_seconds": 0.022376149998308392,
+        "moves": [
+          [
+            0,
+            0
+          ],
+          [
+            0,
+            0
+          ],
+          [
+            0,
+            0
+          ]
+        ],
+        "last_search_stats": [
+          {},
+          {},
+          {}
+        ]
+      },
+      {
+        "fixture_id": "n15-k7-quiet-b",
+        "board_size": 15,
+        "win_length": 7,
+        "completed_depths": [
+          0,
+          0,
+          1
+        ],
+        "median_completed_depth": 0,
+        "elapsed_seconds": [
+          0.42502129999775207,
+          0.4250485000011395,
+          0.4250236000007135
+        ],
+        "median_elapsed_seconds": 0.4250236000007135,
+        "median_cold_evaluation_seconds": 0.021288949999870965,
+        "moves": [
+          [
+            0,
+            0
+          ],
+          [
+            0,
+            0
+          ],
+          [
+            8,
+            7
+          ]
+        ],
+        "last_search_stats": [
+          {},
+          {},
+          {}
+        ]
+      }
+    ],
+    "Hybrid Threat Search": [
+      {
+        "fixture_id": "n9-k4-quiet-a",
+        "board_size": 9,
+        "win_length": 4,
+        "completed_depths": [
+          0,
+          0,
+          0
+        ],
+        "median_completed_depth": 0,
+        "elapsed_seconds": [
+          0.010785900005430449,
+          0.009752099998877384,
+          0.008529799997631926
+        ],
+        "median_elapsed_seconds": 0.009752099998877384,
+        "median_cold_evaluation_seconds": 0.008972650004579918,
+        "moves": [
+          [
+            5,
+            5
+          ],
+          [
+            5,
+            5
+          ],
+          [
+            5,
+            5
+          ]
+        ],
+        "last_search_stats": [
+          {
+            "threat_nodes": 0,
+            "threat_proven": false
+          },
+          {
+            "threat_nodes": 0,
+            "threat_proven": false
+          },
+          {
+            "threat_nodes": 0,
+            "threat_proven": false
+          }
+        ]
+      },
+      {
+        "fixture_id": "n9-k4-quiet-b",
+        "board_size": 9,
+        "win_length": 4,
+        "completed_depths": [
+          0,
+          0,
+          0
+        ],
+        "median_completed_depth": 0,
+        "elapsed_seconds": [
+          0.009544499996991362,
+          0.011673699998937082,
+          0.01566070000262698
+        ],
+        "median_elapsed_seconds": 0.011673699998937082,
+        "median_cold_evaluation_seconds": 0.008975250002549728,
+        "moves": [
+          [
+            3,
+            3
+          ],
+          [
+            3,
+            3
+          ],
+          [
+            3,
+            3
+          ]
+        ],
+        "last_search_stats": [
+          {
+            "threat_nodes": 0,
+            "threat_proven": false
+          },
+          {
+            "threat_nodes": 0,
+            "threat_proven": false
+          },
+          {
+            "threat_nodes": 0,
+            "threat_proven": false
+          }
+        ]
+      },
+      {
+        "fixture_id": "n15-k5-quiet-a",
+        "board_size": 15,
+        "win_length": 5,
+        "completed_depths": [
+          0,
+          0,
+          0
+        ],
+        "median_completed_depth": 0,
+        "elapsed_seconds": [
+          0.42502999999851454,
+          0.425039800000377,
+          0.42550610000034794
+        ],
+        "median_elapsed_seconds": 0.425039800000377,
+        "median_cold_evaluation_seconds": 0.018156699999963166,
+        "moves": [
+          [
+            0,
+            0
+          ],
+          [
+            0,
+            0
+          ],
+          [
+            0,
+            0
+          ]
+        ],
+        "last_search_stats": [
+          {
+            "threat_nodes": 0,
+            "threat_proven": false
+          },
+          {
+            "threat_nodes": 0,
+            "threat_proven": false
+          },
+          {
+            "threat_nodes": 0,
+            "threat_proven": false
+          }
+        ]
+      },
+      {
+        "fixture_id": "n15-k5-quiet-b",
+        "board_size": 15,
+        "win_length": 5,
+        "completed_depths": [
+          0,
+          0,
+          0
+        ],
+        "median_completed_depth": 0,
+        "elapsed_seconds": [
+          0.42506180000054883,
+          0.4250181000024895,
+          0.4251079999958165
+        ],
+        "median_elapsed_seconds": 0.42506180000054883,
+        "median_cold_evaluation_seconds": 0.019758499998715706,
+        "moves": [
+          [
+            0,
+            0
+          ],
+          [
+            0,
+            0
+          ],
+          [
+            0,
+            0
+          ]
+        ],
+        "last_search_stats": [
+          {
+            "threat_nodes": 0,
+            "threat_proven": false
+          },
+          {
+            "threat_nodes": 0,
+            "threat_proven": false
+          },
+          {
+            "threat_nodes": 0,
+            "threat_proven": false
+          }
+        ]
+      },
+      {
+        "fixture_id": "n15-k7-quiet-a",
+        "board_size": 15,
+        "win_length": 7,
+        "completed_depths": [
+          0,
+          0,
+          0
+        ],
+        "median_completed_depth": 0,
+        "elapsed_seconds": [
+          0.42503969999961555,
+          0.4250222999980906,
+          0.42502539999986766
+        ],
+        "median_elapsed_seconds": 0.42502539999986766,
+        "median_cold_evaluation_seconds": 0.020853950001765043,
+        "moves": [
+          [
+            0,
+            0
+          ],
+          [
+            0,
+            0
+          ],
+          [
+            0,
+            0
+          ]
+        ],
+        "last_search_stats": [
+          {
+            "threat_nodes": 0,
+            "threat_proven": false
+          },
+          {
+            "threat_nodes": 0,
+            "threat_proven": false
+          },
+          {
+            "threat_nodes": 0,
+            "threat_proven": false
+          }
+        ]
+      },
+      {
+        "fixture_id": "n15-k7-quiet-b",
+        "board_size": 15,
+        "win_length": 7,
+        "completed_depths": [
+          0,
+          0,
+          0
+        ],
+        "median_completed_depth": 0,
+        "elapsed_seconds": [
+          0.42505740000342485,
+          0.4250344000029145,
+          0.425048400000378
+        ],
+        "median_elapsed_seconds": 0.425048400000378,
+        "median_cold_evaluation_seconds": 0.019612650001363363,
+        "moves": [
+          [
+            0,
+            0
+          ],
+          [
+            0,
+            0
+          ],
+          [
+            0,
+            0
+          ]
+        ],
+        "last_search_stats": [
+          {
+            "threat_nodes": 0,
+            "threat_proven": false
+          },
+          {
+            "threat_nodes": 0,
+            "threat_proven": false
+          },
+          {
+            "threat_nodes": 0,
+            "threat_proven": false
+          }
+        ]
+      }
+    ]
+  }
+}

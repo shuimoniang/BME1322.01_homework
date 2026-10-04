@@ -13,10 +13,10 @@ from pathlib import Path
 from tkinter import filedialog, messagebox, ttk
 
 try:
-    from .gomoku_ai import BaselineAlphaBetaAI, EnhancedAlphaBetaAI, MCTSAI
+    from .gomoku_ai import BaselineAlphaBetaAI, EnhancedAlphaBetaAI, HybridThreatSearchAI, MCTSAI
     from .gomoku_game import BLACK, EMPTY, WHITE, GomokuGame
 except ImportError:
-    from gomoku_ai import BaselineAlphaBetaAI, EnhancedAlphaBetaAI, MCTSAI
+    from gomoku_ai import BaselineAlphaBetaAI, EnhancedAlphaBetaAI, HybridThreatSearchAI, MCTSAI
     from gomoku_game import BLACK, EMPTY, WHITE, GomokuGame
 
 
@@ -26,6 +26,7 @@ MODE_AI = "机机对战"
 STRATEGIES = {
     "基础 Alpha-Beta": BaselineAlphaBetaAI,
     "增强 Alpha-Beta": EnhancedAlphaBetaAI,
+    "融合威胁搜索": HybridThreatSearchAI,
     "MCTS + UCT": MCTSAI,
 }
 EXTERNAL = "外部 AI"
