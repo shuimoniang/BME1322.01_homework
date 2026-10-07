@@ -305,7 +305,7 @@ python assignment1/comprehensive_evaluation.py --only all --resume
 python assignment1/comprehensive_evaluation.py --summarize
 
 # 课程裁判验证
-python assignment-1-code/arena.py assignment1/gomoku_ai.py assignment-1-code/random_ai.py --board 15 --win 5 --time 5 --games 2 --quiet
+python assignment1/assignment-1-code/arena.py assignment1/gomoku_ai.py assignment1/assignment-1-code/random_ai.py --board 15 --win 5 --time 5 --games 2 --quiet
 ```
 
 主实验原始数据、汇总和版本清单分别位于 [`experiments/final/results.jsonl`](experiments/final/results.jsonl)、[`experiments/final/summary.json`](experiments/final/summary.json) 和 [`experiments/final/manifest.json`](experiments/final/manifest.json)。补充矩阵位于 [`experiments/comprehensive_evaluation/`](experiments/comprehensive_evaluation/)。

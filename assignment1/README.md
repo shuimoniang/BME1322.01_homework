@@ -79,5 +79,5 @@ python assignment1/comprehensive_evaluation.py --summarize
 
 ```powershell
 python -m unittest discover -s assignment1/tests -v
-python assignment-1-code/arena.py assignment1/gomoku_ai.py assignment-1-code/random_ai.py --board 15 --win 5 --time 5 --games 2 --quiet
+python assignment1/assignment-1-code/arena.py assignment1/gomoku_ai.py assignment1/assignment-1-code/random_ai.py --board 15 --win 5 --time 5 --games 2 --quiet
 ```
