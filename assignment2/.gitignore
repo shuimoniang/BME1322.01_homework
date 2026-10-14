@@ -1,0 +1,6 @@
+__pycache__/
+*.py[cod]
+.pytest_cache/
+assignment2-data/
+assignment2-data.zip
+
