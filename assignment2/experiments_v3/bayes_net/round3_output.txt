@@ -1,0 +1,25 @@
+--- baseline card sweep (all grid slots same card) ---
+baseline grid card=3                                             val acc = 0.8143
+baseline grid card=4                                             val acc = 0.8391
+baseline grid card=5                                             val acc = 0.8492
+baseline grid card=6                                             val acc = 0.8507
+--- lower_right_ink cards (slot 7, wire bl<-mr) ---
+br<-lower_right_ink card=3 zero_sep=True                         val acc = 0.8453
+br<-lower_right_ink card=3 zero_sep=False                        val acc = 0.8453
+br<-lower_right_ink card=4 zero_sep=True                         val acc = 0.8467
+br<-lower_right_ink card=4 zero_sep=False                        val acc = 0.8467
+br<-lower_right_ink card=5 zero_sep=True                         val acc = 0.8480
+br<-lower_right_ink card=5 zero_sep=False                        val acc = 0.8480
+--- band_bot cards (slot 6, wire bl<-mr) ---
+bl<-band_bot card=3 + br new parent=mr                           val acc = 0.8366
+bl<-band_bot card=4 + br new parent=mr                           val acc = 0.8411
+bl<-band_bot card=5 + br new parent=mr                           val acc = 0.8441
+--- horiz_runs as vdom (slot 11) cards ---
+vdom<-horiz_runs card=3 + br/bl swap                             val acc = 0.8316
+vdom<-horiz_runs card=4 + br/bl swap                             val acc = 0.8337
+vdom<-horiz_runs card=5 + br/bl swap                             val acc = 0.8348
+--- combined best candidates ---
+bl<-band_bot4 + br<-lri4 + vdom<-horiz4, wire bl<-mr             val acc = 0.8337
+br<-lri4 + vdom<-horiz4, wire bl<-mr                             val acc = 0.8392
+br<-lri4 + vdom<-horiz4 (v2 wire)                                val acc = 0.8355
+bl<-band_bot4 + br<-lri4 (wire bl<-mr)                           val acc = 0.8411

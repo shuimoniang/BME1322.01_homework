@@ -170,16 +170,38 @@ def plot_confusion(matrix: np.ndarray, title: str, path: Path) -> None:
 
 
 def plot_dag(path: Path) -> None:
+    """Draw the final 12-feature hand-designed DAG (v4 / M6).
+
+    Layout follows the semantics of FEATURE_PARENTS.  The eight grid
+    densities sit in three rows (top / middle / bottom) at roughly their
+    image position; the middle row is indented to the right so the left
+    column stays clear for the ``bottom_left -> top_left`` edge, and the
+    four semantic features occupy the right side (euler at top, the
+    orientation chain below it).  The two ``euler -> middle_*`` edges run
+    from the upper right into the middle band without passing through a
+    node.
+    """
     labels = ("Y",) + FEATURE_NAMES
     positions = {
-        0: (0.5, 0.96),
-        1: (0.5, 0.76),
-        2: (0.20, 0.53), 3: (0.50, 0.53), 4: (0.80, 0.53),
-        5: (0.20, 0.31), 6: (0.50, 0.31), 7: (0.80, 0.31),
-        8: (0.20, 0.09), 9: (0.50, 0.09), 10: (0.80, 0.09),
-        11: (0.90, 0.76), 12: (0.72, 0.76),
+        0: (0.44, 0.97),  # Y
+        # top row: grid densities
+        1: (0.10, 0.80),  # density_top_left
+        2: (0.32, 0.80),  # density_top_center
+        3: (0.54, 0.80),  # density_top_right
+        # middle row (indented right to free the left column)
+        4: (0.22, 0.50),  # density_middle_left
+        5: (0.44, 0.50),  # density_middle_center
+        6: (0.66, 0.50),  # density_middle_right
+        # bottom row
+        7: (0.10, 0.18),  # density_bottom_left
+        8: (0.44, 0.18),  # density_bottom_right
+        # semantic features on the right
+        9: (0.88, 0.80),  # euler_topology
+        10: (0.88, 0.50),  # vertical_runs
+        11: (0.80, 0.18),  # aspect_ratio
+        12: (0.99, 0.18),  # vertical_dominance
     }
-    figure, axis = plt.subplots(figsize=(11, 7.5))
+    figure, axis = plt.subplots(figsize=(12, 8))
     axis.set_xlim(0, 1)
     axis.set_ylim(0, 1)
     axis.axis("off")
@@ -201,28 +223,24 @@ def plot_dag(path: Path) -> None:
                 "color": color,
                 "alpha": alpha,
                 "lw": width,
-                "shrinkA": 24,
-                "shrinkB": 24,
+                "shrinkA": 26,
+                "shrinkB": 26,
                 "connectionstyle": f"arc3,rad={curvature}",
             },
             zorder=1,
         )
 
     for target in range(1, len(labels)):
-        arrow(0, target, "#9aa0a6", 0.35, 1.0)
+        arrow(0, target, "#9aa0a6", 0.30, 1.0)
+    # feature-parent edges (FEATURE_PARENTS entry >= 0), drawn bold red.  The
+    # row chains run left -> right, the bottom row closes right -> left, the
+    # left column closes bottom -> top, and the semantic chain runs down the
+    # right side (euler -> vertical_runs -> {aspect, vertical_dominance});
+    # the two euler -> middle_* edges approach the indented middle row from
+    # the upper right, so no edge passes through a node.
     for target_feature, parent_feature in enumerate(FEATURE_PARENTS):
         if parent_feature >= 0:
-            curvature = 0.0
-            if parent_feature == 0:
-                curvature = {4: 0.18, 5: 0.30, 6: -0.18}[target_feature]
-            arrow(
-                parent_feature + 1,
-                target_feature + 1,
-                "#b4232c",
-                0.95,
-                2.0,
-                curvature,
-            )
+            arrow(parent_feature + 1, target_feature + 1, "#b4232c", 0.95, 2.4)
 
     for node, label in enumerate(labels):
         x, y = positions[node]
@@ -235,16 +253,16 @@ def plot_dag(path: Path) -> None:
             ha="center",
             va="center",
             color="white",
-            fontsize=9 if node else 13,
+            fontsize=8 if node else 13,
             fontweight="bold",
-            bbox={"boxstyle": "round,pad=0.55", "facecolor": color, "edgecolor": "white"},
+            bbox={"boxstyle": "round,pad=0.45", "facecolor": color, "edgecolor": "white"},
             zorder=3,
         )
-    axis.set_title("Hand-designed Bayesian network", fontsize=16, pad=12)
+    axis.set_title("Hand-designed Bayesian network (v4, 12 features, 11 edges)", fontsize=16, pad=12)
     axis.text(
         0.01,
         0.985,
-        "Gray: class edges    Red: feature dependencies",
+        "Gray: class edges    Red bold: feature-parent edges",
         ha="left",
         va="top",
         fontsize=9,
@@ -314,9 +332,12 @@ def evaluate_model(model, X_train, y_train, X_test, y_test):
 def validation_study(X: np.ndarray, y: np.ndarray) -> dict:
     train_indices, validation_indices = stratified_split(y)
     study = {"seed": 1322, "train_size": int(train_indices.size), "validation_size": int(validation_indices.size)}
+    # For the naive Bayes model alpha is the *total* Dirichlet mass per patch
+    # variable (per-state pseudo-count = alpha / 65536), so the plateau spans
+    # several orders of magnitude and 1.0 (the Protocol default) sits inside it.
     for name, model_type, alphas in (
-        ("naive_bayes", NaiveBayesClassifier, (0.1, 0.5, 1.0)),
-        ("bayes_net", BayesNetClassifier, (0.1, 0.5, 1.0)),
+        ("naive_bayes", NaiveBayesClassifier, (0.01, 0.1, 1.0, 10.0)),
+        ("bayes_net", BayesNetClassifier, (0.5, 1.0, 2.0)),
     ):
         scores = []
         for alpha in alphas:
@@ -354,7 +375,7 @@ def main() -> None:
         "train_samples": int(X_train.shape[0]),
         "test_samples": int(X_test.shape[0]),
         "random_seed": 1322,
-        "selected_hyperparameters": {"naive_bayes_alpha": 0.1, "bayes_net_alpha": 0.5},
+        "selected_hyperparameters": {"naive_bayes_alpha": 1.0, "bayes_net_alpha": 1.0},
     }
     if args.validation_study:
         print("Running training-only validation study...")
@@ -362,13 +383,13 @@ def main() -> None:
 
     print("Training and evaluating Naive Bayes...")
     naive_prediction, naive_result = evaluate_model(
-        NaiveBayesClassifier(alpha=0.1), X_train, y_train, X_test, y_test
+        NaiveBayesClassifier(alpha=1.0), X_train, y_train, X_test, y_test
     )
     results["naive_bayes"] = naive_result
 
     print("Training and evaluating Bayesian network...")
     network_prediction, network_result = evaluate_model(
-        BayesNetClassifier(alpha=0.5), X_train, y_train, X_test, y_test
+        BayesNetClassifier(alpha=1.0), X_train, y_train, X_test, y_test
     )
     results["bayes_net"] = network_result
 

@@ -1,0 +1,229 @@
+.......E.
+======================================================================
+ERROR: test_naive_bayes_probabilities (test_models.ModelProtocolTests.test_naive_bayes_probabilities)
+----------------------------------------------------------------------
+Traceback (most recent call last):
+  File "F:\笔记本\课程\人工智能\BME1322.01_homework\assignment2\tests\test_models.py", line 63, in test_naive_bayes_probabilities
+    np.exp(model.feature_log_prob_).sum(axis=-1), 1.0
+           ^^^^^^^^^^^^^^^^^^^^^^^
+AttributeError: 'NaiveBayesClassifier' object has no attribute 'feature_log_prob_'. Did you mean: 'default_log_prob_'?
+
+----------------------------------------------------------------------
+Ran 9 tests in 0.047s
+
+FAILED (errors=1)
+==============================================================================
+PDF clause text relied on (extracted from the assignment PDF)
+==============================================================================
+
+[4.1]
+    4.1 Naive Bayes
+
+[4.2]
+    4.2 Small Bayesian Network
+
+[6‒12]
+    从原始图像中提取 6‒12 个离散特征。
+    节点数：类别节点 + 6‒12 个特征节点；
+
+[2‒5]
+    每个特征变量应有明确的语义，并离散成 2‒5 个取值。
+
+[根节点]
+    类别节点 Y  应作为根节点；
+
+[平滑]
+    本作业既检查你对⻉叶斯公式、条件独⽴、平滑处理的理解，也检查你能否把⻉叶斯⽹络的结构与参数学习⽤在真实
+    :param alpha: 平滑系数。默认为  1.0 ，对应  Laplace smoothing 。
+    :param alpha: 平滑系数。默认为  1.0 ，对应  Laplace smoothing 。
+    ⾄少实现⼀种平滑⽅式，避免零概率导致整条连乘为 0。
+    对所有 CPT 使⽤平滑处理，避免零概率。
+    评测重点不是追求最⾼精度，⽽是看你能否从概率建模出发，理解条件独⽴假设、DAG 结构、CPT 参数估计与平滑处理的差
+==============================================================================
+ITEM 1 — protocol conformance: builder_a_candidate.py (NB)
+==============================================================================
+class                : NaiveBayesClassifier
+module __file__      : F:\笔记本\课程\人工智能\BME1322.01_homework\assignment2\experiments_v4\naive_bayes\candidates\builder_a_candidate.py
+__init__ signature   : (self, alpha: 'float' = 1.0, dense_slot_limit: 'int' = 20000000)
+fit signature        : (self, X, y)
+predict signature    : (self, X)
+predict_proba        : (self, X)
+
+synthetic batch: X (30, 784) uint8, y (30,) int64
+fit returns self     : True
+predict -> ndarray dtype=int64 shape=(30,)
+predict int array    : True
+predict values       : [0, 0, 0, 1, 1, 1, 2, 2, 2, 3, 3, 3, 4, 4, 4, 5, 5, 5, 6, 6, 6, 7, 7, 7, 8, 8, 8, 9, 9, 9]  (true [0, 0, 0, 1, 1, 1, 2, 2, 2, 3, 3, 3, 4, 4, 4, 5, 5, 5, 6, 6, 6, 7, 7, 7, 8, 8, 8, 9, 9, 9])
+predict_proba -> dtype=float64 shape=(30, 10) rowsum=True
+predict(empty) shape : (0,), proba(empty) shape : (0, 10)
+unfitted predict     : RuntimeError OK (the classifier must be fitted before prediction)
+alpha=0            : ValueError OK
+alpha=nan          : ValueError OK
+alpha=-1.0         : ValueError OK
+
+PDF fixed signature  : __init__(self, alpha: float = 1.0)
+extra __init__ params: ['dense_slot_limit']
+==============================================================================
+ITEM 1 — protocol conformance: builder_c_dag_m6.py (BN)
+==============================================================================
+class                : BayesNetClassifier
+module __file__      : F:\笔记本\课程\人工智能\BME1322.01_homework\assignment2\experiments_v4\bayes_net\candidates\builder_c_dag_m6.py
+__init__ signature   : (self, alpha: 'float' = 1.0)
+fit signature        : (self, X, y)
+predict signature    : (self, X)
+predict_proba        : (self, X)
+
+synthetic batch: X (30, 784) uint8, y (30,) int64
+fit returns self     : True
+predict -> ndarray dtype=int64 shape=(30,)
+predict int array    : True
+predict values       : [0, 0, 1, 1, 1, 1, 2, 2, 2, 3, 3, 3, 4, 4, 4, 5, 5, 5, 6, 6, 6, 7, 7, 7, 8, 8, 8, 9, 9, 9]  (true [0, 0, 0, 1, 1, 1, 2, 2, 2, 3, 3, 3, 4, 4, 4, 5, 5, 5, 6, 6, 6, 7, 7, 7, 8, 8, 8, 9, 9, 9])
+predict_proba -> dtype=float64 shape=(30, 10) rowsum=True
+predict(empty) shape : (0,), proba(empty) shape : (0, 10)
+unfitted predict     : RuntimeError OK (the classifier must be fitted before prediction)
+alpha=0            : ValueError OK
+alpha=nan          : ValueError OK
+alpha=-1.0         : ValueError OK
+extract_features     : dtype=int64 shape=(30, 12) (expect (30,k))
+  k == len(FEATURE_NAMES): True
+  integer matrix         : True
+
+PDF fixed signature  : __init__(self, alpha: float = 1.0)
+extra __init__ params: none
+==============================================================================
+ITEM 4 — BN structural conformance: builder_c_dag_m6.py (M6)
+==============================================================================
+feature count        : 12   (rule 6-12)  -> OK
+cardinalities        : [5, 5, 5, 5, 5, 5, 5, 5, 4, 5, 4, 4]  bad=none -> OK
+FEATURE_PARENTS      : (7, 0, 1, 8, 3, 8, 7, 5, -1, 8, 9, 9)
+feature-feature edges: 11  (rule >=2) -> OK
+  edge list (parent->child):
+          density_bottom_right -> density_top_left
+              density_top_left -> density_top_center
+            density_top_center -> density_top_right
+                euler_topology -> density_middle_left
+           density_middle_left -> density_middle_center
+                euler_topology -> density_middle_right
+          density_bottom_right -> density_bottom_left
+          density_middle_right -> density_bottom_right
+                euler_topology -> vertical_runs
+                 vertical_runs -> aspect_ratio
+                 vertical_runs -> vertical_dominance
+Y is parent of ALL features : OK (by construction: 1 + (parent>=0) parents)
+nodes with >2 parents (incl Y): none -> OK
+self loops                  : none
+acyclicity (Kahn)    : visited 12/12 -> ACYCLIC
+  topological order  : ['euler_topology', 'vertical_runs', 'vertical_dominance', 'aspect_ratio', 'density_middle_right', 'density_bottom_right', 'density_bottom_left', 'density_top_left', 'density_top_center', 'density_top_right', 'density_middle_left', 'density_middle_center']
+hidden variables     : none (nodes = Y + 12 observed features only)
+bayes_net bounds: OK (12 features, 11 feature edges)
+check_bn_bounds      : PASS
+==============================================================================
+ITEM 7 — unit-test compatibility
+==============================================================================
+  feature_log_prob_ materialised            : True
+  asserts exp(feature_log_prob_).sum==1     : True
+  cpt_log_prob_ dense assert                : True
+  exact __init__ arity asserted             : False
+
+  candidate has feature_log_prob_? : False
+  candidate has check_probability_mass? : True
+  check_probability_mass() = [484. 484. 484. 484. 484. 484. 484. 484. 484. 484.]
+  predicted test outcome for test_naive_bayes_probabilities:
+     line: np.exp(model.feature_log_prob_).sum(axis=-1) == 1
+     -> AttributeError  =>  test ERROR (breaks)
+==============================================================================
+ITEM 8 — report.md + main.py reconciliation
+==============================================================================
+report.md claims that become FALSE after integration:
+  [present] title says 'v2 迭代版'
+  [present] NB described as 729 overlapping 2x2 patches
+  [present] 5^4=625 patch states
+  [absent ] trained with alpha=0.5
+  [present] NB test accuracy 92.86%
+  [present] BN test accuracy 85.33%
+  [present] BN validation 84.92%
+  [present] DAG = 'three column chains'
+  [present] DAG = '10 feature edges'
+  [present] experiments_v2 referenced
+  [present] BN confusion pairs 5->3 183 etc
+  [present] report says training 2.4 s / predict 0.7 s
+  main.py: [present] main.py hardcodes naive_bayes_alpha=0.5
+  main.py: [present] main.py plots DAG titled '(v3, 12 features)'
+  main.py: [present] main.py plot_dag docstring says 'final ... DAG (v3)'
+
+production v3 DAG reconstructed from code:
+  9 feature edges: [('density_top_left', 'density_top_center'), ('density_top_center', 'density_top_right'), ('density_middle_left', 'density_middle_center'), ('density_middle_center', 'density_middle_right'), ('density_bottom_right', 'density_bottom_left'), ('density_middle_right', 'density_bottom_right'), ('euler_topology', 'vertical_runs'), ('vertical_runs', 'aspect_ratio'), ('vertical_runs', 'vertical_dominance')]
+  -> report's 'three column chains' + '10 edges' do NOT match the code (code has ROW chains and 9 edges).
+==============================================================================
+ITEM 7b — run the real 9 unit tests with candidates injected (no file edits)
+==============================================================================
+  tests run=9 errors=1 failures=0
+  ERROR tail: AttributeError: 'NaiveBayesClassifier' object has no attribute 'feature_log_prob_'. Did you mean: 'default_log_prob_'?
+==============================================================================
+ITEM 5/6 — dependency + test-set leakage audit
+==============================================================================
+
+experiments_v4\naive_bayes\candidates\builder_a_candidate.py
+  imports        : ['__future__', 'numpy']
+  forbidden hits : NONE
+  lines          : 268
+
+experiments_v4\bayes_net\candidates\builder_c_dag_m6.py
+  imports        : ['__future__', 'numpy']
+  forbidden hits : NONE
+  lines          : 345
+
+naive_bayes.py
+  imports        : ['__future__', 'numpy']
+  forbidden hits : NONE
+  lines          : 164
+
+bayes_net.py
+  imports        : ['__future__', 'numpy']
+  forbidden hits : NONE
+  lines          : 320
+------------------------------------------------------------------------------
+grep t10k / test-set paths across experiments_v4 candidate + result files
+   experiments_v4\CONSTRAINTS.md:54: - 不得读取 `t10k-*.gz`（测试集）。`v4_common.load_train()` 只加载训练集。
+   experiments_v4\audit\critic_gamma.md:16: 所有测量只用 60,000 训练图，**从未读取 `t10k-*.gz`**。
+   experiments_v4\audit\critic_gamma.md:191: | 文件 | imports | 禁用记号（sklearn/scipy/pgmpy/bnlearn/pomegranate/statsmodels/torch/tf/keras/t
+   experiments_v4\audit\critic_gamma.md:212: **约束**（CONSTRAINTS.md:54；PDF §2.3）：“不得读取 `t10k-*.gz`（测试集）。”
+   experiments_v4\audit\critic_gamma.md:215: - 两个候选文件：**0 处** `t10k` / `load_mnist` / 测试文件引用（`grep` 确认）。
+   experiments_v4\audit\critic_gamma.md:216: - 生产 `naive_bayes.py` / `bayes_net.py` / `tests/`：**0 处** `t10k`。
+   experiments_v4\audit\critic_gamma.md:217: - 整个 `experiments_v4/`：`t10k` 仅出现 8 次，**全部是文档/约束文本**——
+   experiments_v4\audit\critic_gamma_experiments.py:4: file and NEVER reads the test set (t10k-*.gz).  Everything is measured on
+   experiments_v4\audit\critic_gamma_experiments.py:272: "tensorflow", "torch", "keras", "t10k", "pip install", "urllib",
+   experiments_v4\audit\critic_gamma_experiments.py:293: print("grep t10k / test-set paths across experiments_v4 candidate + result files")
+   experiments_v4\audit\critic_gamma_experiments.py:302: if "t10k" in line:
+   experiments_v4\audit\critic_gamma_experiments.py:306: print(f"  total '{'t10k'}' mentions in experiments_v4: {len(hits)} (all documentary/constr
+   experiments_v4\bayes_net\results\builder_c.md:21: 测试集（`t10k-*.gz`）**全程未读取**。
+   experiments_v4\bayes_net\results\builder_c.md:250: - 只用 60,000 训练集；`t10k-*.gz` 全程未读。
+  total 't10k' mentions in experiments_v4: 14 (all documentary/constraint text)
+------------------------------------------------------------------------------
+grep load_mnist / EXPECTED_FILES[2:4] usage in candidate scripts
+  builder_a_candidate.py: load_mnist=False test-images-reference=False
+  builder_c_dag_m6.py: load_mnist=False test-images-reference=False
+==============================================================================
+ITEM 2 — real main.py code path, FULL 60,000 training images
+==============================================================================
+loaded training set: X (60000, 784) uint8, y (60000,)
+harness imported production names from: naive_bayes / bayes_net
+harness.FEATURE_PARENTS = (7, 0, 1, 8, 3, 8, 7, 5, -1, 8, 9, 9)
+------------------------------------------------------------------------------
+NaiveBayesClassifier (builder A)  alpha=0.001
+  fit wall-clock      : 8.7 s
+  predict(10k)        : 2.5 s  dtype=int64 shape=(10000,)
+  tracemalloc peak    : 744 MB
+  process peak RSS    : 938 MB (before fit 150 MB)
+  observed (feature,state) keys: 1470735
+  observed CPT table          : (10, 1470735) (118 MB)
+  dense CPT if materialised   : 10 x 484 x 65536 x 8 B = 2.5 GB (not allocated)
+  check_probability_mass()    : [484. 484. 484. 484. 484. 484. 484. 484. 484. 484.]
+  train-slice accuracy (in-sample, sanity only): 0.9973
+------------------------------------------------------------------------------
+BayesNetClassifier (builder C M6)  alpha=1.0
+  fit wall-clock      : 5.4 s
+  predict(10k)        : 0.4 s  dtype=int64 shape=(10000,)
+  tracemalloc peak    : 1564 MB
+  process peak RSS    : 1712 MB (before fit 279 MB)
+  train-slice accuracy (in-sample, sanity only): 0.8752

@@ -1,0 +1,28 @@
+--- semantic wiring on chain C ---
+C + vruns<-euler, vdom<-aspect (P_C)                                 val acc = 0.8596
+C + vruns<-euler, vdom<-vruns, aspect<-vruns (P_C2)                  val acc = 0.8614
+C + vruns<-euler, vdom<-euler, aspect<-vruns                         val acc = 0.8614
+C + vruns<-euler, vdom<-vruns, aspect<-vdom                          val acc = 0.8435
+
+--- alpha sweep on P_C and P_C2 ---
+P_C alpha=0.3                                                        val acc = 0.8599
+P_C alpha=0.5                                                        val acc = 0.8598
+P_C alpha=1.0                                                        val acc = 0.8596
+P_C alpha=2.0                                                        val acc = 0.8596
+P_C alpha=1.0 no backoff                                             val acc = 0.8591
+P_C2 alpha=0.3                                                       val acc = 0.8616
+P_C2 alpha=0.5                                                       val acc = 0.8615
+P_C2 alpha=1.0                                                       val acc = 0.8614
+P_C2 alpha=2.0                                                       val acc = 0.8615
+P_C2 alpha=1.0 no backoff                                            val acc = 0.8608
+
+--- cross-seed robustness (seeds 1322 / 7 / 2024) ---
+P_C          seed 1322  val acc = 0.8596
+P_C          seed 7     val acc = 0.8449
+P_C          seed 2024  val acc = 0.8550
+P_C2         seed 1322  val acc = 0.8614
+P_C2         seed 7     val acc = 0.8455
+P_C2         seed 2024  val acc = 0.8586
+v2-baseline  seed 1322  val acc = 0.8492
+v2-baseline  seed 7     val acc = 0.8351
+v2-baseline  seed 2024  val acc = 0.8464

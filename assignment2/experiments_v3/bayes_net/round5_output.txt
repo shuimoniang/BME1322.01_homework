@@ -1,0 +1,18 @@
+--- row-chain base variants (v2 semantic wiring) ---
+A row chain l->r + vruns<-euler, vdom<-aspect                        val acc = 0.8587
+B row chain r->l (tl<-tc, ml<-mc, bl? ...)                           val acc = 0.8422
+C l->r + bl<-br (close bottom row)                                   val acc = 0.8596
+D l->r + bl<-mc (diag)                                               val acc = 0.8578
+E l->r, drop tr<-tc (top row split)                                  val acc = 0.8519
+F l->r, drop br<-mr                                                  val acc = 0.8487
+G only vertical center chain + row chain bottom?                     val acc = 0.8578
+
+--- semantic wiring on top of row chains ---
+rowchain + vruns<-euler, vdom<-aspect                                val acc = 0.8587
+rowchain + vruns<-euler, vdom<-vruns, aspect<-vruns                  val acc = 0.8593
+rowchain + vruns<-euler, vdom<-euler, aspect<-vdom                   val acc = 0.8578
+rowchain + vruns<-euler, vdom<-vruns, aspect<-vdom                   val acc = 0.8420
+rowchain + vruns<-euler, vdom<-euler, aspect<-vruns                  val acc = 0.8595
+rowchain + vruns<-euler, vdom<-aspect, aspect<-vruns                 val acc = 0.8420
+
+--- alpha + backoff on the leading config ---

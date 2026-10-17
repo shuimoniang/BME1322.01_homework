@@ -1,0 +1,19 @@
+--- pair swaps ---
+br<-lower_right_ink + vdom<-horiz_runs                           val acc = 0.8355
+br<-lower_right_ink + bl<-band_bot                               val acc = 0.8391
+br<-lower_right_ink + aspect<-upper_left_ink                     val acc = 0.8283
+vdom<-horiz_runs + aspect<-endpoints                             val acc = 0.8301
+vdom<-horiz_runs + aspect<-grad_vert_frac                        val acc = 0.8308
+bl<-band_bot + vdom<-horiz_runs                                  val acc = 0.8362
+--- re-wiring with br<-lower_right_ink ---
+br_new, parent=mr(5)  [v2 wire else]                             val acc = 0.8442
+br_new, parent=aspect(10)                                        val acc = 0.8347
+br_new, parent=vruns(9)                                          val acc = 0.8422
+br_new, parent=mc(4)                                             val acc = 0.8355
+br_new, parent=mr(5), drop bl chain (bl<-tl removed)             val acc = 0.8434
+br_new, parent=mr(5), bl<-mr too                                 val acc = 0.8467
+--- opening feature mid_right_ink in semantic slots ---
+aspect<-mid_right_ink, vdom<-horiz_runs                          val acc = 0.8283
+vdom<-mid_right_ink, aspect<-horiz_runs                          val acc = 0.8283
+bl<-mid_right_ink                                                val acc = 0.8188
+br<-mid_right_ink                                                val acc = 0.8323

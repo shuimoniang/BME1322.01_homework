@@ -1,0 +1,2101 @@
+{
+  "grid": [
+    {
+      "variant": "G_serp",
+      "accuracy": 0.8634136586341365,
+      "parents": [
+        -1,
+        0,
+        1,
+        6,
+        3,
+        2,
+        7,
+        5,
+        -1,
+        8,
+        9,
+        9
+      ],
+      "edges": "density_top_left->density_top_center  density_top_center->density_top_right  density_bottom_left->density_middle_left  density_middle_left->density_middle_center  density_top_right->density_middle_right  density_bottom_right->density_bottom_left  density_middle_right->density_bottom_right  euler_topology->vertical_runs  vertical_runs->aspect_ratio  vertical_runs->vertical_dominance"
+    },
+    {
+      "variant": "G_ml_bl",
+      "accuracy": 0.8627137286271372,
+      "parents": [
+        -1,
+        0,
+        1,
+        6,
+        3,
+        4,
+        7,
+        5,
+        -1,
+        8,
+        9,
+        9
+      ],
+      "edges": "density_top_left->density_top_center  density_top_center->density_top_right  density_bottom_left->density_middle_left  density_middle_left->density_middle_center  density_middle_center->density_middle_right  density_bottom_right->density_bottom_left  density_middle_right->density_bottom_right  euler_topology->vertical_runs  vertical_runs->aspect_ratio  vertical_runs->vertical_dominance"
+    },
+    {
+      "variant": "G_ml_br",
+      "accuracy": 0.8627137286271372,
+      "parents": [
+        -1,
+        0,
+        1,
+        7,
+        3,
+        4,
+        7,
+        5,
+        -1,
+        8,
+        9,
+        9
+      ],
+      "edges": "density_top_left->density_top_center  density_top_center->density_top_right  density_bottom_right->density_middle_left  density_middle_left->density_middle_center  density_middle_center->density_middle_right  density_bottom_right->density_bottom_left  density_middle_right->density_bottom_right  euler_topology->vertical_runs  vertical_runs->aspect_ratio  vertical_runs->vertical_dominance"
+    },
+    {
+      "variant": "G_diag_tl_mc",
+      "accuracy": 0.8623137686231377,
+      "parents": [
+        -1,
+        0,
+        1,
+        7,
+        0,
+        4,
+        7,
+        5,
+        -1,
+        8,
+        9,
+        9
+      ],
+      "edges": "density_top_left->density_top_center  density_top_center->density_top_right  density_bottom_right->density_middle_left  density_top_left->density_middle_center  density_middle_center->density_middle_right  density_bottom_right->density_bottom_left  density_middle_right->density_bottom_right  euler_topology->vertical_runs  vertical_runs->aspect_ratio  vertical_runs->vertical_dominance"
+    },
+    {
+      "variant": "G_ml_tl",
+      "accuracy": 0.8616138386161384,
+      "parents": [
+        -1,
+        0,
+        1,
+        0,
+        3,
+        4,
+        7,
+        5,
+        -1,
+        8,
+        9,
+        9
+      ],
+      "edges": "density_top_left->density_top_center  density_top_center->density_top_right  density_top_left->density_middle_left  density_middle_left->density_middle_center  density_middle_center->density_middle_right  density_bottom_right->density_bottom_left  density_middle_right->density_bottom_right  euler_topology->vertical_runs  vertical_runs->aspect_ratio  vertical_runs->vertical_dominance"
+    },
+    {
+      "variant": "G_incumbent",
+      "accuracy": 0.8614138586141386,
+      "parents": [
+        -1,
+        0,
+        1,
+        -1,
+        3,
+        4,
+        7,
+        5,
+        -1,
+        8,
+        9,
+        9
+      ],
+      "edges": "density_top_left->density_top_center  density_top_center->density_top_right  density_middle_left->density_middle_center  density_middle_center->density_middle_right  density_bottom_right->density_bottom_left  density_middle_right->density_bottom_right  euler_topology->vertical_runs  vertical_runs->aspect_ratio  vertical_runs->vertical_dominance"
+    },
+    {
+      "variant": "G_raster",
+      "accuracy": 0.8582141785821418,
+      "parents": [
+        -1,
+        0,
+        1,
+        2,
+        3,
+        4,
+        5,
+        6,
+        -1,
+        8,
+        9,
+        9
+      ],
+      "edges": "density_top_left->density_top_center  density_top_center->density_top_right  density_top_right->density_middle_left  density_middle_left->density_middle_center  density_middle_center->density_middle_right  density_middle_right->density_bottom_left  density_bottom_left->density_bottom_right  euler_topology->vertical_runs  vertical_runs->aspect_ratio  vertical_runs->vertical_dominance"
+    },
+    {
+      "variant": "G_boustro_rev",
+      "accuracy": 0.8552144785521448,
+      "parents": [
+        -1,
+        0,
+        1,
+        4,
+        5,
+        2,
+        7,
+        3,
+        -1,
+        8,
+        9,
+        9
+      ],
+      "edges": "density_top_left->density_top_center  density_top_center->density_top_right  density_middle_center->density_middle_left  density_middle_right->density_middle_center  density_top_right->density_middle_right  density_bottom_right->density_bottom_left  density_middle_left->density_bottom_right  euler_topology->vertical_runs  vertical_runs->aspect_ratio  vertical_runs->vertical_dominance"
+    },
+    {
+      "variant": "G_hub_mc",
+      "accuracy": 0.8547145285471452,
+      "parents": [
+        -1,
+        0,
+        1,
+        6,
+        3,
+        4,
+        7,
+        4,
+        -1,
+        8,
+        9,
+        9
+      ],
+      "edges": "density_top_left->density_top_center  density_top_center->density_top_right  density_bottom_left->density_middle_left  density_middle_left->density_middle_center  density_middle_center->density_middle_right  density_bottom_right->density_bottom_left  density_middle_center->density_bottom_right  euler_topology->vertical_runs  vertical_runs->aspect_ratio  vertical_runs->vertical_dominance"
+    },
+    {
+      "variant": "G_boustro",
+      "accuracy": 0.8536146385361464,
+      "parents": [
+        -1,
+        0,
+        1,
+        4,
+        5,
+        2,
+        3,
+        6,
+        -1,
+        8,
+        9,
+        9
+      ],
+      "edges": "density_top_left->density_top_center  density_top_center->density_top_right  density_middle_center->density_middle_left  density_middle_right->density_middle_center  density_top_right->density_middle_right  density_middle_left->density_bottom_left  density_bottom_left->density_bottom_right  euler_topology->vertical_runs  vertical_runs->aspect_ratio  vertical_runs->vertical_dominance"
+    }
+  ],
+  "cross": [
+    {
+      "variant": "G_serp|S_evra",
+      "accuracy": 0.8653134686531346,
+      "parents": [
+        -1,
+        0,
+        1,
+        6,
+        3,
+        2,
+        7,
+        5,
+        -1,
+        11,
+        9,
+        8
+      ],
+      "edges": "density_top_left->density_top_center  density_top_center->density_top_right  density_bottom_left->density_middle_left  density_middle_left->density_middle_center  density_top_right->density_middle_right  density_bottom_right->density_bottom_left  density_middle_right->density_bottom_right  vertical_dominance->vertical_runs  vertical_runs->aspect_ratio  euler_topology->vertical_dominance"
+    },
+    {
+      "variant": "G_serp|S_eavr",
+      "accuracy": 0.8643135686431357,
+      "parents": [
+        -1,
+        0,
+        1,
+        6,
+        3,
+        2,
+        7,
+        5,
+        -1,
+        10,
+        8,
+        9
+      ],
+      "edges": "density_top_left->density_top_center  density_top_center->density_top_right  density_bottom_left->density_middle_left  density_middle_left->density_middle_center  density_top_right->density_middle_right  density_bottom_right->density_bottom_left  density_middle_right->density_bottom_right  aspect_ratio->vertical_runs  euler_topology->aspect_ratio  vertical_runs->vertical_dominance"
+    },
+    {
+      "variant": "G_serp|S_vr_vdom",
+      "accuracy": 0.8639136086391361,
+      "parents": [
+        -1,
+        0,
+        1,
+        6,
+        3,
+        2,
+        7,
+        5,
+        -1,
+        11,
+        9,
+        -1
+      ],
+      "edges": "density_top_left->density_top_center  density_top_center->density_top_right  density_bottom_left->density_middle_left  density_middle_left->density_middle_center  density_top_right->density_middle_right  density_bottom_right->density_bottom_left  density_middle_right->density_bottom_right  vertical_dominance->vertical_runs  vertical_runs->aspect_ratio"
+    },
+    {
+      "variant": "G_diag_tl_mc|S_evra",
+      "accuracy": 0.8639136086391361,
+      "parents": [
+        -1,
+        0,
+        1,
+        7,
+        0,
+        4,
+        7,
+        5,
+        -1,
+        11,
+        9,
+        8
+      ],
+      "edges": "density_top_left->density_top_center  density_top_center->density_top_right  density_bottom_right->density_middle_left  density_top_left->density_middle_center  density_middle_center->density_middle_right  density_bottom_right->density_bottom_left  density_middle_right->density_bottom_right  vertical_dominance->vertical_runs  vertical_runs->aspect_ratio  euler_topology->vertical_dominance"
+    },
+    {
+      "variant": "G_ml_bl|S_evra",
+      "accuracy": 0.8638136186381362,
+      "parents": [
+        -1,
+        0,
+        1,
+        6,
+        3,
+        4,
+        7,
+        5,
+        -1,
+        11,
+        9,
+        8
+      ],
+      "edges": "density_top_left->density_top_center  density_top_center->density_top_right  density_bottom_left->density_middle_left  density_middle_left->density_middle_center  density_middle_center->density_middle_right  density_bottom_right->density_bottom_left  density_middle_right->density_bottom_right  vertical_dominance->vertical_runs  vertical_runs->aspect_ratio  euler_topology->vertical_dominance"
+    },
+    {
+      "variant": "G_serp|S_vr_hub",
+      "accuracy": 0.8635136486351365,
+      "parents": [
+        -1,
+        0,
+        1,
+        6,
+        3,
+        2,
+        7,
+        5,
+        9,
+        -1,
+        9,
+        9
+      ],
+      "edges": "density_top_left->density_top_center  density_top_center->density_top_right  density_bottom_left->density_middle_left  density_middle_left->density_middle_center  density_top_right->density_middle_right  density_bottom_right->density_bottom_left  density_middle_right->density_bottom_right  vertical_runs->euler_topology  vertical_runs->aspect_ratio  vertical_runs->vertical_dominance"
+    },
+    {
+      "variant": "G_serp|S_inc",
+      "accuracy": 0.8634136586341365,
+      "parents": [
+        -1,
+        0,
+        1,
+        6,
+        3,
+        2,
+        7,
+        5,
+        -1,
+        8,
+        9,
+        9
+      ],
+      "edges": "density_top_left->density_top_center  density_top_center->density_top_right  density_bottom_left->density_middle_left  density_middle_left->density_middle_center  density_top_right->density_middle_right  density_bottom_right->density_bottom_left  density_middle_right->density_bottom_right  euler_topology->vertical_runs  vertical_runs->aspect_ratio  vertical_runs->vertical_dominance"
+    },
+    {
+      "variant": "G_incumbent|S_evra",
+      "accuracy": 0.8627137286271372,
+      "parents": [
+        -1,
+        0,
+        1,
+        -1,
+        3,
+        4,
+        7,
+        5,
+        -1,
+        11,
+        9,
+        8
+      ],
+      "edges": "density_top_left->density_top_center  density_top_center->density_top_right  density_middle_left->density_middle_center  density_middle_center->density_middle_right  density_bottom_right->density_bottom_left  density_middle_right->density_bottom_right  vertical_dominance->vertical_runs  vertical_runs->aspect_ratio  euler_topology->vertical_dominance"
+    },
+    {
+      "variant": "G_ml_bl|S_inc",
+      "accuracy": 0.8627137286271372,
+      "parents": [
+        -1,
+        0,
+        1,
+        6,
+        3,
+        4,
+        7,
+        5,
+        -1,
+        8,
+        9,
+        9
+      ],
+      "edges": "density_top_left->density_top_center  density_top_center->density_top_right  density_bottom_left->density_middle_left  density_middle_left->density_middle_center  density_middle_center->density_middle_right  density_bottom_right->density_bottom_left  density_middle_right->density_bottom_right  euler_topology->vertical_runs  vertical_runs->aspect_ratio  vertical_runs->vertical_dominance"
+    },
+    {
+      "variant": "G_ml_bl|S_vr_hub",
+      "accuracy": 0.8627137286271372,
+      "parents": [
+        -1,
+        0,
+        1,
+        6,
+        3,
+        4,
+        7,
+        5,
+        9,
+        -1,
+        9,
+        9
+      ],
+      "edges": "density_top_left->density_top_center  density_top_center->density_top_right  density_bottom_left->density_middle_left  density_middle_left->density_middle_center  density_middle_center->density_middle_right  density_bottom_right->density_bottom_left  density_middle_right->density_bottom_right  vertical_runs->euler_topology  vertical_runs->aspect_ratio  vertical_runs->vertical_dominance"
+    },
+    {
+      "variant": "G_ml_br|S_inc",
+      "accuracy": 0.8627137286271372,
+      "parents": [
+        -1,
+        0,
+        1,
+        7,
+        3,
+        4,
+        7,
+        5,
+        -1,
+        8,
+        9,
+        9
+      ],
+      "edges": "density_top_left->density_top_center  density_top_center->density_top_right  density_bottom_right->density_middle_left  density_middle_left->density_middle_center  density_middle_center->density_middle_right  density_bottom_right->density_bottom_left  density_middle_right->density_bottom_right  euler_topology->vertical_runs  vertical_runs->aspect_ratio  vertical_runs->vertical_dominance"
+    },
+    {
+      "variant": "G_ml_br|S_vr_hub",
+      "accuracy": 0.8627137286271372,
+      "parents": [
+        -1,
+        0,
+        1,
+        7,
+        3,
+        4,
+        7,
+        5,
+        9,
+        -1,
+        9,
+        9
+      ],
+      "edges": "density_top_left->density_top_center  density_top_center->density_top_right  density_bottom_right->density_middle_left  density_middle_left->density_middle_center  density_middle_center->density_middle_right  density_bottom_right->density_bottom_left  density_middle_right->density_bottom_right  vertical_runs->euler_topology  vertical_runs->aspect_ratio  vertical_runs->vertical_dominance"
+    },
+    {
+      "variant": "G_ml_bl|S_eavr",
+      "accuracy": 0.8626137386261374,
+      "parents": [
+        -1,
+        0,
+        1,
+        6,
+        3,
+        4,
+        7,
+        5,
+        -1,
+        10,
+        8,
+        9
+      ],
+      "edges": "density_top_left->density_top_center  density_top_center->density_top_right  density_bottom_left->density_middle_left  density_middle_left->density_middle_center  density_middle_center->density_middle_right  density_bottom_right->density_bottom_left  density_middle_right->density_bottom_right  aspect_ratio->vertical_runs  euler_topology->aspect_ratio  vertical_runs->vertical_dominance"
+    },
+    {
+      "variant": "G_diag_tl_mc|S_vr_vdom",
+      "accuracy": 0.8626137386261374,
+      "parents": [
+        -1,
+        0,
+        1,
+        7,
+        0,
+        4,
+        7,
+        5,
+        -1,
+        11,
+        9,
+        -1
+      ],
+      "edges": "density_top_left->density_top_center  density_top_center->density_top_right  density_bottom_right->density_middle_left  density_top_left->density_middle_center  density_middle_center->density_middle_right  density_bottom_right->density_bottom_left  density_middle_right->density_bottom_right  vertical_dominance->vertical_runs  vertical_runs->aspect_ratio"
+    },
+    {
+      "variant": "G_ml_tl|S_evra",
+      "accuracy": 0.8625137486251375,
+      "parents": [
+        -1,
+        0,
+        1,
+        0,
+        3,
+        4,
+        7,
+        5,
+        -1,
+        11,
+        9,
+        8
+      ],
+      "edges": "density_top_left->density_top_center  density_top_center->density_top_right  density_top_left->density_middle_left  density_middle_left->density_middle_center  density_middle_center->density_middle_right  density_bottom_right->density_bottom_left  density_middle_right->density_bottom_right  vertical_dominance->vertical_runs  vertical_runs->aspect_ratio  euler_topology->vertical_dominance"
+    },
+    {
+      "variant": "G_diag_tl_mc|S_eavr",
+      "accuracy": 0.8625137486251375,
+      "parents": [
+        -1,
+        0,
+        1,
+        7,
+        0,
+        4,
+        7,
+        5,
+        -1,
+        10,
+        8,
+        9
+      ],
+      "edges": "density_top_left->density_top_center  density_top_center->density_top_right  density_bottom_right->density_middle_left  density_top_left->density_middle_center  density_middle_center->density_middle_right  density_bottom_right->density_bottom_left  density_middle_right->density_bottom_right  aspect_ratio->vertical_runs  euler_topology->aspect_ratio  vertical_runs->vertical_dominance"
+    },
+    {
+      "variant": "G_diag_tl_mc|S_vr_hub",
+      "accuracy": 0.8625137486251375,
+      "parents": [
+        -1,
+        0,
+        1,
+        7,
+        0,
+        4,
+        7,
+        5,
+        9,
+        -1,
+        9,
+        9
+      ],
+      "edges": "density_top_left->density_top_center  density_top_center->density_top_right  density_bottom_right->density_middle_left  density_top_left->density_middle_center  density_middle_center->density_middle_right  density_bottom_right->density_bottom_left  density_middle_right->density_bottom_right  vertical_runs->euler_topology  vertical_runs->aspect_ratio  vertical_runs->vertical_dominance"
+    },
+    {
+      "variant": "G_diag_tl_mc|S_inc",
+      "accuracy": 0.8623137686231377,
+      "parents": [
+        -1,
+        0,
+        1,
+        7,
+        0,
+        4,
+        7,
+        5,
+        -1,
+        8,
+        9,
+        9
+      ],
+      "edges": "density_top_left->density_top_center  density_top_center->density_top_right  density_bottom_right->density_middle_left  density_top_left->density_middle_center  density_middle_center->density_middle_right  density_bottom_right->density_bottom_left  density_middle_right->density_bottom_right  euler_topology->vertical_runs  vertical_runs->aspect_ratio  vertical_runs->vertical_dominance"
+    },
+    {
+      "variant": "G_ml_bl|S_vr_vdom",
+      "accuracy": 0.8621137886211379,
+      "parents": [
+        -1,
+        0,
+        1,
+        6,
+        3,
+        4,
+        7,
+        5,
+        -1,
+        11,
+        9,
+        -1
+      ],
+      "edges": "density_top_left->density_top_center  density_top_center->density_top_right  density_bottom_left->density_middle_left  density_middle_left->density_middle_center  density_middle_center->density_middle_right  density_bottom_right->density_bottom_left  density_middle_right->density_bottom_right  vertical_dominance->vertical_runs  vertical_runs->aspect_ratio"
+    },
+    {
+      "variant": "G_incumbent|S_eavr",
+      "accuracy": 0.8618138186181382,
+      "parents": [
+        -1,
+        0,
+        1,
+        -1,
+        3,
+        4,
+        7,
+        5,
+        -1,
+        10,
+        8,
+        9
+      ],
+      "edges": "density_top_left->density_top_center  density_top_center->density_top_right  density_middle_left->density_middle_center  density_middle_center->density_middle_right  density_bottom_right->density_bottom_left  density_middle_right->density_bottom_right  aspect_ratio->vertical_runs  euler_topology->aspect_ratio  vertical_runs->vertical_dominance"
+    },
+    {
+      "variant": "G_serp|S_serial",
+      "accuracy": 0.8618138186181382,
+      "parents": [
+        -1,
+        0,
+        1,
+        6,
+        3,
+        2,
+        7,
+        5,
+        -1,
+        8,
+        9,
+        10
+      ],
+      "edges": "density_top_left->density_top_center  density_top_center->density_top_right  density_bottom_left->density_middle_left  density_middle_left->density_middle_center  density_top_right->density_middle_right  density_bottom_right->density_bottom_left  density_middle_right->density_bottom_right  euler_topology->vertical_runs  vertical_runs->aspect_ratio  aspect_ratio->vertical_dominance"
+    },
+    {
+      "variant": "G_ml_tl|S_inc",
+      "accuracy": 0.8616138386161384,
+      "parents": [
+        -1,
+        0,
+        1,
+        0,
+        3,
+        4,
+        7,
+        5,
+        -1,
+        8,
+        9,
+        9
+      ],
+      "edges": "density_top_left->density_top_center  density_top_center->density_top_right  density_top_left->density_middle_left  density_middle_left->density_middle_center  density_middle_center->density_middle_right  density_bottom_right->density_bottom_left  density_middle_right->density_bottom_right  euler_topology->vertical_runs  vertical_runs->aspect_ratio  vertical_runs->vertical_dominance"
+    },
+    {
+      "variant": "G_ml_tl|S_vr_hub",
+      "accuracy": 0.8616138386161384,
+      "parents": [
+        -1,
+        0,
+        1,
+        0,
+        3,
+        4,
+        7,
+        5,
+        9,
+        -1,
+        9,
+        9
+      ],
+      "edges": "density_top_left->density_top_center  density_top_center->density_top_right  density_top_left->density_middle_left  density_middle_left->density_middle_center  density_middle_center->density_middle_right  density_bottom_right->density_bottom_left  density_middle_right->density_bottom_right  vertical_runs->euler_topology  vertical_runs->aspect_ratio  vertical_runs->vertical_dominance"
+    },
+    {
+      "variant": "G_ml_br|S_evra",
+      "accuracy": 0.8616138386161384,
+      "parents": [
+        -1,
+        0,
+        1,
+        7,
+        3,
+        4,
+        7,
+        5,
+        -1,
+        11,
+        9,
+        8
+      ],
+      "edges": "density_top_left->density_top_center  density_top_center->density_top_right  density_bottom_right->density_middle_left  density_middle_left->density_middle_center  density_middle_center->density_middle_right  density_bottom_right->density_bottom_left  density_middle_right->density_bottom_right  vertical_dominance->vertical_runs  vertical_runs->aspect_ratio  euler_topology->vertical_dominance"
+    },
+    {
+      "variant": "G_ml_tl|S_eavr",
+      "accuracy": 0.8615138486151385,
+      "parents": [
+        -1,
+        0,
+        1,
+        0,
+        3,
+        4,
+        7,
+        5,
+        -1,
+        10,
+        8,
+        9
+      ],
+      "edges": "density_top_left->density_top_center  density_top_center->density_top_right  density_top_left->density_middle_left  density_middle_left->density_middle_center  density_middle_center->density_middle_right  density_bottom_right->density_bottom_left  density_middle_right->density_bottom_right  aspect_ratio->vertical_runs  euler_topology->aspect_ratio  vertical_runs->vertical_dominance"
+    },
+    {
+      "variant": "G_ml_br|S_vr_vdom",
+      "accuracy": 0.8615138486151385,
+      "parents": [
+        -1,
+        0,
+        1,
+        7,
+        3,
+        4,
+        7,
+        5,
+        -1,
+        11,
+        9,
+        -1
+      ],
+      "edges": "density_top_left->density_top_center  density_top_center->density_top_right  density_bottom_right->density_middle_left  density_middle_left->density_middle_center  density_middle_center->density_middle_right  density_bottom_right->density_bottom_left  density_middle_right->density_bottom_right  vertical_dominance->vertical_runs  vertical_runs->aspect_ratio"
+    },
+    {
+      "variant": "G_incumbent|S_inc",
+      "accuracy": 0.8614138586141386,
+      "parents": [
+        -1,
+        0,
+        1,
+        -1,
+        3,
+        4,
+        7,
+        5,
+        -1,
+        8,
+        9,
+        9
+      ],
+      "edges": "density_top_left->density_top_center  density_top_center->density_top_right  density_middle_left->density_middle_center  density_middle_center->density_middle_right  density_bottom_right->density_bottom_left  density_middle_right->density_bottom_right  euler_topology->vertical_runs  vertical_runs->aspect_ratio  vertical_runs->vertical_dominance"
+    },
+    {
+      "variant": "G_incumbent|S_vr_hub",
+      "accuracy": 0.8614138586141386,
+      "parents": [
+        -1,
+        0,
+        1,
+        -1,
+        3,
+        4,
+        7,
+        5,
+        9,
+        -1,
+        9,
+        9
+      ],
+      "edges": "density_top_left->density_top_center  density_top_center->density_top_right  density_middle_left->density_middle_center  density_middle_center->density_middle_right  density_bottom_right->density_bottom_left  density_middle_right->density_bottom_right  vertical_runs->euler_topology  vertical_runs->aspect_ratio  vertical_runs->vertical_dominance"
+    },
+    {
+      "variant": "G_incumbent|S_vr_vdom",
+      "accuracy": 0.8612138786121388,
+      "parents": [
+        -1,
+        0,
+        1,
+        -1,
+        3,
+        4,
+        7,
+        5,
+        -1,
+        11,
+        9,
+        -1
+      ],
+      "edges": "density_top_left->density_top_center  density_top_center->density_top_right  density_middle_left->density_middle_center  density_middle_center->density_middle_right  density_bottom_right->density_bottom_left  density_middle_right->density_bottom_right  vertical_dominance->vertical_runs  vertical_runs->aspect_ratio"
+    },
+    {
+      "variant": "G_ml_br|S_eavr",
+      "accuracy": 0.8611138886111389,
+      "parents": [
+        -1,
+        0,
+        1,
+        7,
+        3,
+        4,
+        7,
+        5,
+        -1,
+        10,
+        8,
+        9
+      ],
+      "edges": "density_top_left->density_top_center  density_top_center->density_top_right  density_bottom_right->density_middle_left  density_middle_left->density_middle_center  density_middle_center->density_middle_right  density_bottom_right->density_bottom_left  density_middle_right->density_bottom_right  aspect_ratio->vertical_runs  euler_topology->aspect_ratio  vertical_runs->vertical_dominance"
+    },
+    {
+      "variant": "G_serp|S_v2",
+      "accuracy": 0.861013898610139,
+      "parents": [
+        -1,
+        0,
+        1,
+        6,
+        3,
+        2,
+        7,
+        5,
+        -1,
+        8,
+        11,
+        -1
+      ],
+      "edges": "density_top_left->density_top_center  density_top_center->density_top_right  density_bottom_left->density_middle_left  density_middle_left->density_middle_center  density_top_right->density_middle_right  density_bottom_right->density_bottom_left  density_middle_right->density_bottom_right  euler_topology->vertical_runs  vertical_dominance->aspect_ratio"
+    },
+    {
+      "variant": "G_ml_tl|S_serial",
+      "accuracy": 0.861013898610139,
+      "parents": [
+        -1,
+        0,
+        1,
+        0,
+        3,
+        4,
+        7,
+        5,
+        -1,
+        8,
+        9,
+        10
+      ],
+      "edges": "density_top_left->density_top_center  density_top_center->density_top_right  density_top_left->density_middle_left  density_middle_left->density_middle_center  density_middle_center->density_middle_right  density_bottom_right->density_bottom_left  density_middle_right->density_bottom_right  euler_topology->vertical_runs  vertical_runs->aspect_ratio  aspect_ratio->vertical_dominance"
+    },
+    {
+      "variant": "G_ml_tl|S_vr_vdom",
+      "accuracy": 0.861013898610139,
+      "parents": [
+        -1,
+        0,
+        1,
+        0,
+        3,
+        4,
+        7,
+        5,
+        -1,
+        11,
+        9,
+        -1
+      ],
+      "edges": "density_top_left->density_top_center  density_top_center->density_top_right  density_top_left->density_middle_left  density_middle_left->density_middle_center  density_middle_center->density_middle_right  density_bottom_right->density_bottom_left  density_middle_right->density_bottom_right  vertical_dominance->vertical_runs  vertical_runs->aspect_ratio"
+    },
+    {
+      "variant": "G_ml_bl|S_serial",
+      "accuracy": 0.8609139086091391,
+      "parents": [
+        -1,
+        0,
+        1,
+        6,
+        3,
+        4,
+        7,
+        5,
+        -1,
+        8,
+        9,
+        10
+      ],
+      "edges": "density_top_left->density_top_center  density_top_center->density_top_right  density_bottom_left->density_middle_left  density_middle_left->density_middle_center  density_middle_center->density_middle_right  density_bottom_right->density_bottom_left  density_middle_right->density_bottom_right  euler_topology->vertical_runs  vertical_runs->aspect_ratio  aspect_ratio->vertical_dominance"
+    },
+    {
+      "variant": "G_ml_tl|S_v2",
+      "accuracy": 0.8607139286071392,
+      "parents": [
+        -1,
+        0,
+        1,
+        0,
+        3,
+        4,
+        7,
+        5,
+        -1,
+        8,
+        11,
+        -1
+      ],
+      "edges": "density_top_left->density_top_center  density_top_center->density_top_right  density_top_left->density_middle_left  density_middle_left->density_middle_center  density_middle_center->density_middle_right  density_bottom_right->density_bottom_left  density_middle_right->density_bottom_right  euler_topology->vertical_runs  vertical_dominance->aspect_ratio"
+    },
+    {
+      "variant": "G_ml_br|S_serial",
+      "accuracy": 0.8607139286071392,
+      "parents": [
+        -1,
+        0,
+        1,
+        7,
+        3,
+        4,
+        7,
+        5,
+        -1,
+        8,
+        9,
+        10
+      ],
+      "edges": "density_top_left->density_top_center  density_top_center->density_top_right  density_bottom_right->density_middle_left  density_middle_left->density_middle_center  density_middle_center->density_middle_right  density_bottom_right->density_bottom_left  density_middle_right->density_bottom_right  euler_topology->vertical_runs  vertical_runs->aspect_ratio  aspect_ratio->vertical_dominance"
+    },
+    {
+      "variant": "G_incumbent|S_serial",
+      "accuracy": 0.8605139486051395,
+      "parents": [
+        -1,
+        0,
+        1,
+        -1,
+        3,
+        4,
+        7,
+        5,
+        -1,
+        8,
+        9,
+        10
+      ],
+      "edges": "density_top_left->density_top_center  density_top_center->density_top_right  density_middle_left->density_middle_center  density_middle_center->density_middle_right  density_bottom_right->density_bottom_left  density_middle_right->density_bottom_right  euler_topology->vertical_runs  vertical_runs->aspect_ratio  aspect_ratio->vertical_dominance"
+    },
+    {
+      "variant": "G_ml_bl|S_v2",
+      "accuracy": 0.8602139786021398,
+      "parents": [
+        -1,
+        0,
+        1,
+        6,
+        3,
+        4,
+        7,
+        5,
+        -1,
+        8,
+        11,
+        -1
+      ],
+      "edges": "density_top_left->density_top_center  density_top_center->density_top_right  density_bottom_left->density_middle_left  density_middle_left->density_middle_center  density_middle_center->density_middle_right  density_bottom_right->density_bottom_left  density_middle_right->density_bottom_right  euler_topology->vertical_runs  vertical_dominance->aspect_ratio"
+    },
+    {
+      "variant": "G_ml_br|S_v2",
+      "accuracy": 0.8602139786021398,
+      "parents": [
+        -1,
+        0,
+        1,
+        7,
+        3,
+        4,
+        7,
+        5,
+        -1,
+        8,
+        11,
+        -1
+      ],
+      "edges": "density_top_left->density_top_center  density_top_center->density_top_right  density_bottom_right->density_middle_left  density_middle_left->density_middle_center  density_middle_center->density_middle_right  density_bottom_right->density_bottom_left  density_middle_right->density_bottom_right  euler_topology->vertical_runs  vertical_dominance->aspect_ratio"
+    },
+    {
+      "variant": "G_diag_tl_mc|S_v2",
+      "accuracy": 0.8601139886011399,
+      "parents": [
+        -1,
+        0,
+        1,
+        7,
+        0,
+        4,
+        7,
+        5,
+        -1,
+        8,
+        11,
+        -1
+      ],
+      "edges": "density_top_left->density_top_center  density_top_center->density_top_right  density_bottom_right->density_middle_left  density_top_left->density_middle_center  density_middle_center->density_middle_right  density_bottom_right->density_bottom_left  density_middle_right->density_bottom_right  euler_topology->vertical_runs  vertical_dominance->aspect_ratio"
+    },
+    {
+      "variant": "G_diag_tl_mc|S_serial",
+      "accuracy": 0.8600139986001399,
+      "parents": [
+        -1,
+        0,
+        1,
+        7,
+        0,
+        4,
+        7,
+        5,
+        -1,
+        8,
+        9,
+        10
+      ],
+      "edges": "density_top_left->density_top_center  density_top_center->density_top_right  density_bottom_right->density_middle_left  density_top_left->density_middle_center  density_middle_center->density_middle_right  density_bottom_right->density_bottom_left  density_middle_right->density_bottom_right  euler_topology->vertical_runs  vertical_runs->aspect_ratio  aspect_ratio->vertical_dominance"
+    },
+    {
+      "variant": "G_incumbent|S_v2",
+      "accuracy": 0.8596140385961404,
+      "parents": [
+        -1,
+        0,
+        1,
+        -1,
+        3,
+        4,
+        7,
+        5,
+        -1,
+        8,
+        11,
+        -1
+      ],
+      "edges": "density_top_left->density_top_center  density_top_center->density_top_right  density_middle_left->density_middle_center  density_middle_center->density_middle_right  density_bottom_right->density_bottom_left  density_middle_right->density_bottom_right  euler_topology->vertical_runs  vertical_dominance->aspect_ratio"
+    },
+    {
+      "variant": "G_raster|S_evra",
+      "accuracy": 0.8584141585841416,
+      "parents": [
+        -1,
+        0,
+        1,
+        2,
+        3,
+        4,
+        5,
+        6,
+        -1,
+        11,
+        9,
+        8
+      ],
+      "edges": "density_top_left->density_top_center  density_top_center->density_top_right  density_top_right->density_middle_left  density_middle_left->density_middle_center  density_middle_center->density_middle_right  density_middle_right->density_bottom_left  density_bottom_left->density_bottom_right  vertical_dominance->vertical_runs  vertical_runs->aspect_ratio  euler_topology->vertical_dominance"
+    },
+    {
+      "variant": "G_raster|S_vr_hub",
+      "accuracy": 0.8584141585841416,
+      "parents": [
+        -1,
+        0,
+        1,
+        2,
+        3,
+        4,
+        5,
+        6,
+        9,
+        -1,
+        9,
+        9
+      ],
+      "edges": "density_top_left->density_top_center  density_top_center->density_top_right  density_top_right->density_middle_left  density_middle_left->density_middle_center  density_middle_center->density_middle_right  density_middle_right->density_bottom_left  density_bottom_left->density_bottom_right  vertical_runs->euler_topology  vertical_runs->aspect_ratio  vertical_runs->vertical_dominance"
+    },
+    {
+      "variant": "G_raster|S_inc",
+      "accuracy": 0.8582141785821418,
+      "parents": [
+        -1,
+        0,
+        1,
+        2,
+        3,
+        4,
+        5,
+        6,
+        -1,
+        8,
+        9,
+        9
+      ],
+      "edges": "density_top_left->density_top_center  density_top_center->density_top_right  density_top_right->density_middle_left  density_middle_left->density_middle_center  density_middle_center->density_middle_right  density_middle_right->density_bottom_left  density_bottom_left->density_bottom_right  euler_topology->vertical_runs  vertical_runs->aspect_ratio  vertical_runs->vertical_dominance"
+    },
+    {
+      "variant": "G_raster|S_serial",
+      "accuracy": 0.8577142285771423,
+      "parents": [
+        -1,
+        0,
+        1,
+        2,
+        3,
+        4,
+        5,
+        6,
+        -1,
+        8,
+        9,
+        10
+      ],
+      "edges": "density_top_left->density_top_center  density_top_center->density_top_right  density_top_right->density_middle_left  density_middle_left->density_middle_center  density_middle_center->density_middle_right  density_middle_right->density_bottom_left  density_bottom_left->density_bottom_right  euler_topology->vertical_runs  vertical_runs->aspect_ratio  aspect_ratio->vertical_dominance"
+    },
+    {
+      "variant": "G_raster|S_eavr",
+      "accuracy": 0.8575142485751425,
+      "parents": [
+        -1,
+        0,
+        1,
+        2,
+        3,
+        4,
+        5,
+        6,
+        -1,
+        10,
+        8,
+        9
+      ],
+      "edges": "density_top_left->density_top_center  density_top_center->density_top_right  density_top_right->density_middle_left  density_middle_left->density_middle_center  density_middle_center->density_middle_right  density_middle_right->density_bottom_left  density_bottom_left->density_bottom_right  aspect_ratio->vertical_runs  euler_topology->aspect_ratio  vertical_runs->vertical_dominance"
+    },
+    {
+      "variant": "G_boustro_rev|S_evra",
+      "accuracy": 0.8574142585741426,
+      "parents": [
+        -1,
+        0,
+        1,
+        4,
+        5,
+        2,
+        7,
+        3,
+        -1,
+        11,
+        9,
+        8
+      ],
+      "edges": "density_top_left->density_top_center  density_top_center->density_top_right  density_middle_center->density_middle_left  density_middle_right->density_middle_center  density_top_right->density_middle_right  density_bottom_right->density_bottom_left  density_middle_left->density_bottom_right  vertical_dominance->vertical_runs  vertical_runs->aspect_ratio  euler_topology->vertical_dominance"
+    },
+    {
+      "variant": "G_raster|S_vr_vdom",
+      "accuracy": 0.857014298570143,
+      "parents": [
+        -1,
+        0,
+        1,
+        2,
+        3,
+        4,
+        5,
+        6,
+        -1,
+        11,
+        9,
+        -1
+      ],
+      "edges": "density_top_left->density_top_center  density_top_center->density_top_right  density_top_right->density_middle_left  density_middle_left->density_middle_center  density_middle_center->density_middle_right  density_middle_right->density_bottom_left  density_bottom_left->density_bottom_right  vertical_dominance->vertical_runs  vertical_runs->aspect_ratio"
+    },
+    {
+      "variant": "G_raster|S_v2",
+      "accuracy": 0.8568143185681432,
+      "parents": [
+        -1,
+        0,
+        1,
+        2,
+        3,
+        4,
+        5,
+        6,
+        -1,
+        8,
+        11,
+        -1
+      ],
+      "edges": "density_top_left->density_top_center  density_top_center->density_top_right  density_top_right->density_middle_left  density_middle_left->density_middle_center  density_middle_center->density_middle_right  density_middle_right->density_bottom_left  density_bottom_left->density_bottom_right  euler_topology->vertical_runs  vertical_dominance->aspect_ratio"
+    },
+    {
+      "variant": "G_boustro_rev|S_vr_vdom",
+      "accuracy": 0.8560143985601439,
+      "parents": [
+        -1,
+        0,
+        1,
+        4,
+        5,
+        2,
+        7,
+        3,
+        -1,
+        11,
+        9,
+        -1
+      ],
+      "edges": "density_top_left->density_top_center  density_top_center->density_top_right  density_middle_center->density_middle_left  density_middle_right->density_middle_center  density_top_right->density_middle_right  density_bottom_right->density_bottom_left  density_middle_left->density_bottom_right  vertical_dominance->vertical_runs  vertical_runs->aspect_ratio"
+    },
+    {
+      "variant": "G_boustro_rev|S_serial",
+      "accuracy": 0.8557144285571443,
+      "parents": [
+        -1,
+        0,
+        1,
+        4,
+        5,
+        2,
+        7,
+        3,
+        -1,
+        8,
+        9,
+        10
+      ],
+      "edges": "density_top_left->density_top_center  density_top_center->density_top_right  density_middle_center->density_middle_left  density_middle_right->density_middle_center  density_top_right->density_middle_right  density_bottom_right->density_bottom_left  density_middle_left->density_bottom_right  euler_topology->vertical_runs  vertical_runs->aspect_ratio  aspect_ratio->vertical_dominance"
+    },
+    {
+      "variant": "G_boustro_rev|S_eavr",
+      "accuracy": 0.8554144585541446,
+      "parents": [
+        -1,
+        0,
+        1,
+        4,
+        5,
+        2,
+        7,
+        3,
+        -1,
+        10,
+        8,
+        9
+      ],
+      "edges": "density_top_left->density_top_center  density_top_center->density_top_right  density_middle_center->density_middle_left  density_middle_right->density_middle_center  density_top_right->density_middle_right  density_bottom_right->density_bottom_left  density_middle_left->density_bottom_right  aspect_ratio->vertical_runs  euler_topology->aspect_ratio  vertical_runs->vertical_dominance"
+    },
+    {
+      "variant": "G_boustro_rev|S_vr_hub",
+      "accuracy": 0.8554144585541446,
+      "parents": [
+        -1,
+        0,
+        1,
+        4,
+        5,
+        2,
+        7,
+        3,
+        9,
+        -1,
+        9,
+        9
+      ],
+      "edges": "density_top_left->density_top_center  density_top_center->density_top_right  density_middle_center->density_middle_left  density_middle_right->density_middle_center  density_top_right->density_middle_right  density_bottom_right->density_bottom_left  density_middle_left->density_bottom_right  vertical_runs->euler_topology  vertical_runs->aspect_ratio  vertical_runs->vertical_dominance"
+    },
+    {
+      "variant": "G_boustro_rev|S_inc",
+      "accuracy": 0.8552144785521448,
+      "parents": [
+        -1,
+        0,
+        1,
+        4,
+        5,
+        2,
+        7,
+        3,
+        -1,
+        8,
+        9,
+        9
+      ],
+      "edges": "density_top_left->density_top_center  density_top_center->density_top_right  density_middle_center->density_middle_left  density_middle_right->density_middle_center  density_top_right->density_middle_right  density_bottom_right->density_bottom_left  density_middle_left->density_bottom_right  euler_topology->vertical_runs  vertical_runs->aspect_ratio  vertical_runs->vertical_dominance"
+    },
+    {
+      "variant": "G_hub_mc|S_vr_hub",
+      "accuracy": 0.8549145085491451,
+      "parents": [
+        -1,
+        0,
+        1,
+        6,
+        3,
+        4,
+        7,
+        4,
+        9,
+        -1,
+        9,
+        9
+      ],
+      "edges": "density_top_left->density_top_center  density_top_center->density_top_right  density_bottom_left->density_middle_left  density_middle_left->density_middle_center  density_middle_center->density_middle_right  density_bottom_right->density_bottom_left  density_middle_center->density_bottom_right  vertical_runs->euler_topology  vertical_runs->aspect_ratio  vertical_runs->vertical_dominance"
+    },
+    {
+      "variant": "G_hub_mc|S_inc",
+      "accuracy": 0.8547145285471452,
+      "parents": [
+        -1,
+        0,
+        1,
+        6,
+        3,
+        4,
+        7,
+        4,
+        -1,
+        8,
+        9,
+        9
+      ],
+      "edges": "density_top_left->density_top_center  density_top_center->density_top_right  density_bottom_left->density_middle_left  density_middle_left->density_middle_center  density_middle_center->density_middle_right  density_bottom_right->density_bottom_left  density_middle_center->density_bottom_right  euler_topology->vertical_runs  vertical_runs->aspect_ratio  vertical_runs->vertical_dominance"
+    },
+    {
+      "variant": "G_boustro_rev|S_v2",
+      "accuracy": 0.8546145385461453,
+      "parents": [
+        -1,
+        0,
+        1,
+        4,
+        5,
+        2,
+        7,
+        3,
+        -1,
+        8,
+        11,
+        -1
+      ],
+      "edges": "density_top_left->density_top_center  density_top_center->density_top_right  density_middle_center->density_middle_left  density_middle_right->density_middle_center  density_top_right->density_middle_right  density_bottom_right->density_bottom_left  density_middle_left->density_bottom_right  euler_topology->vertical_runs  vertical_dominance->aspect_ratio"
+    },
+    {
+      "variant": "G_hub_mc|S_evra",
+      "accuracy": 0.8545145485451455,
+      "parents": [
+        -1,
+        0,
+        1,
+        6,
+        3,
+        4,
+        7,
+        4,
+        -1,
+        11,
+        9,
+        8
+      ],
+      "edges": "density_top_left->density_top_center  density_top_center->density_top_right  density_bottom_left->density_middle_left  density_middle_left->density_middle_center  density_middle_center->density_middle_right  density_bottom_right->density_bottom_left  density_middle_center->density_bottom_right  vertical_dominance->vertical_runs  vertical_runs->aspect_ratio  euler_topology->vertical_dominance"
+    },
+    {
+      "variant": "G_boustro|S_evra",
+      "accuracy": 0.8544145585441456,
+      "parents": [
+        -1,
+        0,
+        1,
+        4,
+        5,
+        2,
+        3,
+        6,
+        -1,
+        11,
+        9,
+        8
+      ],
+      "edges": "density_top_left->density_top_center  density_top_center->density_top_right  density_middle_center->density_middle_left  density_middle_right->density_middle_center  density_top_right->density_middle_right  density_middle_left->density_bottom_left  density_bottom_left->density_bottom_right  vertical_dominance->vertical_runs  vertical_runs->aspect_ratio  euler_topology->vertical_dominance"
+    },
+    {
+      "variant": "G_boustro|S_eavr",
+      "accuracy": 0.8537146285371463,
+      "parents": [
+        -1,
+        0,
+        1,
+        4,
+        5,
+        2,
+        3,
+        6,
+        -1,
+        10,
+        8,
+        9
+      ],
+      "edges": "density_top_left->density_top_center  density_top_center->density_top_right  density_middle_center->density_middle_left  density_middle_right->density_middle_center  density_top_right->density_middle_right  density_middle_left->density_bottom_left  density_bottom_left->density_bottom_right  aspect_ratio->vertical_runs  euler_topology->aspect_ratio  vertical_runs->vertical_dominance"
+    },
+    {
+      "variant": "G_boustro|S_vr_hub",
+      "accuracy": 0.8537146285371463,
+      "parents": [
+        -1,
+        0,
+        1,
+        4,
+        5,
+        2,
+        3,
+        6,
+        9,
+        -1,
+        9,
+        9
+      ],
+      "edges": "density_top_left->density_top_center  density_top_center->density_top_right  density_middle_center->density_middle_left  density_middle_right->density_middle_center  density_top_right->density_middle_right  density_middle_left->density_bottom_left  density_bottom_left->density_bottom_right  vertical_runs->euler_topology  vertical_runs->aspect_ratio  vertical_runs->vertical_dominance"
+    },
+    {
+      "variant": "G_hub_mc|S_eavr",
+      "accuracy": 0.8537146285371463,
+      "parents": [
+        -1,
+        0,
+        1,
+        6,
+        3,
+        4,
+        7,
+        4,
+        -1,
+        10,
+        8,
+        9
+      ],
+      "edges": "density_top_left->density_top_center  density_top_center->density_top_right  density_bottom_left->density_middle_left  density_middle_left->density_middle_center  density_middle_center->density_middle_right  density_bottom_right->density_bottom_left  density_middle_center->density_bottom_right  aspect_ratio->vertical_runs  euler_topology->aspect_ratio  vertical_runs->vertical_dominance"
+    },
+    {
+      "variant": "G_boustro|S_inc",
+      "accuracy": 0.8536146385361464,
+      "parents": [
+        -1,
+        0,
+        1,
+        4,
+        5,
+        2,
+        3,
+        6,
+        -1,
+        8,
+        9,
+        9
+      ],
+      "edges": "density_top_left->density_top_center  density_top_center->density_top_right  density_middle_center->density_middle_left  density_middle_right->density_middle_center  density_top_right->density_middle_right  density_middle_left->density_bottom_left  density_bottom_left->density_bottom_right  euler_topology->vertical_runs  vertical_runs->aspect_ratio  vertical_runs->vertical_dominance"
+    },
+    {
+      "variant": "G_hub_mc|S_vr_vdom",
+      "accuracy": 0.8534146585341466,
+      "parents": [
+        -1,
+        0,
+        1,
+        6,
+        3,
+        4,
+        7,
+        4,
+        -1,
+        11,
+        9,
+        -1
+      ],
+      "edges": "density_top_left->density_top_center  density_top_center->density_top_right  density_bottom_left->density_middle_left  density_middle_left->density_middle_center  density_middle_center->density_middle_right  density_bottom_right->density_bottom_left  density_middle_center->density_bottom_right  vertical_dominance->vertical_runs  vertical_runs->aspect_ratio"
+    },
+    {
+      "variant": "G_boustro|S_vr_vdom",
+      "accuracy": 0.8533146685331466,
+      "parents": [
+        -1,
+        0,
+        1,
+        4,
+        5,
+        2,
+        3,
+        6,
+        -1,
+        11,
+        9,
+        -1
+      ],
+      "edges": "density_top_left->density_top_center  density_top_center->density_top_right  density_middle_center->density_middle_left  density_middle_right->density_middle_center  density_top_right->density_middle_right  density_middle_left->density_bottom_left  density_bottom_left->density_bottom_right  vertical_dominance->vertical_runs  vertical_runs->aspect_ratio"
+    },
+    {
+      "variant": "G_hub_mc|S_serial",
+      "accuracy": 0.8529147085291471,
+      "parents": [
+        -1,
+        0,
+        1,
+        6,
+        3,
+        4,
+        7,
+        4,
+        -1,
+        8,
+        9,
+        10
+      ],
+      "edges": "density_top_left->density_top_center  density_top_center->density_top_right  density_bottom_left->density_middle_left  density_middle_left->density_middle_center  density_middle_center->density_middle_right  density_bottom_right->density_bottom_left  density_middle_center->density_bottom_right  euler_topology->vertical_runs  vertical_runs->aspect_ratio  aspect_ratio->vertical_dominance"
+    },
+    {
+      "variant": "G_boustro|S_serial",
+      "accuracy": 0.8523147685231477,
+      "parents": [
+        -1,
+        0,
+        1,
+        4,
+        5,
+        2,
+        3,
+        6,
+        -1,
+        8,
+        9,
+        10
+      ],
+      "edges": "density_top_left->density_top_center  density_top_center->density_top_right  density_middle_center->density_middle_left  density_middle_right->density_middle_center  density_top_right->density_middle_right  density_middle_left->density_bottom_left  density_bottom_left->density_bottom_right  euler_topology->vertical_runs  vertical_runs->aspect_ratio  aspect_ratio->vertical_dominance"
+    },
+    {
+      "variant": "G_hub_mc|S_v2",
+      "accuracy": 0.8522147785221478,
+      "parents": [
+        -1,
+        0,
+        1,
+        6,
+        3,
+        4,
+        7,
+        4,
+        -1,
+        8,
+        11,
+        -1
+      ],
+      "edges": "density_top_left->density_top_center  density_top_center->density_top_right  density_bottom_left->density_middle_left  density_middle_left->density_middle_center  density_middle_center->density_middle_right  density_bottom_right->density_bottom_left  density_middle_center->density_bottom_right  euler_topology->vertical_runs  vertical_dominance->aspect_ratio"
+    },
+    {
+      "variant": "G_boustro|S_v2",
+      "accuracy": 0.8511148885111489,
+      "parents": [
+        -1,
+        0,
+        1,
+        4,
+        5,
+        2,
+        3,
+        6,
+        -1,
+        8,
+        11,
+        -1
+      ],
+      "edges": "density_top_left->density_top_center  density_top_center->density_top_right  density_middle_center->density_middle_left  density_middle_right->density_middle_center  density_top_right->density_middle_right  density_middle_left->density_bottom_left  density_bottom_left->density_bottom_right  euler_topology->vertical_runs  vertical_dominance->aspect_ratio"
+    }
+  ],
+  "refine": [
+    {
+      "variant": "R_serp_tl_cw|S_evra",
+      "accuracy": 0.8653134686531346,
+      "parents": [
+        -1,
+        0,
+        1,
+        6,
+        3,
+        2,
+        7,
+        5,
+        -1,
+        11,
+        9,
+        8
+      ],
+      "edges": "density_top_left->density_top_center  density_top_center->density_top_right  density_bottom_left->density_middle_left  density_middle_left->density_middle_center  density_top_right->density_middle_right  density_bottom_right->density_bottom_left  density_middle_right->density_bottom_right  vertical_dominance->vertical_runs  vertical_runs->aspect_ratio  euler_topology->vertical_dominance"
+    },
+    {
+      "variant": "R_serp_short|S_evra",
+      "accuracy": 0.8653134686531346,
+      "parents": [
+        -1,
+        0,
+        1,
+        6,
+        3,
+        2,
+        7,
+        5,
+        -1,
+        11,
+        9,
+        8
+      ],
+      "edges": "density_top_left->density_top_center  density_top_center->density_top_right  density_bottom_left->density_middle_left  density_middle_left->density_middle_center  density_top_right->density_middle_right  density_bottom_right->density_bottom_left  density_middle_right->density_bottom_right  vertical_dominance->vertical_runs  vertical_runs->aspect_ratio  euler_topology->vertical_dominance"
+    },
+    {
+      "variant": "R_serp_tr_cw|S_eavr",
+      "accuracy": 0.8644135586441356,
+      "parents": [
+        1,
+        2,
+        -1,
+        0,
+        5,
+        7,
+        3,
+        6,
+        -1,
+        10,
+        8,
+        9
+      ],
+      "edges": "density_top_center->density_top_left  density_top_right->density_top_center  density_top_left->density_middle_left  density_middle_right->density_middle_center  density_bottom_right->density_middle_right  density_middle_left->density_bottom_left  density_bottom_left->density_bottom_right  aspect_ratio->vertical_runs  euler_topology->aspect_ratio  vertical_runs->vertical_dominance"
+    },
+    {
+      "variant": "R_serp_tl_cw|S_eavr",
+      "accuracy": 0.8643135686431357,
+      "parents": [
+        -1,
+        0,
+        1,
+        6,
+        3,
+        2,
+        7,
+        5,
+        -1,
+        10,
+        8,
+        9
+      ],
+      "edges": "density_top_left->density_top_center  density_top_center->density_top_right  density_bottom_left->density_middle_left  density_middle_left->density_middle_center  density_top_right->density_middle_right  density_bottom_right->density_bottom_left  density_middle_right->density_bottom_right  aspect_ratio->vertical_runs  euler_topology->aspect_ratio  vertical_runs->vertical_dominance"
+    },
+    {
+      "variant": "R_serp_short|S_eavr",
+      "accuracy": 0.8643135686431357,
+      "parents": [
+        -1,
+        0,
+        1,
+        6,
+        3,
+        2,
+        7,
+        5,
+        -1,
+        10,
+        8,
+        9
+      ],
+      "edges": "density_top_left->density_top_center  density_top_center->density_top_right  density_bottom_left->density_middle_left  density_middle_left->density_middle_center  density_top_right->density_middle_right  density_bottom_right->density_bottom_left  density_middle_right->density_bottom_right  aspect_ratio->vertical_runs  euler_topology->aspect_ratio  vertical_runs->vertical_dominance"
+    },
+    {
+      "variant": "R_serp_tr_cw|S_evra",
+      "accuracy": 0.8642135786421358,
+      "parents": [
+        1,
+        2,
+        -1,
+        0,
+        5,
+        7,
+        3,
+        6,
+        -1,
+        11,
+        9,
+        8
+      ],
+      "edges": "density_top_center->density_top_left  density_top_right->density_top_center  density_top_left->density_middle_left  density_middle_right->density_middle_center  density_bottom_right->density_middle_right  density_middle_left->density_bottom_left  density_bottom_left->density_bottom_right  vertical_dominance->vertical_runs  vertical_runs->aspect_ratio  euler_topology->vertical_dominance"
+    },
+    {
+      "variant": "R_serp_tr_cw|S_inc",
+      "accuracy": 0.8638136186381362,
+      "parents": [
+        1,
+        2,
+        -1,
+        0,
+        5,
+        7,
+        3,
+        6,
+        -1,
+        8,
+        9,
+        9
+      ],
+      "edges": "density_top_center->density_top_left  density_top_right->density_top_center  density_top_left->density_middle_left  density_middle_right->density_middle_center  density_bottom_right->density_middle_right  density_middle_left->density_bottom_left  density_bottom_left->density_bottom_right  euler_topology->vertical_runs  vertical_runs->aspect_ratio  vertical_runs->vertical_dominance"
+    },
+    {
+      "variant": "R_serp_tl_cw|S_inc",
+      "accuracy": 0.8634136586341365,
+      "parents": [
+        -1,
+        0,
+        1,
+        6,
+        3,
+        2,
+        7,
+        5,
+        -1,
+        8,
+        9,
+        9
+      ],
+      "edges": "density_top_left->density_top_center  density_top_center->density_top_right  density_bottom_left->density_middle_left  density_middle_left->density_middle_center  density_top_right->density_middle_right  density_bottom_right->density_bottom_left  density_middle_right->density_bottom_right  euler_topology->vertical_runs  vertical_runs->aspect_ratio  vertical_runs->vertical_dominance"
+    },
+    {
+      "variant": "R_serp_short|S_inc",
+      "accuracy": 0.8634136586341365,
+      "parents": [
+        -1,
+        0,
+        1,
+        6,
+        3,
+        2,
+        7,
+        5,
+        -1,
+        8,
+        9,
+        9
+      ],
+      "edges": "density_top_left->density_top_center  density_top_center->density_top_right  density_bottom_left->density_middle_left  density_middle_left->density_middle_center  density_top_right->density_middle_right  density_bottom_right->density_bottom_left  density_middle_right->density_bottom_right  euler_topology->vertical_runs  vertical_runs->aspect_ratio  vertical_runs->vertical_dominance"
+    },
+    {
+      "variant": "R_serp_tl_ccw|S_evra",
+      "accuracy": 0.8611138886111389,
+      "parents": [
+        -1,
+        2,
+        5,
+        0,
+        1,
+        7,
+        3,
+        6,
+        -1,
+        11,
+        9,
+        8
+      ],
+      "edges": "density_top_right->density_top_center  density_middle_right->density_top_right  density_top_left->density_middle_left  density_top_center->density_middle_center  density_bottom_right->density_middle_right  density_middle_left->density_bottom_left  density_bottom_left->density_bottom_right  vertical_dominance->vertical_runs  vertical_runs->aspect_ratio  euler_topology->vertical_dominance"
+    },
+    {
+      "variant": "R_serp_tl_ccw|S_eavr",
+      "accuracy": 0.8609139086091391,
+      "parents": [
+        -1,
+        2,
+        5,
+        0,
+        1,
+        7,
+        3,
+        6,
+        -1,
+        10,
+        8,
+        9
+      ],
+      "edges": "density_top_right->density_top_center  density_middle_right->density_top_right  density_top_left->density_middle_left  density_top_center->density_middle_center  density_bottom_right->density_middle_right  density_middle_left->density_bottom_left  density_bottom_left->density_bottom_right  aspect_ratio->vertical_runs  euler_topology->aspect_ratio  vertical_runs->vertical_dominance"
+    },
+    {
+      "variant": "R_serp_tl_ccw|S_inc",
+      "accuracy": 0.8589141085891411,
+      "parents": [
+        -1,
+        2,
+        5,
+        0,
+        1,
+        7,
+        3,
+        6,
+        -1,
+        8,
+        9,
+        9
+      ],
+      "edges": "density_top_right->density_top_center  density_middle_right->density_top_right  density_top_left->density_middle_left  density_top_center->density_middle_center  density_bottom_right->density_middle_right  density_middle_left->density_bottom_left  density_bottom_left->density_bottom_right  euler_topology->vertical_runs  vertical_runs->aspect_ratio  vertical_runs->vertical_dominance"
+    },
+    {
+      "variant": "R_serp_mr_in|S_evra",
+      "accuracy": 0.8543145685431457,
+      "parents": [
+        -1,
+        0,
+        1,
+        6,
+        3,
+        4,
+        7,
+        2,
+        -1,
+        11,
+        9,
+        8
+      ],
+      "edges": "density_top_left->density_top_center  density_top_center->density_top_right  density_bottom_left->density_middle_left  density_middle_left->density_middle_center  density_middle_center->density_middle_right  density_bottom_right->density_bottom_left  density_top_right->density_bottom_right  vertical_dominance->vertical_runs  vertical_runs->aspect_ratio  euler_topology->vertical_dominance"
+    },
+    {
+      "variant": "R_serp_mr_in|S_inc",
+      "accuracy": 0.8541145885411459,
+      "parents": [
+        -1,
+        0,
+        1,
+        6,
+        3,
+        4,
+        7,
+        2,
+        -1,
+        8,
+        9,
+        9
+      ],
+      "edges": "density_top_left->density_top_center  density_top_center->density_top_right  density_bottom_left->density_middle_left  density_middle_left->density_middle_center  density_middle_center->density_middle_right  density_bottom_right->density_bottom_left  density_top_right->density_bottom_right  euler_topology->vertical_runs  vertical_runs->aspect_ratio  vertical_runs->vertical_dominance"
+    },
+    {
+      "variant": "R_serp_mr_in|S_eavr",
+      "accuracy": 0.8529147085291471,
+      "parents": [
+        -1,
+        0,
+        1,
+        6,
+        3,
+        4,
+        7,
+        2,
+        -1,
+        10,
+        8,
+        9
+      ],
+      "edges": "density_top_left->density_top_center  density_top_center->density_top_right  density_bottom_left->density_middle_left  density_middle_left->density_middle_center  density_middle_center->density_middle_right  density_bottom_right->density_bottom_left  density_top_right->density_bottom_right  aspect_ratio->vertical_runs  euler_topology->aspect_ratio  vertical_runs->vertical_dominance"
+    }
+  ],
+  "smoothing": [
+    {
+      "variant": "A_marginal alpha=1 (incumbent scheme)",
+      "accuracy": 0.8653134686531346
+    },
+    {
+      "variant": "B_uniform alpha=1",
+      "accuracy": 0.865013498650135
+    },
+    {
+      "variant": "B_uniform alpha=30",
+      "accuracy": 0.855014498550145
+    },
+    {
+      "variant": "B_uniform alpha=300",
+      "accuracy": 0.8101189881011899
+    },
+    {
+      "variant": "B_uniform alpha=3000",
+      "accuracy": 0.663033696630337
+    },
+    {
+      "variant": "B_grand alpha=1",
+      "accuracy": 0.8656134386561344
+    },
+    {
+      "variant": "B_grand alpha=30",
+      "accuracy": 0.8625137486251375
+    },
+    {
+      "variant": "B_grand alpha=300",
+      "accuracy": 0.8459154084591541
+    },
+    {
+      "variant": "B_grand alpha=3000",
+      "accuracy": 0.7853214678532147
+    },
+    {
+      "variant": "B_parent_marginal alpha=1",
+      "accuracy": 0.8658134186581342
+    },
+    {
+      "variant": "B_parent_marginal alpha=30",
+      "accuracy": 0.8641135886411359
+    },
+    {
+      "variant": "B_parent_marginal alpha=300",
+      "accuracy": 0.8505149485051495
+    },
+    {
+      "variant": "B_parent_marginal alpha=3000",
+      "accuracy": 0.7947205279472053
+    },
+    {
+      "variant": "C_jm lambda=0.4",
+      "accuracy": 0.8520147985201479
+    },
+    {
+      "variant": "C_jm lambda=0.6",
+      "accuracy": 0.8594140585941406
+    },
+    {
+      "variant": "C_jm lambda=0.8",
+      "accuracy": 0.8634136586341365
+    },
+    {
+      "variant": "C_jm lambda=0.9",
+      "accuracy": 0.8652134786521348
+    },
+    {
+      "variant": "C_jm lambda=0.97",
+      "accuracy": 0.8658134186581342
+    },
+    {
+      "variant": "D_uniform class prior",
+      "accuracy": 0.8640135986401359
+    },
+    {
+      "variant": "D_prior alpha=0.01",
+      "accuracy": 0.8653134686531346
+    },
+    {
+      "variant": "D_prior alpha=0.1",
+      "accuracy": 0.8653134686531346
+    },
+    {
+      "variant": "D_prior alpha=10",
+      "accuracy": 0.8653134686531346
+    },
+    {
+      "variant": "E_EB per-node alpha",
+      "accuracy": 0.8654134586541345,
+      "node_alphas": [
+        0.01,
+        3.0,
+        1.0,
+        3.0,
+        30.0,
+        10.0,
+        30.0,
+        3.0,
+        3.0,
+        0.01,
+        10.0,
+        10.0
+      ]
+    },
+    {
+      "variant": "E_EB pooled alpha",
+      "accuracy": 0.8653134686531346,
+      "node_alphas": [
+        3.0,
+        3.0,
+        3.0,
+        3.0,
+        3.0,
+        3.0,
+        3.0,
+        3.0,
+        3.0,
+        3.0,
+        3.0,
+        3.0
+      ]
+    },
+    {
+      "variant": "F_pow renorm logloss mix=0.15",
+      "accuracy": 0.8658134186581342,
+      "powers": [
+        0.9775,
+        0.9775,
+        0.9775,
+        0.9775,
+        0.9775,
+        0.955,
+        0.955,
+        0.9775,
+        0.9775,
+        0.9775,
+        0.955,
+        0.9775
+      ]
+    },
+    {
+      "variant": "F_pow renorm logloss mix=0.3",
+      "accuracy": 0.8651134886511349,
+      "powers": [
+        0.955,
+        0.955,
+        0.955,
+        0.955,
+        0.955,
+        0.91,
+        0.91,
+        0.955,
+        0.955,
+        0.955,
+        0.91,
+        0.955
+      ]
+    },
+    {
+      "variant": "F_pow renorm logloss mix=0.5",
+      "accuracy": 0.8643135686431357,
+      "powers": [
+        0.925,
+        0.925,
+        0.925,
+        0.925,
+        0.925,
+        0.85,
+        0.85,
+        0.925,
+        0.925,
+        0.925,
+        0.85,
+        0.925
+      ]
+    },
+    {
+      "variant": "F_pow renorm logloss full",
+      "accuracy": 0.8611138886111389,
+      "powers": [
+        0.85,
+        0.85,
+        0.85,
+        0.85,
+        0.85,
+        0.7,
+        0.7,
+        0.85,
+        0.85,
+        0.85,
+        0.7,
+        0.85
+      ]
+    },
+    {
+      "variant": "F_pow renorm accuracy full",
+      "accuracy": 0.8625137486251375,
+      "powers": [
+        1.15,
+        1.3,
+        0.85,
+        0.85,
+        1.0,
+        1.0,
+        1.0,
+        1.15,
+        0.85,
+        1.0,
+        0.7,
+        1.0
+      ]
+    },
+    {
+      "variant": "G_temper raw logloss [EXT]",
+      "accuracy": 0.8654134586541345,
+      "powers": [
+        0.7,
+        0.85,
+        0.85,
+        0.85,
+        0.85,
+        0.7,
+        0.7,
+        0.85,
+        0.85,
+        0.85,
+        0.7,
+        0.85
+      ]
+    }
+  ],
+  "regression": {
+    "incumbent": 0.8614138586141386,
+    "dag_model": 0.8614138586141386
+  },
+  "cross_seed": {
+    "incumbent": {
+      "accuracies": {
+        "1322": 0.8614138586141386,
+        "7": 0.8455154484551545,
+        "2024": 0.8586141385861414
+      },
+      "mean": 0.8551811485518114
+    },
+    "G_serp|S_evra marginal": {
+      "accuracies": {
+        "1322": 0.8653134686531346,
+        "7": 0.8497150284971503,
+        "2024": 0.8615138486151385
+      },
+      "mean": 0.8588474485884744
+    },
+    "G_serp|S_evra parent_marginal": {
+      "accuracies": {
+        "1322": 0.8658134186581342,
+        "7": 0.8496150384961504,
+        "2024": 0.8614138586141386
+      },
+      "mean": 0.8589474385894743
+    },
+    "G_serp|S_eavr marginal": {
+      "accuracies": {
+        "1322": 0.8643135686431357,
+        "7": 0.8505149485051495,
+        "2024": 0.8615138486151385
+      },
+      "mean": 0.8587807885878079
+    },
+    "G_serp|S_vr_vdom marginal": {
+      "accuracies": {
+        "1322": 0.8639136086391361,
+        "7": 0.8493150684931506,
+        "2024": 0.8617138286171383
+      },
+      "mean": 0.8583141685831417
+    },
+    "G_incumbent|S_evra marginal": {
+      "accuracies": {
+        "1322": 0.8627137286271372,
+        "7": 0.8464153584641536,
+        "2024": 0.8600139986001399
+      },
+      "mean": 0.8563810285638103
+    }
+  }
+}

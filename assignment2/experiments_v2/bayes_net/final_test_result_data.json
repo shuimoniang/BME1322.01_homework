@@ -1,0 +1,50 @@
+{
+  "model": "bayes_net_v2_legal12_correct_chain",
+  "alpha": 1.0,
+  "val_accuracy_seed1322": 0.8492,
+  "fit_seconds": 3.3493663999997807,
+  "predict_seconds": 0.2641245999993771,
+  "accuracy": 0.8533,
+  "macro_precision": 0.8527272168122115,
+  "macro_recall": 0.850446661157501,
+  "macro_f1": 0.850524278512313,
+  "per_class_f1": [
+    0.902157551430005,
+    0.9642087106511427,
+    0.7379413227250123,
+    0.7721228794131132,
+    0.8946280991735538,
+    0.7211538461538461,
+    0.9095580678314491,
+    0.8968609865470852,
+    0.8730325288562435,
+    0.8335787923416789
+  ],
+  "most_confused_pairs": [
+    {
+      "true": 5,
+      "predicted": 3,
+      "count": 183
+    },
+    {
+      "true": 2,
+      "predicted": 3,
+      "count": 107
+    },
+    {
+      "true": 3,
+      "predicted": 5,
+      "count": 69
+    },
+    {
+      "true": 8,
+      "predicted": 9,
+      "count": 66
+    },
+    {
+      "true": 3,
+      "predicted": 2,
+      "count": 56
+    }
+  ]
+}

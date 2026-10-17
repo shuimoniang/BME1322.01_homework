@@ -1,0 +1,209 @@
+{
+  "structure": {
+    "feature_parents": [
+      -1,
+      0,
+      1,
+      6,
+      3,
+      2,
+      7,
+      5,
+      -1,
+      11,
+      9,
+      8
+    ],
+    "edges": [
+      [
+        "density_top_left",
+        "density_top_center"
+      ],
+      [
+        "density_top_center",
+        "density_top_right"
+      ],
+      [
+        "density_bottom_left",
+        "density_middle_left"
+      ],
+      [
+        "density_middle_left",
+        "density_middle_center"
+      ],
+      [
+        "density_top_right",
+        "density_middle_right"
+      ],
+      [
+        "density_bottom_right",
+        "density_bottom_left"
+      ],
+      [
+        "density_middle_right",
+        "density_bottom_right"
+      ],
+      [
+        "vertical_dominance",
+        "vertical_runs"
+      ],
+      [
+        "vertical_runs",
+        "aspect_ratio"
+      ],
+      [
+        "euler_topology",
+        "vertical_dominance"
+      ]
+    ]
+  },
+  "seed1322": {
+    "incumbent_accuracy": 0.8614138586141386,
+    "challenger_accuracy": 0.8653134686531346,
+    "delta": 0.003899610038996082,
+    "mcnemar": {
+      "b": 205,
+      "c": 166,
+      "n": 371,
+      "p_value": 0.048365024423322016,
+      "chi2": 3.8921832884097034
+    },
+    "bootstrap": {
+      "delta": 0.0038996100389961006,
+      "ci_low": 0.0001974802519748034,
+      "ci_high": 0.007699230076992301
+    },
+    "real_gain": true,
+    "incumbent_macro_f1": 0.8588912235521212,
+    "candidate_macro_f1": 0.8630334956632486,
+    "candidate_top_confusions": [
+      [
+        5,
+        3,
+        122
+      ],
+      [
+        3,
+        2,
+        77
+      ],
+      [
+        3,
+        5,
+        75
+      ],
+      [
+        2,
+        3,
+        62
+      ],
+      [
+        4,
+        9,
+        59
+      ],
+      [
+        5,
+        2,
+        56
+      ]
+    ],
+    "incumbent_top_confusions": [
+      [
+        5,
+        3,
+        104
+      ],
+      [
+        3,
+        5,
+        74
+      ],
+      [
+        3,
+        2,
+        73
+      ],
+      [
+        5,
+        2,
+        69
+      ],
+      [
+        2,
+        3,
+        65
+      ],
+      [
+        4,
+        9,
+        59
+      ]
+    ]
+  },
+  "cross_seed": {
+    "1322": {
+      "incumbent": 0.8614138586141386,
+      "candidate": 0.8653134686531346,
+      "delta": 0.003899610038996082,
+      "mcnemar": {
+        "b": 205,
+        "c": 166,
+        "n": 371,
+        "p_value": 0.048365024423322016,
+        "chi2": 3.8921832884097034
+      },
+      "bootstrap": {
+        "delta": 0.0038996100389961006,
+        "ci_low": 0.0001974802519748034,
+        "ci_high": 0.007699230076992301
+      }
+    },
+    "7": {
+      "incumbent": 0.8455154484551545,
+      "candidate": 0.8497150284971503,
+      "delta": 0.004199580041995832,
+      "mcnemar": {
+        "b": 235,
+        "c": 193,
+        "n": 428,
+        "p_value": 0.047373871208633817,
+        "chi2": 3.927570093457944
+      },
+      "bootstrap": {
+        "delta": 0.004199580041995801,
+        "ci_low": 0.0002974702529747034,
+        "ci_high": 0.008399160083991601
+      }
+    },
+    "2024": {
+      "incumbent": 0.8586141385861414,
+      "candidate": 0.8615138486151385,
+      "delta": 0.002899710028997027,
+      "mcnemar": {
+        "b": 210,
+        "c": 181,
+        "n": 391,
+        "p_value": 0.15668070766695746,
+        "chi2": 2.0051150895140664
+      },
+      "bootstrap": {
+        "delta": 0.0028997100289971,
+        "ci_low": -0.000999900009999,
+        "ci_high": 0.006601839816018407
+      }
+    }
+  },
+  "cross_seed_summary": {
+    "mean_delta": 0.0036663000366629803,
+    "min_delta": 0.002899710028997027,
+    "all_positive": true,
+    "pooled_mcnemar": {
+      "b": 650,
+      "c": 540,
+      "n": 1190,
+      "p_value": 0.0015682628141858352,
+      "chi2": 9.984033613445378
+    }
+  }
+}

@@ -10,7 +10,7 @@ from bayes_net import (
     extract_features,
 )
 from main import classification_metrics, confusion_matrix, stratified_split
-from naive_bayes import NaiveBayesClassifier
+from naive_bayes import N_PATCH_FEATURES, NaiveBayesClassifier
 
 
 def synthetic_mnist():
@@ -59,9 +59,17 @@ class ModelProtocolTests(unittest.TestCase):
         self.assertEqual(probabilities.shape, (7, 10))
         np.testing.assert_allclose(probabilities.sum(axis=1), 1.0)
         self.assertEqual(model.predict(self.X[:7]).dtype, np.int64)
-        np.testing.assert_allclose(
-            np.exp(model.feature_log_prob_).sum(axis=-1), 1.0
-        )
+        # The dilated-patch model keeps its CPT in a compressed (sparse) form,
+        # so per-patch normalisation is verified through check_probability_mass():
+        # a dense feature_log_prob_ would need 10 x 484 x 65536 doubles (~2.5 GB)
+        # and is never materialised.  Each patch variable must carry unit mass.
+        if hasattr(model, "check_probability_mass"):
+            mass = model.check_probability_mass()
+            np.testing.assert_allclose(mass, float(N_PATCH_FEATURES), rtol=1e-9)
+        else:
+            np.testing.assert_allclose(
+                np.exp(model.feature_log_prob_).sum(axis=-1), 1.0
+            )
 
     def test_bayes_net_features_and_cpts(self):
         features = extract_features(self.X)

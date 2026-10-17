@@ -1,0 +1,41 @@
+baseline (v2 repro)          val acc = 0.8492
+
+--- replace one grid slot with each candidate (slot = bottom_right) ---
+replace grid_br(7) <- grad_vert_frac(4)              val acc = 0.8232
+replace grid_br(7) <- grad_up_frac(4)                val acc = 0.8316
+replace grid_br(7) <- upper_left_ink(4)              val acc = 0.8294
+replace grid_br(7) <- lower_left_ink(4)              val acc = 0.8293
+replace grid_br(7) <- upper_right_ink(4)             val acc = 0.8280
+replace grid_br(7) <- lower_right_ink(4)             val acc = 0.8442
+replace grid_br(7) <- mid_left_ink(3)                val acc = 0.8224
+replace grid_br(7) <- mid_right_ink(3)               val acc = 0.8323
+replace grid_br(7) <- horiz_runs(5)                  val acc = 0.8298
+replace grid_br(7) <- endpoints(5)                   val acc = 0.8286
+replace grid_br(7) <- band_top(4)                    val acc = 0.8240
+replace grid_br(7) <- band_mid(4)                    val acc = 0.8259
+replace grid_br(7) <- band_bot(4)                    val acc = 0.8390
+replace grid_br(7) <- stroke_width(4)                val acc = 0.8330
+
+--- replace grid_mc(4) or grid_bl(6) with top-3 candidates ---
+replace grid_mc(4) <- lower_left_ink                 val acc = 0.8106
+replace grid_bl(6) <- lower_left_ink                 val acc = 0.8350
+replace grid_mc(4) <- horiz_runs                     val acc = 0.8192
+replace grid_bl(6) <- horiz_runs                     val acc = 0.8221
+replace grid_mc(4) <- endpoints                      val acc = 0.8121
+replace grid_bl(6) <- endpoints                      val acc = 0.8244
+replace grid_mc(4) <- band_bot                       val acc = 0.8198
+replace grid_bl(6) <- band_bot                       val acc = 0.8418
+
+--- replace a semantic slot (aspect/vdom) with candidates ---
+replace aspect(10) <- lower_left_ink                 val acc = 0.8308
+replace vdom(11) <- lower_left_ink                   val acc = 0.8272
+replace aspect(10) <- upper_left_ink                 val acc = 0.8364
+replace vdom(11) <- upper_left_ink                   val acc = 0.8326
+replace aspect(10) <- horiz_runs                     val acc = 0.8349
+replace vdom(11) <- horiz_runs                       val acc = 0.8442
+replace aspect(10) <- endpoints                      val acc = 0.8383
+replace vdom(11) <- endpoints                        val acc = 0.8327
+replace aspect(10) <- grad_vert_frac                 val acc = 0.8402
+replace vdom(11) <- grad_vert_frac                   val acc = 0.8366
+replace aspect(10) <- grad_up_frac                   val acc = 0.8397
+replace vdom(11) <- grad_up_frac                     val acc = 0.8356

@@ -1,0 +1,28 @@
+F:\笔记本\课程\人工智能\BME1322.01_homework\assignment2\experiments_v3\bayes_net\round4_dag_smoothing.py:91: RuntimeWarning: divide by zero encountered in log
+  cpts.append(np.log((counts + w * marg[:, None, :]) / (n_cp + w)))
+F:\笔记本\课程\人工智能\BME1322.01_homework\assignment2\experiments_v3\bayes_net\round4_dag_smoothing.py:91: RuntimeWarning: invalid value encountered in divide
+  cpts.append(np.log((counts + w * marg[:, None, :]) / (n_cp + w)))
+--- DAG variants (alpha=1.0, backoff) ---
+v2 baseline (col chains + euler->vruns, vdom->aspect)            val acc = 0.8492
+col chains reversed (ml<-bl, mc<-bc? n/a, mr<-br, tc? )          val acc = 0.8447
+row chains (tc<-tl, mc<-ml, tr<-tc, mr<-mc, br<-mr)              val acc = 0.8587
+row chains reversed (tl<-tc, ml<-mc, ...)                        val acc = 0.8422
+hub mc: tl<-mc, tc<-mc, tr<-mc, ml<-mc, mr<-mc                   val acc = 0.8435
+diag: tl->mc, mc->br, tr->mr, ml<-bl? mixed                      val acc = 0.8375
+vruns<-euler, aspect<-euler, vdom<-vruns                         val acc = 0.8492
+aspect<-vruns, vdom<-euler                                       val acc = 0.8492
+vruns<-euler, vdom<-vruns, aspect<-vdom (semantic chain)         val acc = 0.8492
+vruns<-euler, vdom<-euler, aspect class-only                     val acc = 0.8488
+vruns<-euler, vdom<-vruns, aspect<-vruns                         val acc = 0.8502
+no feature edges (pure NB over 12)                               val acc = 0.8337
+
+--- smoothing variants on v2 baseline DAG ---
+alpha=0.5                                                        val acc = 0.8493
+alpha=2.0                                                        val acc = 0.8491
+no backoff, alpha=1.0                                            val acc = 0.8486
+hard backoff min_count=5                      val acc = 0.6088
+hard backoff min_count=10                     val acc = 0.6088
+hard backoff min_count=20                     val acc = 0.6088
+hard backoff min_count=50                     val acc = 0.6088
+
+--- cross-seed check for promising variants ---
