@@ -225,8 +225,9 @@ class BayesNetClassifier:
         if not np.array_equal(y_array, y_int) or np.any((y_int < 0) | (y_int >= N_CLASSES)):
             raise ValueError("labels must be integers in the range [0, 9]")
 
-        self._fit_thresholds(self._continuous_features(X_array))
-        features = self._discretize_features(self._continuous_features(X_array))
+        continuous = self._continuous_features(X_array)
+        self._fit_thresholds(continuous)
+        features = self._discretize_features(continuous)
         self._fit_cpts(features, y_int)
         self.is_fitted_ = True
         return self

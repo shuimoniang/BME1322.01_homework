@@ -4,3 +4,7 @@ __pycache__/
 assignment2-data/
 assignment2-data.zip
 
+# experiment caches: reproducible from the scripts, not worth tracking
+cache/
+*.npz
+*.npy
