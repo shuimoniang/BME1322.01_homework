@@ -170,16 +170,16 @@ def plot_confusion(matrix: np.ndarray, title: str, path: Path) -> None:
 
 
 def plot_dag(path: Path) -> None:
-    """Draw the final 12-feature hand-designed DAG (v4 / M6).
+    """Draw the final 12-feature hand-designed DAG (v5 / M6).
 
     Layout follows the semantics of FEATURE_PARENTS.  The eight grid
     densities sit in three rows (top / middle / bottom) at roughly their
-    image position; the middle row is indented to the right so the left
-    column stays clear for the ``bottom_left -> top_left`` edge, and the
-    four semantic features occupy the right side (euler at top, the
-    orientation chain below it).  The two ``euler -> middle_*`` edges run
-    from the upper right into the middle band without passing through a
-    node.
+    image position; the middle row is indented to the right so the
+    ``bbox_bottom_right -> top_left`` diagonal stays clear of the
+    middle-band nodes, and the four semantic features occupy the right
+    side (euler at top, the orientation chain below it).  The two
+    ``euler -> middle_*`` edges run from the upper right into the middle
+    band without passing through a node.
     """
     labels = ("Y",) + FEATURE_NAMES
     positions = {
@@ -232,12 +232,17 @@ def plot_dag(path: Path) -> None:
 
     for target in range(1, len(labels)):
         arrow(0, target, "#9aa0a6", 0.30, 1.0)
-    # feature-parent edges (FEATURE_PARENTS entry >= 0), drawn bold red.  The
-    # row chains run left -> right, the bottom row closes right -> left, the
-    # left column closes bottom -> top, and the semantic chain runs down the
-    # right side (euler -> vertical_runs -> {aspect, vertical_dominance});
-    # the two euler -> middle_* edges approach the indented middle row from
-    # the upper right, so no edge passes through a node.
+    # feature-parent edges (FEATURE_PARENTS entry >= 0), drawn bold red.
+    # The eleven edges are: the top row chained left -> right (top_left ->
+    # top_center -> top_right), the middle band hung off the euler node
+    # (euler -> middle_left -> middle_center and euler ->
+    # bbox_middle_right), the bottom band closed right -> left
+    # (bbox_middle_right -> bbox_bottom_right -> bottom_left), the diagonal
+    # balance edge (bbox_bottom_right -> top_left), and the semantic chain
+    # down the right side (euler -> vertical_runs -> {aspect,
+    # vertical_dominance}).  The two euler -> middle_* edges approach the
+    # indented middle row from the upper right, so no edge passes through
+    # a node.
     for target_feature, parent_feature in enumerate(FEATURE_PARENTS):
         if parent_feature >= 0:
             arrow(parent_feature + 1, target_feature + 1, "#b4232c", 0.95, 2.4)
@@ -258,7 +263,7 @@ def plot_dag(path: Path) -> None:
             bbox={"boxstyle": "round,pad=0.45", "facecolor": color, "edgecolor": "white"},
             zorder=3,
         )
-    axis.set_title("Hand-designed Bayesian network (v4, 12 features, 11 edges)", fontsize=16, pad=12)
+    axis.set_title("Hand-designed Bayesian network (v5, 12 features, 11 edges)", fontsize=16, pad=12)
     axis.text(
         0.01,
         0.985,

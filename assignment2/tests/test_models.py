@@ -1,16 +1,25 @@
+import sys
 import unittest
+from pathlib import Path
 
 import numpy as np
 
-from bayes_net import (
+PROJECT = Path(__file__).resolve().parents[1]
+sys.path.insert(0, str(PROJECT))
+
+from bayes_net import (  # noqa: E402
     FEATURE_CARDINALITIES,
     FEATURE_NAMES,
     FEATURE_PARENTS,
     BayesNetClassifier,
     extract_features,
 )
-from main import classification_metrics, confusion_matrix, stratified_split
-from naive_bayes import N_PATCH_FEATURES, NaiveBayesClassifier
+from main import (  # noqa: E402
+    classification_metrics,
+    confusion_matrix,
+    stratified_split,
+)
+from naive_bayes import N_PATCH_FEATURES, NaiveBayesClassifier  # noqa: E402
 
 
 def synthetic_mnist():

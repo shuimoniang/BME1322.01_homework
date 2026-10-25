@@ -1,5 +1,5 @@
 {
-  "data_dir": "F:\\笔记本\\课程\\人工智能\\BME1322.01_homework\\assignment2\\assignment2-data\\assignment2-data\\mnist",
+  "data_dir": "F:\\笔记本\\课程\\人工智能\\BME1322.01_homework\\assignment2\\assignment2-data\\mnist",
   "train_samples": 60000,
   "test_samples": 10000,
   "random_seed": 1322,
@@ -207,8 +207,8 @@
         968
       ]
     ],
-    "fit_seconds": 8.290095200005453,
-    "predict_seconds": 2.654053800011752,
+    "fit_seconds": 7.872054400038905,
+    "predict_seconds": 2.2743926000548527,
     "most_confused_pairs": [
       {
         "true": 7,
@@ -400,8 +400,8 @@
         836
       ]
     ],
-    "fit_seconds": 6.37287700001616,
-    "predict_seconds": 0.5489354000019375,
+    "fit_seconds": 2.6100096999434754,
+    "predict_seconds": 0.3488060999661684,
     "most_confused_pairs": [
       {
         "true": 5,

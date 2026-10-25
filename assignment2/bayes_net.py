@@ -41,13 +41,16 @@ _GRID_BOUNDS = (7, 12, 17, 22)
 
 # Optional feature parent of each feature (-1 = class-only parent).  The
 # class Y is also a parent of every feature, so each node has at most two
-# parents in total (v4 DAG).  The eight grid cells form row chains
-# (left -> right within each image row, bottom row closed bl <- br) and the
-# four semantic features form a chain euler -> vertical_runs -> {aspect, vdom};
-# on top of the v3 chains, the two middle-band cells are conditioned on the
-# Euler topology signal (euler -> middle_left, euler -> middle_right) and the
-# top-left cell is balanced against the bottom-right cell (tl <- br).
-# bottom_center is omitted: it is the most redundant cell.
+# parents in total (M6 DAG, final v5 design).  The eleven feature-parent
+# edges are: the top row chained left -> right (top_left -> top_center ->
+# top_right); the middle band hung off the Euler node (euler ->
+# middle_left -> middle_center, and euler -> bbox_middle_right); the
+# bottom band closed right -> left (bbox_middle_right -> bbox_bottom_right
+# -> bottom_left); the diagonal balance edge (bbox_bottom_right ->
+# top_left); and the semantic chain (euler -> vertical_runs ->
+# {aspect_ratio, vertical_dominance}).  There are no edges between the
+# grid rows themselves.  bottom_center is omitted: it is the most
+# redundant cell.
 FEATURE_PARENTS = (7, 0, 1, 8, 3, 8, 7, 5, -1, 8, 9, 9)
 FEATURE_CARDINALITIES = (
     5, 5, 5, 5, 5, 5, 5, 5,  # 8 grid densities
