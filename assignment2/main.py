@@ -59,6 +59,8 @@ def find_data_dir(explicit: str | None = None) -> Path:
             ROOT / "assignment2-data" / "mnist",
             ROOT / "assignment2-data" / "assignment2-data" / "mnist",
             ROOT / "mnist",
+            # local data archive kept next to the repo (gitignored)
+            ROOT.parent / "data" / "assignment2" / "assignment2-data" / "mnist",
         ]
     )
     for candidate in candidates:

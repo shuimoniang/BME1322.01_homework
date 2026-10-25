@@ -1,2 +1,6 @@
 # ZCode 工具的工作目录（计划留档等），不属于课程仓库
 .zcode/
+
+# 课程数据包不随仓库分发（作业要求）：本地保留于 data/ 下
+data/assignment2/assignment2-data.zip
+data/assignment2/assignment2-data/
