@@ -1,0 +1,18 @@
+{
+  "full_rerun_after_io_fix_exact_match": true,
+  "before_io_fix_results_sha256": "15774fe869492c0e61d5ea29e08e6b4695d528886655d3ba8accd873e26e0a38",
+  "official_environment_unmodified": true,
+  "q_learning_identical_to_v2": true,
+  "official_files": {
+    "glucose_env.py": {
+      "current_sha256": "b68e3fbb0b2788ef5e6a0e2214d4408c711433770f8deaa25917ddf5b05e326b",
+      "distributed_sha256": "b68e3fbb0b2788ef5e6a0e2214d4408c711433770f8deaa25917ddf5b05e326b",
+      "identical_to_distributed": true
+    },
+    "sanity_check.py": {
+      "current_sha256": "8c8657e2cb2fd8f2ac644e4a93359a957f0e92eea174b093626d1b549e6d4ede",
+      "distributed_sha256": "8c8657e2cb2fd8f2ac644e4a93359a957f0e92eea174b093626d1b549e6d4ede",
+      "identical_to_distributed": true
+    }
+  }
+}

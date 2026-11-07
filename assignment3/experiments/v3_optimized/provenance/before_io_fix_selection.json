@@ -1,0 +1,68 @@
+{
+  "offline": {
+    "winner": "fixed_0.5",
+    "reasons": {
+      "fixed_0.05": "lower_return_or_tie_break",
+      "fixed_0.1": "lower_return_or_tie_break",
+      "fixed_0.2": "lower_return_or_tie_break",
+      "fixed_0.3": "lower_return_or_tie_break",
+      "fixed_0.5": "selected",
+      "fixed_0.7": "lower_return_or_tie_break",
+      "fixed_1.0": "safety_or_B3_gate_failed"
+    },
+    "selection_data": "validation_only"
+  },
+  "online": {
+    "eps0_fixed": {
+      "winner": "decay_k10_p0.6",
+      "reasons": {
+        "fixed_0.05": "safety_or_B3_gate_failed",
+        "fixed_0.1": "safety_or_B3_gate_failed",
+        "fixed_0.2": "safety_or_B3_gate_failed",
+        "fixed_0.3": "safety_or_B3_gate_failed",
+        "fixed_0.5": "lower_return_or_tie_break",
+        "fixed_0.7": "safety_or_B3_gate_failed",
+        "fixed_1.0": "safety_or_B3_gate_failed",
+        "decay_k10_p0.6": "selected",
+        "decay_k10_p1.0": "safety_or_B3_gate_failed",
+        "decay_k50_p0.6": "lower_return_or_tie_break",
+        "decay_k50_p1.0": "lower_return_or_tie_break"
+      },
+      "selection_data": "validation_only"
+    },
+    "eps03_fixed": {
+      "winner": "fixed_0.3",
+      "reasons": {
+        "fixed_0.05": "safety_or_B3_gate_failed",
+        "fixed_0.1": "lower_return_or_tie_break",
+        "fixed_0.2": "safety_or_B3_gate_failed",
+        "fixed_0.3": "selected",
+        "fixed_0.5": "lower_return_or_tie_break",
+        "fixed_0.7": "safety_or_B3_gate_failed",
+        "fixed_1.0": "safety_or_B3_gate_failed",
+        "decay_k10_p0.6": "safety_or_B3_gate_failed",
+        "decay_k10_p1.0": "safety_or_B3_gate_failed",
+        "decay_k50_p0.6": "safety_or_B3_gate_failed",
+        "decay_k50_p1.0": "safety_or_B3_gate_failed"
+      },
+      "selection_data": "validation_only"
+    },
+    "eps03_decay": {
+      "winner": "decay_k50_p0.6",
+      "reasons": {
+        "fixed_0.05": "lower_return_or_tie_break",
+        "fixed_0.1": "safety_or_B3_gate_failed",
+        "fixed_0.2": "lower_return_or_tie_break",
+        "fixed_0.3": "lower_return_or_tie_break",
+        "fixed_0.5": "lower_return_or_tie_break",
+        "fixed_0.7": "safety_or_B3_gate_failed",
+        "fixed_1.0": "safety_or_B3_gate_failed",
+        "decay_k10_p0.6": "safety_or_B3_gate_failed",
+        "decay_k10_p1.0": "safety_or_B3_gate_failed",
+        "decay_k50_p0.6": "selected",
+        "decay_k50_p1.0": "safety_or_B3_gate_failed"
+      },
+      "selection_data": "validation_only"
+    }
+  }
+}

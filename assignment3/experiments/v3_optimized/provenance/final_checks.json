@@ -1,0 +1,8 @@
+{
+  "source_and_artifact_hashes": true,
+  "report_links": true,
+  "published_results_equal_archive": true,
+  "v1_v2_unchanged_under_git_line_endings": true,
+  "official_interface": "PASS",
+  "unit_tests_passed": 12
+}

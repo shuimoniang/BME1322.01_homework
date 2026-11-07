@@ -359,7 +359,8 @@ def exp_online_exploration(seeds=(1, 2, 3, 4, 5), window=50, quick=False):
         ax.plot(range(len(mean)), mean, color=colors[k], label=labels[k])
         ax.fill_between(range(len(mean)), lo, hi, color=colors[k], alpha=0.15)
         stats[k] = {
-            "final_100_mean": sum(mean[-100:]) / 100,
+            "final_100_mean": sum(sum(curves[k][s][-100:]) / 100 for s in seeds) / len(seeds),
+            "final_100_smoothed_mean": sum(mean[-100:]) / 100,
             "best_window_mean": max(mean),
             "per_seed_final_returns": {str(s): sum(curves[k][s][-100:]) / 100
                                        for s in seeds},
@@ -651,20 +652,19 @@ def exp_lr_schedule(episodes, part_a_ref):
             "eval_mean_return": ret,
         }
     out["note"] = ("Q̂ 参照 = Part A 学到模型上的 Q 表；固定 α 偏差随 α 单调放大，"
-                   "Robbins-Monro 调度最接近 Q*，但策略层面固定 α=0.5 已稳定正确。"
+                   "带正下限的衰减调度在本组实验中最接近经验模型Q̂，不能据此认定接近真实Q*。"
+                   "正下限0.05不满足渐近Robbins-Monro条件；固定α=0.5与Part A策略一致。"
                    "提交文件默认 α=0.5 保持不变（协议）。")
     out["alpha_fixed_baseline"] = 0.5
     return out
 
 
 # ---------------------------------------------------------------------- #
-def main():
-    parser = argparse.ArgumentParser(description="Assignment 3 experiments")
-    parser.add_argument("--quick", action="store_true", help="快速冒烟测试")
-    args = parser.parse_args()
+def run_required(quick=False):
+    """复现课程必做实验及历史消融；输出位置由第三版驱动层指定。"""
+    args = argparse.Namespace(quick=quick)
 
     os.makedirs(FIG_DIR, exist_ok=True)
-    os.makedirs(os.path.join(_HERE, "experiments", "v2_optimized"), exist_ok=True)
     n_episodes = 200 if args.quick else N_EPISODES
     eval_seed_base = EVAL_SEED_BASE
 
@@ -744,7 +744,7 @@ def main():
           f"(不一致: {comparison['disagree_states']})")
 
     results = {
-        "version": "v2_optimized",
+        "version": "v3_optimized",
         "config": {
             "data_seed": DATA_SEED, "n_episodes": n_episodes,
             "n_eval_episodes": N_EVAL_EPISODES, "eval_seed_base": eval_seed_base,
@@ -766,11 +766,7 @@ def main():
     out_path = os.path.join(FIG_DIR, "results.json")
     with open(out_path, "w", encoding="utf-8") as f:
         json.dump(results, f, ensure_ascii=False, indent=2, default=str)
-    # v2 存档：同一份结果复制到 experiments/v2_optimized/
-    with open(os.path.join(_HERE, "experiments", "v2_optimized", "results.json"),
-              "w", encoding="utf-8") as f:
-        json.dump(results, f, ensure_ascii=False, indent=2, default=str)
-    print(f"\n全部结果已写入 {out_path} 与 experiments/v2_optimized/")
+    print(f"\n必做实验结果已写入 {out_path}")
 
     # 速览 markdown（报告撰写用）
     lines = ["# 实验结果速览（v2）\n"]
@@ -812,6 +808,16 @@ def main():
         f.write("\n".join(lines) + "\n")
 
     print("完成。")
+
+
+def main():
+    parser = argparse.ArgumentParser(description="Assignment 3 第三版实验")
+    parser.add_argument("--quick", action="store_true", help="独立目录冒烟检查")
+    parser.add_argument("--resume", action="store_true", help="校验源码与配置后续跑")
+    args = parser.parse_args()
+    sys.path.insert(0, os.path.join(_HERE, "experiments"))
+    from v3_study import run
+    run(sys.modules[__name__], quick=args.quick, resume=args.resume)
 
 
 if __name__ == "__main__":

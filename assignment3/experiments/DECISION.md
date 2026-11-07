@@ -42,3 +42,22 @@ v1 基线（`experiments/v1_baseline/`）：Part A（学模型+VI）与 Part B�
 - v2 主实验：`python assignment3/main.py`（根目录运行），结果写 `figures/results.json`
   与 `experiments/v2_optimized/`（含 results.json 快照与 DECISION 引用）。
 - 硬约束：`experiments/CONSTRAINTS.md`（候选合规判定依据）。
+
+## 第四版附加消融（2026-11-07）
+
+v3 定稿后，在不重复 Builder A/B/C 与 v3 在线实验的前提下，补两个空白维度的附加消融。
+均不改动提交文件（main.py / model_based.py / q_learning.py 保持 manifest 哈希不变），
+默认参数（α=0.5、γ=0.9、统一数据协议）不变，结果由独立脚本留档、报告由
+write_v3_report.py 重建时读取对应 JSON 生成第 6–7 节。
+
+| Builder | 维度 | 核心发现 | 结论 |
+|---|---|---|---|
+| D 数据采集种子 | 换 10 个采集种子重跑全管线（评估种子段固定 90000–90499） | Part A 策略 10/10 种子逐位相同、指标恒为 88.01/63.43%/0.8%，B4 从不翻转（margin 0.556–0.681）；Part B 回报 42.74±51.13（-40.05 至 88.01），8/9 非主种子策略与主种子不同，B1 率最高 45.2%，B4 在 3 个种子翻转 | 主种子下两路线一致属种子特例；模型路线对抽样鲁棒、离线单遍 TD 高度敏感——analysis.md 第 1 问的实证。留档进报告第 6 节 |
+| E 折扣因子 | γ∈{0.5,0.8,0.9,0.95,0.99}，同一份 seed=2026 数据 | 策略对 γ 完全平坦（所有 γ 下两路线策略逐状态相同、评估指标不变）；γ 只放大价值尺度与求解成本：V̂(B3) 1.09→46.00，VI 14→840 轮（接近 1000 上限），max|Q| 0.99 时 58.62 | “γ 越大越避开 B1”被推翻（最优动作本在低血糖侧立即补糖）；γ=0.9 位于平坦区间、计算成本居中。留档进报告第 7 节 |
+
+## 第四版复现
+
+- Builder D：`python assignment3/experiments/builder_d_data_seed.py`（约 6 s）→ `builder_d_data_seed_results.json`、`figures/fig8_data_seed_robustness.png`、`builder_d_run.log`。
+- Builder E：`python assignment3/experiments/builder_e_gamma.py`（约 3 s）→ `builder_e_gamma_results.json`、`figures/fig9_gamma_sensitivity.png`、`builder_e_run.log`。
+- 报告：`python assignment3/experiments/write_v3_report.py`（从 v3 正式 JSON 与两个 builder JSON 重建 report.md / analysis.md 全文）。
+- 合规：两个脚本均只通过 `collect_random_episodes` 与给定经验交互，不读环境内部常量，不调用现成 RL/统计库；脚本自身 SHA-256 已写入各自 results.json。

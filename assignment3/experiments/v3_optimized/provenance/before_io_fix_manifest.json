@@ -1,0 +1,100 @@
+{
+  "config": {
+    "quick": false,
+    "data_seed": 2026,
+    "n_data": 2000,
+    "online_episodes": 600,
+    "validation_training_seeds": [
+      11,
+      12,
+      13,
+      14,
+      15
+    ],
+    "test_training_seeds": [
+      21,
+      22,
+      23,
+      24,
+      25
+    ],
+    "validation_seed_bases": [
+      110000
+    ],
+    "test_seed_bases": [
+      120000,
+      121000,
+      122000,
+      123000,
+      124000
+    ],
+    "n_eval": 500,
+    "bootstrap_replicates": 3000,
+    "candidates": {
+      "fixed_0.05": {
+        "alpha": 0.05
+      },
+      "fixed_0.1": {
+        "alpha": 0.1
+      },
+      "fixed_0.2": {
+        "alpha": 0.2
+      },
+      "fixed_0.3": {
+        "alpha": 0.3
+      },
+      "fixed_0.5": {
+        "alpha": 0.5
+      },
+      "fixed_0.7": {
+        "alpha": 0.7
+      },
+      "fixed_1.0": {
+        "alpha": 1.0
+      },
+      "decay_k10_p0.6": {
+        "k": 10,
+        "p": 0.6
+      },
+      "decay_k10_p1.0": {
+        "k": 10,
+        "p": 1.0
+      },
+      "decay_k50_p0.6": {
+        "k": 50,
+        "p": 0.6
+      },
+      "decay_k50_p1.0": {
+        "k": 50,
+        "p": 1.0
+      }
+    },
+    "settings": {
+      "eps0_fixed": {
+        "epsilon": 0.0,
+        "epsilon_decay": 1.0,
+        "epsilon_min": 0.0
+      },
+      "eps03_fixed": {
+        "epsilon": 0.3,
+        "epsilon_decay": 1.0,
+        "epsilon_min": 0.0
+      },
+      "eps03_decay": {
+        "epsilon": 0.3,
+        "epsilon_decay": 0.995,
+        "epsilon_min": 0.05
+      }
+    },
+    "selection": "max validation return with B1<=baseline and B3>=baseline; fixed then baseline ties",
+    "acceptance": "paired return CI lower>0; B1 point<=0; B3 point>=0"
+  },
+  "sources_sha256": {
+    "assignment3/main.py": "909526ae98cddf45782662910a6b9617b949e1d2120a072fdda7fdaf1ed1e831",
+    "assignment3/model_based.py": "33cf9dffcdcafebd460ed6db6d6eee95c3937081bdbb7d556b024e6cdde303db",
+    "assignment3/q_learning.py": "fa6096e6a8e3f81fe4dec6d37150e44a444e6ceb858e769e087f346ec709cd72",
+    "assignment3/experiments/v3_study.py": "9f8d5056125a714b7323958a8baaf6487c15dcde876b84866afc70dd835d63a4",
+    "glucose_env.py": "b68e3fbb0b2788ef5e6a0e2214d4408c711433770f8deaa25917ddf5b05e326b",
+    "sanity_check.py": "8c8657e2cb2fd8f2ac644e4a93359a957f0e92eea174b093626d1b549e6d4ede"
+  }
+}

@@ -1,6 +1,20 @@
 # ZCode 工具的工作目录（计划留档等），不属于课程仓库
 .zcode/
 
-# 课程数据包不随仓库分发（作业要求）：本地保留于 data/ 下
-data/assignment2/assignment2-data.zip
-data/assignment2/assignment2-data/
+# 课程数据包与课程提供的评测配套文件不随仓库提交（作业要求：评测程序自带、勿提交大文件），本地保留
+data/
+/glucose_env.py
+/sanity_check.py
+
+# Python 运行期产物与实验运行日志（不提交）
+__pycache__/
+*.pyc
+assignment3/experiments/*.log
+assignment3/experiments/**/*.log
+
+# 系统杂物
+__MACOSX/
+.DS_Store
+
+# assignment3 第三版实验的检查点缓存：仅用于 --resume 续跑，不入库（结果可由 main.py 确定性重算）
+assignment3/experiments/v3_optimized/checkpoints/

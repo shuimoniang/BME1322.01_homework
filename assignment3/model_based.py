@@ -148,9 +148,9 @@ class ModelBasedAgent:
                     q = self._q_from(si, ai, v)
                     if best is None or q > best:
                         best = q
-                # 终止状态 B1 在数据中没有任何出边（episode 进入 B1 即结束），
-                # 其所有 (s,a) 均为“未访问”，按均匀分布 + R̂=0 处理后
-                # V(B1) 的不动点自然为 0；这里同步扫描正常处理即可。
+                # reset() 可能返回 B1，此时仍需先行动，数据可含 B1 出边。
+                # Part A 严格按讲义 P̂/R̂ 公式扫描，不另加终止掩码；
+                # 这不意味着该经验模型等于环境的真实终止过程。
                 new_v[si] = best if best is not None else 0.0
                 delta = max(delta, abs(new_v[si] - v[si]))
             v = new_v
