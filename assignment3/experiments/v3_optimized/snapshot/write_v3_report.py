@@ -28,42 +28,21 @@ def wilson(k, n, z=1.96):
     return center-half, center+half
 
 
-# 以下代码片段逐字摘自提交源码（仅去掉行号缩进对齐），与源文件保持一致。
-CODE_MODEL_EST = """\
-for episode in episodes:
-    for (state, action, reward, next_state, _done) in episode:
-        bucket = self._counts[si][ai]
-        bucket[next_state] = bucket.get(next_state, 0) + 1
-        self._reward_sum[si][ai] += float(reward)
-        self._reward_count[si][ai] += 1
-...
-if n_sa == 0:
-    row_t.append({s: 1.0 / self._n_states for s in self.states})
-    row_r.append(0.0)
-else:
-    dist = {
-        ns: cnt / n_sa for ns, cnt in self._counts[si][ai].items()
-    }
-    row_t.append(dist)
-    row_r.append(self._reward_sum[si][ai] / n_sa)
-"""
+# 从提交源码提取连续片段，只统一移除外层缩进。
+def source_excerpt(filename, start, end):
+    import textwrap
+    source = (ROOT / filename).read_text(encoding='utf-8')
+    begin = source.index(start)
+    finish = source.index(end, begin)
+    return textwrap.dedent(source[begin:finish]).rstrip() + '\n'
 
-CODE_VI = """\
-for iterations in range(1, max_iterations + 1):
-    delta = 0.0
-    new_v = [0.0] * self._n_states
-    for si, s in enumerate(self.states):
-        best = None
-        for ai in range(self._n_actions):
-            q = self._q_from(si, ai, v)
-            if best is None or q > best:
-                best = q
-        new_v[si] = best if best is not None else 0.0
-        delta = max(delta, abs(new_v[si] - v[si]))
-    v = new_v
-    if delta < theta:
-        break
-"""
+
+CODE_MODEL_EST = source_excerpt(
+    'model_based.py', '        for episode in episodes:',
+    '        # 模型变了')
+CODE_VI = source_excerpt(
+    'model_based.py', '        for iterations in range(1, max_iterations + 1):',
+    '        self._values = v')
 
 CODE_Q_UPDATE = """\
 def update(self, state, action, reward, next_state, done: bool) -> None:
@@ -188,7 +167,7 @@ def main():
         '> Q(s,a) ← (1−α)·Q(s,a) + α·[ r + γ·max_{a′} Q(s′,a′) ]', '',
         'TD 目标取下一状态的贪心 max，因此即使行为策略不是贪心的也能收敛到 Q*。'
         'done=True 的转移（进入 B1 终止）目标中不含未来项。收敛三条件为：'
-        '每个 (s,a) 被无限次充分访问、学习率满足 Robbins-Monro 条件（平方和发散、平方和收敛）、'
+        '每个 (s,a) 被无限次充分访问、学习率满足 Robbins-Monro 条件（学习率之和发散、学习率平方和收敛）、'
         'γ<1 且奖励有界。', '',
         '**ε-greedy 探索与 Regret**。在线附加实验中，智能体以 ε 概率均匀随机探索、否则贪心。'
         '在 B1 终止的悬崖式环境里，一次探索动作可能导致整条轨迹提前终止，'
@@ -287,7 +266,7 @@ def main():
         f"（t 95% 区间 {[round(100*x,2) for x in mb['b3_ci95']]}），"
         f"B1 终止率池化 {100*mb['b1_pooled_rate']:.2f}%"
         f"（Wilson 95% 区间 {'–'.join(f'{100*x:.2f}%' for x in wilson(round(mb['b1_pooled_rate']*2500), 2500))}）。"
-        '主实验第 1 块的各项都在合并区间内，但 B1 率位于区间上缘，说明'
+        '主实验第 1 块的 B1 终止率为 0.8%，略高于合并区间上限 0.79%。合并区间估计的是总体终止率，不能用来直接检验单块点估计是否一致；'
         '单块 500 条对 0.4% 量级的安全指标只能给出粗粒度估计，安全结论应以多块区间为准。', '',
         '### 5.6 策略稳定性（bootstrap）', '',
         f"对统一数据预算做 30 次 episode 级 bootstrap（seed={bs['seed']}）重学模型与策略："
@@ -394,8 +373,8 @@ def main():
         '然后分三路做消融，专门检验第一版不成立的判断。先验消融试了 4 种未访问先验乘 8 档'
         '数据量，课程预算下结果完全一样。覆盖了不等于估准了，只是 argmax 碰巧没被'
         '翻转。学习率消融里 α=1.0 直接使 B6 等状态的策略翻转，回报从 88 跌至 75.56，'
-        '第一次直观体现了固定大步长的风险。多块评估则显示 0.8% 落在合并 Wilson 区间 '
-        '[0.25%, 0.79%] 的上缘：500 条样本对这种小概率事件没有足够的分辨率。', '',
+        '第一次直观体现了固定大步长的风险。多块评估的合并 Wilson 区间为 '
+        '[0.25%, 0.79%]，单块点估计 0.8% 略高于其上限；这一区间估计总体率，不能直接用于判断单块结果是否异常。500 条样本对这种小概率事件的估计仍较粗。', '',
         '第三版（10 月 27 日）做了两件事。一是复核讲义后更正错误：reset() 可能直接返回 B1，'
         '这时智能体必须先选动作，所以 B1 的出边有实际意义，第一版"B1 从未行动"的解释是错的；'
         '旧版学习率调度带着 0.05 的正下限，并不满足 Robbins-Monro 条件，"已获得渐近收敛保证"'
@@ -416,8 +395,8 @@ def main():
         '全部完成，另外补了多块评估置信区间、bootstrap 稳定性、规划变体、学习率消融、'
         '验证选优独立测试、采集种子和 γ 消融七组附加实验。', '',
         '最主要的发现有两个。第一，在统一数据预算下两条路线学到了完全相同的贪心策略'
-        '（回报 88.01、B3 占比 63.4%、B1 终止率 0.8%），这个策略对数据量、采集种子和折扣'
-        '因子都不敏感，说明 9 状态小表上 2000 条数据已经把策略结构学稳了。第二，策略相同'
+        '（回报 88.01、B3 占比 63.4%、B1 终止率 0.8%），模型路线的策略在本次数据量、采集种子和折扣'
+        '因子消融中保持一致，这种稳定性仅限于已测试的配置。第二，策略相同'
         '不代表两条路线一样稳：换一批采集数据后模型路线纹丝不动，Q-Learning 的回报却大幅'
         '波动，两者的差别在价值传播方式上：全局规划把噪声平均掉了，逐条 TD 只能沿着'
         '数据里的路径传播。在线实验还显示悬崖环境会放大探索的代价，衰减 ε 明显好过固定 ε，'
@@ -435,7 +414,7 @@ def main():
         '## 8. 参考资料', '',
         '- 课程作业讲义《Blood Glucose Management Agent (Assignment - 3)》及配套 glucose_env.py、sanity_check.py。',
         '- Sutton R. S., Barto A. G. 《Reinforcement Learning: An Introduction》(2nd ed., draft)，'
-        '第 8/9 章及步长条件相关内容。仅参考思路与公式，未复制任何外部实现。',
+        '动态规划、表格 Q-Learning 及步长条件相关内容。本文所说的第 8、9 章指课程章节，不是该书章节。仅参考思路与公式，未复制任何外部实现。',
         '- 置信区间方法（t 区间、Wilson 区间、配对 bootstrap）为统计通用方法，实现均为手写，未调用统计库。',
         '- 报告撰写过程中使用 AI 工具（Codex）辅助代码审查、实验脚本实现与报告整理；'
         '所有算法核心逻辑与数值结果均来自本地实际运行与人工核验。', '']
@@ -448,7 +427,7 @@ def main():
 
 **2. 两条路线在哪个状态不一致，可能原因是什么？**
 
-默认设置下（α=0.5、seed=2026）两条路线在 B2–B9 完全一致，主实验里找不出不一致的状态。但换 9 个采集种子后，8 个种子都出现了不一致（最少 5/8），B4 在其中 3 个种子下从 i1 翻到 i2 或 w（报告 5.9 节）。所以更准确的说法是：不一致随时会出现，主种子里只是恰好没出现。原因上，两条路线传播价值的方式不同：模型路线做全局规划，Q 路线用固定大步长做原序单遍 TD 更新，对样本顺序和尾部噪声的敏感度不一样；而且 Part A 按讲义公式不加终止掩码、Part B 对 done 屏蔽未来项，两者连终止的处理都不完全相同。α=1.0 的消融里 B1、B4、B6、B8 都和 Part A 不一致，但那是改了学习率的实验，不算默认设置的结论。
+默认设置下（α=0.5、seed=2026）两条路线在 B2–B9 完全一致，主实验里找不出不一致的状态。但换 9 个采集种子后，8 个种子都出现了不一致（最少 5/8），B4 在其中 3 个种子下从 i1 翻到 i2 或 w（报告 5.9 节）。例如采集种子为 7 时，B4 上模型路线选择 i1，Q-Learning 选择 i2；主种子下的一致不能推广到其他采样数据。原因上，两条路线传播价值的方式不同：模型路线做全局规划，Q 路线用固定大步长做原序单遍 TD 更新，对样本顺序和尾部噪声的敏感度不一样；而且 Part A 按讲义公式不加终止掩码、Part B 对 done 屏蔽未来项，两者连终止的处理都不完全相同。α=1.0 的消融里 B1、B4、B6、B8 都和 Part A 不一致，但那是改了学习率的实验，不算默认设置的结论。
 '''
     (ROOT/'analysis.md').write_text(analysis,encoding='utf-8')
     readme='''# 第三版实验归档
