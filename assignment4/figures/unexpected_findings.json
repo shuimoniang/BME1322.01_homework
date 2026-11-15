@@ -1,0 +1,861 @@
+{
+  "scope": {
+    "main_families": 8,
+    "main_candidates": 114,
+    "ablation_candidate_sets": 155,
+    "nested_outer_fits": 40,
+    "findings": 19,
+    "report_findings": 5,
+    "additional_findings": 14
+  },
+  "ranking_criteria": [
+    "流程正确性与课程评分关联",
+    "反直觉程度与研究意义",
+    "验证证据强度及结论边界"
+  ],
+  "candidate_inventory": [
+    {
+      "group": "主实验/linear",
+      "candidates": 6,
+      "objective": "auc",
+      "minimum": 0.907406154801988,
+      "maximum": 0.9111599627224628,
+      "max_training_validation_gap": 0.015102489255638063,
+      "r2_mae_inversions": null
+    },
+    {
+      "group": "主实验/rbf",
+      "candidates": 36,
+      "objective": "auc",
+      "minimum": 0.6606316137566137,
+      "maximum": 0.9100398829565497,
+      "max_training_validation_gap": 0.3393683862433863,
+      "r2_mae_inversions": null
+    },
+    {
+      "group": "主实验/depth",
+      "candidates": 13,
+      "objective": "r2",
+      "minimum": -0.007820078380710194,
+      "maximum": 0.29214984150673684,
+      "max_training_validation_gap": 1.0021325959159313,
+      "r2_mae_inversions": 19
+    },
+    {
+      "group": "主实验/prune",
+      "candidates": 8,
+      "objective": "r2",
+      "minimum": -0.011652937200442182,
+      "maximum": 0.23602537262216933,
+      "max_training_validation_gap": 0.9966283344796582,
+      "r2_mae_inversions": 8
+    },
+    {
+      "group": "主实验/ridge",
+      "candidates": 8,
+      "objective": "r2",
+      "minimum": 0.058621424980187783,
+      "maximum": 0.524345655996858,
+      "max_training_validation_gap": 0.04927136751890182,
+      "r2_mae_inversions": 0
+    },
+    {
+      "group": "主实验/lasso",
+      "candidates": 6,
+      "objective": "r2",
+      "minimum": -0.011652937200442182,
+      "maximum": 0.525460537309604,
+      "max_training_validation_gap": 0.04923366506836091,
+      "r2_mae_inversions": 0
+    },
+    {
+      "group": "主实验/ols",
+      "candidates": 1,
+      "objective": "r2",
+      "minimum": 0.5225373306510195,
+      "maximum": 0.5225373306510195,
+      "max_training_validation_gap": 0.0492715947741158,
+      "r2_mae_inversions": 0
+    },
+    {
+      "group": "主实验/svr",
+      "candidates": 36,
+      "objective": "r2",
+      "minimum": 0.2005195635910792,
+      "maximum": 0.514086599873494,
+      "max_training_validation_gap": 0.7991980196865924,
+      "r2_mae_inversions": 158
+    },
+    {
+      "group": "消融/unscaled_linear",
+      "candidates": 6,
+      "objective": "auc",
+      "minimum": 0.8353450176366843,
+      "maximum": 0.9087086139169473,
+      "max_training_validation_gap": 0.017603309333589223,
+      "r2_mae_inversions": null
+    },
+    {
+      "group": "消融/unscaled_rbf",
+      "candidates": 36,
+      "objective": "auc",
+      "minimum": 0.5,
+      "maximum": 0.8743098144139811,
+      "max_training_validation_gap": 0.5,
+      "r2_mae_inversions": null
+    },
+    {
+      "group": "消融/drop_linear",
+      "candidates": 6,
+      "objective": "auc",
+      "minimum": 0.8545705066538399,
+      "maximum": 0.865654310966811,
+      "max_training_validation_gap": 0.03233772729637863,
+      "r2_mae_inversions": null
+    },
+    {
+      "group": "消融/drop_rbf",
+      "candidates": 36,
+      "objective": "auc",
+      "minimum": 0.6843592171717172,
+      "maximum": 0.8648476330767998,
+      "max_training_validation_gap": 0.3156407828282828,
+      "r2_mae_inversions": null
+    },
+    {
+      "group": "消融/drop_depth",
+      "candidates": 13,
+      "objective": "r2",
+      "minimum": -0.24266386762294218,
+      "maximum": 0.3461202842590604,
+      "max_training_validation_gap": 1.2198143260235117,
+      "r2_mae_inversions": 11
+    },
+    {
+      "group": "消融/drop_ridge",
+      "candidates": 8,
+      "objective": "r2",
+      "minimum": 0.03583969837230463,
+      "maximum": 0.39098857551505306,
+      "max_training_validation_gap": 0.06605518579648051,
+      "r2_mae_inversions": 2
+    },
+    {
+      "group": "消融/drop_lasso",
+      "candidates": 6,
+      "objective": "r2",
+      "minimum": -0.011652937200442182,
+      "maximum": 0.38673646925232885,
+      "max_training_validation_gap": 0.06603433558204713,
+      "r2_mae_inversions": 0
+    },
+    {
+      "group": "消融/drop_svr",
+      "candidates": 36,
+      "objective": "r2",
+      "minimum": -0.1699551953942344,
+      "maximum": 0.3657544874664069,
+      "max_training_validation_gap": 1.1595265209493357,
+      "r2_mae_inversions": 113
+    },
+    {
+      "group": "消融/poly",
+      "candidates": 8,
+      "objective": "r2",
+      "minimum": 0.022633576245339813,
+      "maximum": 0.37883951093573226,
+      "max_training_validation_gap": 0.7340083530586271,
+      "r2_mae_inversions": 4
+    }
+  ],
+  "findings": [
+    {
+      "id": 5,
+      "title": "AUC计算口径一变，核的排名反转",
+      "intuitive_expectation": "硬标签和连续分数计算的AUC可能只是数值不同，排序应一致。",
+      "comparisons": [
+        {
+          "model": "固定参数SVM",
+          "metric": "硬标签AUC（错误口径对照）",
+          "condition_a": "线性核",
+          "value_a": 0.8323502886002887,
+          "condition_b": "RBF核",
+          "value_b": 0.8341660654160654
+        },
+        {
+          "model": "固定参数SVM",
+          "metric": "连续分数AUC（正式口径）",
+          "condition_a": "线性核",
+          "value_a": 0.9104630130671797,
+          "condition_b": "RBF核",
+          "value_b": 0.8975075657367324
+        }
+      ],
+      "hypothesis": "二值化删除了类别内部排序，两个输出值形成的ROC与连续分数ROC含有不同信息。",
+      "verification_completed": "保留同一模型的predict和decision_function输出，只改变AUC输入。",
+      "verification_result": "错误口径偏向RBF，正式口径偏向线性核；这是受控口径对照，不是正式AUC算错。",
+      "further_verification": "已通过协议单元测试防止硬标签进入正式AUC；无需再制造错误运行。",
+      "rank": 1,
+      "ranking_reason": "评价口径直接影响核的排名，必须先保证流程正确。",
+      "assignment_sections": "4.2（1）；4.4；4.6（1）",
+      "phenomenon_category": "评估口径对照",
+      "selected_for_report": true
+    },
+    {
+      "id": 14,
+      "title": "删除检查信息使树的R²上升，岭回归下降，树的MAE却略增",
+      "intuitive_expectation": "删除有用信息可能使所有模型、所有指标同方向变差。",
+      "comparisons": [
+        {
+          "model": "深度3回归树",
+          "metric": "R²",
+          "condition_a": "13特征",
+          "value_a": 0.29214984150673684,
+          "condition_b": "删除ca、thal",
+          "value_b": 0.3376062662679754
+        },
+        {
+          "model": "岭回归alpha=1",
+          "metric": "R²",
+          "condition_a": "13特征",
+          "value_a": 0.5227595045884325,
+          "condition_b": "删除ca、thal",
+          "value_b": 0.38607316601032127
+        },
+        {
+          "model": "深度3回归树",
+          "metric": "MAE",
+          "condition_a": "13特征",
+          "value_a": 0.7120768606644721,
+          "condition_b": "删除ca、thal",
+          "value_b": 0.7150351289033262
+        }
+      ],
+      "hypothesis": "删除信息可能减少树的不稳定分裂，却损害岭回归可利用的全局信号；树的平方误差与绝对误差也可能发生权衡。",
+      "verification_completed": "先固定模型参数与五折，仅删除两列；再对11特征重新选参，区分信息变化与参数失配。",
+      "verification_result": "重新选参后方向仍表现为树改善、岭回归下降；这支持模型依赖的偏差方差权衡，不证明两列普遍无用。",
+      "further_verification": "可在训练内重采样测量预测方差，并分析误差尾部变化；临床可用性仍应按预测时点判断。",
+      "rank": 2,
+      "ranking_reason": "同一特征删除使树与岭回归反向变化，且树的两个误差指标也不同向。",
+      "assignment_sections": "4.3（1）；4.4；4.5（1）",
+      "phenomenon_category": "本数据上的特征与模型表现",
+      "selected_for_report": true
+    },
+    {
+      "id": 13,
+      "title": "平均绝对误差较小，却可能有更差甚至负的R²",
+      "intuitive_expectation": "误差指标可能应给出相同模型排序。",
+      "comparisons": [
+        {
+          "model": "回归模型",
+          "metric": "R²",
+          "condition_a": "Lasso",
+          "value_a": 0.525460537309604,
+          "condition_b": "SVR",
+          "value_b": 0.514086599873494
+        },
+        {
+          "model": "回归模型",
+          "metric": "MAE",
+          "condition_a": "Lasso",
+          "value_a": 0.6329953166409779,
+          "condition_b": "SVR",
+          "value_b": 0.6284164022628402
+        },
+        {
+          "model": "回归树",
+          "metric": "R²",
+          "condition_a": "深度1",
+          "value_a": 0.14720157527667824,
+          "condition_b": "深度10",
+          "value_b": -0.007820078380710194
+        },
+        {
+          "model": "回归树",
+          "metric": "MAE",
+          "condition_a": "深度1",
+          "value_a": 0.8702618430852318,
+          "condition_b": "深度10",
+          "value_b": 0.7571348733233979
+        }
+      ],
+      "hypothesis": "绝对损失和平方损失对少量大误差的权重不同，中等误差减少也可能伴随尾部误差增加。",
+      "verification_completed": "遍历所有树深候选的两种指标排序，检查逐患者误差及误差超过一级的损失贡献。",
+      "verification_result": "两个指标确实出现逆序；按R²总体选择Lasso，按MAE选择SVR，不是四舍五入造成。",
+      "further_verification": "若要推断临床代价，需要另外定义等级间损失，而不能直接以任一统计指标替代临床效用。",
+      "rank": 3,
+      "ranking_reason": "误差分布与评价目标会改变最佳模型，不能只报告一个冠军。",
+      "assignment_sections": "4.3；4.4；4.6（2）",
+      "phenomenon_category": "损失函数与指标排序",
+      "selected_for_report": true
+    },
+    {
+      "id": 8,
+      "title": "后剪枝没有超过预剪枝，外层评估又改变两者排序",
+      "intuitive_expectation": "先长完整树再剪，可能避免预剪枝剪早，从而更好。",
+      "comparisons": [
+        {
+          "model": "回归树",
+          "metric": "扫描验证R²",
+          "condition_a": "预剪枝",
+          "value_a": 0.29214984150673684,
+          "condition_b": "后剪枝",
+          "value_b": 0.23602537262216933
+        },
+        {
+          "model": "回归树",
+          "metric": "独立外层R²",
+          "condition_a": "预剪枝",
+          "value_a": 0.2094997806942124,
+          "condition_b": "后剪枝",
+          "value_b": 0.2138373454306668
+        }
+      ],
+      "hypothesis": "两种结构约束及候选集合不同，后剪枝只扫描路径的若干位置；扫描选择偏差和样本扰动也会影响排序。",
+      "verification_completed": "对比完整树、最优预剪枝和后剪枝的叶数、树深及成绩，再采用外层隔离评估。",
+      "verification_result": "后剪枝优于完整树却未超过深度3扫描成绩；外层差距很小且排序相反，不支持稳定的普遍优劣结论。",
+      "further_verification": "可在各训练折细化后剪枝路径候选，并用同一独立外层比较；不能把未细扫的结果当作后剪枝理论上限。",
+      "rank": 4,
+      "ranking_reason": "剪枝方法的扫描优势没有稳定延续到外层评估，限制了可推广结论。",
+      "assignment_sections": "4.3（2）",
+      "phenomenon_category": "复杂度控制与独立评估",
+      "selected_for_report": true
+    },
+    {
+      "id": 17,
+      "title": "程度回归能接近分类器，换阈值又能改变谁更好",
+      "intuitive_expectation": "没有用二分类目标训练的回归模型可能应明显不如分类器。",
+      "comparisons": [
+        {
+          "model": "回归器与分类器",
+          "metric": "五折平均AUC",
+          "condition_a": "岭回归连续预测",
+          "value_a": 0.9099314073272406,
+          "condition_b": "线性SVM",
+          "value_b": 0.9111599627224628
+        },
+        {
+          "model": "岭回归",
+          "metric": "accuracy",
+          "condition_a": "阈值0.3",
+          "value_a": 0.7227868852459016,
+          "condition_b": "阈值1.0",
+          "value_b": 0.8512568306010928
+        },
+        {
+          "model": "阈值决策",
+          "metric": "F1",
+          "condition_a": "岭回归阈值1.0",
+          "value_a": 0.8282584114263202,
+          "condition_b": "线性SVM默认决策",
+          "value_b": 0.8219053277876807
+        }
+      ],
+      "hypothesis": "num本身包含num>0的信息，条件均值可提供风险排序；阈值改变决策，但不改变连续分数排序。",
+      "verification_completed": "以相同五折分别计算AUC及四个阈值的accuracy、F1，再平均，与两个SVM同口径比较。",
+      "verification_result": "岭回归AUC接近SVM，低阈值下决策较差，阈值1.0时accuracy和F1反而较高；该阈值仅作敏感性分析，未独立验证。",
+      "further_verification": "应仅在训练数据选阈值，在外层测试评估；不能挑当前最高阈值成绩宣称可部署。",
+      "rank": 5,
+      "ranking_reason": "程度回归能提供分类排序，但决策优劣取决于阈值和指标。",
+      "assignment_sections": "4.6（3）",
+      "phenomenon_category": "任务目标与决策阈值",
+      "selected_for_report": true
+    },
+    {
+      "id": 15,
+      "title": "加入二次交互特征后，训练更好但验证明显更差",
+      "intuitive_expectation": "更丰富的交互关系可能提高模型表达能力和验证成绩。",
+      "comparisons": [
+        {
+          "model": "岭回归家族",
+          "metric": "训练R²",
+          "condition_a": "原始13维",
+          "value_a": 0.5715137739431225,
+          "condition_b": "二次104维",
+          "value_b": 0.6819179099906358
+        },
+        {
+          "model": "岭回归家族",
+          "metric": "验证R²",
+          "condition_a": "原始13维",
+          "value_a": 0.524345655996858,
+          "condition_b": "二次104维",
+          "value_b": 0.37883951093573226
+        }
+      ],
+      "hypothesis": "104维系数在小样本中可能吸收偶然关系，正则化未完全抵消估计方差增加。",
+      "verification_completed": "原始及二次模型分别扫描alpha，所有变换折内拟合，同时比较训练与验证成绩；二次模型最优alpha=100。",
+      "verification_result": "训练改善与验证下降并存，支持当前数据下容量收益不足的解释。",
+      "further_verification": "可做训练集规模学习曲线，检验增加样本后容量劣势是否减轻；本次未作该额外实验。",
+      "rank": 6,
+      "ranking_reason": "二次展开提高训练成绩却降低验证成绩，支持小样本容量收益不足的解释。",
+      "assignment_sections": "4.3（1）；4.5（4）",
+      "phenomenon_category": "本数据上的模型容量",
+      "selected_for_report": false
+    },
+    {
+      "id": 16,
+      "title": "只改变随机划分，就能得到正负两种R²结论",
+      "intuitive_expectation": "固定算法与参数的评价结果可能应比较稳定。",
+      "comparisons": [
+        {
+          "model": "深度3回归树",
+          "metric": "单次80/20测试R²",
+          "condition_a": "十次最小值",
+          "value_a": -0.20083349486129887,
+          "condition_b": "十次最大值",
+          "value_b": 0.3150684875812222
+        },
+        {
+          "model": "深度3回归树",
+          "metric": "R²",
+          "condition_a": "单次最小值",
+          "value_a": -0.20083349486129887,
+          "condition_b": "固定五折平均",
+          "value_b": 0.29214984150673684
+        }
+      ],
+      "hypothesis": "约61人的测试集对重症比例和个别大误差敏感；训练样本变化也会改变树结构。",
+      "verification_completed": "固定树参数及树种子，只将划分种子设为0–9，报告全部十次结果；标准差=0.131900。",
+      "verification_result": "挑最好一次会夸大表现；一次负R²也不能证明模型在所有划分上无效。",
+      "further_verification": "若需不确定区间，应采用预先指定的重复评估设计，不能只增加有利种子。",
+      "rank": 7,
+      "ranking_reason": "只改变划分就能改变R²的符号，单次划分无法支持稳定结论。",
+      "assignment_sections": "4.5（3）",
+      "phenomenon_category": "数据划分敏感性",
+      "selected_for_report": false
+    },
+    {
+      "id": 7,
+      "title": "深树训练完全拟合，验证几乎没有解释力",
+      "intuitive_expectation": "更多分裂能够利用更多规律，可能提高预测效果。",
+      "comparisons": [
+        {
+          "model": "回归树",
+          "metric": "训练R²",
+          "condition_a": "深度3",
+          "value_a": 0.5683185040938427,
+          "condition_b": "无限深",
+          "value_b": 1.0
+        },
+        {
+          "model": "回归树",
+          "metric": "验证R²",
+          "condition_a": "深度3",
+          "value_a": 0.29214984150673684,
+          "condition_b": "无限深",
+          "value_b": 0.003371665520341871
+        },
+        {
+          "model": "回归树",
+          "metric": "平均叶节点数",
+          "condition_a": "深度3",
+          "value_a": 8.0,
+          "condition_b": "无限深",
+          "value_b": 82.8
+        },
+        {
+          "model": "回归树",
+          "metric": "单例叶比例均值",
+          "condition_a": "深度3",
+          "value_a": 0.025,
+          "condition_b": "无限深",
+          "value_b": 0.4796652365685496
+        }
+      ],
+      "hypothesis": "小叶节点均值对单个患者标签过于敏感，单例叶直接记忆训练标签，估计方差增大。",
+      "verification_completed": "完成深度1–12及None扫描，记录训练与验证成绩、叶内样本数和单例叶比例。",
+      "verification_result": "训练R²达到1时验证R²仅约0.003，伴随叶节点细碎化，支持小样本叶均值不稳定的解释。",
+      "further_verification": "可在训练内重采样比较叶结构及预测方差，进一步隔离样本扰动效应。",
+      "rank": 8,
+      "ranking_reason": "叶内样本数量为深树训练拟合与泛化的矛盾提供机制证据。",
+      "assignment_sections": "4.3（1）",
+      "phenomenon_category": "本数据上的树容量",
+      "selected_for_report": false
+    },
+    {
+      "id": 2,
+      "title": "RBF训练排序完美，验证分类却接近多数类",
+      "intuitive_expectation": "更精细的局部拟合可能同时提高训练和验证表现。",
+      "comparisons": [
+        {
+          "model": "RBF SVM，C=1",
+          "metric": "训练AUC",
+          "condition_a": "gamma=0.01",
+          "value_a": 0.9229244648137778,
+          "condition_b": "gamma=10",
+          "value_b": 1.0
+        },
+        {
+          "model": "RBF SVM，C=1",
+          "metric": "验证AUC",
+          "condition_a": "gamma=0.01",
+          "value_a": 0.9085921216129551,
+          "condition_b": "gamma=10",
+          "value_b": 0.7119685195206029
+        },
+        {
+          "model": "gamma=10与多数类",
+          "metric": "验证accuracy",
+          "condition_a": "RBF SVM",
+          "value_a": 0.5412568306010929,
+          "condition_b": "多数类参考线",
+          "value_b": 0.5412568306010929
+        }
+      ],
+      "hypothesis": "核相似度随gamma增大快速衰减，模型记住局部训练响应，未见样本的分数可能集中在默认判别阈值一侧。",
+      "verification_completed": "固定C、折和预处理，只改变gamma，同时检查训练AUC、验证AUC、accuracy及支持向量数。",
+      "verification_result": "训练与验证差距扩大；AUC仍高于0.5而accuracy接近多数类，说明排序和默认决策不能混为一谈。",
+      "further_verification": "可进一步检查外层测试分数分布和训练内阈值选择，不将当前证据称为高维孤岛形状的直接观察。",
+      "rank": 9,
+      "ranking_reason": "固定C下增大gamma造成训练与验证分离，直接回应讲义的过拟合论断。",
+      "assignment_sections": "4.2（2）；4.6（1）",
+      "phenomenon_category": "本数据上的核局部化",
+      "selected_for_report": false
+    },
+    {
+      "id": 4,
+      "title": "按AUC选出的最优配置，召回率反而下降",
+      "intuitive_expectation": "调参得到最优模型后，各项指标可能一起改善。",
+      "comparisons": [
+        {
+          "model": "线性SVM",
+          "metric": "验证AUC",
+          "condition_a": "C=1",
+          "value_a": 0.9104630130671797,
+          "condition_b": "C=0.01",
+          "value_b": 0.9111599627224628
+        },
+        {
+          "model": "线性SVM",
+          "metric": "验证recall",
+          "condition_a": "C=1",
+          "value_a": 0.7984126984126985,
+          "condition_b": "C=0.01",
+          "value_b": 0.7841269841269841
+        }
+      ],
+      "hypothesis": "选参目标为排序AUC，未优化默认阈值下的召回率；分数排序和类别决策是不同目标。",
+      "verification_completed": "对相同测试折同时计算五项分类指标并核对混淆矩阵。",
+      "verification_result": "AUC和accuracy提升不代表漏诊减少，最优必须限定评价指标。",
+      "further_verification": "若优先召回，应在训练数据内设定召回约束和阈值，再进行独立评估。",
+      "rank": 10,
+      "ranking_reason": "按AUC选参并不保证默认阈值下的召回率改善。",
+      "assignment_sections": "4.2（1）；4.6（1）",
+      "phenomenon_category": "排序与筛查决策的权衡",
+      "selected_for_report": false
+    },
+    {
+      "id": 1,
+      "title": "复杂核没有取得更好的分类排序",
+      "intuitive_expectation": "表达能力更强的RBF核可能超过线性核。",
+      "comparisons": [
+        {
+          "model": "SVM",
+          "metric": "五折AUC",
+          "condition_a": "线性核最优",
+          "value_a": 0.9111599627224628,
+          "condition_b": "RBF核最优",
+          "value_b": 0.9100398829565497
+        },
+        {
+          "model": "SVM",
+          "metric": "外层AUC",
+          "condition_a": "线性核",
+          "value_a": 0.9045542227833895,
+          "condition_b": "RBF核",
+          "value_b": 0.8974329104537437
+        }
+      ],
+      "hypothesis": "在303例小样本中，全局平滑关系可能已足够；RBF增加的局部拟合方差抵消了表达能力收益。",
+      "verification_completed": "分别完成双核网格扫描，并用同一固定折进行嵌套选参；比较训练与验证差距。",
+      "verification_result": "两种评估口径均倾向线性核，但扫描后差距较小，不能解释为显著或普遍优势。",
+      "further_verification": "扩大RBF边界网格，并在保持外层隔离的条件下检验；需要独立数据才能判断可推广性。",
+      "rank": 11,
+      "ranking_reason": "简单核在本次评估中略优，但微小差距不足以宣称普遍优势。",
+      "assignment_sections": "4.2（1）；4.6（1）（2）",
+      "phenomenon_category": "本数据上的核选择",
+      "selected_for_report": false
+    },
+    {
+      "id": 6,
+      "title": "标准化的收益和最优C漂移并不一致",
+      "intuitive_expectation": "两个SVM可能对尺度同样敏感，或者最优C都应同方向漂移。",
+      "comparisons": [
+        {
+          "model": "线性SVM最优",
+          "metric": "验证AUC",
+          "condition_a": "标准化",
+          "value_a": 0.9111599627224628,
+          "condition_b": "不标准化",
+          "value_b": 0.9087086139169473
+        },
+        {
+          "model": "RBF SVM最优",
+          "metric": "验证AUC",
+          "condition_a": "标准化",
+          "value_a": 0.9100398829565497,
+          "condition_b": "不标准化",
+          "value_b": 0.8743098144139811
+        },
+        {
+          "model": "线性SVM",
+          "metric": "最优C",
+          "condition_a": "标准化",
+          "value_a": 0.01,
+          "condition_b": "不标准化",
+          "value_b": 1.0
+        },
+        {
+          "model": "RBF SVM",
+          "metric": "最优C",
+          "condition_a": "标准化",
+          "value_a": 100.0,
+          "condition_b": "不标准化",
+          "value_b": 100.0
+        }
+      ],
+      "hypothesis": "线性权重惩罚与RBF距离受尺度影响的方式不同；RBF的scale还随总体方差变化，超参数可部分补偿尺度。",
+      "verification_completed": "在标准化和不标准化两种折内管线中各自扫描，保留完整候选和最优参数。",
+      "verification_result": "线性核最优C漂移而RBF最优C未变，但RBF的AUC下降更大；重新选参比较不等于只改变尺度的单因素机制证明。",
+      "further_verification": "可固定C与数值gamma逐项配对比较，分离尺度变化和重新选参的影响。",
+      "rank": 12,
+      "ranking_reason": "尺度收益与最优C漂移不一致，不能统一解释两个核的反应。",
+      "assignment_sections": "4.2（4）；4.5（2）",
+      "phenomenon_category": "尺度与参数的共同作用",
+      "selected_for_report": false
+    },
+    {
+      "id": 12,
+      "title": "相同alpha下Lasso的稀疏程度随训练折变化",
+      "intuitive_expectation": "选定一个正则化强度后，筛选出的变量可能应保持一致。",
+      "comparisons": [
+        {
+          "model": "Lasso，alpha=0.01",
+          "metric": "零系数数量",
+          "condition_a": "外层训练折1",
+          "value_a": 0.0,
+          "condition_b": "外层训练折4",
+          "value_b": 2.0
+        }
+      ],
+      "hypothesis": "弱贡献特征的系数接近阈值，训练样本及相关输入的变化可能改变变量是否被压到零。",
+      "verification_completed": "逐特征检查五折系数、非零频次及标准差，并结合相关结构表。",
+      "verification_result": "五折零系数数量为[0, 1, 0, 2, 0]，证明存在折间选择差异，但不能仅据此断言由相关性导致或选择近乎随机。",
+      "further_verification": "需要训练内bootstrap或受控相关特征实验检验选择频率及原因；本次尚未执行。",
+      "rank": 13,
+      "ranking_reason": "变量选择随折变化是实测现象，但相关性是否为原因还需受控验证。",
+      "assignment_sections": "4.3（3）",
+      "phenomenon_category": "稀疏解的折间稳定性",
+      "selected_for_report": false
+    },
+    {
+      "id": 11,
+      "title": "Lasso全部系数为零，R²为负，且与均值参考一致",
+      "intuitive_expectation": "严重收缩后可能仍保留少数重要变量，常数参考的R²应为0。",
+      "comparisons": [
+        {
+          "model": "Lasso",
+          "metric": "平均零系数数",
+          "condition_a": "alpha=0.01",
+          "value_a": 0.6,
+          "condition_b": "alpha=10",
+          "value_b": 13.0
+        },
+        {
+          "model": "Lasso",
+          "metric": "验证R²",
+          "condition_a": "alpha=0.01",
+          "value_a": 0.525460537309604,
+          "condition_b": "alpha=10",
+          "value_b": -0.011652937200442182
+        },
+        {
+          "model": "常数预测",
+          "metric": "验证R²",
+          "condition_a": "全零Lasso",
+          "value_a": -0.011652937200442182,
+          "condition_b": "训练均值参考",
+          "value_b": -0.011652937200442182
+        }
+      ],
+      "hypothesis": "强惩罚使系数全零但截距仍等于训练均值；测试均值与训练均值不同，所以常数模型测试R²可为负。",
+      "verification_completed": "检查逐折零系数计数，并比较全零Lasso与DummyRegressor的折外预测。",
+      "verification_result": "负R²属于正常退化，不是程序报错；R²=0的概念参照不能代替真正的折外均值基线。",
+      "further_verification": "已完成预测相等性检查；不需要为了非负R²去改动测试预测。",
+      "rank": 14,
+      "ranking_reason": "全零系数和负R²反映强收缩及训练测试均值差异，不应误判为程序错误。",
+      "assignment_sections": "4.3（3）（4）",
+      "phenomenon_category": "模型退化与均值参考",
+      "selected_for_report": false
+    },
+    {
+      "id": 3,
+      "title": "增大C提高训练AUC，却降低验证AUC",
+      "intuitive_expectation": "更重视训练违例的惩罚可能提高整体准确性。",
+      "comparisons": [
+        {
+          "model": "RBF SVM，gamma=0.01",
+          "metric": "训练AUC",
+          "condition_a": "C=1",
+          "value_a": 0.9229244648137778,
+          "condition_b": "C=100",
+          "value_b": 0.9747810490176902
+        },
+        {
+          "model": "RBF SVM，gamma=0.01",
+          "metric": "验证AUC",
+          "condition_a": "C=1",
+          "value_a": 0.9085921216129551,
+          "condition_b": "C=100",
+          "value_b": 0.8693928371011704
+        }
+      ],
+      "hypothesis": "大C相对减弱正则化，使模型更愿意为训练点形成复杂分界，可能拟合噪声。",
+      "verification_completed": "保持gamma=0.01和五折划分不变，对照C扫描的训练及验证指标。",
+      "verification_result": "在该gamma下观察到拟合与泛化反向变化；不能推广为任意gamma下大C都会更差。",
+      "further_verification": "对不同gamma重复同样比较，并在外层测试中验证参数选择的稳定性。",
+      "rank": 15,
+      "ranking_reason": "固定gamma改变C，可以区分训练拟合收益与验证损失。",
+      "assignment_sections": "4.2（3）",
+      "phenomenon_category": "本数据上的惩罚参数",
+      "selected_for_report": false
+    },
+    {
+      "id": 9,
+      "title": "独立选参不一定让成绩下降，岭回归成绩完全相同",
+      "intuitive_expectation": "经过内层重新选择参数后，外层成绩可能必然低于扫描最优。",
+      "comparisons": [
+        {
+          "model": "岭回归",
+          "metric": "R²",
+          "condition_a": "课程扫描最优",
+          "value_a": 0.524345655996858,
+          "condition_b": "独立外层",
+          "value_b": 0.524345655996858
+        },
+        {
+          "model": "预剪枝回归树",
+          "metric": "R²",
+          "condition_a": "课程扫描最优",
+          "value_a": 0.29214984150673684,
+          "condition_b": "独立外层",
+          "value_b": 0.2094997806942124
+        }
+      ],
+      "hypothesis": "若每个外层的内层选择都得到相同参数，外层重新拟合与固定五折中对应模型可完全一致；下降不是嵌套评估的必然数学性质。",
+      "verification_completed": "检查五个外层选择的参数和逐样本预测，岭回归五次均选择alpha=10。",
+      "verification_result": "岭回归参数稳定，而树的选择更受训练样本变化影响；相同数字本身不能作为泄漏证据。",
+      "further_verification": "外层隔离仍由协议测试检查；需要外部数据才能评估当前数据来源以外的表现。",
+      "rank": 16,
+      "ranking_reason": "外层成绩不必然下降，参数选择稳定时可与固定五折成绩完全相同。",
+      "assignment_sections": "4.3（3）；评估协议",
+      "phenomenon_category": "参数稳定性与选参协议",
+      "selected_for_report": false
+    },
+    {
+      "id": 10,
+      "title": "岭回归适度正则化收益很小，惩罚过强反而接近失效",
+      "intuitive_expectation": "加入或增大正则化可能显著改善线性模型。",
+      "comparisons": [
+        {
+          "model": "线性回归家族",
+          "metric": "验证R²",
+          "condition_a": "普通最小二乘",
+          "value_a": 0.5225373306510195,
+          "condition_b": "最优岭alpha=10",
+          "value_b": 0.524345655996858
+        },
+        {
+          "model": "岭回归",
+          "metric": "验证R²",
+          "condition_a": "alpha=10",
+          "value_a": 0.524345655996858,
+          "condition_b": "alpha=10000",
+          "value_b": 0.058621424980187783
+        }
+      ],
+      "hypothesis": "13个输入上的普通线性解已较稳定，适度收缩仅带来小收益；过强惩罚压制了有用信号，形成欠拟合。",
+      "verification_completed": "跨多个数量级扫描alpha，并对照OLS、训练成绩和标准化系数。",
+      "verification_result": "适度正则化改善有限；不能把正则化越强与泛化越好画等号。",
+      "further_verification": "可用训练内重采样比较系数方差，区分方差降低与偏差增加的贡献。",
+      "rank": 17,
+      "ranking_reason": "适度收缩收益有限，而过强惩罚又会损失预测信号。",
+      "assignment_sections": "4.3（3）",
+      "phenomenon_category": "本数据上的正则化收益",
+      "selected_for_report": false
+    },
+    {
+      "id": 18,
+      "title": "目标只取0–4，普通线性回归却预测负等级",
+      "intuitive_expectation": "训练目标有界且非负，预测可能也应在相同范围。",
+      "comparisons": [
+        {
+          "model": "普通最小二乘",
+          "metric": "数值范围",
+          "condition_a": "真实目标最小值",
+          "value_a": 0.0,
+          "condition_b": "折外预测最小值",
+          "value_b": -0.6168968004538482
+        },
+        {
+          "model": "普通最小二乘",
+          "metric": "负值预测人数",
+          "condition_a": "按标签范围预期",
+          "value_a": 0.0,
+          "condition_b": "303例实际预测",
+          "value_b": 49.0
+        }
+      ],
+      "hypothesis": "无约束线性函数输出不受目标取值范围限制，平方损失也不会自动施加上下界。",
+      "verification_completed": "遍历全部折外预测，统计最小值、最大值和越界人数；保留原值计算课程指标。",
+      "verification_result": "负预测是模型约束与等级任务不一致的表现，不是读错标签；事后截断会改变评价协议。",
+      "further_verification": "若比较截断版本，须作为预先声明的单独对照，不能静默修改正式结果。",
+      "rank": 18,
+      "ranking_reason": "标签范围不自动约束无约束回归的预测范围，提示模型与任务尺度的差异。",
+      "assignment_sections": "4.3；4.6（3）",
+      "phenomenon_category": "输出约束与等级目标",
+      "selected_for_report": false
+    },
+    {
+      "id": 19,
+      "title": "某折验证R²高于训练R²，但验证MSE反而更大",
+      "intuitive_expectation": "验证R²较高可能意味着新样本的实际预测误差更小。",
+      "comparisons": [
+        {
+          "model": "OLS，第1折",
+          "metric": "R²",
+          "condition_a": "训练",
+          "value_a": 0.5582242755331113,
+          "condition_b": "验证",
+          "value_b": 0.5782789747184898
+        },
+        {
+          "model": "OLS，第1折",
+          "metric": "MSE",
+          "condition_a": "训练",
+          "value_a": 0.6380341600835654,
+          "condition_b": "验证",
+          "value_b": 0.7328266996695095
+        },
+        {
+          "model": "OLS，第1折",
+          "metric": "标签方差（由MSE和R²还原）",
+          "condition_a": "训练",
+          "value_a": 1.4442490267058263,
+          "condition_b": "验证",
+          "value_b": 1.7377049180327868
+        }
+      ],
+      "hypothesis": "R²按各自被评估集合的标签方差归一化，训练集与测试集的分母不同，不能直接以R²大小判断绝对误差。",
+      "verification_completed": "读取同一折训练与验证MSE、R²，按R²=1−MSE/Var(y)核对分母。",
+      "verification_result": "测试标签方差较大，足以使更大的MSE得到更高R²；不能据此声称模型在新患者上优于训练患者。",
+      "further_verification": "跨集合比较时同时给出MAE、MSE和标签分布，避免只看R²。",
+      "rank": 19,
+      "ranking_reason": "跨训练和验证集合的R²不能直接替代绝对误差比较。",
+      "assignment_sections": "4.4；4.6（2）",
+      "phenomenon_category": "指标归一化口径",
+      "selected_for_report": false
+    }
+  ]
+}

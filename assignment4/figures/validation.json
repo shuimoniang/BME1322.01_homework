@@ -1,0 +1,20 @@
+{
+  "checks": [
+    "linear fixed results exactly reproduced",
+    "rbf fixed results exactly reproduced",
+    "ridge fixed results exactly reproduced",
+    "depth fixed results exactly reproduced"
+  ],
+  "baseline_items": 25,
+  "max_baseline_difference": 4.954115675470661e-07,
+  "image_links_valid": true,
+  "nested_coverage_valid": true,
+  "tables_with_immediate_conclusions": 42,
+  "summary_values_and_signed_deltas_verified": true,
+  "unexpected_findings_with_comparisons_and_verification": 19,
+  "candidate_results_audited": 269,
+  "report_findings": 5,
+  "additional_findings": 14,
+  "assignment_clause_index_verified": true,
+  "generated_chinese_text_verified": true
+}
