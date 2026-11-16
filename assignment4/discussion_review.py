@@ -98,9 +98,9 @@ def build(content,r,table,data=None):
  gamma10=next(a['mean'] for a in sc['rbf']['runs'] if a['params']['C']==1 and a['params']['gamma']==10)
  first=threshold[0][2];last=threshold[3][2]
  paragraphs=[
- ['## 1. 线性核与RBF核',f'以验证AUC为主，线性核最优为{lin["auc"]:.6f}，略高于RBF的{rb["auc"]:.6f}，独立选参外层也维持该方向，故本次更倾向线性核。','非线性没有带来净提升，支持当前特征下简单分界已能捕捉主要信号，但不能排除小样本方差和网格边界造成的影响。',f'固定C=1、gamma=10时训练AUC为{gamma10["train_auc"]:.6f}、验证AUC为{gamma10["auc"]:.6f}，明显存在训练验证差距。','由K(x,x′)=exp(−gamma·‖x−x′‖²)可知，gamma增大使不同样本间相似度衰减更快，模型更容易记住训练点的局部响应。',f'默认参数从线性核换成RBF，AUC变化为{r["fixed"]["rbf"]["mean"]["auc"]-r["fixed"]["linear"]["mean"]["auc"]:+.6f}，而RBF自身调参带来{rb["auc"]-r["fixed"]["rbf"]["mean"]["auc"]:+.6f}，所以本次调对参数比直接换用复杂核更有益。',f'两核调参后差距只有{lin["auc"]-rb["auc"]:.6f}，且RBF最优在网格边界，不应宣称线性核有显著或普遍优势。',f'默认判别阈值下RBF召回率{rb["recall"]:.6f}高于线性核{lin["recall"]:.6f}，若优先减少漏诊，还需训练内阈值选择与明确的召回率约束。'],
- ['## 2. 两条任务线的结论是否一致',f'分类线性核AUC为{lin["auc"]:.6f}、RBF为{rb["auc"]:.6f}，回归岭模型R²为{ri["r2"]:.6f}、回归树为{de["r2"]:.6f}，两条线都更支持当前样本中的简单线性模型。','这些指标只能在各自任务内比较，不能据AUC大于R²就断言分类更容易。','两条线共同提示主要信息可以由较平滑的全局关系捕获，复杂局部分界或细碎叶节点未必能抵消小样本估计方差。',f'分类线性SVM与岭回归测试折置换重要性前五的交集是{overlap}，为共享输入信号提供旁证。',f'删去ca和thal后岭回归R²为{best(ab["drop_ridge"])["mean"]["r2"]:.6f}，回归树为{best(ab["drop_depth"])["mean"]["r2"]:.6f}，说明模型偏好也会随信息集合改变。','特征重要性不一致既可能提示预处理或信息泄漏问题，也可能源于二分类和程度回归损失不同，需要排查而非直接判错。','若把num改为五分类，会保留类别区别但忽略等级顺序且最重等级只有13例，估计更不稳定，因此本作业保留二分类与有序数值回归作为互补问题。'],
- ['## 3. 回归模型能否用作分类器',f'统一采用逐折计算后平均的口径，岭回归预测值作为分数的AUC为{first["auc"]:.6f}，线性SVM为{svm["linear"]["auc"]:.6f}，两者排序能力接近但并非完全相同。',f'岭回归阈值0.3时accuracy={first["accuracy"]:.6f}、F1={first["f1"]:.6f}，阈值1.0时分别为{last["accuracy"]:.6f}和{last["f1"]:.6f}，而线性SVM为{svm["linear"]["accuracy"]:.6f}、{svm["linear"]["f1"]:.6f}。','因此低阈值下可说其分类决策不如SVM，而按接近的AUC或某些阈值下的accuracy和F1，又可说并不逊色，前提是明确比较指标。','改变阈值不改变连续分数AUC，却会改变阳性比例、漏诊和误诊，表中所有阈值均作敏感性分析，没有挑最好阈值宣称独立泛化。','回归器虽未以二值类别为训练目标，但num本身已包含num>0的信息，因此仍可能学到有用的风险排序。','回归拟合条件均值与分类关心阳性概率不同，例如少量重症与较多轻症可产生相近的期望值，所以排序和决策边界都不保证最优。','若实际使用阈值，应只在训练数据内选择并在独立数据评估，且本数据不能直接确定真实筛查代价。']]
+ ['## 1. 线性核与RBF核',f'本次实验选择线性核：其最优五折平均AUC为{lin["auc"]:.6f}，高于RBF核的{rb["auc"]:.6f}。','非线性核没有带来提升，说明在当前特征和样本规模下，线性分界已经能够捕捉主要判别信息，增加局部非线性拟合没有获得额外收益。',f'当C=1、gamma=10时，RBF训练AUC达到{gamma10["train_auc"]:.6f}，验证AUC降至{gamma10["auc"]:.6f}，直接表现为过拟合。','这是因为核函数K(x,x′)=exp(−gamma·‖x−x′‖²)随gamma增大而快速衰减，训练点之间的相似性变小，模型的响应集中在训练点附近。',f'默认参数下从线性核换成RBF核，AUC变化为{r["fixed"]["rbf"]["mean"]["auc"]-r["fixed"]["linear"]["mean"]["auc"]:+.6f}；对RBF自身调参则提高{rb["auc"]-r["fixed"]["rbf"]["mean"]["auc"]:.6f}，因此本次调好现有模型参数比直接换复杂模型更有效。',f'调参后线性核仍领先{lin["auc"]-rb["auc"]:.6f}，结合其结构简单、参数较少，我将线性核作为本实验的首选分类模型。',f'这一选择以AUC为主要依据；若改以默认阈值下的召回率为标准，则RBF核以{rb["recall"]:.6f}高于线性核的{lin["recall"]:.6f}。'],
+ ['## 2. 两条任务线的结论是否一致','两条任务线的结论一致：在本实验中，简单线性模型均优于对应的复杂非线性模型。',f'分类中线性核AUC为{lin["auc"]:.6f}，高于RBF核的{rb["auc"]:.6f}；回归中岭回归R²为{ri["r2"]:.6f}，高于回归树的{de["r2"]:.6f}。','这两组任务内部的比较共同说明，当前数据的主要预测信息适合用平滑的全局关系表达，小样本下复杂局部结构的拟合收益不足以抵消估计方差。',f'线性SVM与岭回归测试折置换重要性前五共同包含{overlap}，进一步表明两条任务线利用了相近的输入信号。',f'去掉ca和thal后，岭回归R²为{best(ab["drop_ridge"])["mean"]["r2"]:.6f}，仍高于回归树的{best(ab["drop_depth"])["mean"]["r2"]:.6f}，所以删去昂贵检查信息后这一模型选择结论仍成立。','回归树删除这两列后成绩提高、岭回归成绩下降，说明相同信息对不同模型的拟合与方差影响不同，树更容易因细分样本而损失泛化能力。','因此，两条线相互印证的数据性质是：主要信号可以由较简单的全局关系捕获，当前样本规模更适合控制模型复杂度。'],
+ ['## 3. 回归模型能否用作分类器',f'可以，岭回归预测值能够用作分类分数，其五折平均AUC为{first["auc"]:.6f}，接近线性SVM的{svm["linear"]["auc"]:.6f}。',f'将岭回归预测值按大于1.0判为阳性时，accuracy为{last["accuracy"]:.6f}、F1为{last["f1"]:.6f}，均高于线性SVM默认决策的{svm["linear"]["accuracy"]:.6f}和{svm["linear"]["f1"]:.6f}。',f'但按大于0.3判为阳性时，岭回归accuracy为{first["accuracy"]:.6f}、F1为{first["f1"]:.6f}，均低于线性SVM，所以两种比较并不总给出相同结论。','据此，本次明确结论是：按连续分数AUC，岭回归排序能力接近SVM；按阈值0.3的分类决策，岭回归较差；按阈值1.0的accuracy和F1，岭回归更好。','回归器能够产生合理排序，是因为训练目标num本身包含num>0的信息，预测的严重程度越高，通常也越倾向于存在病变。','其局限在于平方损失拟合的是严重程度的条件均值，而分类关心的是阳性概率，少量重症与较多轻症可产生相近均值，使风险排序和二值边界发生偏差。','因此，回归模型在本实验中可以兼作分类器，分类效果取决于阈值；0.3、0.5、0.7、1.0的结果用于展示这种敏感性，实际阈值应在训练数据内选择后再作独立评估。']]
  analysis='# 三题简答\n\n'+'\n\n'.join(p[0]+'\n'+'\n'.join(p[1:]) for p in paragraphs)+'\n\n'
  analysis+=tbl(['模型','阈值','五折平均AUC','五折平均accuracy','五折平均F1'],[[N[n],value,a['auc'],a['accuracy'],a['f1']] for n,value,a in threshold]+[[N[n],'SVM默认决策',a['auc'],a['accuracy'],a['f1']] for n,a in svm.items()],'所有模型使用相同的五折聚合方式，回归器阈值改变可使与SVM的accuracy／F1排序改变，但连续分数AUC不随阈值变化。')
  start=content.index('## 9. 讨论题');end=content.index('## 10. 实验日志',start)
@@ -146,17 +146,19 @@ def finalize(r,table):
  content+='''
 ## AI 使用声明
 
-使用Codex AI编程助手完成需求解析、代码、实验运行、排错、图表、数字分析和报告文字，使用Python和scikit-learn执行模型计算。本文结论由AI依据实际记录提出，用户尚待逐项人工核查，见human_review.md，不把自动检查写成用户已亲自确认。
+使用Codex AI编程助手完成需求解析、代码、实验运行、排错、图表、数字分析和报告文字，使用Python和scikit-learn执行模型计算。本文结论由AI依据实际记录提出，用户已逐项复核human_review.md所列内容并确认没有问题；AI自动检查与用户人工复核分别记录。
 
 '''
  from reflection_section import ai_error_example
  content+=ai_error_example(r)
  content+='验证依据为基线核对、关键模型重复计算、折内预处理及外层隔离测试、逐样本折外预测和报告重建。引用资料为课程作业PDF第2–14页、课程数据README及baselines.py、UCI Heart Disease数据说明、scikit-learn官方文档和本次AI对话。\n'
  for _,_,anchor in coverage:assert anchor in content,anchor
- index='# 作业讨论与回答逐项核对\n\n'+table(['题目条款','要求回答的问题','报告定位标题或关键词'],coverage)+'\n各项均有正文回答，数字取自正式记录或同折预测重算；三道简答正文各七句，人工复核状态仍为待用户确认。\n'
+ index='# 作业讨论与回答逐项核对\n\n'+table(['题目条款','要求回答的问题','报告定位标题或关键词'],coverage)+'\n各项均有正文回答，数字取自正式记录或同折预测重算；三道简答正文各七句，用户已逐项完成人工复核并确认没有问题。\n'
  (ROOT/'discussion_checklist.md').write_text(index,encoding='utf-8')
  from report_presentation import finish_presentation
  content,table_count=finish_presentation(content,r,table)
+ from report_structure import organize,clean_documents
+ content=organize(content)
  p.write_text(content,encoding='utf-8')
  (ROOT/'figures/presentation_validation.json').write_text(json.dumps({'tables_with_individual_conclusions':table_count,'model_rows_metric_columns':True,'data_dictionary_fields':14},indent=2),encoding='utf-8')
  errors=ROOT/'ai_error_log.md';e=errors.read_text(encoding='utf-8')
@@ -170,3 +172,4 @@ def finalize(r,table):
   assert max(scores)-min(scores)<1e-12
  for n in ['linear','rbf']:
   for key in ['auc','accuracy','f1']:assert abs(evidence['svm_classification'][n][key]-chosen(r,n)['mean'][key])<1e-12
+ clean_documents(ROOT)

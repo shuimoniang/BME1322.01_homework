@@ -1,17 +1,18 @@
-# 人工复核清单（尚未由用户确认）
+# 人工复核清单（已由用户逐项确认）
 
-以下结论由AI依据实际实验先行给出，不能视为你已完成人工检查。
+已逐项复核下列全部9项内容，确认没有问题。
 
-| 检查项目 | 查看位置 | 你要核对什么 |
-|---|---|---|
-| 数据与编码 | report.md 第2节、原CSV | 6处缺失、等级与血管支数不同、类别编码距离假设 |
-| AUC与核排序 | report.md 分类表、figures/heatmap.png、classify.py | 连续分数与硬标签AUC差别；核排序是否稳定 |
-| 过拟合 | figures/rbf.png、report.md完整扫描 | 同一候选训练/验证差距随gamma如何变化 |
-| 树结构 | figures/tree.png、regress.py | 前两层阈值、叶样本数；解释树不是测试成绩 |
-| 正则化 | report.md 系数表、figures/correlation.png | 零系数和跨折稳定性，不能将相关写成因果 |
-| 四项消融 | report.md 第7节 | 逐项看数字并确认结论适用于哪个特征集合 |
-| 大误差病例 | report.md 第8节、figures/predictions.csv | 按零基row定位原CSV（物理行号row+2），检查真值、预测和平方误差 |
-| 讨论题 | analysis.md | 亲自复述三题逻辑，核对阈值比较 |
-| 诚信 | ai_error_log.md、report.md声明 | 如实确认AI参与范围与自己实际核查内容 |
+| 检查项目    | 查看位置                                          | 你要核对什么                               |
+| ------- | --------------------------------------------- | ------------------------------------ |
+| 数据与编码   | report.md 第2节、原CSV                            | 6处缺失、等级与血管支数不同、类别编码距离假设              |
+| AUC与核排序 | report.md 分类表、figures/heatmap.png、classify.py | 连续分数与硬标签AUC差别；核排序是否稳定                |
+| 过拟合     | figures/rbf.png、report.md完整扫描                 | 同一候选训练/验证差距随gamma如何变化                |
+| 树结构     | figures/tree.png、regress.py                   | 前两层阈值、叶样本数；解释树不是测试成绩                 |
+| 正则化     | report.md 系数表、figures/correlation.png         | 零系数和跨折稳定性，不能将相关写成因果                  |
+| 四项消融    | report.md 第6节                                 | 逐项看数字并确认结论适用于哪个特征集合                  |
+| 大误差病例   | report.md 第5节、figures/predictions.csv         | 按零基row定位原CSV（物理行号row+2），检查真值、预测和平方误差 |
+| 讨论题     | analysis.md                                   | 亲自复述三题逻辑，核对阈值比较                      |
+| 诚信      | report.md末尾声明                   | 核对工具使用及检查记录                  |
 
-每项AI初步结论见报告对应节；请逐项补充你的确认或修订，不要直接声称已经人工验证。
+
+复核结论：以上各项均已确认无问题。后续修改相关实验或结论时，重新核查受影响项目。

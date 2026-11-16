@@ -30,5 +30,9 @@
     "additional_findings.md": "aa12d484c5b6efb62a144aab1819a4b8966be6fdba1c5cccfe39baf5b770c699",
     "phenomena_index.md": "3b467fc44e43b0fb14732a7df9575769ad411cf9385685c5141b817526635e89",
     "ai_error_log.md": "17ce9c07c375108d9665b7502945a1123eff66642ed4e248b53774cb145eb7e5"
+  },
+  "subsequent_documentation_changes": {
+    "description": "原复现实验后补充缺失值处理理由、改写讨论答案、按讲义九部分重排报告、将图表结论改为自然表述，并将工具分工与复核说明集中至末尾声明；生成器同步更新。历史artifact_sha256对应当时版本，本次未重跑实验。",
+    "experiment_results_unchanged": true
   }
 }

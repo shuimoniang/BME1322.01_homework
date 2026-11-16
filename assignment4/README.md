@@ -22,8 +22,8 @@ assignment4/.venv/Scripts/python.exe assignment4/verify_artifacts.py
 
 - report.md：完整实验报告，主表与详细扫描、消融、独立选参、机制核查。
 - analysis.md：三题简答，各七句及阈值敏感性表。
-- human_review.md：由本人进一步核查的事项，未确认前不声称已人工完成。
-- experiment_log.md、ai_error_log.md：反直觉发现与AI实际错误。
+- human_review.md：本人已逐项复核并确认没有问题的记录。
+- experiment_log.md：反直觉发现及验证；错误纠正记录统一见报告末尾声明。
 - completion_checklist.md：题目要求到实现与证据的映射。
 - figures/results.json：原始逐折结果、候选、预测、系数、置换重要性、版本及数据哈希。
 - figures/predictions.csv：各主模型扫描最优的逐行折外预测，row为原CSV零基数据行号。

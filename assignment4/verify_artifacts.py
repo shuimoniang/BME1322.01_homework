@@ -11,7 +11,7 @@ def verify_report_presentation(text,r):
  for i,line in enumerate(lines):
   if line.startswith('|') and (i==len(lines)-1 or not lines[i+1].startswith('|')):
    following=next((v for v in lines[i+1:] if v.strip()),'')
-   assert following.startswith('我从这张表里读出'),following
+   assert following and not following.startswith(('#','|','![')),following
    count+=1
  def check_summary(section,keys,pairs,dummy):
   start=text.index(section);chunk=text[start:]
@@ -32,9 +32,9 @@ def verify_report_presentation(text,r):
     assert abs(float(row[3+3*j])-(b-a))<=5.01e-9
   for j,key in enumerate(keys):assert abs(float(rows[-1][1+3*j])-dummy['mean'][key])<=5.01e-7
  def top(n):s=r['scans'][n];return s['runs'][s['best']]
- check_summary('## 4. 分类结果',['accuracy','precision','recall','f1','auc'],[(r['fixed'][n],top(n)) for n in ['linear','rbf']],r['dummy_cls'])
+ check_summary('## 4. 分类实验',['accuracy','precision','recall','f1','auc'],[(r['fixed'][n],top(n)) for n in ['linear','rbf']],r['dummy_cls'])
  unpruned=next(a for a in r['scans']['prune']['runs'] if a['params']['path_fraction']==0)
- check_summary('## 5. 回归结果',['r2','mae','rmse'],[(r['fixed'][n],top(n)) for n in ['depth','ridge','lasso','ols','svr']]+[(unpruned,top('prune')),(r['fixed']['depth'],top('prune'))],r['dummy_reg'])
+ check_summary('## 5. 回归实验',['r2','mae','rmse'],[(r['fixed'][n],top(n)) for n in ['depth','ridge','lasso','ols','svr']]+[(unpruned,top('prune')),(r['fixed']['depth'],top('prune'))],r['dummy_reg'])
  return count
 
 def verify():
@@ -52,7 +52,7 @@ def verify():
  assert len(findings['findings'])==19
  standalone=(ROOT/'experiment_log.md').read_text(encoding='utf-8')
  assert len(re.findall(r'^## \d{2}\. ',standalone,re.M))==5
- log=re.search(r'^## 10\. 实验日志\s*$(.*?)^## 11\. ',text,re.M|re.S).group(1)
+ log=re.search(r'^## 8\. 实验日志\s*$(.*?)^## 9\. ',text,re.M|re.S).group(1)
  assert len(re.findall(r'^### \d{2}\. ',log,re.M))==5
  additional=(ROOT/'additional_findings.md').read_text(encoding='utf-8')
  index=(ROOT/'phenomena_index.md').read_text(encoding='utf-8')

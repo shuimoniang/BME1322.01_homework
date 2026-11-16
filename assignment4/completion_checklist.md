@@ -8,6 +8,6 @@
 | 4.5 | ablations.py / main.py | 四项消融及附录 |
 | 4.6 | analysis.md | 三题及阈值表 |
 | 五/六 | experiment_log.md | 四条数字/假设/验证记录 |
-| 八 | ai_error_log.md / human_review.md | AI真实错误和待人工确认事项 |
+| 八 | report.md末尾声明 | 工具使用、错误纠正与复核记录 |
 
-所有自动审计通过；人工确认项目仍以human_review.md中的状态为准。
+各条款的内容及证据按上表定位。

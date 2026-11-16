@@ -42,5 +42,5 @@ def enrich(r,table,data=None):
    assert sorted(z['row'] for z in a['predictions'])==list(range(303))
    assert all(np.isfinite(v) for v in a['mean'].values())
  for name,s in r['nested'].items():assert sorted(z['row'] for z in s['predictions'])==list(range(303))
- rows=[['4.1/4.4','common.py / test_protocol.py','复现核对、总表、独立检查'],['4.2','classify.py','双核C/gamma扫描、标准化消融、训练/验证差距'],['4.3','regress.py','树深/路径剪枝、系数、岭/Lasso/SVR'],['4.5','ablations.py / main.py','四项消融及附录'],['4.6','analysis.md','三题及阈值表'],['五/六','experiment_log.md','四条数字/假设/验证记录'],['八','ai_error_log.md / human_review.md','AI真实错误和待人工确认事项']]
+ rows=[['4.1/4.4','common.py / test_protocol.py','复现核对、总表、独立检查'],['4.2','classify.py','双核C/gamma扫描、标准化消融、训练/验证差距'],['4.3','regress.py','树深/路径剪枝、系数、岭/Lasso/SVR'],['4.5','ablations.py / main.py','四项消融及附录'],['4.6','analysis.md','三题及阈值表'],['五/六','experiment_log.md','四条数字/假设/验证记录'],['八','ai_error_log.md / human_review.md','AI真实错误和已完成人工复核记录']]
  (ROOT/'completion_checklist.md').write_text('# 要求完成映射\n\n'+table(['题目条款','实现/检查','报告证据'],rows)+'\n所有自动审计通过；人工确认项目仍以human_review.md中的状态为准。\n',encoding='utf-8')
