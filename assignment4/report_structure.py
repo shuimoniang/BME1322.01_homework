@@ -7,9 +7,9 @@ ERROR_HISTORY = "# AI实际错误记录\r\n\r\n## 排序文案的中文编码损
 def natural(text):
     return re.sub(r'我从这张表里读出[：:]\s*', '', text)
 
-def organize(text):
+def organize(text, r=None):
     text=natural(text).replace('\r', '')
-    if '## 1. 总体设计' in text:
+    if re.search(r'^## 1\.? 总体设计$', text, re.M):
         return polish(text)
     sections={}
     matches=list(re.finditer(r'^## (.+)$',text,re.M))
@@ -61,6 +61,9 @@ def organize(text):
     history=ERROR_HISTORY.split('\n',1)[1].strip()
     history=re.sub(r'^## ', '#### ', history, flags=re.M)
     final_ai+='\n\n### 其他错误及纠正记录\n\n'+history
+    if r is not None:
+        from reflection_section import auc_error_record
+        final_ai+='\n\n'+auc_error_record(r)
     final_ai=final_ai.replace('报告第九节','报告第七节')
     final_ai+='\n\n### 引用资料\n\n'+sources+'；本次AI对话。'
     items=[('1. 总体设计',design+'\n\n### 独立选参检查\n\n'+independent),('2. 数据探索',take('2. 数据探索')),('3. 复现核对',take('3. 复现核对')),('4. 分类实验',cls),('5. 回归实验',reg),('6. 消融与对照实验',ablation),('7. 讨论题',discussion),('8. 实验日志',log.strip()),('9. 讨论与反思',errors.strip()+'\n\n### 局限与材料勘误\n\n'+limitations+'\n\n### 若时间允许，优先补充的实验\n\n'+future.strip()),('AI 使用声明',final_ai)]
@@ -76,8 +79,10 @@ def clean_documents(root):
         text=natural(p.read_text(encoding='utf-8')).replace('\r','').replace('报告第十节','报告第八节').replace('report.md第十节','report.md第八节')
         text=text.replace('report.md 第7节','report.md 第6节').replace('report.md 第8节','report.md 第5节')
         if p.name=='ai_error_log.md':
-            text='# 错误记录索引\n\n错误实例、发现过程、纠正方式及验证结果统一收录于[报告末尾的声明](report.md#ai-使用声明)。\n'
+            text='# 错误记录索引\n\n错误实例、发现过程、纠正方式及验证结果统一收录于[报告末尾的声明](report.md#10-ai-使用声明)。\n'
         elif p.name=='human_review.md':
+            from reflection_section import REVIEW_CONFIRMATION
+            text=re.sub(r'已逐项复核(?:下列全部9项|以下)内容[^\n]*', REVIEW_CONFIRMATION,text)
             text=re.sub(r'用户已逐项复核下列全部9项内容.*?\n\n', '已逐项复核下列全部9项内容，确认没有问题。\n\n',text,flags=re.S)
             text=text.replace('ai_error_log.md、report.md声明','report.md末尾声明')
         elif p.name=='README.md':
@@ -87,19 +92,48 @@ def clean_documents(root):
             text=text.replace('所有自动审计通过；人工确认项目仍以human_review.md中的状态为准。','各条款的内容及证据按上表定位。')
         elif p.name=='discussion_checklist.md':
             text=text.replace('## 10. 实验日志','## 8. 实验日志').replace('### 讨论与反思','## 9. 讨论与反思')
-        text=text.replace('如实确认AI参与范围与自己实际核查内容','核对工具使用及检查记录').replace('三道简答正文各七句，用户已逐项完成人工复核并确认没有问题。','三道简答正文各七句。')
+        text=text.replace('如实确认AI参与范围与自己实际核查内容','核对工具使用及检查记录').replace('三道简答正文分别为8、7、7句，用户已逐项完成人工复核并确认没有问题。','三道简答正文分别为8、7、7句。')
         p.write_text(text,encoding='utf-8')
+
+
+def number_headings(text):
+    """统一报告章节编号；作业条款编号只保留在正文说明中。"""
+    counts = [0, 0, 0]
+    fenced = False
+    lines = []
+    for line in text.splitlines():
+        if line.startswith('```'):
+            fenced = not fenced
+        match = re.match(r'^(#{2,4})\s+(.+)$', line) if not fenced else None
+        if match:
+            marks, title = match.groups()
+            title = re.sub(r'^\d+(?:\.\d+)*[.、]?\s+', '', title)
+            title = re.sub(r'（4\.\d+(?:（\d+）)?）$', '', title)
+            # C的解释与两种核的扫描并列，不属于前一张混淆矩阵。
+            if title.startswith('C的作用、双核敏感性'):
+                marks = '###'
+            level = len(marks) - 2
+            counts[level] += 1
+            for child in range(level + 1, len(counts)):
+                counts[child] = 0
+            number = '.'.join(str(n) for n in counts[:level + 1])
+            line = f'{marks} {number} {title}'
+        lines.append(line)
+    return '\n'.join(lines) + '\n'
 
 
 def polish(text):
     text=text.replace('\r','').replace('独立选参检查结果另见第六节','独立选参检查结果见第一节').replace('报告第十节','报告第八节').replace('report.md第十节','report.md第八节')
-    if '## AI 使用声明' not in text:return text
+    if '## AI 使用声明' not in text:return number_headings(text)
     body,ai=text.split('## AI 使用声明',1)
-    ai=re.sub(r'### 工具分工与人工复核.*?### 其他错误及纠正记录', '### 工具分工与人工复核\n\n本人负责提出实验目标、审阅报告并要求修订，现已逐项复核human_review.md所列内容，确认没有问题。AI参与代码、实验执行、图表、文字及分析，错误的发现与修正过程按实际情况记录。\n\n### 其他错误及纠正记录',ai,flags=re.S)
+    from reflection_section import REVIEW_CONFIRMATION, TOOL_DIVISION
+    ai=ai.replace('本人已逐项复核相关内容并确认没有问题。',REVIEW_CONFIRMATION)
+    ai=ai.replace('本次新增内容尚需用户审阅，不沿用此前人工复核已完成的声明。','本次补充的数据和结论已经本人审阅确认。')
+    ai=re.sub(r'### 工具分工与人工复核.*?### 其他错误及纠正记录', '### 工具分工与人工复核\n\n'+TOOL_DIVISION+'\n\n### 其他错误及纠正记录',ai,flags=re.S)
     ai=re.sub(r'验证依据为基线核对.*?\n\n','',ai,flags=re.S)
     ai=re.sub(r'#### 工具与结果验证.*?(?=#### |### 引用资料)', '',ai,flags=re.S)
     ai=re.sub(r'#### 回归器转分类的聚合口径不一致.*?(?=### 引用资料)', '',ai,flags=re.S)
     ai=ai.replace('，尚未声称用户亲自发现。报告必须如实标注人工核查状态。','。').replace('，未声称用户亲自发现。','。')
     ai=ai.replace('用户现已完成人工复核并确认没有问题，不将错误的首次发现归于用户。','本人已完成人工复核并确认没有问题。')
     ai=ai.replace('；项目源码。；本次AI对话。','；项目源码；本次AI对话。')
-    return re.sub(r'\n{3,}','\n\n',body+'## AI 使用声明'+ai)
+    return number_headings(re.sub(r'\n{3,}','\n\n',body+'## AI 使用声明'+ai))

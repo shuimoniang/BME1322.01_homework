@@ -59,6 +59,8 @@ def build(content,r,table,data=None):
  insert('## 6. 独立选参检查',text)
  # 朴素参考提升。
  text='### 相对朴素参考线的实际提升（4.3（4））\n\n'
+ text+='这里的朴素参考线是“训练折均值预测基线”：不使用患者的任何特征，在每一折中只计算训练折标签num的平均值，再将该平均值作为测试折所有患者的预测结果；不使用测试折标签计算均值。它用于判断模型是否比“所有人都猜训练平均等级”更有效。'+f"本实验中，该基线的五折汇总R²为{r['dummy_reg']['mean']['r2']:.6f}、MAE为{r['dummy_reg']['mean']['mae']:.6f}、RMSE为{r['dummy_reg']['mean']['rmse']:.6f}。\n\n"
+ text+='下表的ΔR²为模型R²减去基线R²；MAE减少量和RMSE减少量分别为基线误差减去模型误差，因此三列均为正值时表示相对基线有所改善。\n\n'
  text+=tbl(['模型','验证R²','相对训练均值的ΔR²','MAE减少量','RMSE减少量'],[[N[n],chosen(r,n)['mean']['r2'],chosen(r,n)['mean']['r2']-r['dummy_reg']['mean']['r2'],r['dummy_reg']['mean']['mae']-chosen(r,n)['mean']['mae'],r['dummy_reg']['mean']['rmse']-chosen(r,n)['mean']['rmse']] for n in ['depth','prune','ridge','lasso','ols','svr']],'全部入选模型均优于真正按训练折均值预测的参考线；误差减少量为正才表示改善。')
  text+='题目写R²=0指的是理想均值参考概念；严格折外训练均值不等于测试标签均值，因此其测试R²略小于零。这里用实际折外参考作差，不在测试折上拟合均值。\n'
  insert('## 6. 独立选参检查',text)
@@ -101,10 +103,15 @@ def build(content,r,table,data=None):
  ['## 1. 线性核与RBF核',f'本次实验选择线性核：其最优五折平均AUC为{lin["auc"]:.6f}，高于RBF核的{rb["auc"]:.6f}。','非线性核没有带来提升，说明在当前特征和样本规模下，线性分界已经能够捕捉主要判别信息，增加局部非线性拟合没有获得额外收益。',f'当C=1、gamma=10时，RBF训练AUC达到{gamma10["train_auc"]:.6f}，验证AUC降至{gamma10["auc"]:.6f}，直接表现为过拟合。','这是因为核函数K(x,x′)=exp(−gamma·‖x−x′‖²)随gamma增大而快速衰减，训练点之间的相似性变小，模型的响应集中在训练点附近。',f'默认参数下从线性核换成RBF核，AUC变化为{r["fixed"]["rbf"]["mean"]["auc"]-r["fixed"]["linear"]["mean"]["auc"]:+.6f}；对RBF自身调参则提高{rb["auc"]-r["fixed"]["rbf"]["mean"]["auc"]:.6f}，因此本次调好现有模型参数比直接换复杂模型更有效。',f'调参后线性核仍领先{lin["auc"]-rb["auc"]:.6f}，结合其结构简单、参数较少，我将线性核作为本实验的首选分类模型。',f'这一选择以AUC为主要依据；若改以默认阈值下的召回率为标准，则RBF核以{rb["recall"]:.6f}高于线性核的{lin["recall"]:.6f}。'],
  ['## 2. 两条任务线的结论是否一致','两条任务线的结论一致：在本实验中，简单线性模型均优于对应的复杂非线性模型。',f'分类中线性核AUC为{lin["auc"]:.6f}，高于RBF核的{rb["auc"]:.6f}；回归中岭回归R²为{ri["r2"]:.6f}，高于回归树的{de["r2"]:.6f}。','这两组任务内部的比较共同说明，当前数据的主要预测信息适合用平滑的全局关系表达，小样本下复杂局部结构的拟合收益不足以抵消估计方差。',f'线性SVM与岭回归测试折置换重要性前五共同包含{overlap}，进一步表明两条任务线利用了相近的输入信号。',f'去掉ca和thal后，岭回归R²为{best(ab["drop_ridge"])["mean"]["r2"]:.6f}，仍高于回归树的{best(ab["drop_depth"])["mean"]["r2"]:.6f}，所以删去昂贵检查信息后这一模型选择结论仍成立。','回归树删除这两列后成绩提高、岭回归成绩下降，说明相同信息对不同模型的拟合与方差影响不同，树更容易因细分样本而损失泛化能力。','因此，两条线相互印证的数据性质是：主要信号可以由较简单的全局关系捕获，当前样本规模更适合控制模型复杂度。'],
  ['## 3. 回归模型能否用作分类器',f'可以，岭回归预测值能够用作分类分数，其五折平均AUC为{first["auc"]:.6f}，接近线性SVM的{svm["linear"]["auc"]:.6f}。',f'将岭回归预测值按大于1.0判为阳性时，accuracy为{last["accuracy"]:.6f}、F1为{last["f1"]:.6f}，均高于线性SVM默认决策的{svm["linear"]["accuracy"]:.6f}和{svm["linear"]["f1"]:.6f}。',f'但按大于0.3判为阳性时，岭回归accuracy为{first["accuracy"]:.6f}、F1为{first["f1"]:.6f}，均低于线性SVM，所以两种比较并不总给出相同结论。','据此，本次明确结论是：按连续分数AUC，岭回归排序能力接近SVM；按阈值0.3的分类决策，岭回归较差；按阈值1.0的accuracy和F1，岭回归更好。','回归器能够产生合理排序，是因为训练目标num本身包含num>0的信息，预测的严重程度越高，通常也越倾向于存在病变。','其局限在于平方损失拟合的是严重程度的条件均值，而分类关心的是阳性概率，少量重症与较多轻症可产生相近均值，使风险排序和二值边界发生偏差。','因此，回归模型在本实验中可以兼作分类器，分类效果取决于阈值；0.3、0.5、0.7、1.0的结果用于展示这种敏感性，实际阈值应在训练数据内选择后再作独立评估。']]
+ paragraphs[0].append(f'删除ca、thal两项昂贵检查特征并重新选参后，线性核与RBF核的AUC分别降至{best(ab["drop_linear"])["mean"]["auc"]:.6f}和{best(ab["drop_rbf"])["mean"]["auc"]:.6f}，线性核略优的方向仍成立，但全特征成绩不能直接代表低成本初筛能力，面向尚未取得这些检查结果的患者应参考删除两列后的结果。')
  analysis='# 三题简答\n\n'+'\n\n'.join(p[0]+'\n'+'\n'.join(p[1:]) for p in paragraphs)+'\n\n'
  analysis+=tbl(['模型','阈值','五折平均AUC','五折平均accuracy','五折平均F1'],[[N[n],value,a['auc'],a['accuracy'],a['f1']] for n,value,a in threshold]+[[N[n],'SVM默认决策',a['auc'],a['accuracy'],a['f1']] for n,a in svm.items()],'所有模型使用相同的五折聚合方式，回归器阈值改变可使与SVM的accuracy／F1排序改变，但连续分数AUC不随阈值变化。')
+ from paired_comparison import render_paired
+ analysis+='\n'+render_paired(r,table)
+ from report_clarity import clarify_analysis
+ analysis=clarify_analysis(analysis)
  start=content.index('## 9. 讨论题');end=content.index('## 10. 实验日志',start)
- embedded='\n'.join(('#'+line if line.startswith('## ') else line) for line in analysis.splitlines() if line!='# 三题简答')
+ embedded='\n'.join(('#### 补充分析：逐样本配对' if line.startswith('## 补充分析：') else '#'+line if line.startswith('## ') else line) for line in analysis.splitlines() if line!='# 三题简答')
  content=content[:start]+'## 9. 讨论题\n\n'+embedded+'\n\n'+content[end:]
  content=content.replace('\n# 实验日志\n','\n',1)
  (ROOT/'analysis.md').write_text(analysis,encoding='utf-8')
@@ -114,7 +121,7 @@ def build(content,r,table,data=None):
  insert('## 11. '+chr(0x5c40)+chr(0x9650)+chr(0x3001)+chr(0x6750)+chr(0x6599)+chr(0x52d8)+chr(0x8bef)+chr(0x4e0e)+'AI'+chr(0x58f0)+chr(0x660e),reflection(r))
  return content
 
-def finalize(r,table):
+def finalize(r,table,data=None):
  p=ROOT/'report.md';content=p.read_text(encoding='utf-8')
  coverage=[
  ('2.4','选定参数及理由、相对固定基线差值','参数选择依据：'),
@@ -151,14 +158,18 @@ def finalize(r,table):
 '''
  from reflection_section import ai_error_example
  content+=ai_error_example(r)
+ from paired_comparison import ai_question
+ content+=ai_question(r)
  content+='验证依据为基线核对、关键模型重复计算、折内预处理及外层隔离测试、逐样本折外预测和报告重建。引用资料为课程作业PDF第2–14页、课程数据README及baselines.py、UCI Heart Disease数据说明、scikit-learn官方文档和本次AI对话。\n'
  for _,_,anchor in coverage:assert anchor in content,anchor
- index='# 作业讨论与回答逐项核对\n\n'+table(['题目条款','要求回答的问题','报告定位标题或关键词'],coverage)+'\n各项均有正文回答，数字取自正式记录或同折预测重算；三道简答正文各七句，用户已逐项完成人工复核并确认没有问题。\n'
+ index='# 作业讨论与回答逐项核对\n\n'+table(['题目条款','要求回答的问题','报告定位标题或关键词'],coverage)+'\n各项均有正文回答，数字取自正式记录或同折预测重算；三道简答正文分别为8、7、7句，用户已逐项完成人工复核并确认没有问题。\n'
  (ROOT/'discussion_checklist.md').write_text(index,encoding='utf-8')
  from report_presentation import finish_presentation
  content,table_count=finish_presentation(content,r,table)
  from report_structure import organize,clean_documents
- content=organize(content)
+ content=organize(content,r)
+ from report_clarity import clarify_report
+ content=clarify_report(content,r,table,data)
  p.write_text(content,encoding='utf-8')
  (ROOT/'figures/presentation_validation.json').write_text(json.dumps({'tables_with_individual_conclusions':table_count,'model_rows_metric_columns':True,'data_dictionary_fields':14},indent=2),encoding='utf-8')
  errors=ROOT/'ai_error_log.md';e=errors.read_text(encoding='utf-8')
@@ -166,7 +177,7 @@ def finalize(r,table):
   e+='\n## 回归器转分类的聚合口径不一致\n\n初稿把岭回归全部303例折外预测计算的AUC=0.909853，与SVM逐折平均AUC作比较，口径不一致。现对各模型相同五折分别计算AUC、accuracy和F1，再取算术平均；报告第九节和analysis.md已更新，同口径数字保存在figures/discussion_evidence.json，不能把聚合变化解释为训练提升。\n'
   errors.write_text(e,encoding='utf-8')
  evidence=json.loads((ROOT/'figures/discussion_evidence.json').read_text(encoding='utf-8'))
- assert evidence['discussion_sentence_counts']==[7,7,7]
+ assert evidence['discussion_sentence_counts']==[8,7,7]
  for n in ['ridge','depth']:
   scores=[a['auc'] for a in evidence['regression_classification'] if a['model']==n]
   assert max(scores)-min(scores)<1e-12

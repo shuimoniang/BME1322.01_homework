@@ -220,5 +220,5 @@ if __name__=='__main__':
  from report_extras import enrich
  enrich(r,table,args.data_dir)
  from discussion_review import finalize
- finalize(r,table)
+ finalize(r,table,args.data_dir)
  print('全部结果及报告已生成',flush=True)
