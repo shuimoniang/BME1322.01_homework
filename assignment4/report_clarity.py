@@ -53,7 +53,8 @@ def clarify_report(text, r, table, data=None):
     if heading and '以下七句为第三题简答正文' not in body:
         body=body[:heading.end()]+note+body[heading.end():]
     from report_readouts import improve_readouts
-    return improve_readouts(body+ai, r, data)
+    from remote_discussions import integrate
+    return integrate(improve_readouts(body+ai, r, data))
 
 
 def clarify_analysis(text):

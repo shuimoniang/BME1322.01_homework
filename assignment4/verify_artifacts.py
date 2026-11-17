@@ -66,7 +66,8 @@ def verify():
  standalone=(ROOT/'experiment_log.md').read_text(encoding='utf-8')
  assert len(re.findall(r'^## \d{2}\. ',standalone,re.M))==5
  log=re.search(r'^## 8\.? 实验日志\s*$(.*?)^## 9\.? ',text,re.M|re.S).group(1)
- assert len(re.findall(r'^### (?:8\.\d+|\d{2}\.) ',log,re.M))==5
+ assert len(re.findall(r'^### (?:8\.[1-5]|\d{2}\.) ',log,re.M))==5
+ assert len(re.findall(r'^### 8\.[6-8] 阅读结果后的质疑',log,re.M))==3
  additional=(ROOT/'additional_findings.md').read_text(encoding='utf-8')
  index=(ROOT/'phenomena_index.md').read_text(encoding='utf-8')
  for document in [text,standalone,additional,index]:
@@ -93,5 +94,6 @@ def verify():
  for n,s in r['nested'].items():assert sorted(a['row'] for a in s['predictions'])==list(range(303))
  result={'checks':checks,'baseline_items':len(r['verification']),'max_baseline_difference':max(abs(v['delta']) for v in r['verification']),'image_links_valid':True,'nested_coverage_valid':True,'tables_with_immediate_conclusions':table_count,'summary_values_and_signed_deltas_verified':True,'unexpected_findings_with_comparisons_and_verification':19,'candidate_results_audited':269,'report_findings':5,'additional_findings':14,'assignment_clause_index_verified':True,'generated_chinese_text_verified':True}
  result['figures_with_immediate_readouts']=figure_count
+ result['supplementary_reading_questions']=3
  (ROOT/'figures/validation.json').write_text(json.dumps(result,indent=2),encoding='utf-8');print(json.dumps(result,indent=2))
 if __name__=='__main__':verify()

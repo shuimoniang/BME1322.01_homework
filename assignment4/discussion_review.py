@@ -184,3 +184,5 @@ def finalize(r,table,data=None):
  for n in ['linear','rbf']:
   for key in ['auc','accuracy','f1']:assert abs(evidence['svm_classification'][n][key]-chosen(r,n)['mean'][key])<1e-12
  clean_documents(ROOT)
+ from remote_discussions import sync_archives
+ sync_archives(ROOT)
