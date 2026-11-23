@@ -9,8 +9,7 @@ data/
 # Python 运行期产物与实验运行日志（不提交）
 __pycache__/
 *.pyc
-assignment3/experiments/*.log
-assignment3/experiments/**/*.log
+*.log
 
 # 系统杂物
 __MACOSX/
