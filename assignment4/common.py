@@ -15,7 +15,9 @@ SEED=42
 warnings.filterwarnings('error', category=ConvergenceWarning)
 
 def load(data_dir=None):
- p=Path(data_dir) if data_dir else ROOT.parent/'data'/'assignment4-data'
+ p=Path(data_dir).resolve() if data_dir else ROOT.parent/'data'/'assignment4-data'
+ if not (p/'heart_cleveland.csv').is_file() and (p/'assignment4-data'/'heart_cleveland.csv').is_file():
+  p=p/'assignment4-data'
  df=pd.read_csv(p/'heart_cleveland.csv'); folds=json.loads((p/'splits.json').read_text())['cleveland']['folds']
  assert df.shape==(303,14) and df['num'].value_counts().to_dict()=={0:164,1:55,2:36,3:35,4:13}
  assert df.isna().sum().to_dict()['ca']==4 and df.isna().sum().sum()==6

@@ -43,38 +43,7 @@ def format_entries(entries,heading_level):
     return '\n'.join(out)
 
 
-def write_index(entries,table):
-    text=['# 本数据集反直觉现象与预期不符结果：按作业条款索引\n',
-          '本索引将同一套19条实测记录按4.2、4.3、4.5、4.6归类，与按重要性排列的实验日志互补。一条发现可回应多个条款，交叉出现只是索引，不增加发现数量。\n',
-          '本数据上的模型表现具有数据与候选范围限制；指标定义、错误口径对照、输出约束及选参协议带来的现象，不能全部归因于数据集固有性质。所有条目均附实测数字，完整原因假设、已做验证、验证边界和未做的进一步检验见对应记录。\n',
-          '排名1–5见[主要实验日志](experiment_log.md)及报告第十节；排名6–19见[补充实验发现](additional_findings.md)。原始编号、排名、条款、分类和全部数值见figures/unexpected_findings.json。\n']
-    descriptions={
-      '4.2':'分类：核的选择、C与gamma、训练验证差距及尺度影响',
-      '4.3':'回归：树的复杂度、剪枝、收缩、稀疏性与程度预测',
-      '4.5':'消融：信息删除、标准化、划分波动与容量增加',
-      '4.6':'任务比较：核的优劣、分类与回归联系、分数与阈值',
-    }
-    for clause,title in descriptions.items():
-        selected=[item for item in entries if clause in item['assignment_sections']]
-        rows=[]
-        for item in selected:
-            comparison='<br>'.join(f'{c["model"]}，{c["metric"]}：{c["condition_a"]} {c["value_a"]:.6f} → {c["condition_b"]} {c["value_b"]:.6f}' for c in item['comparisons'][:2])
-            location=('experiment_log.md' if item['selected_for_report'] else 'additional_findings.md')+f' 第{item["rank"]:02d}项'
-            rows.append([f'{item["rank"]:02d}',item['title'],comparison,item['phenomenon_category'],location])
-        text += ['## '+clause+' '+title+'\n',table(['重要性排名','现象','关键实测对照','现象类别','详细记录'],rows),
-                 '我从这张表里读出：'+{
-                    '4.2':'核更复杂、C或gamma更大，均不保证泛化更好；AUC排序、默认分类决策和尺度效应还需分别解释。',
-                    '4.3':'更深的树、更完整的生长路径、更强的收缩，并不必然产生更好的验证结果；负R²、稀疏变化及越界预测也各有不同机制。',
-                    '4.5':'增加信息或容量不保证改善，减少信息也不保证变差；同一模型的评价还可能强烈依赖划分。',
-                    '4.6':'模型优劣取决于目标、损失、评价口径及阈值，不能把一次排序当作所有任务上的统一结论。',
-                 }[clause]+'\n']
-    text += ['## 评估口径与模型边界的补充现象\n',
-             '第16项（独立选参不一定降分）、第18项（预测可越出等级范围）、第19项（验证R²更高而MSE更大）主要涉及方法或指标性质；应与数据集模型表现一并记录，但不称为本数据集独有规律。\n',
-             '这里的第16、18、19项是重要性排名；全部条目都保留原始编号，便于与数值记录核对。\n']
-    (ROOT/'phenomena_index.md').write_text('\n'.join(text),encoding='utf-8')
-
-
-def render(r,table,heading_level=3):
+def render(r,table,figures,heading_level=3):
     from unexpected_findings import collect
     raw=collect(r);by_id={item['id']:item for item in raw}
     assert len(RANKING)==19 and set(RANKING)==set(by_id)==set(DETAILS)
@@ -98,13 +67,8 @@ def render(r,table,heading_level=3):
                               max_training_validation_gap=max(a['mean']['train_'+objective]-a['mean'][objective] for a in runs),
                               r2_mae_inversions=sum(a['mean']['r2']>b['mean']['r2'] and a['mean']['mae']>b['mean']['mae'] for a in runs for b in runs) if objective=='r2' else None))
     scope=dict(main_families=len(r['scans']),main_candidates=sum(len(s['runs']) for s in r['scans'].values()),ablation_candidate_sets=sum(len(s['runs']) for s in r['ablation'].values() if 'runs' in s),nested_outer_fits=sum(len(s['folds']) for s in r['nested'].values()),findings=19,report_findings=5,additional_findings=14)
-    (ROOT/'figures/unexpected_findings.json').write_text(json.dumps({'scope':scope,'ranking_criteria':['流程正确性与课程评分关联','反直觉程度与研究意义','验证证据强度及结论边界'],'candidate_inventory':inventory,'findings':entries},ensure_ascii=False,indent=2),encoding='utf-8')
-    write_index(entries,table)
-    convention='除明确标为单折、单次划分或全体折外预测统计的项目外，成绩均为课程固定五折平均。“预期”是用于理解结果的直觉假设，不声称事前预注册；已完成检查与待做的进一步验证分开列出。按作业条款浏览全部现象可查阅[反直觉现象索引](phenomena_index.md)。\n'
-    supplement=('# 补充实验发现（重要性排序第6–19项）\n\n'
-                '按流程正确性与评分关联、反直觉程度和验证证据综合排序。前五项见report.md第十节或experiment_log.md；本文件保存其余14项。完整19项数字、条款、分类和原始编号另存figures/unexpected_findings.json。\n\n'
-                +convention+'\n'+format_entries(entries[5:],2))
-    (ROOT/'additional_findings.md').write_text(supplement,encoding='utf-8')
+    (figures/'unexpected_findings.json').write_text(json.dumps({'scope':scope,'ranking_criteria':['流程正确性与课程评分关联','反直觉程度与研究意义','验证证据强度及结论边界'],'candidate_inventory':inventory,'findings':entries},ensure_ascii=False,indent=2),encoding='utf-8')
+    convention='除单折、单次划分及全体折外统计外，均按固定五折汇总。\n'
     return ('# 实验日志\n\n'
             '以下五项分别展示评价口径、信息集合、损失函数、选参协议和任务定义如何影响结论。它们与本数据上的反直觉模型表现一并记录，但评估口径造成的现象不解释为数据集固有性质。其余14项见[补充实验发现](additional_findings.md)，完整记录仍保留。\n\n'
             +convention+'\n'+format_entries(entries[:5],heading_level))

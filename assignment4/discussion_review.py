@@ -9,7 +9,7 @@ def best(scan):return scan['runs'][scan['best']]
 def chosen(r,name):return r['scans'][name]['runs'][r['scans'][name]['best']]
 N={'linear':'SVM（线性核）','rbf':'SVM（RBF核）','depth':'回归树（预剪枝）','prune':'回归树（后剪枝）','ridge':'岭回归','lasso':'Lasso回归','ols':'普通最小二乘线性回归','svr':'支持向量回归（SVR）'}
 
-def build(content,r,table,data=None):
+def build(content,r,table,data,figures):
  _,df,folds=load(data);sc=r['scans'];ab=r['ablation'];features=list(df.columns[:-1])
  def insert(anchor,text):
   nonlocal content
@@ -107,82 +107,26 @@ def build(content,r,table,data=None):
  analysis='# 三题简答\n\n'+'\n\n'.join(p[0]+'\n'+'\n'.join(p[1:]) for p in paragraphs)+'\n\n'
  analysis+=tbl(['模型','阈值','五折平均AUC','五折平均accuracy','五折平均F1'],[[N[n],value,a['auc'],a['accuracy'],a['f1']] for n,value,a in threshold]+[[N[n],'SVM默认决策',a['auc'],a['accuracy'],a['f1']] for n,a in svm.items()],'所有模型使用相同的五折聚合方式，回归器阈值改变可使与SVM的accuracy／F1排序改变，但连续分数AUC不随阈值变化。')
  from paired_comparison import render_paired
- analysis+='\n'+render_paired(r,table)
+ analysis+='\n'+render_paired(r,table,figures)
  from report_clarity import clarify_analysis
  analysis=clarify_analysis(analysis)
  start=content.index('## 9. 讨论题');end=content.index('## 10. 实验日志',start)
  embedded='\n'.join(('#### 补充分析：逐样本配对' if line.startswith('## 补充分析：') else '#'+line if line.startswith('## ') else line) for line in analysis.splitlines() if line!='# 三题简答')
  content=content[:start]+'## 9. 讨论题\n\n'+embedded+'\n\n'+content[end:]
  content=content.replace('\n# 实验日志\n','\n',1)
- (ROOT/'analysis.md').write_text(analysis,encoding='utf-8')
  evidence={'regression_classification':[{'model':n,'threshold':v,**a} for n,v,a in threshold],'svm_classification':svm,'correlation_pairs':[[a,b,float(v)] for _,a,b,v in pairs[:5]],'discussion_sentence_counts':[len(p)-1 for p in paragraphs]}
- (ROOT/'figures/discussion_evidence.json').write_text(json.dumps(evidence,ensure_ascii=False,indent=2),encoding='utf-8')
+ (figures/'discussion_evidence.json').write_text(json.dumps(evidence,ensure_ascii=False,indent=2),encoding='utf-8')
  from reflection_section import reflection
  insert('## 11. '+chr(0x5c40)+chr(0x9650)+chr(0x3001)+chr(0x6750)+chr(0x6599)+chr(0x52d8)+chr(0x8bef)+chr(0x4e0e)+'AI'+chr(0x58f0)+chr(0x660e),reflection(r))
  return content
 
-def finalize(r,table,data=None):
- p=ROOT/'report.md';content=p.read_text(encoding='utf-8')
- coverage=[
- ('2.4','选定参数及理由、相对固定基线差值','参数选择依据：'),
- ('3.2','任务定义及其他定义的预期影响','若把num改为五分类'),
- ('4.1','首个小alpha近似OLS','扫描首个取值：'),
- ('4.2（1）','哪个核更合适及数字依据','两种核的适用性结论'),
- ('4.2（2）','网格、gamma和过拟合验证','RBF核的联合网格及gamma过大的验证'),
- ('4.2（3）','C的作用与敏感性','C的作用、双核敏感性与训练验证差距'),
- ('4.2（4）/4.5（2）','标准化及C漂移','特征可用性、尺度、划分与容量的结论'),
- ('4.3（1）','深树与叶内样本数量','树加深后为何可能不如线性模型'),
- ('4.3（2）','剪枝路径与前后对照','回归树后剪枝的参照与剪枝效果'),
- ('4.3（2）','树图前两层的临床解释','后剪枝树前两层的实际分裂及临床解释'),
- ('4.3（2）','两种剪枝及剪早论断','预剪枝与后剪枝的区别及效果比较'),
- ('4.3（3）','系数、收缩、稀疏、全零退化','正则化作用、稀疏性与相关特征稳定性'),
- ('4.3（3）','相关结构与变量选择稳定性','当前五折现象只能部分支持'),
- ('4.3（4）','相对训练均值的提升','相对朴素参考线的实际提升'),
- ('4.4','逐类指标与混淆矩阵','参数遍历所得最优配置的分类指标对照'),
- ('4.4','连续分数AUC及敏感性特异性','AUC口径、逐类指标与筛查含义'),
- ('4.4','指标冲突、误差贡献和最佳模型变化','指标冲突的完整模型排名与选择理由'),
- ('4.5（1）','昂贵特征和变化方向','特征可用性、尺度、划分与容量的结论'),
- ('4.5（3）','单次划分结论风险','十次80/20划分'),
- ('4.5（4）','容量作用及与深树比较','二次多项式岭回归选alpha'),
- ('4.6（1）','核选择与换模型或调参','线性核与RBF核'),
- ('4.6（2）','两条任务线的一致性','两条任务线的结论是否一致'),
- ('4.6（3）','回归器分数、阈值和SVM对比','回归模型能否用作分类器'),
- ('五/六','真实反直觉发现与验证','## 10. 实验日志'),
- ('六','易错步骤与后续实验','### 讨论与反思'),
- ('八','工具、用途、错误及人工状态','## AI 使用声明')]
- content+='''
-## AI 使用声明
-
-使用Codex AI编程助手完成需求解析、代码、实验运行、排错、图表、数字分析和报告文字，使用Python和scikit-learn执行模型计算。本文结论由AI依据实际记录提出，用户已逐项复核human_review.md所列内容并确认没有问题；AI自动检查与用户人工复核分别记录。
-
-'''
- from reflection_section import ai_error_example
- content+=ai_error_example(r)
- from paired_comparison import ai_question
- content+=ai_question(r)
- content+='验证依据为基线核对、关键模型重复计算、折内预处理及外层隔离测试、逐样本折外预测和报告重建。引用资料为课程作业PDF第2–14页、课程数据README及baselines.py、UCI Heart Disease数据说明、scikit-learn官方文档和本次AI对话。\n'
- for _,_,anchor in coverage:assert anchor in content,anchor
- index='# 作业讨论与回答逐项核对\n\n'+table(['题目条款','要求回答的问题','报告定位标题或关键词'],coverage)+'\n各项均有正文回答，数字取自正式记录或同折预测重算；三道简答正文分别为8、7、7句，用户已逐项完成人工复核并确认没有问题。\n'
- (ROOT/'discussion_checklist.md').write_text(index,encoding='utf-8')
+def finish_tables(content,r,table,data):
  from report_presentation import finish_presentation
- content,table_count=finish_presentation(content,r,table)
- from report_structure import organize,clean_documents
- content=organize(content,r)
+ from report_structure import organize
  from report_clarity import clarify_report
- content=clarify_report(content,r,table,data)
- p.write_text(content,encoding='utf-8')
- (ROOT/'figures/presentation_validation.json').write_text(json.dumps({'tables_with_individual_conclusions':table_count,'model_rows_metric_columns':True,'data_dictionary_fields':14},indent=2),encoding='utf-8')
- errors=ROOT/'ai_error_log.md';e=errors.read_text(encoding='utf-8')
- if '聚合口径不一致' not in e:
-  e+='\n## 回归器转分类的聚合口径不一致\n\n初稿把岭回归全部303例折外预测计算的AUC=0.909853，与SVM逐折平均AUC作比较，口径不一致。现对各模型相同五折分别计算AUC、accuracy和F1，再取算术平均；报告第九节和analysis.md已更新，同口径数字保存在figures/discussion_evidence.json，不能把聚合变化解释为训练提升。\n'
-  errors.write_text(e,encoding='utf-8')
- evidence=json.loads((ROOT/'figures/discussion_evidence.json').read_text(encoding='utf-8'))
- assert evidence['discussion_sentence_counts']==[8,7,7]
- for n in ['ridge','depth']:
-  scores=[a['auc'] for a in evidence['regression_classification'] if a['model']==n]
-  assert max(scores)-min(scores)<1e-12
- for n in ['linear','rbf']:
-  for key in ['auc','accuracy','f1']:assert abs(evidence['svm_classification'][n][key]-chosen(r,n)['mean'][key])<1e-12
- clean_documents(ROOT)
- from remote_discussions import sync_archives
- sync_archives(ROOT)
+ content+='\n## AI 使用声明\n'
+ content,_=finish_presentation(content,r,table)
+ from supplementary_tables import supplementary_tables
+ tables=clarify_report(organize(content),r,table,data)
+ boundary=tables.index('## 9 讨论与反思')
+ return tables[:boundary]+supplementary_tables(r,table)+'\n'+tables[boundary:]

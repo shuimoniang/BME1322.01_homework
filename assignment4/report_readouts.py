@@ -1,9 +1,83 @@
 """逐图逐表补充实测结果解读，并修正对照条件的说明。"""
 import re
-from common import load
+from selection_summary import NAMES, best
+
+
+def add_result_comparisons(text, r):
+    """用已保存的五折结果补齐消融基线和按MAE重新选参的结论。"""
+    scans, ablations, fixed = (r[key] for key in ('scans', 'ablation', 'fixed'))
+    drop_notes = '固定基线使用课程参数和全部特征。下表沿用同一组固定参数，仅改变特征集合。'
+    scale_notes = '两列固定基线均使用C=1，RBF核的gamma为scale。两列扫描最优分别在各自的预处理条件下按AUC选择。'
+    capacity_notes = '每项指标并列给出固定基线和扫描最优。两种特征设置的固定基线均使用alpha=1，扫描最优分别按R²选择。'
+
+    def replace_table(header, new_headers, rows):
+        def line(values):
+            cells = [f'{value:.6f}' if isinstance(value, float) else str(value) for value in values]
+            return '| ' + ' | '.join(cells) + ' |'
+        table = '\n'.join([line(new_headers), '|' + '---|' * len(new_headers), *(line(row) for row in rows)])
+        return re.sub(r'^' + re.escape(header) + r'(?:\n\|[^\n]*)+', lambda _: table, text, count=1, flags=re.M)
+
+    drop_rows = []
+    for name in ('linear', 'rbf', 'depth', 'ridge', 'lasso', 'svr'):
+        metric, label = ('auc', 'AUC') if name in ('linear', 'rbf') else ('r2', 'R²')
+        selected = best(ablations['drop_' + name])
+        drop_rows.append([NAMES[name], label, fixed[name]['mean'][metric],
+                          best(scans[name])['mean'][metric], selected['mean'][metric], selected['params']])
+    scan_header = '| 模型 | 评价指标 | 原始扫描最优 | 消融扫描最优 | 消融参数 |'
+    text = replace_table(scan_header, ['模型', '评价指标', '原始基线（固定超参）', '原始扫描最优',
+                                       '去除特征后扫描最优', '消融选定参数'], drop_rows)
+    text = text.replace('固定参数对照见下一表。', drop_notes, 1)
+
+    scale_rows = []
+    for name in ('linear', 'rbf'):
+        scan = ablations['unscaled_' + name]
+        unscaled_fixed = next(run for run in scan['runs'] if run['params']['C'] == 1
+                              and run['params']['gamma'] == 'scale')
+        selected = best(scan)
+        scale_rows.append([NAMES[name], 'AUC', fixed[name]['mean']['auc'], unscaled_fixed['mean']['auc'],
+                           best(scans[name])['mean']['auc'], selected['mean']['auc'], selected['params']])
+    text = replace_table(scan_header, ['模型', '评价指标', '标准化基线（固定超参）', '不标准化基线（固定超参）',
+                                       '标准化扫描最优', '不标准化扫描最优', '不标准化选定参数'], scale_rows)
+    scale_anchor = '标准化改变距离和惩罚的有效尺度'
+    if scale_notes not in text:
+        text = text.replace(scale_anchor, scale_notes + '\n\n' + scale_anchor, 1)
+
+    poly = ablations['poly']
+    poly_fixed = next(run for run in poly['runs'] if run['params']['alpha'] == 1)
+    capacity_headers = ['模型']
+    for label in ('R²', 'MAE', 'RMSE'):
+        capacity_headers.extend([label + '基线（固定超参）', label + '扫描最优'])
+    capacity_rows = []
+    for label, baseline, selected in [(NAMES['ridge'], fixed['ridge'], best(scans['ridge'])),
+                                      ('二次多项式岭回归', poly_fixed, best(poly))]:
+        row = [label]
+        for metric in ('r2', 'mae', 'rmse'):
+            row.extend([baseline['mean'][metric], selected['mean'][metric]])
+        capacity_rows.append(row + [selected['params']])
+    text = replace_table('| 模型 | R² | MAE | RMSE | 选定参数 |',
+                         capacity_headers + ['选定参数'], capacity_rows)
+    capacity_anchor = '二次特征增加至104维并扩大估计方差'
+    if capacity_notes not in text:
+        text = text.replace(capacity_anchor, capacity_notes + '\n\n' + capacity_anchor, 1)
+
+    name, selected = min(
+        ((name, run) for name in ('depth', 'prune', 'ridge', 'lasso', 'ols', 'svr')
+         for run in scans[name]['runs']),
+        key=lambda pair: pair[1]['mean']['mae'],
+    )
+    params = '、'.join(f'{key}={value}' for key, value in selected['params'].items())
+    ranking_note = (f'若将选参指标也改为MAE，在各主实验回归模型的全部已保存候选中，'
+                    f'MAE最低的是{NAMES[name]}，所选参数为{params}，五折平均MAE={selected["mean"]["mae"]:.6f}。'
+                    '这一比较沿用课程五折扫描，属于当前候选范围内的结论。')
+    ranking_anchor = '评价目标会改变表内模型排序。'
+    if ranking_note not in text:
+        text = text.replace(ranking_anchor, ranking_anchor + '\n\n' + ranking_note + '\n', 1)
+    return text
 
 
 def improve_readouts(text, r, data=None):
+    from common import load
+
     _, df, _ = load(data)
     def best(name):
         scan=r['scans'][name]
@@ -68,4 +142,4 @@ def improve_readouts(text, r, data=None):
     last=text.rfind('其他错误及修正记录见本节下文。')
     if last!=-1 and text.rfind('#### 10.4.4')<last and '### 10.5' in text[last:]:
         text=text[:last]+text[last:].replace('其他错误及修正记录见本节下文。','',1)
-    return text.rstrip()+'\n'
+    return add_result_comparisons(text, r).rstrip()+'\n'

@@ -1,8 +1,5 @@
 ﻿"""结果总表、数据字典与逐表结论；只改变呈现，不改变正式实验。"""
 import numpy as np
-import hashlib
-import json
-from common import ROOT
 from selection_summary import NAMES, signed, best
 
 
@@ -97,22 +94,12 @@ def readout(headers,rows,section,r):
         return f'{NAMES[n]}最优alpha={a["params"]["alpha"]}，验证R²={a["mean"]["r2"]:.6f}；强惩罚下零系数数量与验证成绩须一起解释，不能把更稀疏等同于更准确。'
     if headers[0]=='多项式alpha':
         a=best(ab['poly']);return f'二次展开最优alpha={a["params"]["alpha"]}时R²={a["mean"]["r2"]:.6f}，仍低于原岭回归，说明当前数据下增加容量未带来验证收益。'
+    if headers[0]=='参照SVM':
+        return '按患者汇总岭回归和SVM的折外判定差异。'
     raise ValueError('Missing table conclusion: '+section+' '+str(headers))
 
 
 def finish_presentation(content,r,table):
-    record_path=ROOT/'figures/reproducibility_validation.json'
-    if record_path.exists():
-        record=json.loads(record_path.read_text(encoding='utf-8'))
-        current=hashlib.sha256((ROOT/'figures/results.json').read_bytes()).hexdigest()
-        if record.get('results_sha256')==current and record.get('raw_results_identical_to_previous_run') and record.get('report_rebuild_artifacts_identical'):
-            note=('### 自动复现检查记录\n\n'
-                  '已完整运行一键入口，重新执行主实验、嵌套选参及四项消融；生成的原始结果文件SHA-256与此前记录一致。'
-                  f'随后再次从保存结果重建，报告、简答、逐样本预测及图表等{record["artifact_count"]}个文件的哈希一致。'
-                  '具体文件哈希保存在figures/reproducibility_validation.json；协议测试与结果审计另见test_protocol.py和figures/validation.json。'
-                  '这些检查验证自动流程与重建一致性，不代表外部临床有效性，也不代表用户已完成人工复核。\n\n')
-            assert '## 2. 数据探索' in content
-            content=content.replace('## 2. 数据探索',note+'## 2. 数据探索',1)
     anchor='## 3. 复现核对'
     assert anchor in content
     content=content.replace(anchor,data_dictionary(table)+anchor,1)

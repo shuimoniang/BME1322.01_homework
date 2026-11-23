@@ -50,10 +50,9 @@ def kernel_conclusion(r):
   +f'最优配置的训练AUC减验证AUC，线性核为{linear["train_auc"]-linear["auc"]:.6f}，RBF核为{rbf["train_auc"]-rbf["auc"]:.6f}。RBF具有更强的局部拟合能力，但本次没有取得更好的验证排序能力，且训练与验证差距更大，支持在这份小样本数据上优先考虑简单线性分界的选择；这不能证明真实关系完全线性。\n\n'
   +f'这一选择并非所有指标上的全面胜出：默认判别阈值下，RBF核召回率为{rbf["recall"]:.6f}，高于线性核的{linear["recall"]:.6f}。若目标改为优先降低漏诊，需要另行明确召回率约束并在训练数据内选择阈值，不能仅凭AUC决定。调参后的AUC差距较小，且RBF最优参数位于网格边界，因此结论限于当前数据、扫描范围和评价口径，不声称统计显著或全局最优。\n')
 
-def rbf_gamma_analysis(r,table):
+def rbf_gamma_analysis(r,table,figures):
  import numpy as np
  import matplotlib.pyplot as plt
- from common import ROOT
  scan=r['scans']['rbf'];chosen=best(scan)
  rows=[a for a in scan['runs'] if a['params']['C']==1]
  numeric=sorted([a for a in rows if isinstance(a['params']['gamma'],(int,float))],key=lambda a:a['params']['gamma'])
@@ -62,7 +61,7 @@ def rbf_gamma_analysis(r,table):
  x=[a['params']['gamma'] for a in numeric]
  ax.semilogx(x,[a['mean']['train_auc'] for a in numeric],'o-',label='训练AUC')
  ax.semilogx(x,[a['mean']['auc'] for a in numeric],'o-',label='五折验证AUC')
- ax.set(xlabel='gamma（对数尺度）',ylabel='AUC',title='RBF核：固定C=1时gamma的影响');ax.grid(alpha=.25);ax.legend();fig.tight_layout();fig.savefig(ROOT/'figures/rbf_gamma.png',dpi=180);plt.close(fig)
+ ax.set(xlabel='gamma（对数尺度）',ylabel='AUC',title='RBF核：固定C=1时gamma的影响');ax.grid(alpha=.25);ax.legend();fig.tight_layout();fig.savefig(figures/'rbf_gamma.png',dpi=180);plt.close(fig)
  comparison=table(['gamma','训练AUC','五折验证AUC','差距（训练−验证）','验证accuracy','平均支持向量数'],[[a['params']['gamma'],a['mean']['train_auc'],a['mean']['auc'],a['mean']['train_auc']-a['mean']['auc'],a['mean']['accuracy'],a['mean']['support_vectors']] for a in rows])
  return ('#### RBF核的联合网格及gamma过大的验证\n\n'
   +'C取{0.001, 0.01, 0.1, 1, 10, 100}，gamma取{scale, 0.001, 0.01, 0.1, 1, 10}，形成36组组合，超过题目对两个参数各至少4个取值的要求。第四节AUC热力图横轴为gamma、纵轴为C，完整扫描表对每组组合同时列出训练和五折验证AUC。\n\n'

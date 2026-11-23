@@ -1,12 +1,12 @@
 {
   "checks": [
-    "linear fixed results exactly reproduced",
-    "rbf fixed results exactly reproduced",
-    "ridge fixed results exactly reproduced",
-    "depth fixed results exactly reproduced"
+    "linear fixed results reproduced",
+    "rbf fixed results reproduced",
+    "ridge fixed results reproduced",
+    "depth fixed results reproduced"
   ],
   "baseline_items": 25,
-  "max_baseline_difference": 4.954115675470661e-07,
+  "max_baseline_difference": 4.954115674360438e-07,
   "image_links_valid": true,
   "nested_coverage_valid": true,
   "tables_with_immediate_conclusions": 54,
@@ -15,8 +15,11 @@
   "candidate_results_audited": 269,
   "report_findings": 5,
   "additional_findings": 14,
-  "assignment_clause_index_verified": true,
-  "generated_chinese_text_verified": true,
-  "figures_with_immediate_readouts": 16,
-  "supplementary_reading_questions": 3
+  "report_tables_checked": 54,
+  "report_tables_exact": false,
+  "unscaled_linear_training_auc_differences": 3,
+  "max_training_auc_difference": 0.00011,
+  "historical_environment_match": false,
+  "document_text_verified": true,
+  "figures_with_immediate_readouts": 16
 }

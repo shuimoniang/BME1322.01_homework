@@ -1,7 +1,6 @@
 """从已保存的折外预测生成配对错误分析，不重新训练或选择阈值。"""
 import csv
 import json
-from common import ROOT
 
 
 def paired_evidence(r):
@@ -46,17 +45,17 @@ def paired_evidence(r):
             'summaries': summaries, 'disagreements': cases}
 
 
-def render_paired(r, table):
+def render_paired(r, table, figures):
     evidence = paired_evidence(r)
-    (ROOT/'figures/paired_comparison.json').write_text(
+    (figures/'paired_comparison.json').write_text(
         json.dumps(evidence, ensure_ascii=False, indent=2), encoding='utf-8')
-    with (ROOT/'figures/paired_disagreements.csv').open('w', encoding='utf-8', newline='') as f:
+    with (figures/'paired_disagreements.csv').open('w', encoding='utf-8', newline='') as f:
         writer = csv.DictWriter(f, fieldnames=list(evidence['disagreements'][0]))
         writer.writeheader()
         writer.writerows(evidence['disagreements'])
     rows = []
     for s in evidence['summaries']:
-        rows.append(['线性核' if s['svm']=='linear' else 'RBF核', s['threshold'],
+        rows.append(['线性核' if s['svm']=='linear' else 'RBF核', f"{s['threshold']:.1f}",
                      s['svm_only_correct'], s['ridge_only_correct'], s['both_wrong'],
                      f"{100*s['correct_loss_rate']:.2f}%",
                      f"{100*s['error_correction_rate']:.2f}%",

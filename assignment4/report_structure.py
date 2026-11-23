@@ -1,6 +1,5 @@
 """按讲义建议组织报告；仅整理已有文本，不训练模型或修改实验数字。"""
 import re
-from pathlib import Path
 
 ERROR_HISTORY = "# AI实际错误记录\r\n\r\n## 排序文案的中文编码损坏\r\n\r\n整理19条发现的排序与分配时，一次经PowerShell管道传入Python的中文文案被编码成问号。数值记录未改变，但排序理由和部分标签不可读。检查生成器和文稿时发现后，将相关文案改为明确的UTF-8源文件生成，恢复中文，并增加文稿无连续问号和替换字符的检查。报告、主要日志、补充发现及条款索引均已重新生成并检查。\r\n\r\n## 将分类朴素参考线误接到回归评估分支\r\n\r\n- 初稿在 `main.py` 中对 DummyClassifier 调用了 `evaluate(..., cls=False)`，因而会暂时得到R²/MAE等回归指标。这是任务类型路由错误，不能用这些数字充当分类参考线。\r\n- 静态核查发现后，删除该错误调用；分类参考线逐折只在训练标签上确定多数类，再以常数分类分数计算accuracy、precision、recall、F1和AUC。\r\n- 二分类多数类参考线的连续分数为常数，所以AUC必须为0.5，正类recall为0；验收会断言这些性质。\r\n- 此错误在首轮代码检查中由AI自身发现并修正，尚未声称用户亲自发现。报告必须如实标注人工核查状态。\r\n\r\n## 工具与结果验证\r\n\r\n全部基线核对差值、原脚本输出、数据哈希、软件版本和逐样本折外预测均保留；另有协议单元测试。课程材料对C和均值R²的误导另在报告勘误节说明，不将材料问题冒充AI错误。\r\n\r\n\r\n## 首轮完整实验未能保存树指标\r\n\r\n首轮计算完成后，写results.json时报错：TypeError: Object of type int64 is not JSON serializable，定位到树的leaves指标。初稿错误地假定库返回的叶节点数一定是Python原生整数。根据异常堆栈定位后，在评估入口显式转为int，并增加树结果可序列化的回归测试；随后重新运行完整实验，以成功写入、重新读取和重建报告复验。此错误由AI排查并修正，未声称用户亲自发现。\r\n\r\n\r\n## 回归器转分类的聚合口径不一致\r\n\r\n初稿把岭回归全部303例折外预测计算的AUC=0.909853，与SVM逐折平均AUC作比较，口径不一致。现对各模型相同五折分别计算AUC、accuracy和F1，再取算术平均；报告第九节和analysis.md已更新，同口径数字保存在figures/discussion_evidence.json，不能把聚合变化解释为训练提升。\r\n"
 
@@ -19,7 +18,6 @@ def organize(text, r=None):
         assert name in sections,name
         return sections[name]
     design=take('1. 设计与复现')
-    design=re.sub(r'### 自动复现检查记录.*', '### 历史复现记录\n\n此前完整运行及结果重建记录见figures/reproducibility_validation.json，原始结果哈希保持一致。此后的文稿整理未重跑实验，记录中的产物哈希对应当时版本。', design, flags=re.S)
     cls=take('4. 分类结果')
     reg=take('5. 回归结果')+'\n\n### 误差与排名冲突\n\n'+take('8. 误差与排名冲突')
     independent=take('6. 独立选参检查')
@@ -56,7 +54,6 @@ def organize(text, r=None):
     discussion+='\n\n### 两条任务线的重要特征\n\n'+take('附录：两条任务线的重要特征')+'\n\n'+'\n\n'.join(buckets['importance'])
     final_ai=take('AI 使用声明')
     final_ai=final_ai.replace('其他真实错误及修正见ai_error_log.md。','其他错误及修正记录见本节下文。')
-    final_ai=final_ai.replace('用户已逐项复核human_review.md所列内容并确认没有问题；AI自动检查与用户人工复核分别记录。','本人已逐项复核相关内容并确认没有问题。')
     final_ai+='\n\n### 工具分工与人工复核\n\n'+ai_work.split('后续人工复核应优先针对：')[0].strip()
     history=ERROR_HISTORY.split('\n',1)[1].strip()
     history=re.sub(r'^## ', '#### ', history, flags=re.M)
@@ -71,30 +68,6 @@ def organize(text, r=None):
     result=result.replace('报告第九节','报告第七节').replace('report.md 第7节','report.md 第6节').replace('report.md 第8节','report.md 第5节')
     result=result.replace('#### 任务过程中实际出现的错误，以及如何发现和修正','### 易错步骤与修正')
     return polish(re.sub(r'\n{3,}', '\n\n', result))
-
-def clean_documents(root):
-    root=Path(root)
-    for p in root.glob('*.md'):
-        if p.name=='report.md':continue
-        text=natural(p.read_text(encoding='utf-8')).replace('\r','').replace('报告第十节','报告第八节').replace('report.md第十节','report.md第八节')
-        text=text.replace('report.md 第7节','report.md 第6节').replace('report.md 第8节','report.md 第5节')
-        if p.name=='ai_error_log.md':
-            text='# 错误记录索引\n\n错误实例、发现过程、纠正方式及验证结果统一收录于[报告末尾的声明](report.md#10-ai-使用声明)。\n'
-        elif p.name=='human_review.md':
-            from reflection_section import REVIEW_CONFIRMATION
-            text=re.sub(r'已逐项复核(?:下列全部9项|以下)内容[^\n]*', REVIEW_CONFIRMATION,text)
-            text=re.sub(r'用户已逐项复核下列全部9项内容.*?\n\n', '已逐项复核下列全部9项内容，确认没有问题。\n\n',text,flags=re.S)
-            text=text.replace('ai_error_log.md、report.md声明','report.md末尾声明')
-        elif p.name=='README.md':
-            text=text.replace('- experiment_log.md、ai_error_log.md：反直觉发现与AI实际错误。','- experiment_log.md：反直觉发现及验证；错误纠正记录统一见报告末尾声明。')
-        elif p.name=='completion_checklist.md':
-            text=text.replace('ai_error_log.md / human_review.md','report.md末尾声明').replace('AI真实错误和已完成人工复核记录','工具使用、错误纠正与复核记录')
-            text=text.replace('所有自动审计通过；人工确认项目仍以human_review.md中的状态为准。','各条款的内容及证据按上表定位。')
-        elif p.name=='discussion_checklist.md':
-            text=text.replace('## 10. 实验日志','## 8. 实验日志').replace('### 讨论与反思','## 9. 讨论与反思')
-        text=text.replace('如实确认AI参与范围与自己实际核查内容','核对工具使用及检查记录').replace('三道简答正文分别为8、7、7句，用户已逐项完成人工复核并确认没有问题。','三道简答正文分别为8、7、7句。')
-        p.write_text(text,encoding='utf-8')
-
 
 def number_headings(text):
     """统一报告章节编号；作业条款编号只保留在正文说明中。"""

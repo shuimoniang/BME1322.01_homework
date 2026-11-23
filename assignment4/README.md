@@ -1,8 +1,6 @@
 # Assignment 4 复现说明
 
-## 环境
-
-已验证 Python 3.14.7；直接依赖版本见 requirements.txt。推荐使用独立虚拟环境：
+安装依赖后，从仓库根目录运行：
 
 ```powershell
 python -m venv assignment4/.venv
@@ -12,20 +10,11 @@ assignment4/.venv/Scripts/python.exe -m unittest discover -s assignment4 -p test
 assignment4/.venv/Scripts/python.exe assignment4/verify_artifacts.py
 ```
 
-本地已有虚拟环境沿用系统提供的 numpy/matplotlib，其他依赖安装于作业虚拟环境；版本已锁定，以上普通独立环境安装方式同样可复现。
+正式结果使用 Python 3.14.7，依赖版本列于 `requirements.txt`。其他依赖版本可能改变少数训练指标的末位数。课程数据默认从 `data/assignment4-data/` 读取，支持解压后多一层同名目录，也可用 `--data-dir` 指定。CSV、固定划分和课程基线脚本在本地保留，不随作业提交。
 
-课程数据默认位于仓库根目录 `data/assignment4-data/`，也可用 `--data-dir` 指定。CSV、固定折和课程参考脚本保持原样，不随作业提交。
+`main.py` 执行固定五折扫描、外层选参及四项消融，生成结果表 `figures/tables.md`、图、逐折结果和折外预测。指定 `--output-dir` 可将重跑产物写到独立目录。报告、简答、补充发现和 AI 记录作为提交文稿保留。
 
-`main.py` 一键重新训练、扫描、独立选参、消融并生成结果与全部文稿。`main.py --report-only` 从 `figures/results.json` 重建图表与报告；树结构和标准化机制验证会重新拟合相应解释模型。完整运行包含嵌套选参与未标准化SVM扫描，在本机约数分钟，明显长于课程的最小基线。
-
-## 阅读顺序
-
-- report.md：完整实验报告，主表与详细扫描、消融、独立选参、机制核查。
-- analysis.md：三题简答，各七句及阈值敏感性表。
-- human_review.md：本人已逐项复核并确认没有问题的记录。
-- experiment_log.md：反直觉发现及验证；错误纠正记录统一见报告末尾声明。
-- completion_checklist.md：题目要求到实现与证据的映射。
-- figures/results.json：原始逐折结果、候选、预测、系数、置换重要性、版本及数据哈希。
-- figures/predictions.csv：各主模型扫描最优的逐行折外预测，row为原CSV零基数据行号。
-
-结果可能与题目示例数字略有差异，应以相同环境下原始课程基线的复现核对为准。独立选参检查与课程五折扫描分别报告，不能相互替代。
+- [实验报告](report.md)涵盖结果、消融及实验日志。
+- [讨论题](analysis.md)含三题简答和阈值对照。
+- [补充实验发现](additional_findings.md)与 [AI 错误记录](ai_error_log.md)提供补充证据。
+- `figures/results.json` 保存正式结果、版本和课程数据哈希。`figures/predictions.csv` 保存逐行折外预测，`row` 为原 CSV 的零基数据行号。

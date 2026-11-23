@@ -7,7 +7,7 @@ def clarify_report(text, r, table, data=None):
     assert boundary
     body, ai = text[:boundary.start()], text[boundary.start():]
     # 同一表跨任务时显式标注指标，避免把AUC与R²当作同一量。
-    pattern = r'(### (?:1\.2 )?独立选参检查\n\n)(\|.*?)(?=\n\n)'
+    pattern = r'(### (?:1\.\d+ )?独立选参检查\n\n)(\|.*?)(?=\n\n)'
     def independent(match):
         names = {'linear':'SVM（线性核）','rbf':'SVM（RBF核）',
                  'depth':'回归树（预剪枝）','prune':'回归树（后剪枝）',
@@ -53,8 +53,7 @@ def clarify_report(text, r, table, data=None):
     if heading and '以下七句为第三题简答正文' not in body:
         body=body[:heading.end()]+note+body[heading.end():]
     from report_readouts import improve_readouts
-    from remote_discussions import integrate
-    return integrate(improve_readouts(body+ai, r, data))
+    return improve_readouts(body+ai, r, data)
 
 
 def clarify_analysis(text):

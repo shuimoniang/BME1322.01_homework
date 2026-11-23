@@ -1,5 +1,6 @@
 """交付审计：完整实验后运行 python assignment4/verify_artifacts.py。"""
-import json,re,hashlib
+import argparse,json,re,hashlib
+from pathlib import Path
 import numpy as np
 from common import ROOT,load,splits,evaluate,pipe
 from sklearn.svm import SVC
@@ -49,38 +50,68 @@ def verify_figure_readouts(text):
    count+=1
  return count
 
-def verify():
- r=json.loads((ROOT/'figures/results.json').read_text(encoding='utf-8'))
- p,df,folds=load();X=df.drop(columns='num').to_numpy(float);y=df.num.to_numpy(float)
+def markdown_tables(text):
+ return [
+  [[cell.strip() for cell in row.strip('|').split('|')] for i,row in enumerate(block.splitlines()) if i!=1]
+  for block in re.findall(r'^(?:\|[^\n]+(?:\n|$))+',text,re.M)
+ ]
+
+def verify(figures,data=None):
+ r=json.loads((figures/'results.json').read_text(encoding='utf-8'))
+ p,df,folds=load(data);X=df.drop(columns='num').to_numpy(float);y=df.num.to_numpy(float)
  for f,h in r['data_hashes'].items():assert hashlib.sha256((p/f).read_bytes()).hexdigest()==h
  checks=[]
  for name,model,cls in [('linear',pipe(SVC(kernel='linear')),True),('rbf',pipe(SVC()),True),('ridge',pipe(Ridge()),False),('depth',pipe(DecisionTreeRegressor(max_depth=3,random_state=42),False),False)]:
   again=evaluate(model,X,(y>0).astype(int) if cls else y,splits(folds),cls)
-  assert again==r['fixed'][name],name
-  checks.append(name+' fixed results exactly reproduced')
+  expected=r['fixed'][name]
+  for label in ('mean','folds','predictions'):
+   actual_rows=[again[label]] if label=='mean' else again[label]
+   saved_rows=[expected[label]] if label=='mean' else expected[label]
+   assert len(actual_rows)==len(saved_rows), (name,label)
+   for actual,saved in zip(actual_rows,saved_rows):
+    assert actual.keys()==saved.keys(), (name,label)
+    np.testing.assert_allclose([actual[key] for key in saved],list(saved.values()),rtol=1e-12,atol=1e-12,err_msg=f'{name} {label}')
+  checks.append(name+' fixed results reproduced')
  text=(ROOT/'report.md').read_text(encoding='utf-8')
  table_count=verify_report_presentation(text,r)
  figure_count=verify_figure_readouts(text)
- findings=json.loads((ROOT/'figures/unexpected_findings.json').read_text(encoding='utf-8'))
+ findings=json.loads((figures/'unexpected_findings.json').read_text(encoding='utf-8'))
  assert len(findings['findings'])==19
- standalone=(ROOT/'experiment_log.md').read_text(encoding='utf-8')
- assert len(re.findall(r'^## \d{2}\. ',standalone,re.M))==5
  log=re.search(r'^## 8\.? 实验日志\s*$(.*?)^## 9\.? ',text,re.M|re.S).group(1)
- assert len(re.findall(r'^### (?:8\.[1-5]|\d{2}\.) ',log,re.M))==5
- assert len(re.findall(r'^### 8\.[6-8] 阅读结果后的质疑',log,re.M))==3
+ primary_logs=re.split(r'^### 8\.[1-6] .+$',log,flags=re.M)[1:6]
+ assert len(primary_logs)==5
+ for entry in primary_logs:
+  assert all(marker in entry for marker in ('**预期。**','**假设。**','**验证。**'))
+  assert len(re.findall(r'^- ',entry,re.M))>=2
  additional=(ROOT/'additional_findings.md').read_text(encoding='utf-8')
- index=(ROOT/'phenomena_index.md').read_text(encoding='utf-8')
- for document in [text,standalone,additional,index]:
-  assert '\ufffd' not in document and '??' not in document,'Generated document has damaged text encoding'
- for clause in ['4.2','4.3','4.5','4.6']:assert '## '+clause+' ' in index
+ for document in [text,additional,(ROOT/'analysis.md').read_text(encoding='utf-8')]:
+  assert '\ufffd' not in document and '??' not in document,'文稿包含损坏字符'
  assert len(re.findall(r'^## \d{2}\. ',additional,re.M))==14
+ generated=markdown_tables((figures/'tables.md').read_text(encoding='utf-8'))
+ submitted=markdown_tables(text)
+ assert len(generated)==len(submitted)==table_count
+ # 锁定版本逐格相等。其他版本只允许未标准化线性SVM的训练AUC存在求解微差。
+ locked_versions=dict(line.split('==',1) for line in (ROOT/'requirements.txt').read_text(encoding='utf-8').splitlines() if line.strip())
+ version_match=r['versions']==locked_versions
+ unscaled=r['ablation']['unscaled_linear']['runs']
+ train_checks={str(run['params']):run['mean']['train_auc'] for run in unscaled}
+ train_differences=[]
+ for index,(actual,expected) in enumerate(zip(generated,submitted),1):
+  if actual==expected:
+   continue
+  assert not version_match and expected[0]==['不标准化模型','参数','训练AUC','验证AUC'], (index,expected[0])
+  assert actual[0]==expected[0] and len(actual)==len(expected)
+  for row,reference in zip(actual[1:],expected[1:]):
+   assert row[:2]==reference[:2] and row[3:]==reference[3:], (index,row)
+   assert row[0]=='SVM（线性核）' and row[2]==f'{train_checks[row[1]]:.6f}', (index,row)
+   difference=abs(float(row[2])-float(reference[2]))
+   assert difference<=2e-4, (index,row)
+   if difference:
+    train_differences.append(difference)
  assert [item['rank'] for item in findings['findings']]==list(range(1,20))
  assert sum(item['selected_for_report'] for item in findings['findings'])==5
- for item in findings['findings']:
-  title=f"{item['rank']:02d}. {item['title']}"
-  title_text=item['title']
-  assert title_text in (log if item['selected_for_report'] else additional)
-  assert title_text not in (additional if item['selected_for_report'] else log)
+ for item in findings['findings'][5:]:
+  assert item['title'] in additional
  for finding in findings['findings']:
   assert finding['comparisons']
   assert finding['assignment_sections'] and finding['phenomenon_category']
@@ -88,12 +119,17 @@ def verify():
   for key in ['hypothesis','verification_completed','verification_result','further_verification']:assert finding[key]
   for c in finding['comparisons']:assert np.isfinite(c['value_a']) and np.isfinite(c['value_b'])
  assert sum(item['candidates'] for item in findings['candidate_inventory'])==269
- for image in re.findall(r'!\[[^\]]*\]\(([^)]+)\)',text):assert (ROOT/image).is_file(),image
+ for image in re.findall(r'!\[[^\]]*\]\(([^)]+)\)',text):
+  assert (ROOT/image).is_file() and (figures/Path(image).name).is_file(),image
  assert all(abs(v['delta'])<=.01 for v in r['verification'])
  assert r['dummy_cls']['mean']['auc']==.5
  for n,s in r['nested'].items():assert sorted(a['row'] for a in s['predictions'])==list(range(303))
- result={'checks':checks,'baseline_items':len(r['verification']),'max_baseline_difference':max(abs(v['delta']) for v in r['verification']),'image_links_valid':True,'nested_coverage_valid':True,'tables_with_immediate_conclusions':table_count,'summary_values_and_signed_deltas_verified':True,'unexpected_findings_with_comparisons_and_verification':19,'candidate_results_audited':269,'report_findings':5,'additional_findings':14,'assignment_clause_index_verified':True,'generated_chinese_text_verified':True}
+ result={'checks':checks,'baseline_items':len(r['verification']),'max_baseline_difference':max(abs(v['delta']) for v in r['verification']),'image_links_valid':True,'nested_coverage_valid':True,'tables_with_immediate_conclusions':table_count,'summary_values_and_signed_deltas_verified':True,'unexpected_findings_with_comparisons_and_verification':19,'candidate_results_audited':269,'report_findings':5,'additional_findings':14,'report_tables_checked':table_count,'report_tables_exact':not train_differences,'unscaled_linear_training_auc_differences':len(train_differences),'max_training_auc_difference':round(max(train_differences,default=0),6),'historical_environment_match':version_match,'document_text_verified':True}
  result['figures_with_immediate_readouts']=figure_count
- result['supplementary_reading_questions']=3
- (ROOT/'figures/validation.json').write_text(json.dumps(result,indent=2),encoding='utf-8');print(json.dumps(result,indent=2))
-if __name__=='__main__':verify()
+ (figures/'validation.json').write_text(json.dumps(result,indent=2),encoding='utf-8');print(json.dumps(result,indent=2))
+if __name__=='__main__':
+ parser=argparse.ArgumentParser(description='核对报告与复现实验结果')
+ parser.add_argument('--data-dir')
+ parser.add_argument('--output-dir',type=Path,default=ROOT/'figures')
+ args=parser.parse_args()
+ verify(args.output_dir,args.data_dir)
