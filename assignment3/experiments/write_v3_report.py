@@ -227,7 +227,7 @@ def main():
         '"悬崖问题"形态：低血糖侧 B1/B2 立即补糖远离终止悬崖，目标区 B3 免费维持，'
         '高血糖侧按严重程度加大胰岛素剂量（i1→i2）。', '',
         '讲义要求解释至少一个状态的策略选择，这里拿 B4（血糖略高）为什么选 i1 而不是 i2 来说。'
-        'B4 离下方终止区 B1 只隔一个状态，'
+        'B4 与下方终止区 B1 之间隔着 B3、B2 两个状态，'
         f"经验模型中 i1 与 i2 的价值差约 {r['bootstrap_stability']['flip_margin_top2']['B4']:.3f}。"
         'i2 的平均降糖幅度更大，一步就可能把血糖推入低血糖区，即使进入 B3 有 +1 奖励，'
         '继续下穿到 B2/B1 的尾部风险期望损失更大；i1 大概率把血糖拉回目标区并留在安全带，'
@@ -247,7 +247,7 @@ def main():
         table(['状态','w','g','i1','i2','贪心动作'],[[s]+[f"{r['part_b']['q_table'][s][a]:.4f}" for a in ['w','g','i1','i2']]+
               [r['part_b']['policy'][s]] for s in states]), '',
         'Q 表每行的相对排序给出了与 Part A 相同的贪心策略。各行绝对值受固定 α=0.5 '
-        '在非平稳数据流上的遗忘特性影响，不能与 Part A 的 V̂/Q̂ 直接比较；'
+        '对近期样本赋予较大权重的特性影响，不能与 Part A 的 V̂/Q̂ 直接比较；'
         '低血糖侧 i1/i2 的大负值（约 -8 至 -10）刻画了"向 B1 方向动作"的风险，与悬崖结构一致。', '',
         '### 5.4 主实验指标与随机基线', '',
         table(headers,[mrow('Part A',r['part_a']['eval']),mrow('Part B α=0.5',r['part_b']['eval']),
@@ -320,7 +320,7 @@ def main():
             [[str(it['seed']), f"{it['eval_a']['mean_return']:.2f}", f"{it['eval_b']['mean_return']:.2f}",
               f"{100*it['eval_b']['b1_termination_rate']:.2f}%", str(it['agreement_a_vs_b_b2_b9']),
               f"{it['b4_action_a']} / {it['b4_action_b']}"] for it in bd['per_seed']]), '',
-        '结果有些出乎意料：Part A 对数据抽样完全鲁棒，10 个种子学到的策略逐状态相同，评估指标逐位一致，'
+        '结果有些出乎意料：Part A 在本次采集种子比较中保持稳定，10 个种子学到的策略逐状态相同，评估指标逐位一致，'
         f"B4 在全部种子下均选 i1（top-2 间隔 "
         f"{min(it['b4_top2_margin_a'] for it in bd['per_seed']):.3f}–"
         f"{max(it['b4_top2_margin_a'] for it in bd['per_seed']):.3f}）。"
@@ -339,7 +339,7 @@ def main():
         '**折扣因子 γ 敏感性**：固定同一份数据，扫 γ∈{0.5, 0.8, 0.9, 0.95, 0.99}'
         '（脚本与逐 γ 明细留档于 builder_e_gamma.py / builder_e_gamma_results.json）：', '',
         '![γ 敏感性](figures/fig9_gamma_sensitivity.png)', '',
-        table(['γ','Part A 回报','B3占比','B1终止率','V̂(B3)','价值迭代轮数','Part B max|Q|','A/B一致率'],
+        table(['γ','Part A 回报','B3占比','B1终止率','V̂(B3)','价值迭代轮数','Part B 最大绝对Q值','A/B一致率'],
             [[str(g['gamma']), f"{g['part_a']['eval']['mean_return']:.2f}",
               f"{100*g['part_a']['eval']['b3_time_ratio']:.2f}%",
               f"{100*g['part_a']['eval']['b1_termination_rate']:.2f}%",
@@ -347,7 +347,7 @@ def main():
               f"{g['part_b']['max_abs_q']:.2f}", f"{100*g['agreement']['agreement_rate']:.0f}%"]
              for g in be['per_gamma']]), '',
         '和种子实验相比，γ 的影响更简单：策略对 γ 完全平坦，所有 γ 下两路线策略表逐状态相同、评估指标不变。'
-        '直觉预期"γ 越大越有远见、越避开 B1"没有发生：本环境最优动作本来就在低血糖侧立即补糖，'
+        '直觉预期"γ 越大越有远见、越避开 B1"没有发生：本次各配置学到的策略都在低血糖侧立即补糖，'
         '风险规避与远见程度无关。γ 改变的是价值尺度与求解成本：V̂(B3) 从 1.09 增至 46.00，'
         '价值迭代从 14 轮膨胀到 840 轮（θ=1e-4 下已接近 1000 轮上限）。'
         'γ=0.9 位于性能平坦区间内、计算成本居中，是合理且稳健的选择。', '',
@@ -423,7 +423,7 @@ def main():
 
 **1. 哪条路线对稀疏访问更敏感，为什么？**
 
-直接学习 Q 值的智能体对稀疏访问更敏感。我们换了 9 个采集种子重跑整个流程（报告 5.9 节）：模型+价值迭代的策略一个状态都没变，Q-Learning 的回报却从 88.01 到 -40.05，B1 终止率最高到 45.2%。这种波动与价值更新的方式有关。模型路线把所有经验汇进一张转移表，抽样噪声在 2000 条的规模下被平均掉了；Q 路线的价值只能沿着数据里实际出现的路径逐条传，没见过的动作永远是 0，换一批数据就可能学出明显更差的策略。当然，2000 条覆盖全部 36 个 (s,a)（最少 18 次）不代表模型估计准确，只是在这个规模下够用。另外我们试过离线换学习率，没有可证明的提升；在线实验的结论写在报告 5.8 节。
+直接学习 Q 值的智能体对稀疏访问更敏感。我们换了 9 个采集种子重跑整个流程（报告 5.9 节）：模型+价值迭代的策略一个状态都没变，Q-Learning 的回报却从 88.01 到 -40.05，B1 终止率最高到 45.2%。这种波动与价值更新的方式有关。模型路线把所有经验汇进一张转移表，抽样噪声在 2000 条的规模下被平均掉了；Q 路线的价值只能沿着数据里实际出现的路径逐条传，从未更新过的状态动作对保持初始值 0，换一批数据就可能学出明显更差的策略。当然，2000 条覆盖全部 36 个 (s,a)（最少 18 次）不代表模型估计准确，只是在这个规模下够用。另外我们试过离线换学习率，没有可证明的提升；在线实验的结论写在报告 5.8 节。
 
 **2. 两条路线在哪个状态不一致，可能原因是什么？**
 
@@ -459,7 +459,10 @@ Part A按讲义未加终止掩码；这种协议限制及其与Part B的区别�
 全部候选与失败结果保留；不根据独立测试结果再次选择或调参。
 ''',encoding='utf-8')
     for name in ['report.md','analysis.md']:
-        shutil.copy2(ROOT/name,OUT/'snapshot'/name)
+        text = (ROOT/name).read_text(encoding='utf-8')
+        if name == 'report.md':
+            text = text.replace('](figures/', '](../../../figures/')
+        (OUT/'snapshot'/name).write_text(text, encoding='utf-8')
     shutil.copy2(__file__,OUT/'snapshot'/'write_v3_report.py')
     shutil.copy2(Path(__file__).with_name('test_v3.py'),OUT/'snapshot'/'test_v3.py')
     paths=[p for p in (OUT/'snapshot').iterdir() if p.is_file()]+list((OUT/'figures').glob('*'))

@@ -290,7 +290,7 @@ the 5 frontier variants (0.177).** By the brief's own gate — "beats M6 on ≥6
 | class-marginal α=0.1 | 0.8688 | 0.8556 | 0.8656 |
 | class-marginal α=0.5 | 0.8688 | 0.8555 | 0.8662 |
 | class-marginal α=2.0 | 0.8686 | 0.8553 | 0.8661 |
-| backoff `P(F|Pa)` α=1 | 0.8683 | 0.8549 | 0.8659 |
+| backoff `P(F\|Pa)` α=1 | 0.8683 | 0.8549 | 0.8659 |
 | backoff grand-mean α=1 | 0.8682 | 0.8548 | 0.8656 |
 | uniform class prior | 0.8693 | 0.8544 | 0.8675 |
 | per-node empirical-Bayes α | 0.8685 | 0.8551 | 0.8658 |
@@ -325,7 +325,7 @@ to explain" rule (§5) it is not adopted. Record **not** broken.
 | no hidden variables | all 12 nodes observed | ✔ |
 | no automatic structure learning | hand-authored, 1 of 9 named family | ✔ |
 | every CPT smoothed | α=1.0 on all CPTs | ✔ |
-| log-joint prediction | `argmax_y [log P(y) + Σ log P(F_i|Pa_i)]` | ✔ |
+| log-joint prediction | `argmax_y [log P(y) + Σ log P(F_i\|Pa_i)]` | ✔ |
 
 `check_bn_bounds(NAMES, CARDS, M6) → "bayes_net bounds: OK (12 features, 11 feature
 edges)"`.

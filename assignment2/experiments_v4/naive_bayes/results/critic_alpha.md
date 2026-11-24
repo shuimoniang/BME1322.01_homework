@@ -29,7 +29,7 @@ python critic_alpha_experiments.py --only all
 
 | 约束 | Builder A 是否满足 | 依据 |
 |:---|:---:|:---|
-| 形式 `P(y|X) ∝ P(y)·∏_i P(x_i|y)` | ✅ | 预测即 `argmax_y [log P(y) + Σ_j log P(z_j|y)]`，484 项连乘 |
+| 形式 `P(y\|X) ∝ P(y)·∏_i P(x_i\|y)` | ✅ | 预测即 `argmax_y [log P(y) + Σ_j log P(z_j\|y)]`，484 项连乘 |
 | 特征可为"简单离散化特征" | ✅（见下方论证） | 每个 patch 是 16 位二值模式 = 65536 状态的一元类别变量 |
 | 允许二值化 | ✅ | 阈值 `pixel ≥ 72` |
 | 手工实现先验/条件概率 + 至少一种平滑 | ✅ | NumPy 手写计数 + Lidstone |
